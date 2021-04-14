@@ -1,5 +1,8 @@
 {
-  "name": "react-modele",
+  "name": "fairplay-frontend",
+  "version": "1.0.0",
+  "description": "FairPlay, share sports activities",
+  "author": "FairPlay Team",
   "scripts": {
     "start": "cross-env NODE_ENV=development webpack serve --config config/webpack.dev.js",
     "build": "cross-env NODE_ENV=production webpack --config config/webpack.prod.js",
@@ -46,6 +49,7 @@
     "webpack-merge": "^5.7.3"
   },
   "dependencies": {
+    "@svgr/webpack": "^5.5.0",
     "axios": "^0.21.1",
     "babel-core": "^6.26.3",
     "babel-polyfill": "^6.26.0",
@@ -64,7 +68,6 @@
     "redux": "^4.0.5",
     "redux-devtools-extension": "^2.13.8"
   },
-  "version": "1.0.0",
   "main": "index.js",
   "license": "MIT"
 }

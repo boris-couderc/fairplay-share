@@ -3,10 +3,12 @@ import PropTypes from 'prop-types';
 
 import Wrapper from 'src/components/Wrapper';
 
-import logo from 'src/assets/fairplay logo.svg';
+//import logo from 'src/assets/fairplay logo.svg';
 import userIcon from 'src/assets/icons/account_circle.svg';
 import gradeIcon from 'src/assets/icons/grade.svg';
 import { Link } from 'react-router-dom';
+
+import { ReactComponent as Logo } from 'src/assets/fairplay-logo.svg';
 
 import './style.scss';
 
@@ -14,9 +16,17 @@ const Header = ({ isLogged, DisconnectOnClick, points, grade }) => {
   // console.log(isLogged);
   
   return (
-    <header>
+    <header className="header">
       <Wrapper wide>
-        <div>test</div>
+
+        <Link to="/" className="header__home">
+          {/* <img className="header__logo" src={logo} alt="FairPlay" /> */}
+          <Logo alt="FairPlay" className="header__logo" />
+        </Link>
+
+
+        
+
       </Wrapper>
     </header>
   )

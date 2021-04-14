@@ -3,12 +3,12 @@
 .footer {
   position  : relative;
   z-index   : 100;
+  padding   : 2rem 0;
   font-size : 0.9rem;
   color     : s.$txtColorLight;
   border-top: 2px solid rgba(0, 0, 0, .075);
 
   &__content {
-    padding   : 2rem 0;
     text-align: center;
 
     @media (min-width: s.$from-small) {

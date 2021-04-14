@@ -1,26 +1,37 @@
 @use 'src/styles/settings' as s;
 
 .header {
-  width: 100%;
-  padding: 30px 90px;
+  position: relative;
+  z-index: 100;
+  padding   : 2rem 0;
+
+  /*
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
   align-items: center;
-  position: relative;
-  z-index: 100;
+  */
+  
 
+
+  /*
   &__home{
     display: flex;
     justify-content: center;
   }
+  */
 
+  
   &__logo {
-    height: 41px;
-    object-fit: contain;
+    width: 10rem;
+    height: auto;
+    //height: 41px;
+    //object-fit: contain;
+
     //margin-bottom: 25px;
   } 
 
+  /*
   &__buttons {
     display: flex;
     align-items: center;
@@ -96,8 +107,11 @@ strong{
     background: none;
     border: none;
   }
+
+  */
 }
 
+/*
 @media (max-width: 680px) {  
   .header {
     flex-direction: column;
@@ -109,4 +123,6 @@ strong{
     }
   }
 }
+
+*/
 
