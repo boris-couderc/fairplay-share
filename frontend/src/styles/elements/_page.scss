@@ -42,12 +42,6 @@ body {
   min-height: 100%;
 }
 
-#root {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
 ::selection {
   background-color: s.$selection-background-color;
   color: s.$selection-text-color;

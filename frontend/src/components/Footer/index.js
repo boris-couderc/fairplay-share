@@ -9,11 +9,10 @@ const Footer = () => (
   <footer className="footer">
     <Wrapper wide>
       <div className="footer__content">
-        <p className="footer__copyright">FairPlay © 2020 - Tous droits réservés</p>
+        <p className="footer__copyright">FairPlay © 2021 - Tous droits réservés</p>
         <ul className="footer__links">
-        <Link to="/equipe"><li>Equipe</li></Link>
-        <Link to="#"><li>Contact</li></Link>
-        <Link to="#"><li>CGU</li></Link>
+          <li><Link to="/equipe">Equipe</Link></li>
+          <li><a href="mailto:couderc.boris@gmail.com">Contact</a></li>
         </ul>
       </div>
     </Wrapper>

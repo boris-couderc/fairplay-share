@@ -4,18 +4,18 @@ import PropTypes from 'prop-types';
 import View from 'src/components/View';
 import Wrapper from 'src/components/Wrapper';
 
-//import './style.scss';
+import './style.scss';
 
-const pageTest = (props) => {
+const PageTest = (props) => {
   return (
     <View layoutClass="page-test">
       <Wrapper>
-        <div>pageTest</div>
+        Lorem ipsum
       </Wrapper>
     </View>
   );
 };
 
-pageTest.propTypes = {};
+PageTest.propTypes = {};
 
-export default pageTest;
+export default PageTest;

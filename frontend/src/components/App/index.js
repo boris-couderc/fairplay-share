@@ -18,7 +18,7 @@ import Registration from 'src/containers/Registration';
 
 import ScreenSizeHelper from 'src/components/ScreenSizeHelper';
 
-import { PageTest } from 'src/views';
+import PageTest from 'src/views/PageTest';
 
 // == Composant
 const App = ({ getUser, isLogged }) => {

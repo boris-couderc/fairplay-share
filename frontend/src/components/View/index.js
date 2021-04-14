@@ -9,14 +9,14 @@ import './style.scss';
 
 const View = ({ children, layoutClass }) => {
   return (
-    <>
+    <div className={`view ${layoutClass}`}>
       <Header />
-      <main className={`view ${layoutClass}`}>
+      <main className="main">
         {children}
       </main>
       <Footer />
       <LoginModal />
-    </>
+    </div>
   );
 };
 

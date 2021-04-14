@@ -1,47 +1,37 @@
-@use 'src/styles/settings' as s;
+@use 'src/styles/settings'as s;
 
 .footer {
-  position: relative;
-  z-index: 100;
-  font-size: 0.9rem;
-  color: s.$txtColorLight;
-  border-top: 2px solid rgba(0,0,0,.075);
-
-  & *  {
-    border: 1px solid red;
-  }
+  position  : relative;
+  z-index   : 100;
+  font-size : 0.9rem;
+  color     : s.$txtColorLight;
+  border-top: 2px solid rgba(0, 0, 0, .075);
 
   &__content {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    padding: 2rem 0;
-  }
-
-  &__links {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    flex-wrap: wrap;
-  }
-
-  &__links li {
-    margin-right: 10px;
-  }
-}
-
-/*
-@media (max-width: 635px) {  
-  .footer {
-    flex-direction: column;
-    align-items: center;
+    padding   : 2rem 0;
     text-align: center;
 
-  &__links {
-    padding-top: 10px;
-    justify-content: center;
+    @media (min-width: s.$from-small) {
+      display        : flex;
+      justify-content: space-between;
+      flex-wrap      : wrap;
+    }
   }
+
+  &__links {
+    display       : inline-flex;
+    flex-direction: row;
+    align-items   : center;
+    flex-wrap     : wrap;
+
+    li {
+      &:not(:first-child) {
+        margin-left: 1rem;
+      }
+    }
+
+    @media (max-width: s.$to-small) {
+      margin-top: 1rem;
+    }
   }
 }
-*/
-
