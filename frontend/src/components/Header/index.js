@@ -1,5 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
+import Wrapper from 'src/components/Wrapper';
+
 import logo from 'src/assets/fairplay logo.svg';
 import userIcon from 'src/assets/icons/account_circle.svg';
 import gradeIcon from 'src/assets/icons/grade.svg';
@@ -9,6 +12,15 @@ import './style.scss';
 
 const Header = ({ isLogged, DisconnectOnClick, points, grade }) => {
   // console.log(isLogged);
+  
+  /*
+  return (
+    <Wrapper wide>
+      <div>test</div>
+    </Wrapper>
+  )
+  */
+
   switch (isLogged) {
     case true:
       return (
@@ -79,6 +91,7 @@ const Header = ({ isLogged, DisconnectOnClick, points, grade }) => {
         </header>
       );
   }
+
 };
 
 Header.propTypes = {

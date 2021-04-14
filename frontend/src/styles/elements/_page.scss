@@ -1,26 +1,48 @@
 html {
   overflow-y: scroll;
-  min-height: 100%;
+  scroll-behavior: smooth;
   color: s.$txtColor;
   font-family: s.$font-family;
-  line-height: s.$line-height; 
+  line-height: s.$line-height;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: s.$backgroundColor;
+
+  @media (max-width: s.$to-small) {
+    font-size: s.$font-size - 3;
+  }
+
+  @media (min-width: s.$from-small) and (max-width: s.$to-medium) {
+    font-size: s.$font-size - 2;
+  }
+
+  @media (min-width: s.$from-medium) and (max-width: s.$to-large) {
+    font-size: s.$font-size - 1;
+  }
+
+  @media (min-width: s.$from-large) and (max-width: s.$to-huge) {
+    font-size: s.$font-size; /* Default font-size */
+  }
+
+  @media (min-width: s.$from-huge) and (max-width: s.$to-enormous) {
+    font-size: s.$font-size + 1;
+  }
+
+  @media (min-width: s.$from-enormous) {
+    font-size: s.$font-size + 2;
+  }
 }
 
-
+html,
 body {
-  border: 5px solid red;
+  min-height: 100%;
 }
-
 
 #root {
-  font-family: s.$fontHeading;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background-color: s.$backgroundColor;
-  border: 5px solid cyan;
 }
-
 
 ::selection {
   background-color: s.$selection-background-color;

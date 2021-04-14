@@ -6,17 +6,17 @@ import PropTypes from 'prop-types';
 // == Import
 import Accueil from 'src/containers/Accueil';
 import Search from 'src/containers/Search';
-import Header from 'src/containers/Header';
-import Footer from 'src/components/Footer';
+//import Header from 'src/containers/Header';
+//import Footer from 'src/components/Footer';
 import Login from 'src/containers/Login';
-import LoginModal from 'src/containers/LoginModal';
+//import LoginModal from 'src/containers/LoginModal';
 import Error404 from 'src/components/Error404';
 import Team from 'src/components/Team';
 import Details from 'src/containers/Details';
 import CreationPage from 'src/containers/CreationPage';
 import Registration from 'src/containers/Registration';
 
-import PageTest from 'src/views/PageTest';
+import { PageTest } from 'src/views';
 
 // == Composant
 const App = ({ getUser, isLogged }) => {
@@ -27,7 +27,7 @@ const App = ({ getUser, isLogged }) => {
 
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <Switch>
         <Route path="/" exact>
           <Accueil />
@@ -67,9 +67,9 @@ const App = ({ getUser, isLogged }) => {
         </Route>
 
       </Switch>
-      <Footer />
+      {/* <Footer /> */}
 
-      <LoginModal />
+      {/* <LoginModal /> */}
     </>
   );
 };

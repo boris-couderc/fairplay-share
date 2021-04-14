@@ -1,24 +1,17 @@
-@use 'settings' as s;
+@use 'settings'as s;
 
-// ==========================================================================
 // Generic
-// ==========================================================================
 @forward 'generic/reset';
 
-// ==========================================================================
 // Elements
-// ==========================================================================
 @import "elements/page";
+
 
 .container {
   max-width: 1280px;
-
-  //border: 10px solid colors.$test;
-  //border-bottom: 10px solid $test2;
 }
 
 .icon {
-  width: 18px;
+  width : 18px;
   height: 18px;
 }
-

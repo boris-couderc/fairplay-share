@@ -11,6 +11,10 @@ import './style.scss';
 
 import pin from 'src/assets/icons/pin.svg';
 
+////////////////
+// VOIR : https://www.robinwieruch.de/react-hooks-fetch-data
+
+
 // == Composant
 const SearchBar = ({
   inputValue,

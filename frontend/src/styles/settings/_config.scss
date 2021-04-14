@@ -1,38 +1,36 @@
 // Typography
-// =============================================================================
-$fontHeading: 'Poppins', sans-serif;
-$font-size: 16px;
+$fontHeading: 'Poppins',
+sans-serif;
+$font-size  : 16px;
 $line-height: 24px / $font-size;
 $font-family: sans-serif;
-$color: #222222;
+$color      : #222222;
+
+// Spacing
+$unit:       3rem;
+$unit-small: 1.5rem;
 
 // Container
-// ==========================================================================
-$container-max-width: 1240px;
-$container-padding: 20px;
+$container-width: 1240px;
+$padding-small  : $unit-small;
+$padding        : $unit;
 
 // Breakpoints
-// =============================================================================
-$from-tiny:     500px              !default;
-$to-tiny:       $from-tiny - 1     !default;
-$from-small:    700px              !default;
-$to-small:      $from-small - 1    !default;
-$from-medium:   1000px             !default;
-$to-medium:     $from-medium - 1   !default;
-$from-large:    1200px             !default;
-$to-large:      $from-large - 1    !default;
-$from-big:      1400px             !default;
-$to-big:        $from-big - 1      !default;
-$from-huge:     1600px             !default;
-$to-huge:       $from-huge - 1     !default;
-$from-enormous: 1800px             !default;
-$to-enormous:   $from-enormous - 1 !default;
-$from-gigantic: 2000px             !default;
-$to-gigantic:   $from-gigantic - 1 !default;
-$from-colossal: 2400px             !default;
-$to-colossal:   $from-colossal - 1 !default;
+$from-tiny    : 500px;
+$to-tiny      : $from-tiny - 1;
+$from-small   : 700px;
+$to-small     : $from-small - 1;
+$from-medium  : 1000px;
+$to-medium    : $from-medium - 1;
+$from-large   : 1200px;
+$to-large     : $from-large - 1;
+$from-big     : 1400px;
+$to-big       : $from-big - 1;
+$from-huge    : 1600px;
+$to-huge      : $from-huge - 1;
+$from-enormous: 1800px;
+$to-enormous  : $from-enormous - 1;
 
 // Decoration
-// =============================================================================
 $shadow: 0 1px 10px rgb(199, 199, 199);
 $shadowHover: 0 4px 6px rgb(170, 170, 170);
