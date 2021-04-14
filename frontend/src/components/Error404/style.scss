@@ -1,4 +1,4 @@
-@use 'src/styles/_vars.scss' as v;
+@use 'src/styles/settings' as s;
 
 .mainError {
   display: flex;
@@ -16,7 +16,7 @@
 .title {
   font-size: clamp(30px, 3vw, 60px);
   font-weight: 600;
-  color: v.$darkColor;
+  color: s.$darkColor;
   line-height: 1.15;
   margin-bottom: 40px;
 }
@@ -24,7 +24,7 @@
 .subtitle {
   font-size: clamp(30px, 3vw, 15px);
   font-weight: 600;
-  color: v.$darkColor;
+  color: s.$darkColor;
   line-height: 1.15;
   margin-bottom: 20px;
 }
@@ -32,7 +32,7 @@
 .subsubtitle {
   font-size: clamp(30px, 3vw, 15px);
   font-weight: 600;
-  color: v.$primaryColor;
+  color: s.$primaryColor;
   line-height: 1.15;
   text-align: center;
 }

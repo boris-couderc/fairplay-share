@@ -1,4 +1,4 @@
-@use 'src/styles/_vars.scss' as v;
+@use 'src/styles/settings' as s;
 
 .filter {
   margin: 1rem 0 2rem 0;
@@ -6,7 +6,7 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  max-width: v.$container-max-width;
+  max-width: s.$container-max-width;
   flex-wrap: wrap;
 
   &__item {
@@ -38,7 +38,7 @@
     position: absolute;
     opacity: 0; 
     &:checked ~ * {
-      border: 2px solid v.$primaryColor;
+      border: 2px solid s.$primaryColor;
     }
   }
 
@@ -49,8 +49,8 @@
 
   &__button {
     padding: 12px 35px;
-    margin: 10px v.$container-padding;
-    background: v.$primaryColor;
+    margin: 10px s.$container-padding;
+    background: s.$primaryColor;
     border: none;
     color: #fff;
     border-radius: 40px;

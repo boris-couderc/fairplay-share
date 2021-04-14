@@ -1,4 +1,4 @@
-@use 'src/styles/_vars.scss';
+@use 'src/styles/settings' as s;
 
 .registration{
   // background-image: url('src/assets/images/bg_connexion.svg');
@@ -24,13 +24,13 @@
   }
 
   &__inputName {
-    color: vars.$LightDarkColor;
+    color: s.$LightDarkColor;
     margin: 0 0 10px 25px;
     margin-bottom: 15px;
   }
 
   &__required {
-    color: vars.$primaryColor;
+    color: s.$primaryColor;
   }
 
   &__container {
@@ -51,7 +51,7 @@
   &__title {
     font-size: 32px;
     margin-bottom: 45px;
-    color: vars.$darkColor;
+    color: s.$darkColor;
   }
 
   &__input {
@@ -59,7 +59,7 @@
     border-radius: 25px;
     border: none;
     padding: 10px;
-    box-shadow: vars.$shadow;
+    box-shadow: s.$shadow;
     font-size: 16px;
     padding: 15px 25px;
   }
@@ -73,7 +73,7 @@
   }
 
   &__submit {
-    background-color: vars.$primaryColor;
+    background-color: s.$primaryColor;
     color: white;
     border-radius: 25px;
     border: none;
@@ -85,12 +85,12 @@
   }
 
   &__submit:hover {
-    box-shadow: vars.$shadow;
+    box-shadow: s.$shadow;
   }
 
   &__noAccount {
     font-size: 16px;
-    color: vars.$LightDarkColor;
+    color: s.$LightDarkColor;
   }
 
   &__error {
@@ -103,7 +103,7 @@
     flex: 1;
     text-align: center;
     font-size: 16px;
-    color: vars.$LightDarkColor;
+    color: s.$LightDarkColor;
   }
 
   &__textarea {

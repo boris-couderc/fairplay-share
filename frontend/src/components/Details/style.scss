@@ -1,4 +1,4 @@
-@use 'src/styles/_vars.scss' as v;
+@use 'src/styles/settings' as s;
 
 .activity {
   display: flex;
@@ -28,26 +28,26 @@
 
   &__title {
     font-weight: 600;
-    color: v.$primaryColor;
+    color: s.$primaryColor;
     font-size: 3rem;
     margin-bottom: 10px;
   }
 
   &__timeplace {
     font-size: 1.5rem;
-    color: v.$darkColor;
+    color: s.$darkColor;
     padding-top: 15px;
     margin-bottom: 10px;
   }
 
   &__duration {
     font-size: 1.5rem;
-    color: v.$darkColor;
+    color: s.$darkColor;
     padding-top: 5px;
   }
 
   &__join {
-    background-color: v.$primaryColor;
+    background-color: s.$primaryColor;
     transition: all 0.3s;
     padding: 15px 30px;
     font-size: 1.05em;
@@ -61,11 +61,11 @@
   }
 
   &__join-quit {
-    background-color: v.$secondaryColor;
+    background-color: s.$secondaryColor;
   }
 
   &__join:hover {
-    box-shadow: v.$shadow;
+    box-shadow: s.$shadow;
   }
 
   &__join-error {
@@ -80,7 +80,7 @@
 
   &__description {
     font-size: 1.3rem;
-    color: v.$darkColor;
+    color: s.$darkColor;
     background-color: rgba(255, 255, 255, 0.85);
     border-radius: 16px;
     line-height: 1.2;
@@ -91,13 +91,13 @@
   }
 
   &__descriptionTitle{
-    color: v.$primaryColor;
+    color: s.$primaryColor;
     font-weight: 600;
     margin-bottom: 10px;
   }
 
   &__description span {
-    color: v.$primaryColor;
+    color: s.$primaryColor;
     font-weight: 600;
     margin-bottom: 20px;
   }
@@ -131,23 +131,23 @@
   }
 
   &__pseudo {
-    color: v.$darkColor;
+    color: s.$darkColor;
     font-size: 1.5rem;
   }
 
   &__role {
-    color: v.$LightDarkColor;
+    color: s.$LightDarkColor;
     margin-top: 5px;
   }
 
   &__participantsNumber {
-    color: v.$darkColor;
+    color: s.$darkColor;
     font-size: 1.5rem;
   }
 
   &__minParticipants {
     margin-top: 5px;
-    color: v.$LightDarkColor;
+    color: s.$LightDarkColor;
   }
 
   &__map {

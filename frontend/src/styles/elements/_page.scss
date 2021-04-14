@@ -1,0 +1,29 @@
+html {
+  overflow-y: scroll;
+  min-height: 100%;
+  color: s.$txtColor;
+  font-family: s.$font-family;
+  line-height: s.$line-height; 
+}
+
+
+body {
+  border: 5px solid red;
+}
+
+
+#root {
+  font-family: s.$fontHeading;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: s.$backgroundColor;
+  border: 5px solid cyan;
+}
+
+
+::selection {
+  background-color: s.$selection-background-color;
+  color: s.$selection-text-color;
+  text-shadow: none;
+}

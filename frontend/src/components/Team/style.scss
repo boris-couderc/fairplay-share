@@ -1,4 +1,4 @@
-@use 'src/styles/_vars.scss' as v;
+@use 'src/styles/settings' as s;
 
 .mainMember {
   display: flex;
@@ -17,7 +17,7 @@
   align-items: center;
   background-color:rgba(255,255,255,.80);
   border-radius: 16px;
-  box-shadow: v.$shadow;
+  //box-shadow: s.$shadow;
   width: 320px;
   margin: 20px;
   padding: 10px 40px 10px 40px;
@@ -31,19 +31,19 @@
   &__name {
     font-size: 24px;
     font-weight: 600;
-    color: v.$darkColor;
+    //color: s.$darkColor;
     margin-bottom: 10px;
   }
 
   &__role {
     font-size: 17px;
     font-weight: 600;
-    color: v.$primaryColor;
+    //color: s.$primaryColor;
     margin-bottom: 20px;
   }
 
   &__github {
-    background-color: v.$primaryColor;
+    //background-color: s.$primaryColor;
     color: white;
     padding: 10px;
     border-radius: 25px;

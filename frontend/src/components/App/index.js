@@ -16,7 +16,7 @@ import Details from 'src/containers/Details';
 import CreationPage from 'src/containers/CreationPage';
 import Registration from 'src/containers/Registration';
 
-import './styles.css';
+import PageTest from 'src/views/PageTest';
 
 // == Composant
 const App = ({ getUser, isLogged }) => {
@@ -31,6 +31,10 @@ const App = ({ getUser, isLogged }) => {
       <Switch>
         <Route path="/" exact>
           <Accueil />
+        </Route>
+
+        <Route path="/test" exact>
+          <PageTest />
         </Route>
 
         <Route path="/connexion" exact>

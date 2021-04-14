@@ -1,4 +1,4 @@
-@use 'src/styles/_vars.scss';
+@use 'src/styles/settings' as s;
 
 .footer {
   width: 100%;
@@ -10,7 +10,7 @@
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  color: vars.$darkColor;
+  color: s.$darkColor;
 
   &__links {
     display: flex;

@@ -1,4 +1,4 @@
-@use 'src/styles/_vars.scss';
+@use 'src/styles/settings' as s;
 
 .login{
   background-image: url('src/assets/images/bg_connexion.svg');
@@ -21,7 +21,7 @@
   &__title {
     font-size: 32px;
     margin-bottom: 45px;
-    color: vars.$darkColor;
+    color: s.$darkColor;
   }
 
   &__input {
@@ -29,7 +29,7 @@
     border-radius: 25px;
     border: none;
     padding: 10px;
-    box-shadow: vars.$shadow;
+    box-shadow: s.$shadow;
     font-size: 16px;
     padding: 15px 25px;
     width: 340px;
@@ -37,7 +37,7 @@
   }
 
   &__button {
-    background-color: vars.$primaryColor;
+    background-color: s.$primaryColor;
     color: white;
     padding: 10px;
     border-radius: 25px;
@@ -52,12 +52,12 @@
   }
 
   &__button:hover {
-    box-shadow: vars.$shadow;
+    box-shadow: s.$shadow;
   }
 
   &__noAccount {
     font-size: 16px;
-    color: vars.$LightDarkColor;
+    color: s.$LightDarkColor;
   }
 
   &__error {

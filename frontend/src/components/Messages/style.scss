@@ -1,4 +1,4 @@
-@use 'src/styles/_vars.scss' as v;
+@use 'src/styles/settings' as s;
 
 .messages {
   position: relative;
@@ -35,7 +35,7 @@
     background: #ffffff;
     padding: .75rem 2rem .75rem 1rem;
     border-radius: 10px;
-    box-shadow: v.$shadow;
+    box-shadow: s.$shadow;
   }
 
   &__content {
@@ -43,7 +43,7 @@
   }
 
   &__pseudo{
-    color: v.$primaryColor;
+    color: s.$primaryColor;
     font-size: 0.9em;
     font-weight: 600;
   }
@@ -65,16 +65,16 @@
     padding: 1.25rem 1rem;
     border:none;
     width: 100%;
-    box-shadow: v.$shadow;
+    box-shadow: s.$shadow;
     border-radius: 0 0 0 10px;
   }
 
   &__button {
     border: none;
-    background-color: v.$primaryColor;
-    font-family: v.$fontHeading;
+    background-color: s.$primaryColor;
+    font-family: s.$fontHeading;
     color: white;
-    box-shadow: v.$shadow;
+    box-shadow: s.$shadow;
     padding: 1em, 4em;
     border-radius: 0 0 10px 0;
     font-weight: 500;

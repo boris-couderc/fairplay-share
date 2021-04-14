@@ -1,4 +1,4 @@
-@use 'src/styles/_vars.scss' as v;
+@use 'src/styles/settings' as s;
 @use "sass:color";
 
 .marker {
@@ -62,7 +62,7 @@
         position: absolute;
         width: 22px;
         height: 22px;
-        background-color: v.$primaryColor;
+        background-color: s.$primaryColor;
         right: -5px;
         top: 50%;
         margin-top: -15px;
@@ -77,7 +77,7 @@
       &::before {
         content: '';
         background-image: url('src/assets/icons/pencil.svg');
-        background-color: v.$secondaryColor;
+        background-color: s.$secondaryColor;
         background-size: 12px;
       }
     }
@@ -91,7 +91,7 @@
 
   &__date {
     padding-top: .5rem;
-    color: v.$primaryColor;
+    color: s.$primaryColor;
     grid-column-start: 2;
   }
 

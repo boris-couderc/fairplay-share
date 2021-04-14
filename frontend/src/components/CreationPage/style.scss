@@ -1,4 +1,4 @@
-@use 'src/styles/_vars.scss' as vars;
+@use 'src/styles/settings' as s;
 
 .create-form {
   background-image: url('src/assets/images/creationActivity.svg');
@@ -29,20 +29,20 @@
   &__label {
     display: block;
     font-size: 17px;
-    color: vars.$darkColor;
+    color: s.$darkColor;
     text-align: left;
     padding-bottom: 15px;
     padding-left: 25px;
   }
 
   &__required {
-    color: vars.$primaryColor;
+    color: s.$primaryColor;
   }
 
   &__title {
     font-size: 32px;
     margin-bottom: 45px;
-    color: vars.$darkColor;
+    color: s.$darkColor;
     text-align: center;
   }
 
@@ -51,14 +51,14 @@
     margin-bottom: 25px;
     border-radius: 25px;
     border: none;
-    box-shadow: vars.$shadow;
+    box-shadow: s.$shadow;
     font-size: 16px;
     padding: 15px 25px;
     outline: none;
   }
 
   &__input--submit {
-    background-color: vars.$primaryColor;
+    background-color: s.$primaryColor;
     color: white;
     padding: 10px;
     border-radius: 25px;
@@ -74,7 +74,7 @@
 
 
 &__input--submit:hover {
-  box-shadow: vars.$shadow;
+  box-shadow: s.$shadow;
 }
 
 &__input--select {
@@ -94,7 +94,7 @@ color: grey
     border-radius: 25px;
     border: none;
     padding: 60px;
-    box-shadow: vars.$shadow;
+    box-shadow: s.$shadow;
     font-size: 16px;
     padding: 15px 25px;
     //width: 500px;
@@ -107,7 +107,7 @@ color: grey
 
   &__noAccount {
     font-size: 16px;
-    color: vars.$LightDarkColor;
+    color: s.$LightDarkColor;
   }
 
   &__error {

@@ -1,4 +1,4 @@
-@use 'src/styles/_vars.scss'as v;
+@use 'src/styles/settings' as s;
 
 // .container{
 //   display: flex;
@@ -27,7 +27,7 @@
     padding: 3rem 2rem;
     background-color: white;
     text-align: center;
-    color: v.$primaryColor;
+    color: s.$primaryColor;
     //font-size: 1.2em;
     z-index: 1;
     border: 0.2em black;
@@ -37,7 +37,7 @@
   
   &__login {
     margin-top:1.5rem;
-    background-color: v.$backgroundColor;
+    background-color: s.$backgroundColor;
     padding: 15px 50px;
     border-radius: 25px;
     //color: white;
@@ -47,7 +47,7 @@
   
   &__signup {
     margin-top:1.5rem;
-    background-color: v.$primaryColor;
+    background-color: s.$primaryColor;
     padding: 15px 50px;
     border-radius: 25px;
     color: white;

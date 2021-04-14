@@ -1,4 +1,4 @@
-@use 'src/styles/_vars.scss';
+@use 'src/styles/settings' as s;
 
 .search {
   &__no-result {
@@ -6,7 +6,7 @@
     text-align: center;
     font-size: 1.25rem;
     font-weight: 500;
-    color: vars.$primaryColor;
+    color: s.$primaryColor;
   }
   &__no-result-img{
     position: relative;
@@ -19,15 +19,15 @@
 
 
 .heading-2 {
-  font-family: vars.$fontHeading;
+  font-family: s.$fontHeading;
   font-size: 1.5rem;
   font-weight: 600;
-  color: vars.$darkColor;
+  color: s.$darkColor;
   padding-bottom: 1rem;
   padding-top: 2rem;
 
   &__txt-color {
-    color: vars.$primaryColor;
+    color: s.$primaryColor;
   }
 }
 

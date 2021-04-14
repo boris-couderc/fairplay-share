@@ -1,11 +1,11 @@
-@use 'src/styles/_vars.scss' as v;
+@use 'src/styles/settings' as s;
 
 .searchbar {
     position: relative;
     z-index: 4 !important;
     background-color:rgba(255,255,255,.80);
     border-radius: 16px;
-    box-shadow: v.$shadow;
+    box-shadow: s.$shadow;
     padding: 30px;
     margin: 40px 20px;
     width: calc(100% - 40px);
@@ -34,7 +34,7 @@
         border-left: none;
         padding: 16px 40px;
         border: none;
-        background-color: v.$primaryColor;
+        background-color: s.$primaryColor;
         color: white;
         outline: none;
         cursor: pointer;
@@ -52,7 +52,7 @@
         border-radius: 25px;
         padding: 16px 40px;
         color: white;
-        background-color: v.$secondaryColor;
+        background-color: s.$secondaryColor;
         text-decoration: none;
         font-size: 16px;
         border: none;
@@ -66,7 +66,7 @@
     &__error {
       padding-top: .75rem;
       text-align: center;
-      color: v.$primaryColor;
+      color: s.$primaryColor;
       font-size: .9em;
     }
 }

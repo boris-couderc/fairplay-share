@@ -1,4 +1,4 @@
-@use 'src/styles/_vars.scss' as v;
+@use 'src/styles/settings' as s;
 @use "sass:color";
 
 .map-list {
@@ -36,8 +36,8 @@
     top: 35px;
     padding: 12px 35px;
     margin: 10px 20px;
-    border: 2px solid color.scale(v.$primaryColor, $alpha: -50%);
-    color: v.$primaryColor;
+    border: 2px solid color.scale(s.$primaryColor, $alpha: -50%);
+    color: s.$primaryColor;
     background: #ffffff;
     border-radius: 40px;
     font-size: 1.05rem;
