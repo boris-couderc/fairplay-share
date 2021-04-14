@@ -24,12 +24,16 @@ html {
     font-size: s.$font-size; /* Default font-size */
   }
 
-  @media (min-width: s.$from-huge) and (max-width: s.$to-enormous) {
+  @media (min-width: s.$from-huge) and (max-width: s.$to-gigantic) {
     font-size: s.$font-size + 1;
   }
 
-  @media (min-width: s.$from-enormous) {
+  @media (min-width: s.$from-gigantic) and (max-width: s.$to-colossal) {
     font-size: s.$font-size + 2;
+  }
+
+  @media (min-width: s.$from-colossal) {
+    font-size: s.$font-size + 3;
   }
 }
 

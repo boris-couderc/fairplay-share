@@ -1,16 +1,22 @@
 @use 'src/styles/settings' as s;
 
 .footer {
-  width: 100%;
   position: relative;
   z-index: 100;
-  padding: 30px 90px;
-  //background-color: white;
+  font-size: 0.9rem;
+  color: s.$txtColorLight;
   border-top: 2px solid rgba(0,0,0,.075);
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  color: s.$darkColor;
+
+  & *  {
+    border: 1px solid red;
+  }
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 2rem 0;
+  }
 
   &__links {
     display: flex;
@@ -24,6 +30,7 @@
   }
 }
 
+/*
 @media (max-width: 635px) {  
   .footer {
     flex-direction: column;
@@ -36,4 +43,5 @@
   }
   }
 }
+*/
 

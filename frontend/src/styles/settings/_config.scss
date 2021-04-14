@@ -30,6 +30,10 @@ $from-huge    : 1600px;
 $to-huge      : $from-huge - 1;
 $from-enormous: 1800px;
 $to-enormous  : $from-enormous - 1;
+$from-gigantic: 2000px;
+$to-gigantic  : $from-gigantic - 1;
+$from-colossal: 2400px;
+$to-colossal  : $from-colossal - 1;
 
 // Decoration
 $shadow: 0 1px 10px rgb(199, 199, 199);

@@ -13,14 +13,15 @@ import './style.scss';
 const Header = ({ isLogged, DisconnectOnClick, points, grade }) => {
   // console.log(isLogged);
   
-  /*
   return (
-    <Wrapper wide>
-      <div>test</div>
-    </Wrapper>
+    <header>
+      <Wrapper wide>
+        <div>test</div>
+      </Wrapper>
+    </header>
   )
-  */
 
+  /*
   switch (isLogged) {
     case true:
       return (
@@ -91,7 +92,7 @@ const Header = ({ isLogged, DisconnectOnClick, points, grade }) => {
         </header>
       );
   }
-
+  */
 };
 
 Header.propTypes = {

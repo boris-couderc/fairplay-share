@@ -16,6 +16,8 @@ import Details from 'src/containers/Details';
 import CreationPage from 'src/containers/CreationPage';
 import Registration from 'src/containers/Registration';
 
+import ScreenSizeHelper from 'src/components/ScreenSizeHelper';
+
 import { PageTest } from 'src/views';
 
 // == Composant
@@ -27,6 +29,8 @@ const App = ({ getUser, isLogged }) => {
 
   return (
     <>
+      <ScreenSizeHelper />
+
       {/* <Header /> */}
       <Switch>
         <Route path="/" exact>
