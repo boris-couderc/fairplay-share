@@ -1,0 +1,9 @@
+//https://css-tricks.com/snippets/sass/tint-shade-functions/
+
+@function tint($color, $percentage) {
+    @return mix(white, $color, $percentage);
+}
+
+@function shade($color, $percentage) {
+    @return mix(black, $color, $percentage);
+}

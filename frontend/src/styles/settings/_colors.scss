@@ -1,17 +1,20 @@
+$primary-color      : #ec7253;
+$primary-color-dark : #c75a40;
+$primary-color-light: #fc8668;
 
-$primary-color  : #EC7253;
+$secondary-color      : #5ab4a9;
+$secondary-color-dark : #438f86;
+$secondary-color-light: #6cccc0;
 
-$secondary-color: #5AB4A9;
-
-$dark-color     : #273940;
-$dark-color-light: #575d5f;
+$dark-color      : #425359;
+$dark-color-dark : #273940;
+$dark-color-light: #546c75;
 
 $txt-color      : #222222;
-$txt-color-light : #808080;
+$txt-color-light: #808080;
 
-$background-color: #F5F1ED;
-
+$background-color: #f5f1ed;
 
 // Specific
-$selection-background-color: #EC7253;
+$selection-background-color: $primary-color;
 $selection-text-color      : #ffffff;

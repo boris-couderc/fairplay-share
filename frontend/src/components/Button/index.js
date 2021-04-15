@@ -1,11 +1,11 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
-import classNames from 'classnames';
+import React from 'react'
+import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
+import classNames from 'classnames'
 
-import Icon from 'src/components/Icon';
+import Icon from 'src/components/Icon'
 
-import './style.scss';
+import './style.scss'
 
 const Button = ({
     children,
@@ -22,32 +22,38 @@ const Button = ({
         size && `button--${size}`,
         appearance && `button--${appearance}`,
         className && `button--${className}`,
-    );
+    )
 
     const iconEl =
         icon !== null ? (
             <span className="button__icon">
                 <Icon name={icon} />
             </span>
-        ) : null;
+        ) : null
+
+    const labelEl = (
+            <span className="button__label">
+                {children}
+            </span>
+        )
 
     return route !== null ? (
         <Link to={`${route}`} className={classes}>
             {iconEl}
-            {children}
+            {labelEl}
         </Link>
     ) : href !== null ? (
         <a href={`${href}`} className={classes}>
             {iconEl}
-            {children}
+            {labelEl}
         </a>
     ) : (
         <button type="button" className={classes} onClick={onClick}>
             {iconEl}
-            {children}
+            {labelEl}
         </button>
-    );
-};
+    )
+}
 
 Button.propTypes = {
     children: PropTypes.node.isRequired,
@@ -58,13 +64,13 @@ Button.propTypes = {
     onClick: PropTypes.func,
     route: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
     className: PropTypes.string,
-};
+}
 
 Button.defaultProps = {
     icon: null,
     href: null,
     onClick: () => {},
     route: null,
-};
+}
 
-export default Button;
+export default Button

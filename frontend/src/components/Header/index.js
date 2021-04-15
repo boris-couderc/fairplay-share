@@ -25,16 +25,6 @@ const Header = ({ isLogged, DisconnectOnClick, points, grade }) => {
 
           <ul className="header__buttons">
             <li>
-
-              {/* <Link to="/connexion" className="header__login">
-                <img
-                  className="header__icon"
-                  src={userIcon}
-                  alt="l'icône de l'utilisateur"
-                />
-                Connexion
-              </Link> */}
-
               <Button 
                 appearance="outline"
                 route="/connexion"
@@ -42,21 +32,14 @@ const Header = ({ isLogged, DisconnectOnClick, points, grade }) => {
               >
                 Connexion
               </Button> 
-              
             </li>
             <li>
-
-              {/* <Link to="/inscription" className="header__signup">
-                Inscription
-              </Link> */}
-
               <Button 
                 appearance="primary"
                 route="/inscription"
               >
                 Inscription
               </Button>
-
             </li>
           </ul>
         
