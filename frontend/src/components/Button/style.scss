@@ -1,69 +1,86 @@
-@use 'src/styles/settings' as s;
+@use 'src/styles/settings'as s;
 
 .button {
-  position: relative;
-  padding: .625rem 1.25rem;
-  border-radius: 100em;
-  font-family: s.$font-family-heading;
-  font-size: 1rem;
-  color: #fff;
-  background: s.$dark-color;
+    display       : inline-flex;
+    vertical-align: middle;
+    align-items   : center;
+    padding       : 0.625rem 1.25rem;
+    border-radius : 100em;
+    font-family   : s.$font-family-heading;
+    font-size     : 1rem;
+    color         : #fff;
+    background    : s.$dark-color;
 
-  /*
-  &::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-color: #101010;
-  }
-  */
+    /*
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-color: #101010;
+    }
+    */
 
-  &--small {
-    padding: .5rem 1rem;
-    font-size: .9rem;
-  }
+    &--small {
+        padding  : 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
 
-  &--big {
-    padding: .75rem 1.5rem;
-    font-size: 1rem;
-  }
+    &--big {
+        padding  : 0.75rem 1.5rem;
+        font-size: 1rem;
+    }
 
-  &--primary {
-    background: s.$primary-color;
-    border: 2px solid s.$primary-color;
-  }
+    &--primary {
+        background: s.$primary-color;
+        border    : 2px solid s.$primary-color;
+    }
 
-  &--secondary {
-    background: s.$secondary-color;
-    border: 2px solid s.$secondary-color;
-  }
+    &--secondary {
+        background: s.$secondary-color;
+        border    : 2px solid s.$secondary-color;
+    }
 
-  &--outline {
-    color: s.$dark-color;
-    font-weight: 500;
-    background: transparent;
-    border: 2px solid rgba($color: s.$dark-color, $alpha: 0.2);
-  }
+    &--outline {
+        color      : s.$dark-color;
+        font-weight: 500;
+        background : transparent;
+        border     : 2px solid rgba($color: s.$dark-color, $alpha: 0.2);
+    }
 
-  &--primary-outline {
-    color: s.$primary-color;
-    font-weight: 500;
-    background: transparent;
-    border: 2px solid rgba($color: s.$primary-color, $alpha: 0.5);
-  }
+    &--primary-outline {
+        color      : s.$primary-color;
+        font-weight: 500;
+        background : transparent;
+        border     : 2px solid rgba($color: s.$primary-color, $alpha: 0.5);
+    }
 
-  &--secondary-outline {
-    color: s.$secondary-color;
-    font-weight: 500;
-    background: transparent;
-    border: 2px solid rgba($color: s.$secondary-color, $alpha: 0.6);
-  }
-  
-  &--special {
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-  }
+    &--secondary-outline {
+        color      : s.$secondary-color;
+        font-weight: 500;
+        background : transparent;
+        border     : 2px solid rgba($color: s.$secondary-color, $alpha: 0.6);
+    }
+
+    &--special {
+        border-top-left-radius   : 0;
+        border-bottom-left-radius: 0;
+    }
+
+
+    &__icon {
+        display       : inline-block;
+        vertical-align: middle;
+        position      : relative;
+        width         : 1.35em;
+        height        : 1.35em;
+        margin-left   : -0.25em;
+        margin-right  : 0.5em;
+    }
+
+    &--big &__icon {
+        margin-right: 0.75em;
+    }
 }

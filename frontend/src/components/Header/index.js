@@ -38,6 +38,7 @@ const Header = ({ isLogged, DisconnectOnClick, points, grade }) => {
               <Button 
                 appearance="outline"
                 route="/connexion"
+                icon="account"
               >
                 Connexion
               </Button> 
