@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Wrapper from 'src/components/Wrapper';
+import Button from 'src/components/Button';
 
-//import logo from 'src/assets/fairplay logo.svg';
 import userIcon from 'src/assets/icons/account_circle.svg';
 import gradeIcon from 'src/assets/icons/grade.svg';
 import { Link } from 'react-router-dom';
@@ -18,15 +18,48 @@ const Header = ({ isLogged, DisconnectOnClick, points, grade }) => {
   return (
     <header className="header">
       <Wrapper wide>
+        <div className="header__content">
+          <Link to="/" className="header__logo">
+            <Logo alt="FairPlay"/>
+          </Link>
 
-        <Link to="/" className="header__home">
-          {/* <img className="header__logo" src={logo} alt="FairPlay" /> */}
-          <Logo alt="FairPlay" className="header__logo" />
-        </Link>
+          <ul className="header__buttons">
+            <li>
 
+              {/* <Link to="/connexion" className="header__login">
+                <img
+                  className="header__icon"
+                  src={userIcon}
+                  alt="l'icône de l'utilisateur"
+                />
+                Connexion
+              </Link> */}
 
+              <Button 
+                appearance="outline"
+                route="/connexion"
+              >
+                Connexion
+              </Button> 
+              
+            </li>
+            <li>
+
+              {/* <Link to="/inscription" className="header__signup">
+                Inscription
+              </Link> */}
+
+              <Button 
+                appearance="primary"
+                route="/inscription"
+              >
+                Inscription
+              </Button>
+
+            </li>
+          </ul>
         
-
+        </div>
       </Wrapper>
     </header>
   )

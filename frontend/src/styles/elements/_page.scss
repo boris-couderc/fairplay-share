@@ -1,15 +1,15 @@
 html {
   overflow-y: scroll;
   scroll-behavior: smooth;
-  color: s.$txtColor;
+  color: s.$txt-color;
   font-family: s.$font-family;
   line-height: s.$line-height;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: s.$backgroundColor;
+  background-color: s.$background-color;
 
   @media (max-width: s.$to-small) {
-    font-size: s.$font-size - 3;
+    font-size: s.$font-size - 2;
   }
 
   @media (min-width: s.$from-small) and (max-width: s.$to-medium) {
@@ -33,7 +33,7 @@ html {
   }
 
   @media (min-width: s.$from-colossal) {
-    font-size: s.$font-size + 3;
+    font-size: s.$font-size + 2;
   }
 }
 

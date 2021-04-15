@@ -34,7 +34,7 @@
         border-left: none;
         padding: 16px 40px;
         border: none;
-        background-color: s.$primaryColor;
+        background-color: s.$primary-color;
         color: white;
         outline: none;
         cursor: pointer;
@@ -52,7 +52,7 @@
         border-radius: 25px;
         padding: 16px 40px;
         color: white;
-        background-color: s.$secondaryColor;
+        background-color: s.$secondary-color;
         text-decoration: none;
         font-size: 16px;
         border: none;
@@ -66,7 +66,7 @@
     &__error {
       padding-top: .75rem;
       text-align: center;
-      color: s.$primaryColor;
+      color: s.$primary-color;
       font-size: .9em;
     }
 }

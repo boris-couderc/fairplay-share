@@ -38,7 +38,7 @@
     position: absolute;
     opacity: 0; 
     &:checked ~ * {
-      border: 2px solid s.$primaryColor;
+      border: 2px solid s.$primary-color;
     }
   }
 
@@ -50,7 +50,7 @@
   &__button {
     padding: 12px 35px;
     margin: 10px s.$padding;
-    background: s.$primaryColor;
+    background: s.$primary-color;
     border: none;
     color: #fff;
     border-radius: 40px;

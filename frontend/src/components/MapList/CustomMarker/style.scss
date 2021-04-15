@@ -62,7 +62,7 @@
         position: absolute;
         width: 22px;
         height: 22px;
-        background-color: s.$primaryColor;
+        background-color: s.$primary-color;
         right: -5px;
         top: 50%;
         margin-top: -15px;
@@ -77,7 +77,7 @@
       &::before {
         content: '';
         background-image: url('src/assets/icons/pencil.svg');
-        background-color: s.$secondaryColor;
+        background-color: s.$secondary-color;
         background-size: 12px;
       }
     }
@@ -91,7 +91,7 @@
 
   &__date {
     padding-top: .5rem;
-    color: s.$primaryColor;
+    color: s.$primary-color;
     grid-column-start: 2;
   }
 

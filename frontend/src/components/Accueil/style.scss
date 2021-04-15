@@ -17,7 +17,7 @@
     line-height: 1.5;
 
     &--color {
-      color : s.$primaryColor;
+      color : s.$primary-color;
     }
   }
 
@@ -46,22 +46,22 @@
   &__title {
     font-size: clamp(30px, 3vw, 60px);
     font-weight: 600;
-    color: s.$darkColor;
+    color: s.$dark-color;
     line-height: 1.15;
   }
 
   &__txt-user--orange{
-    color: s.$primaryColor;
+    color: s.$primary-color;
     font-weight: 600;
   }
 
   &__txt-user--green {
-    color: s.$secondaryColor;
+    color: s.$secondary-color;
     font-weight: 600;
   }
 
   &__title-color {
-    color: s.$primaryColor;
+    color: s.$primary-color;
   }
 
   &__sub-title {
@@ -109,7 +109,7 @@
       background-size: contain;
       background-repeat: no-repeat;
       background-position: right top;
-      box-shadow: 0 -200px 150px -50px s.$backgroundColor inset;
+      box-shadow: 0 -200px 150px -50px s.$background-color inset;
     }
 
     &.home--logged {

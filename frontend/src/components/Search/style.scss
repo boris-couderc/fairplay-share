@@ -6,7 +6,7 @@
     text-align: center;
     font-size: 1.25rem;
     font-weight: 500;
-    color: s.$primaryColor;
+    color: s.$primary-color;
   }
   &__no-result-img{
     position: relative;
@@ -19,15 +19,15 @@
 
 
 .heading-2 {
-  font-family: s.$fontHeading;
+  font-family: s.$font-family-heading;
   font-size: 1.5rem;
   font-weight: 600;
-  color: s.$darkColor;
+  color: s.$dark-color;
   padding-bottom: 1rem;
   padding-top: 2rem;
 
   &__txt-color {
-    color: s.$primaryColor;
+    color: s.$primary-color;
   }
 }
 

@@ -27,7 +27,7 @@
     padding: 3rem 2rem;
     background-color: white;
     text-align: center;
-    color: s.$primaryColor;
+    color: s.$primary-color;
     //font-size: 1.2em;
     z-index: 1;
     border: 0.2em black;
@@ -37,7 +37,7 @@
   
   &__login {
     margin-top:1.5rem;
-    background-color: s.$backgroundColor;
+    background-color: s.$background-color;
     padding: 15px 50px;
     border-radius: 25px;
     //color: white;
@@ -47,7 +47,7 @@
   
   &__signup {
     margin-top:1.5rem;
-    background-color: s.$primaryColor;
+    background-color: s.$primary-color;
     padding: 15px 50px;
     border-radius: 25px;
     color: white;

@@ -1,14 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 import './style.scss';
 
 const Wrapper = ({ children, wide }) => {
+  const classes = classNames(
+    'wrapper',
+    {'wrapper--wide': wide}
+  )
+
   return (
-   <div className={`wrapper ${wide ? 'wrapper--wide' : ''}`}>
-     {children}
-   </div>
-  );
+    <div className={classes}>
+      {children}
+    </div>
+   );
 };
 
 Wrapper.propTypes = {

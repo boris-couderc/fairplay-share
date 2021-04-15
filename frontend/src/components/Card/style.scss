@@ -16,7 +16,7 @@
   align-items: center;
 
   &--user {
-    border: 2px solid color.scale(s.$primaryColor, $alpha: -50%);
+    border: 2px solid color.scale(s.$primary-color, $alpha: -50%);
     &::before {
       content: 'Je participe';
       background-image: url('src/assets/icons/check.svg');
@@ -26,7 +26,7 @@
       position: absolute;
       width: 115px;
       height: 24px;
-      background-color: s.$primaryColor;
+      background-color: s.$primary-color;
       left: 50%;
       top: 0;
       margin-top: -12px;
@@ -41,11 +41,11 @@
   }
 
   &--creator {
-    border: 2px solid color.scale(s.$secondaryColor, $alpha: -50%);
+    border: 2px solid color.scale(s.$secondary-color, $alpha: -50%);
     &::before {
       content: 'J\'organise';
       background-image: url('src/assets/icons/pencil.svg');
-      background-color: s.$secondaryColor;
+      background-color: s.$secondary-color;
       background-size: 12px;
       width: 105px;
       margin-left: -52px;
@@ -71,7 +71,7 @@
   &__title {
     font-size: 19px;
     font-weight: 500;
-    color: s.$darkColor;
+    color: s.$dark-color;
     margin-bottom: 20px;
   }
 
@@ -90,7 +90,7 @@
   &__text {
     font-size: 16px;
     font-weight: 400;
-    color: s.$primaryColor;
+    color: s.$primary-color;
     line-height: 1.4;
   }
 
@@ -106,13 +106,13 @@
   &__description {
     font-size: 16px;
     font-weight: 300;
-    color: s.$LightDarkColor;
+    color: s.$dark-color-light;
     line-height: 24px;
     margin: 20px 0 30px 0;
   }
 
   &__join {
-    background-color: s.$primaryColor;
+    background-color: s.$primary-color;
     padding: 12px 30px;
     border-radius: 25px;
     border: none;

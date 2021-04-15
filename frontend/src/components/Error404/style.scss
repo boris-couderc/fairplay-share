@@ -16,7 +16,7 @@
 .title {
   font-size: clamp(30px, 3vw, 60px);
   font-weight: 600;
-  color: s.$darkColor;
+  color: s.$dark-color;
   line-height: 1.15;
   margin-bottom: 40px;
 }
@@ -24,7 +24,7 @@
 .subtitle {
   font-size: clamp(30px, 3vw, 15px);
   font-weight: 600;
-  color: s.$darkColor;
+  color: s.$dark-color;
   line-height: 1.15;
   margin-bottom: 20px;
 }
@@ -32,7 +32,7 @@
 .subsubtitle {
   font-size: clamp(30px, 3vw, 15px);
   font-weight: 600;
-  color: s.$primaryColor;
+  color: s.$primary-color;
   line-height: 1.15;
   text-align: center;
 }
