@@ -8,7 +8,7 @@ import Heading from 'src/components/Heading'
 
 import './style.scss'
 
-const NotFound = (props) => {
+const NotFound = () => {
     return (
         <View layoutClass="not-found">
             <Wrapper>

@@ -13,15 +13,16 @@ const Button = ({
     size,
     icon,
     href,
-    onClick,
     route,
+    type,
+    onClick,
     classProps,
 }) => {
     const classes = classNames(
         'button',
         size && `button--${size}`,
         appearance && `button--${appearance}`,
-        classProps && `button--${classProps}`,
+        classProps && `${classProps}`,
     )
 
     const iconEl =
@@ -48,7 +49,7 @@ const Button = ({
             {labelEl}
         </a>
     ) : (
-        <button type="button" className={classes} onClick={onClick}>
+        <button type={type} className={classes} onClick={onClick}>
             {iconEl}
             {labelEl}
         </button>
@@ -61,16 +62,18 @@ Button.propTypes = {
     size: PropTypes.string,
     icon: PropTypes.string,
     href: PropTypes.string,
+    route: PropTypes.string,
+    type: PropTypes.string,
     onClick: PropTypes.func,
-    route: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
     classProps: PropTypes.string,
 }
 
 Button.defaultProps = {
     icon: null,
     href: null,
-    onClick: () => {},
     route: null,
+    type: 'button',
+    onClick: () => {},
 }
 
-export default Button
+export default Button;

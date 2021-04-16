@@ -19,7 +19,7 @@
             right: 0;
             bottom: 0;
             background: #fff;
-            border-radius: 20px;
+            border-radius: s.$border-radius;
             box-shadow: s.$shadow;
             transition: transform 150ms s.$Power3EaseInOut;
         }

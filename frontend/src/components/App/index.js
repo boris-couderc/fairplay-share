@@ -8,7 +8,7 @@ import Accueil from 'src/containers/Accueil';
 import Search from 'src/containers/Search';
 //import Header from 'src/containers/Header';
 //import Footer from 'src/components/Footer';
-import Login from 'src/containers/Login';
+//import Login from 'src/containers/Login';
 //import LoginModal from 'src/containers/LoginModal';
 
 //import Team from 'src/components/Team';
@@ -21,6 +21,7 @@ import ScreenSizeHelper from 'src/components/ScreenSizeHelper';
 import DesignSystem from 'src/views/DesignSystem';
 import Team from 'src/views/Team';
 import NotFound from 'src/views/NotFound';
+import Login from 'src/views/Login';
 
 // == Composant
 const App = ({ getUser, isLogged }) => {

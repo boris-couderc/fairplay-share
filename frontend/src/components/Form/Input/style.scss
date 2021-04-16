@@ -1,0 +1,21 @@
+@use 'src/styles/settings'as s;
+
+.input {
+    padding: 0.75rem 1.5rem;
+    line-height: s.$line-height;
+    border-radius: s.$border-radius;
+    background: #fff;
+    box-shadow: s.$shadow;
+
+    &--textarea {
+        border-radius: s.$border-radius;
+    }
+
+    &--checkbox {
+        width: 1.25rem;
+        height: 1.25rem;
+        padding: 0;
+        border-radius: .25rem;
+    }
+
+}

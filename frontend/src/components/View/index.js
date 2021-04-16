@@ -9,7 +9,7 @@ import './style.scss';
 
 const View = ({ children, layoutClass }) => {
   return (
-    <div className={`view ${layoutClass}`}>
+    <div className={`view view--${layoutClass}`}>
       <Header />
       <main className="main">
         {children}

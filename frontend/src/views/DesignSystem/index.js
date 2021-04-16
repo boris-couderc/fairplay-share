@@ -5,25 +5,52 @@ import View from 'src/components/View';
 import Wrapper from 'src/components/Wrapper';
 import Button from 'src/components/Button';
 import Heading from 'src/components/Heading';
+import Form from 'src/components/Form';
+import Input from 'src/components/Form/Input';
 
 import './style.scss';
 
-const PageTest = (props) => {
+const DesignSystem = (props) => {
   return (
-    <View layoutClass="page-test">
+    <View layoutClass="design-system">
       <Wrapper>
         
         <Heading el="h1">
             Design system
         </Heading>
 
+
+
+
+        <Heading el="h2">
+            Form
+        </Heading>
+
+        <Form
+            onSubmit={() => {
+                console.log('test')
+            }}
+        >
+            <Input type="input" />
+            <Input type="input" placeholder="Lorem ipsum" />
+            <Input type="password" />
+            <Input type="checkbox" />
+            <Input type="number" placeholder="10" />
+            <Input type="date" />
+            <Input type="time" />
+            <Input type="textarea" placeholder="Lorem ipsum" />
+        </Form>
+
+
+
         <Heading el="h2">
             Buttons
         </Heading>
-
+test
         <Button appearance="" size="small" route="/" icon="clock">
           test
         </Button>
+        <br />
         <Button appearance="outline" size="small" href="https://www.google.com/">
           test
         </Button>
@@ -33,25 +60,31 @@ const PageTest = (props) => {
         <Button appearance="primary-outline" size="small" className="special">
           test
         </Button>
+        <br />
+        test
         <Button appearance="primary" size="big" icon="account">
           test avec icon
         </Button>
         <Button appearance="primary-outline" size="big">
           test
         </Button>
+        <br />
         <Button appearance="secondary">
           test
         </Button>
         <Button appearance="secondary-outline" icon="pin">
           test
         </Button>
+        test
         <br />
+        test
         <Button appearance="primary" onClick={()=>{console.log("click bt")}}>
           test
         </Button>
         <Button appearance="primary" route="/inscription">
             Inscription
         </Button>
+        test
 
         <Heading el="h2">
             Icons
@@ -92,6 +125,6 @@ const PageTest = (props) => {
   );
 };
 
-PageTest.propTypes = {};
+DesignSystem.propTypes = {};
 
-export default PageTest;
+export default DesignSystem;

@@ -30,6 +30,6 @@ export default [
         name: 'Boris',
         linkedin: '',
         github: '',
-        role: 'Lead Back & design',
+        role: 'Lead Back & Design',
     },
 ];

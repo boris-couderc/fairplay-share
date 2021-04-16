@@ -1,0 +1,9 @@
+.form {
+    margin: 0 auto 2rem auto;
+    width: min(100%, 30rem);
+
+    & > *:not(:first-child) {
+        margin-top: 1.25rem;
+    }
+}
+
