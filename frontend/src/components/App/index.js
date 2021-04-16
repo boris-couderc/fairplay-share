@@ -11,14 +11,15 @@ import Search from 'src/containers/Search';
 import Login from 'src/containers/Login';
 //import LoginModal from 'src/containers/LoginModal';
 import Error404 from 'src/components/Error404';
-import Team from 'src/components/Team';
+//import Team from 'src/components/Team';
 import Details from 'src/containers/Details';
 import CreationPage from 'src/containers/CreationPage';
 import Registration from 'src/containers/Registration';
 
 import ScreenSizeHelper from 'src/components/ScreenSizeHelper';
 
-import PageTest from 'src/views/PageTest';
+import DesignSystem from 'src/views/DesignSystem';
+import Team from 'src/views/Team';
 
 // == Composant
 const App = ({ getUser, isLogged }) => {
@@ -37,8 +38,8 @@ const App = ({ getUser, isLogged }) => {
           <Accueil />
         </Route>
 
-        <Route path="/test" exact>
-          <PageTest />
+        <Route path="/design-system" exact>
+          <DesignSystem />
         </Route>
 
         <Route path="/connexion" exact>

@@ -5,7 +5,8 @@
     display       : inline-flex;
     vertical-align: middle;
     align-items   : center;
-    padding       : 0.625rem 1.25rem;
+    //padding       : 0.625rem 1.25rem;
+    padding       : 0.75rem 1.5rem;
     font-family   : s.$font-family-heading;
     font-size     : .95rem;
     color         : #fff;
@@ -19,12 +20,15 @@
         left: 0;
         background    : s.$dark-color;
         border-radius : 100em;
-        transition: transform 200ms s.$Power3EaseInOut;
-        //box-shadow: 2px 2px 5px rgba($color: #000000, $alpha: .025) inset;
+        transition: transform 150ms s.$Power3EaseInOut;
     }
     
     &:hover::before {
-        transform: scale(1.05, 1.1);
+        transform: scale(1.075, 1.1);
+    }
+
+    & + & {
+        margin-left: .5rem;
     }
     
     &:not([class*=-outline]) {
@@ -40,7 +44,8 @@
     }
 
     &--big {
-        padding  : 0.75rem 1.5rem;
+        //padding  : 0.75rem 1.5rem;
+        padding  : .875rem 1.75rem;
         font-size: 1rem;
     }
 
@@ -61,8 +66,8 @@
         font-weight: 500;
         background : transparent;
         &::before {
-            box-shadow: 0 0 0 2px rgba($color: s.$dark-color, $alpha: 0.1) inset;
-            background-color: rgba($color: s.$dark-color, $alpha: .075);
+            box-shadow: 0 0 0 2px rgba($color: s.$dark-color, $alpha: 0.085) inset;
+            background-color: rgba($color: s.$dark-color, $alpha: .035);
         }
     }
 

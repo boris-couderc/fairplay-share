@@ -1,9 +1,10 @@
 // Settings : Settings & tools
-@use 'settings'as s;
+//@use 'settings'as s;
 
 // Generic
-@forward 'generic/reset';
+@forward 'generic/normalize';
+@forward 'generic/generic';
 @forward 'generic/button';
 
 // Elements
-@import "elements/page";
+@forward 'elements/page';

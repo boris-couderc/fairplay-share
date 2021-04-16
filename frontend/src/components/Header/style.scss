@@ -4,6 +4,7 @@
     position: relative;
     z-index: 100;
     padding: 2rem 0;
+    margin-bottom: 1rem;
 
     &__content {
         display: flex;
@@ -19,7 +20,7 @@
 
     &__logo {
         display: block;
-
+        
         svg {
             width: 9rem;
             height: auto;

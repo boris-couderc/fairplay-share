@@ -1,0 +1,44 @@
+@use 'src/styles/settings' as s;
+
+.team {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: s.$padding-small;
+    
+    &__card {
+        position: relative;
+        text-align: center;
+        padding: 2rem;
+
+        &::before {
+            content: '';
+            position: absolute;
+            z-index: -1;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: s.$shadow;
+            transition: transform 150ms s.$Power3EaseInOut;
+        }
+
+        &:hover::before {
+            transform: scale(1.03) translateY(-5px);
+        }
+
+        .heading {
+            margin-bottom: .25rem;
+        }
+    }
+
+    &__img {
+        margin-bottom: .5rem;
+        transition: transform 500ms s.$Power4EaseOut;
+    }
+
+    &__card:hover &__img {
+        transform: translateY(-10px);
+    }
+}

@@ -1,36 +1,46 @@
 @use 'src/styles/settings'as s;
 
 .footer {
-  position  : relative;
-  z-index   : 100;
-  padding   : 2rem 0;
-  font-size : 0.9rem;
-  color     : s.$txt-color-light;
-  border-top: 2px solid rgba(0, 0, 0, .075);
+    position  : relative;
+    z-index   : 100;
+    margin-top: 4rem;
+    padding   : 2rem 0;
+    font-size : 0.9rem;
+    color     : s.$txt-color-light;
+    border-top: 2px solid rgba(0, 0, 0, .075);
 
-  &__content {
-    display       : flex;
-    flex-direction: column;
-    align-items   : center;
-    row-gap       : 1rem;
+    &__content {
+        display       : flex;
+        flex-direction: column;
+        align-items   : center;
+        row-gap       : 1rem;
 
-    @media (min-width: s.$from-tiny) {
-      flex-direction : row;
-      justify-content: space-between;
-      row-gap        : 1rem;
+        @media (min-width: s.$from-tiny) {
+            flex-direction : row;
+            justify-content: space-between;
+            row-gap        : 1rem;
+        }
     }
-  }
 
-  &__links {
-    display       : inline-flex;
-    flex-direction: row;
-    align-items   : center;
-    flex-wrap     : wrap;
+    &__links {
+        display       : inline-flex;
+        flex-direction: row;
+        align-items   : center;
+        flex-wrap     : wrap;
 
-    li {
-      &:not(:first-child) {
-        margin-left: 1rem;
-      }
+        li {
+            &:not(:first-child) {
+                margin-left: 2rem;
+            }
+        }
+
+        a {
+            color: s.$txt-color-light;
+
+            &:focus,
+            &:hover {
+                color: s.$txt-color-light;
+            }
+        }
     }
-  }
 }

@@ -1,11 +1,11 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { Link } from 'react-router-dom'
-import classNames from 'classnames'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+import classNames from 'classnames';
 
-import Icon from 'src/components/Icon'
+import Icon from 'src/components/Icon';
 
-import './style.scss'
+import './style.scss';
 
 const Button = ({
     children,
@@ -15,13 +15,13 @@ const Button = ({
     href,
     onClick,
     route,
-    className,
+    classProps,
 }) => {
     const classes = classNames(
         'button',
         size && `button--${size}`,
         appearance && `button--${appearance}`,
-        className && `button--${className}`,
+        classProps && `button--${classProps}`,
     )
 
     const iconEl =
@@ -63,7 +63,7 @@ Button.propTypes = {
     href: PropTypes.string,
     onClick: PropTypes.func,
     route: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
-    className: PropTypes.string,
+    classProps: PropTypes.string,
 }
 
 Button.defaultProps = {
