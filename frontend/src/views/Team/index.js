@@ -14,14 +14,14 @@ const Team = () => {
   return (
     <View layoutClass="page-test">
       <Wrapper>
-        <Heading el="h1" className="test">
+        <Heading el="h1">
             L'équipe
         </Heading>
         {dataTeam.length > 0 && (
             <ul className="team">
             {dataTeam.map(profil => (
                 <li className="team__card" key={profil.name}>
-                    <img src={profil.img} alt={profil.name} className="team__img"/>
+                    <img src={profil.img} alt={profil.name} className="team__img" width="1000" height="1000"/>
                     <Heading el="h2" like="h4">
                         {profil.name}
                     </Heading>

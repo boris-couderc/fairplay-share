@@ -1,9 +1,10 @@
 .view {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+    position      : relative;
+    min-height    : 100vh;
+    display       : flex;
+    flex-direction: column;
 }
 
 .main {
-  flex-grow: 1;
+    flex-grow: 1;
 }

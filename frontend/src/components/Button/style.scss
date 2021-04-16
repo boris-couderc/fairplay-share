@@ -62,12 +62,13 @@
     }
 
     &--outline {
-        color      : s.$dark-color;
+        color      : s.$dark-color-dark;
         font-weight: 500;
         background : transparent;
         &::before {
             box-shadow: 0 0 0 2px rgba($color: s.$dark-color, $alpha: 0.085) inset;
-            background-color: rgba($color: s.$dark-color, $alpha: .035);
+            //background-color: rgba($color: s.$dark-color, $alpha: .035);
+            background-color: rgba($color: s.$dark-color-lightest, $alpha: .8);
         }
     }
 
@@ -77,7 +78,8 @@
         background : transparent;
         &::before {
             box-shadow: 0 0 0 2px rgba($color: s.$primary-color, $alpha: 0.2) inset;
-            background-color: rgba($color: s.$primary-color, $alpha: .1);
+            //background-color: rgba($color: s.$primary-color, $alpha: .1);
+            background-color: rgba($color: s.$primary-color-lightest, $alpha: .8);
         }
     }
 
@@ -87,7 +89,8 @@
         background : transparent;
         &::before {
             box-shadow: 0 0 0 2px rgba($color: s.$secondary-color, $alpha: 0.2) inset;
-            background-color: rgba($color: s.$secondary-color, $alpha: .1);
+            //background-color: rgba($color: s.$secondary-color, $alpha: .1);
+            background-color: rgba($color: s.$secondary-color-lightest, $alpha: .8);
         }
     }
 

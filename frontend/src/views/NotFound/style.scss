@@ -1,0 +1,44 @@
+@use 'src/styles/settings'as s;
+
+.not-found {
+    text-align: center;
+
+    &::before,
+    &::after {
+        content : '';
+        position: absolute;
+        z-index : -2;
+        top     : 0;
+        right   : 0;
+        left    : 0;
+        height  : 100%;
+    }
+
+    &::before {
+        z-index            : -2;
+        opacity            : .3;
+        background-image   : url('src/assets/images/bg-error404.svg');
+        background-repeat  : no-repeat;
+        background-position: bottom center;
+        background-size    : auto 70%;
+
+        @media (min-width: s.$from-medium) {
+            opacity            : 1;
+            background-size    : auto 90%;
+            background-position: center right -50px;
+        }
+
+        @media (min-width: s.$from-huge) {
+            background-position: center right;
+        }
+    }
+
+    &::after {
+        z-index   : -1;
+        background: linear-gradient(90deg, rgba($color: s.$background-color, $alpha: .8) 50%, rgba($color: s.$background-color, $alpha: 0));
+
+        @media (min-width: s.$from-huge) {
+            background: linear-gradient(90deg, rgba($color: s.$background-color, $alpha: .8) 30%, rgba($color: s.$background-color, $alpha: 0));
+        }
+    }
+}

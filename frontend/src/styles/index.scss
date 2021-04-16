@@ -5,6 +5,11 @@
 @forward 'generic/normalize';
 @forward 'generic/generic';
 @forward 'generic/button';
+@forward 'generic/medias';
 
 // Elements
 @forward 'elements/page';
+
+// Utilities
+@forward 'utilities/align';
+@forward 'utilities/spacing';

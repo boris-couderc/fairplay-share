@@ -10,7 +10,7 @@ import Search from 'src/containers/Search';
 //import Footer from 'src/components/Footer';
 import Login from 'src/containers/Login';
 //import LoginModal from 'src/containers/LoginModal';
-import Error404 from 'src/components/Error404';
+
 //import Team from 'src/components/Team';
 import Details from 'src/containers/Details';
 import CreationPage from 'src/containers/CreationPage';
@@ -20,6 +20,7 @@ import ScreenSizeHelper from 'src/components/ScreenSizeHelper';
 
 import DesignSystem from 'src/views/DesignSystem';
 import Team from 'src/views/Team';
+import NotFound from 'src/views/NotFound';
 
 // == Composant
 const App = ({ getUser, isLogged }) => {
@@ -68,7 +69,7 @@ const App = ({ getUser, isLogged }) => {
         </Route>
 
         <Route>
-          <Error404 />
+          <NotFound />
         </Route>
 
       </Switch>
