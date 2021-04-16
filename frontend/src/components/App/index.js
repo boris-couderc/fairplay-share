@@ -14,7 +14,7 @@ import Search from 'src/containers/Search';
 //import Team from 'src/components/Team';
 import Details from 'src/containers/Details';
 import CreationPage from 'src/containers/CreationPage';
-import Registration from 'src/containers/Registration';
+//import Registration from 'src/containers/Registration';
 
 import ScreenSizeHelper from 'src/components/ScreenSizeHelper';
 
@@ -22,6 +22,7 @@ import DesignSystem from 'src/views/DesignSystem';
 import Team from 'src/views/Team';
 import NotFound from 'src/views/NotFound';
 import Login from 'src/views/Login';
+import Registration from 'src/views/Registration';
 
 // == Composant
 const App = ({ getUser, isLogged }) => {

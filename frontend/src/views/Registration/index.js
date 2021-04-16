@@ -1,5 +1,5 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from 'react';
+import PropTypes from 'prop-types';
 
 import View from 'src/components/View'
 import Wrapper from 'src/components/Wrapper'
@@ -8,18 +8,18 @@ import Heading from 'src/components/Heading'
 import Form from 'src/components/Form'
 import Input from 'src/components/Form/Input'
 
-import './style.scss'
+import './style.scss';
 
-const Login = () => {
+const Registration = () => {
     return (
-        <View layoutClass="login">
+        <View layoutClass="registration">
             <Wrapper>
                 <Heading el="h1" like="h3">
-                    Connection
+                    Inscription
                 </Heading>
                 <Form
                     onSubmit={() => {
-                        console.log('test')
+                        console.log('test Inscription')
                     }}
                 >
                     <Input type="input" placeholder="Adresse e-mail" />
@@ -27,25 +27,27 @@ const Login = () => {
                     <Input type="password" placeholder="Mot de passe" />
 
                     <Button appearance="primary" type="submit">
-                        Se connecter
+                        S'inscrire
                     </Button>
                 </Form>
                 <div>
-                    Tu n'as pas de compte ?
+                    Tu as déjà un compte ?
                     <Button
                         appearance="outline"
                         size="small"
-                        route="/inscription"
+                        route="/connexion"
                         classProps="u-margin-left-1"
                     >
-                        S'inscrire
+                        Se connecter
                     </Button>
                 </div>
             </Wrapper>
         </View>
     )
-}
+};
 
-Login.propTypes = {}
+Registration.propTypes = {
+  
+};
 
-export default Login
+export default Registration;
