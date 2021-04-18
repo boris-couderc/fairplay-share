@@ -21,10 +21,13 @@ const Registration = () => {
                     onSubmit={() => {
                         console.log('test Inscription')
                     }}
+                    width="small"
                 >
+                    
                     <Input type="input" placeholder="Adresse e-mail" />
 
                     <Input type="password" placeholder="Mot de passe" />
+
 
                     <Button appearance="primary" type="submit">
                         S'inscrire

@@ -5,17 +5,45 @@
     line-height: s.$line-height;
     border-radius: s.$border-radius;
     background: #fff;
-    box-shadow: s.$shadow;
+    color: s.$txt-color-dark;
+    box-shadow: s.$shadow-small;
+    box-shadow: s.$shadow-small, 0 0 0 2px rgba($color: s.$primary-color-lighter, $alpha: 0) inset;
+    transition: box-shadow ease 200ms;
+
+    &:focus {
+        box-shadow: s.$shadow-small, 0 0 0 2px rgba($color: s.$primary-color-lighter, $alpha: 1.0) inset;
+    }
 
     &--textarea {
         border-radius: s.$border-radius;
     }
 
+    &__checkbox-label {
+        display: flex;
+        cursor: pointer;
+    }
+
     &--checkbox {
+        position: relative;
         width: 1.25rem;
         height: 1.25rem;
         padding: 0;
+        margin-right: 1rem;
         border-radius: .25rem;
-    }
+        
+        &::before {
+            content: '';
+            position: absolute;
+            left: 4px;
+            top: 4px;
+            right: 4px;
+            bottom: 4px;
+            border-radius: 2px;
+            transition: background-color ease-in-out 200ms;
+        }
 
+        &:checked::before {
+            background-color: s.$primary-color;
+        }
+    }
 }

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import Login from 'src/components/Login';
-import { saveLogin, fetchLogin } from 'src/actions/login';
+import Login from 'src/views/Login';
+import { saveLogin, fetchLogin, clearLoginError } from 'src/actions/login';
 
 const mapStateToProps = (state) => ({
   password: state.login.password,
@@ -16,6 +16,9 @@ const mapDispatchToProps = (dispatch) => ({
   OnClickLoginForm: (event) => {
     event.preventDefault();
     dispatch(fetchLogin());
+  },
+  OnClearLoginError: () => {
+    dispatch(clearLoginError());
   },
 });
 

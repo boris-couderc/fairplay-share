@@ -24,7 +24,8 @@
         transition   : transform 150ms s.$Power3EaseInOut;
     }
 
-    &:hover::before {
+    &:hover::before,
+    &:focus::before {
         transform: scale(1.075, 1.1);
     }
 

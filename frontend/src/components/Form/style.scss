@@ -1,9 +1,32 @@
+@use 'src/styles/settings'as s;
+
 .form {
-    margin: 0 auto 2rem auto;
-    width: min(100%, 30rem);
+    margin: 0 auto 3rem auto;
+    width: min(100%, 35rem);
 
     & > *:not(:first-child) {
         margin-top: 1.25rem;
+    }
+
+    &--small {
+        width: min(100%, 25rem);
+    }
+
+    &__error {
+        color: s.$error-color;
+        position: relative;
+        animation: 200ms ease-out slidein;
+    }
+
+    @keyframes slidein {
+        from { 
+            transform: translateY(10px);
+            opacity: 0;
+        }
+        to { 
+            transform: translateY(0);
+            opacity: 1;
+        }
     }
 }
 

@@ -21,8 +21,11 @@ import ScreenSizeHelper from 'src/components/ScreenSizeHelper';
 import DesignSystem from 'src/views/DesignSystem';
 import Team from 'src/views/Team';
 import NotFound from 'src/views/NotFound';
-import Login from 'src/views/Login';
 import Registration from 'src/views/Registration';
+
+import Login from 'src/containers/Login';
+
+
 
 // == Composant
 const App = ({ getUser, isLogged }) => {

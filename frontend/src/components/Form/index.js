@@ -4,10 +4,11 @@ import classNames from 'classnames';
 
 import './style.scss';
 
-const Form = ({ children, onSubmit, classProps }) => {
+const Form = ({ children, onSubmit, width, classProps }) => {
 
     const classes = classNames(
         'form',
+        width && `form--${width}`,
         classProps && `${classProps}`,
     )
 
@@ -21,10 +22,12 @@ const Form = ({ children, onSubmit, classProps }) => {
 Form.propTypes = {
     children: PropTypes.node.isRequired,
     onSubmit: PropTypes.func,
+    width: PropTypes.string,
 };
 
 Form.defaultProps = {
     onSubmit: () => {},
+    width: null,
 }
 
 export default Form;

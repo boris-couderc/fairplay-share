@@ -31,14 +31,17 @@ const DesignSystem = (props) => {
                 console.log('test')
             }}
         >
-            <Input type="input" />
-            <Input type="input" placeholder="Lorem ipsum" />
-            <Input type="password" />
-            <Input type="checkbox" />
-            <Input type="number" placeholder="10" />
-            <Input type="date" />
-            <Input type="time" />
-            <Input type="textarea" placeholder="Lorem ipsum" />
+            <Input type="input" name="name" />
+            <Input type="input" name="name" placeholder="Lorem ipsum" />
+            <Input type="password" name="name" />
+
+            <Input type="checkbox" name="name-c1" label="Lorem ipsum dolor" />
+            <Input type="checkbox" name="name-c2" label="Lorem ipsum" />
+
+            <Input type="number" name="name" placeholder="10" />
+            <Input type="date" name="name" />
+            <Input type="time" name="name" />
+            <Input type="textarea" name="name" placeholder="Lorem ipsum" />
         </Form>
 
 

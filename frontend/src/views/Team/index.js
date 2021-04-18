@@ -38,6 +38,6 @@ const Team = () => {
   )
 };
 
-Team.propTypes = {};
+Team.propTypes = {}
 
 export default Team;
