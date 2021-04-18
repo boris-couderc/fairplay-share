@@ -1,90 +1,152 @@
 import React from 'react';
-import PropTypes, { func } from 'prop-types';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 import './style.scss';
+
+const EMAIL_REGEX = /^((\w[^\W]+)[\.\-]?){1,}\@(([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3})|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/i;
 
 const Input = ({ 
     type, 
     name, 
     placeholder, 
-    HandleOnChange, 
-    value,
     label,
+    defaultValue,
+    register,
+    required,
+    errors,
 }) => {
+
+    console.log('test', required);
+
+    const classes = classNames(
+        'input',
+        type && `input--${type}`,
+        errors && `input--error`,
+    )
+
+    const labelClasses = classNames(
+        'input__label',
+        !required && `input__label--optional`,
+    )
+
+    const htmlLabel = (
+        label && <label className={labelClasses}>{label}</label>
+    )
+
+    const htmlError = (
+        errors && <div className="input__error">{errors.message}</div>
+    )
 
     return type === 'checkbox' ? (
         <label className="input__checkbox-label" htmlFor={name}>
             <input
-                className={`input input--checkbox`}
-                type="checkbox"
+                className={classes}
+                type={type}
                 name={name}
                 id={name}
-                //onChange={OnChange}
+                defaultValue={defaultValue}
+                {...register(name, { required })}
             />
             {label}
         </label>
     ) : type === 'number' ? (
-        <div>
+        <>
+            {htmlLabel}
             <input
-                className={`input input--number`}
-                type="number"
+                className={classes}
+                type={type}
                 name={name}
-                value={value}
-                onChange={HandleOnChange}
+                placeholder={placeholder}
+                defaultValue={defaultValue}
+                {...register(name, { required })}
             />
-        </div>
+            {htmlError}
+        </>
     ) : type === 'date' ? (
-        <input
-            className={`input input--date`}
-            type="date"
-            name={name}
-            value={value}
-            onChange={HandleOnChange}
-        />
+        <>
+            {htmlLabel}
+            <input
+                className={classes}
+                type={type}
+                name={name}
+                placeholder={placeholder}
+                defaultValue={defaultValue}
+                {...register(name, { required })}
+            />
+            {htmlError}
+        </>
     ) : type === 'time' ? (
-        <input
-            className={`input input--time`}
-            type="time"
-            name={name}
-            value={value}
-            onChange={HandleOnChange}
-        />
+        <>
+            {htmlLabel}
+            <input
+                className={classes}
+                type={type}
+                name={name}
+                placeholder={placeholder}
+                defaultValue={defaultValue}
+                {...register(name, { required })}
+            />
+            {htmlError}
+        </>
     ) : type === 'textarea' ? (
-        <textarea
-            className={`input input--textarea`}
-            type="time"
-            placeholder={placeholder}
-            name={name}
-            value={value}
-            onChange={HandleOnChange}
-        />
+        <>
+            {htmlLabel}
+            <textarea
+                className={classes}
+                type={type}
+                name={name}
+                placeholder={placeholder}
+                defaultValue={defaultValue}
+                {...register(name, { required })}
+            />
+            {htmlError}
+        </>
     ) : type === 'password' ? (
-        <input
-            className={`input input--password`}
-            type="password"
-            placeholder={placeholder}
-            name={name}
-            value={value}
-            onChange={HandleOnChange}
-        />
+        <>
+            {htmlLabel}
+            <input
+                className={classes}
+                type={type}
+                name={name}
+                placeholder={placeholder}
+                defaultValue={defaultValue}
+                {...register(name, { required })}
+            />
+            {htmlError}
+        </>
     ) : type === 'email' ? (
-        <input
-            className={`input input--email`}
-            type="email"
-            name={name}
-            placeholder={placeholder}
-            value={value}
-            onChange={HandleOnChange}
-        />
+        <>
+            {htmlLabel}
+            <input
+                className={classes}
+                type={type}
+                name={name}
+                placeholder={placeholder}
+                defaultValue={defaultValue}
+                {...register(name, { 
+                    required,
+                    pattern: {
+                        value: EMAIL_REGEX,
+                        message: 'Email invalide.',
+                    }
+                })}
+            />
+            {htmlError}
+        </>
     ) : (
-        <input
-            className={`input`}
-            type='text'
-            name={name}
-            placeholder={placeholder}
-            value={value}
-            onChange={HandleOnChange}
-        />
+        <>
+            {htmlLabel}
+            <input
+                className={classes}
+                type={type}
+                name={name}
+                placeholder={placeholder}
+                defaultValue={defaultValue}
+                {...register(name, { required })}
+            />
+            {htmlError}
+        </>
     )
 }
 
@@ -92,16 +154,20 @@ Input.propTypes = {
     type: PropTypes.string,
     name: PropTypes.string.isRequired,
     placeholder: PropTypes.string,
-    value: PropTypes.string,
-    HandleOnChange: PropTypes.func,
+    label: PropTypes.string,
+    defaultValue: PropTypes.string,
+    register: PropTypes.func.isRequired,
+    required: PropTypes.string,
+    errors: PropTypes.object,
 }
 
 Input.defaultProps = {
     type: 'text',
     placeholder: null,
-    value: '',
     label: null,
-    HandleOnChange: () => {},
+    defaultValue: null,
+    required: null,
+    errors: null,
 }
 
 export default Input;

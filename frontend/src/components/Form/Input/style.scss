@@ -10,8 +10,33 @@
     box-shadow: s.$shadow-small, 0 0 0 2px rgba($color: s.$primary-color-lighter, $alpha: 0) inset;
     transition: box-shadow ease 200ms;
 
-    &:focus {
+    &:not(&--error):focus {
         box-shadow: s.$shadow-small, 0 0 0 2px rgba($color: s.$primary-color-lighter, $alpha: 1.0) inset;
+    }
+
+    &--error {
+        box-shadow: s.$shadow-small, 0 0 0 2px rgba($color: s.$error-color, $alpha: .4) inset;
+    }
+
+    &__error {
+        margin-top: .35rem;
+        padding-left: 1.5rem;
+        font-size: .75rem;
+        text-align: left;
+        color: s.$error-color;
+        position: relative;
+        animation: 200ms ease-out slidein;
+    }
+
+    @keyframes slidein {
+        from { 
+            transform: translateY(-5px);
+            opacity: 0;
+        }
+        to { 
+            transform: translateY(0);
+            opacity: 1;
+        }
     }
 
     &--textarea {
@@ -44,6 +69,26 @@
 
         &:checked::before {
             background-color: s.$primary-color;
+        }
+    }
+
+    &__label {
+        display: block;
+        text-align: left;
+        padding: 0 0 .5rem 1.5rem;
+
+        &--required::after {
+            content: '*';
+            display: inline-block;
+            padding-left: .25rem;
+        }
+
+        &--optional::after {
+            content: '(optionnel)';
+            display: inline-block;
+            padding-left: .5rem;
+            font-size: .8rem;
+            color: s.$txt-color-lighter;
         }
     }
 }
