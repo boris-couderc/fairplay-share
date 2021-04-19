@@ -11,6 +11,7 @@ module.exports = merge(common, {
     // API backend LOCALHOST
     new webpack.DefinePlugin({
       "process.env.API_URL": JSON.stringify("http://localhost:4000"),
+      "process.env.POSITIONSTACK_API_KEY": JSON.stringify("82a0b22e81932aad65c97e8bcc2f192a"),
     }),
   ],
   devtool: "inline-source-map",

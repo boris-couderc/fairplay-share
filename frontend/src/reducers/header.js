@@ -1,4 +1,4 @@
-import { SAVE_CONNEXION_STATUT, DISCONNECT } from 'src/actions/login';
+import { SAVE_LOGGED_USER, LOG_OUT } from 'src/actions/login';
 
 const initialState = {
   isLogged: false,
@@ -7,11 +7,11 @@ const initialState = {
 
 const header = (state = initialState, action = {}) => {
   switch (action.type) {
-    case SAVE_CONNEXION_STATUT:
+    case SAVE_LOGGED_USER:
       return {
         isLogged: true,
       };
-    case DISCONNECT:
+    case LOG_OUT:
       return initialState;
     default:
       return state;

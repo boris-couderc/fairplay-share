@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import './style.scss';
+import { EMAIL_REGEX, ZIP_REGEX } from 'src/utils/patterns'
 
-const EMAIL_REGEX = /^((\w[^\W]+)[\.\-]?){1,}\@(([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3})|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/i;
+import './style.scss';
 
 const Input = ({ 
     type, 
@@ -94,6 +94,7 @@ const Input = ({
                 className={classes}
                 type={type}
                 name={name}
+                rows="5"
                 placeholder={placeholder}
                 defaultValue={defaultValue}
                 {...register(name, { required })}
@@ -125,8 +126,27 @@ const Input = ({
                 {...register(name, { 
                     required,
                     pattern: {
-                        value: EMAIL_REGEX,
-                        message: 'Email invalide.',
+                        value: /[0-9]*/i,
+                        message: 'Email invalide',
+                    }
+                })}
+            />
+            {htmlError}
+        </>
+    ) : type === 'zip' ? (
+        <>
+            {htmlLabel}
+            <input
+                className={classes}
+                type="text"
+                name={name}
+                placeholder={placeholder}
+                defaultValue={defaultValue}
+                {...register(name, { 
+                    required,
+                    pattern: {
+                        value: ZIP_REGEX,
+                        message: 'Code postal invalide',
                     }
                 })}
             />

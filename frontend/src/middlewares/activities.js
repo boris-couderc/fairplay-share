@@ -27,7 +27,7 @@ import {
 
 import { 
   saveUserPoints, 
-  disconnect,
+  logOut,
 } from 'src/actions/login';
 
 const activities = (store) => (next) => (action) => {
@@ -74,7 +74,7 @@ const activities = (store) => (next) => (action) => {
         })
         .catch((error) => {
           if(error.response.status === 401) {
-            store.dispatch(disconnect());
+            store.dispatch(logOut());
           }
           console.log('error', error);
         });
@@ -89,7 +89,7 @@ const activities = (store) => (next) => (action) => {
         })
         .catch((error) => {
           if(error.response.status === 401) {
-            store.dispatch(disconnect());
+            store.dispatch(logOut());
           }
           console.log('error', error);
         });
@@ -141,7 +141,7 @@ const activities = (store) => (next) => (action) => {
         })
         .catch((error) => {
           if(error.response.status === 401) {
-            store.dispatch(disconnect());
+            store.dispatch(logOut());
           } else {
             store.dispatch(errorStatus());
           }
@@ -170,7 +170,7 @@ const activities = (store) => (next) => (action) => {
         })
         .catch((error) => {
           if(error.response.status === 401) {
-            store.dispatch(disconnect());
+            store.dispatch(logOut());
           } else {
             store.dispatch(errorStatus());
           }

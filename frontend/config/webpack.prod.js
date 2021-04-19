@@ -7,7 +7,6 @@ const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const { BundleStatsWebpackPlugin } = require("bundle-stats-webpack-plugin");
 const webpack = require('webpack');
 
-
 module.exports = merge(common, {
   mode: "production",
   devtool: false,
@@ -22,6 +21,7 @@ module.exports = merge(common, {
       "process.env.API_URL": JSON.stringify(
         "http://ec2-54-160-66-108.compute-1.amazonaws.com:4000"
       ),
+      "process.env.POSITIONSTACK_API_KEY": JSON.stringify("82a0b22e81932aad65c97e8bcc2f192a"),
     }),
   ],
   module: {

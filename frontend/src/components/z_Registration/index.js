@@ -25,7 +25,7 @@ const Registration = ({
   pseudoError,
   cityError,
 
-  OnSubmitForm,
+  OnSubmitForm, 
   OnChangeValue,
 }) => {
   if (isLogged) {

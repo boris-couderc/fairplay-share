@@ -12,8 +12,6 @@ import {
   fetchUserActivities,
 } from 'src/actions/cards';
 
-const apiKey = '82a0b22e81932aad65c97e8bcc2f192a';
-
 const creationPage = (store) => (next) => (action) => {
   switch (action.type) {
 
@@ -29,7 +27,7 @@ const creationPage = (store) => (next) => (action) => {
         
         axios
           .get(
-            `http://api.positionstack.com/v1/forward?access_key=${apiKey}&country=FR&limit=1&query=${creationPage.adress},${creationPage.zip_code},${creationPage.city}`,
+            `http://api.positionstack.com/v1/forward?access_key=${process.env.POSITIONSTACK_API_KEY}&country=FR&limit=1&query=${creationPage.adress},${creationPage.zip_code},${creationPage.city}`,
           )
           .then((response) => {
             
@@ -97,7 +95,7 @@ const creationPage = (store) => (next) => (action) => {
           })
           .catch((error) => {
             if(error.response.status === 401) {
-              store.dispatch(disconnect());
+              store.dispatch(logOut());
             }
             console.log(error);
           });

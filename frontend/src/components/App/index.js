@@ -4,7 +4,7 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 // == Import
-import Accueil from 'src/containers/Accueil';
+//import Accueil from 'src/containers/Accueil';
 import Search from 'src/containers/Search';
 //import Header from 'src/containers/Header';
 //import Footer from 'src/components/Footer';
@@ -21,8 +21,9 @@ import ScreenSizeHelper from 'src/components/ScreenSizeHelper';
 import DesignSystem from 'src/views/DesignSystem';
 import Team from 'src/views/Team';
 import NotFound from 'src/views/NotFound';
-import Registration from 'src/views/Registration';
+import HomePage from 'src/views/HomePage';
 
+import Registration from 'src/containers/Registration';
 import Login from 'src/containers/Login';
 
 
@@ -41,7 +42,7 @@ const App = ({ getUser, isLogged }) => {
       {/* <Header /> */}
       <Switch>
         <Route path="/" exact>
-          <Accueil />
+          <HomePage />
         </Route>
 
         <Route path="/design-system" exact>

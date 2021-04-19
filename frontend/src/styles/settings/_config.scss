@@ -1,21 +1,23 @@
 // Typography
-$font-family: 'Roboto', sans-serif;
+$font-family: 'Roboto',
+sans-serif;
 $font-size  : 16px;
 $line-height: 24px / $font-size;
 $color      : #222222;
 
 // Heading
-$font-family-heading: 'Poppins', sans-serif;
+$font-family-heading: 'Poppins',
+sans-serif;
 $line-height-heading: $line-height;
 
 // Weights
 //$light:  300;
-$normal: 300;
-$medium: 400;
-$bold:   500;
+$font-weight-normal: 300;
+$font-weight-medium: 400;
+$font-weight-bold  : 500;
 
 // Spacing
-$unit:       3rem;
+$unit      : 3rem;
 $unit-small: 1.5rem;
 
 // Container
@@ -45,6 +47,6 @@ $to-colossal  : $from-colossal - 1;
 
 // Decoration
 $border-radius: 1.5rem;
-$shadow: 0 5px 10px rgba(0,0,0,.1);
-$shadow-small: 0 2px 5px rgba(0,0,0,.1);
-$shadowHover: 0 4px 6px rgb(170, 170, 170);
+$shadow       : 0 5px 10px rgba(0, 0, 0, .1);
+$shadow-small : 0 2px 5px rgba(0, 0, 0, .1);
+$shadowHover  : 0 4px 6px rgb(170, 170, 170);

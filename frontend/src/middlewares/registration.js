@@ -1,82 +1,71 @@
-import axios from 'axios';
+import axios from 'axios'
 import {
-  FETCH_REGISTRATION_FORM,
-  passwordError,
-  emailError,
-  pseudoError,
-  cityError,
-  resetErrors,
-} from 'src/actions/registration';
-import { saveConnexionStatut } from 'src/actions/login';
-
-const apiKey = '82a0b22e81932aad65c97e8bcc2f192a';
+    FETCH_REGISTRATION_FORM,
+    saveRegistrationError,
+} from 'src/actions/registration'
+import { saveLoggedUser } from 'src/actions/login'
 
 const registration = (store) => (next) => (action) => {
-  switch (action.type) {
-    case FETCH_REGISTRATION_FORM: {
-      const formData = store.getState().registration;
-      store.dispatch(resetErrors());
-      if (formData.password !== formData.confirmPassword) {
-        store.dispatch(passwordError());
-        break;
-      } else {
-        axios
-          .get(
-            `http://api.positionstack.com/v1/forward?access_key=${apiKey}&country=FR&query=${formData.address},${formData.postalCode},${formData.city}`,
-          )
-          .then((response) => {
-            //console.log('verif position stack REGISTRATION ', response.data);
-            const responsePlace = response.data.data[0];
+    switch (action.type) {
+        case FETCH_REGISTRATION_FORM: {
+            const formData = action.data
             axios
-              .post(`${process.env.API_URL}/api/registration`, {
-                pseudo: formData.pseudo,
-                email: formData.email,
-                password: formData.password,
-                confirmPassword: formData.confirmPassword,
-                firstname: formData.firstname,
-                lastname: formData.lastname,
-                place: {
-                  city: responsePlace.city,
-                  number: responsePlace.number,
-                  street: responsePlace.street,
-                  postal_code: responsePlace.postal_code,
-                  region: responsePlace.region,
-                  latitude: responsePlace.latitude,
-                  longitude: responsePlace.longitude,
-                },
-                presentation: formData.presentation,
-              })
-              .then((APIresponse) => {
-                console.log('response', APIresponse.data.user);
-                localStorage.fairplayUser = JSON.stringify({
-                  firsname: APIresponse.data.user.firsname,
-                  id: APIresponse.data.user.id,
-                  lastname: APIresponse.data.user.lastname,
-                  pseudo: APIresponse.data.user.pseudo,
-                  points: APIresponse.data.user.points,
-                });
-                store.dispatch(saveConnexionStatut(APIresponse.data.user));
-              })
-              .catch((error) => {
-                //console.error('error', error.response.data);
-                if (error.response.data.error === 'mail') {
-                  store.dispatch(emailError());
-                } else if (error.response.data.error === 'pseudo') {
-                  store.dispatch(pseudoError());
-                }
-              });
-          })
-          .catch((error) => {
-            store.dispatch(cityError());
-            console.error('City ERROR', error);
-          });
+                .get(
+                    `http://api.positionstack.com/v1/forward?access_key=${process.env.POSITIONSTACK_API_KEY}&country=FR&limit=1&query=${formData.address} ${formData.city} ${formData.zip}`,
+                )
+                .then((res) => {
+                    const localisation = res.data.data[0]
+                    if (localisation && localisation.latitude) {
+                        axios
+                            .post(
+                                `${process.env.API_URL}/api/registration`,
+                                {
+                                    pseudo: formData.pseudo,
+                                    email: formData.email,
+                                    password: formData.password,
+                                    firstname: formData.firstname,
+                                    lastname: formData.lastname,
+                                    place: {
+                                        city: localisation.city,
+                                        number: localisation.number,
+                                        street: localisation.street,
+                                        postal_code: localisation.postal_code,
+                                        region: localisation.region,
+                                        latitude: localisation.latitude,
+                                        longitude: localisation.longitude,
+                                    },
+                                    presentation: formData.presentation,
+                                },
+                                { withCredentials: true },
+                            )
+                            .then((APIres) => {
+                                const { user } = APIres.data
+                                localStorage.fairplayUser = JSON.stringify({
+                                    id: user.id,
+                                    firstname: user.firstname,
+                                    lastname: user.lastname,
+                                    pseudo: user.pseudo,
+                                    points: user.points,
+                                })
+                                store.dispatch(saveLoggedUser(user))
+                            })
+                            .catch((APIerror) => {
+                                const { error } = APIerror.response.data
+                                store.dispatch(saveRegistrationError(error))
+                            })
+                    } else {
+                        throw new Error('No address result')
+                    }
+                })
+                .catch((error) => {
+                    store.dispatch(saveRegistrationError('address'))
+                })
 
-        break;
-      }
+            break
+        }
+        default:
+            next(action)
     }
-    default:
-      next(action);
-  }
-};
+}
 
-export default registration;
+export default registration

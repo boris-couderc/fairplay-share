@@ -12,7 +12,12 @@ import Input from 'src/components/Form/Input'
 
 import './style.scss'
 
-const Login = ({ user, clearLoginError, onSubmitLoginForm, loginError }) => {
+const Login = ({
+    userId,
+    onClearLoginError,
+    onSubmitLoginForm,
+    loginError,
+}) => {
     const [isLoading, setIsLoading] = useState(false)
 
     const {
@@ -22,7 +27,7 @@ const Login = ({ user, clearLoginError, onSubmitLoginForm, loginError }) => {
     } = useForm()
 
     const onSubmit = (data) => {
-        clearLoginError()
+        onClearLoginError()
         setIsLoading(true)
         onSubmitLoginForm(data)
     }
@@ -33,7 +38,7 @@ const Login = ({ user, clearLoginError, onSubmitLoginForm, loginError }) => {
         }
     }, [loginError])
 
-    return user.id !== undefined ? (
+    return userId ? (
         <Redirect to="/" />
     ) : (
         <View layoutClass="login">
@@ -56,7 +61,7 @@ const Login = ({ user, clearLoginError, onSubmitLoginForm, loginError }) => {
                             placeholder="Adresse e-mail"
                             //label="Adresse e-mail"
                             register={register}
-                            required="Email requis"
+                            required="Adresse e-mail requise"
                             errors={errors.email ? errors.email : null}
                         />
                     </div>
@@ -100,10 +105,14 @@ const Login = ({ user, clearLoginError, onSubmitLoginForm, loginError }) => {
 }
 
 Login.propTypes = {
-    user: PropTypes.object.isRequired,
-    clearLoginError: PropTypes.func.isRequired,
+    userId: PropTypes.number,
+    onClearLoginError: PropTypes.func.isRequired,
     onSubmitLoginForm: PropTypes.func.isRequired,
     loginError: PropTypes.bool.isRequired,
+}
+
+Login.defaultProps = {
+    userId: null,
 }
 
 export default Login

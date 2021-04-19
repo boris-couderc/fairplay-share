@@ -3,7 +3,7 @@ import Login from 'src/views/Login'
 import { fetchLogin, clearLoginError } from 'src/actions/login'
 
 const mapStateToProps = (state) => ({
-    user: state.login.user,
+    userId: state.login.user.id,
     loginError: state.login.error,
 })
 
@@ -11,7 +11,7 @@ const mapDispatchToProps = (dispatch) => ({
     onSubmitLoginForm: (data) => {
         dispatch(fetchLogin(data))
     },
-    clearLoginError: () => {
+    onClearLoginError: () => {
         dispatch(clearLoginError())
     },
 })

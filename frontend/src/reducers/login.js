@@ -1,8 +1,8 @@
 import {
-    LOGIN_ERROR,
+    SAVE_LOGIN_ERROR,
     CLEAR_LOGIN_ERROR,
-    SAVE_CONNEXION_STATUT,
-    DISCONNECT,
+    SAVE_LOGGED_USER,
+    LOG_OUT,
     SAVE_USER_POINTS,
 } from 'src/actions/login'
 
@@ -13,7 +13,7 @@ const initialState = {
 
 const login = (state = initialState, action = {}) => {
     switch (action.type) {
-        case LOGIN_ERROR:
+        case SAVE_LOGIN_ERROR:
             return {
                 ...state,
                 error: true,
@@ -23,13 +23,14 @@ const login = (state = initialState, action = {}) => {
                 ...state,
                 error: false,
             }
-        case SAVE_CONNEXION_STATUT:
+        case SAVE_LOGGED_USER:
+            console.log('SAVE_LOGGED_USER', action.user)
             return {
                 ...state,
                 error: false,
-                user: action.data,
+                user: action.user,
             }
-        case DISCONNECT:
+        case LOG_OUT:
             return initialState
         case SAVE_USER_POINTS:
             return {

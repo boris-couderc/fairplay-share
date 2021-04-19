@@ -15,7 +15,7 @@
     }
 
     &--error {
-        box-shadow: s.$shadow-small, 0 0 0 2px rgba($color: s.$error-color, $alpha: .4) inset;
+        box-shadow: s.$shadow-small, 0 0 0 2px rgba($color: s.$error-color, $alpha: .35) inset;
     }
 
     &__error {
@@ -76,6 +76,7 @@
         display: block;
         text-align: left;
         padding: 0 0 .5rem 1.5rem;
+        font-weight: s.$font-weight-medium;
 
         &--required::after {
             content: '*';

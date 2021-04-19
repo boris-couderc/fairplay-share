@@ -25,7 +25,7 @@ const messages = (store) => (next) => (action) => {
         })
         .catch((error) => {
           if(error.response.status === 401) {
-            store.dispatch(disconnect());
+            store.dispatch(logOut());
           }
           console.log('error', error);
         });
