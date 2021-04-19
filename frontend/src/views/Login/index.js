@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { Redirect } from 'react-router-dom'
 import PropTypes from 'prop-types'
+import { Redirect } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 
 import View from 'src/components/View'
@@ -45,7 +45,7 @@ const Login = ({ user, clearLoginError, onSubmitLoginForm, loginError }) => {
                 <Form onSubmit={handleSubmit(onSubmit)} width="small">
                     {loginError && (
                         <div className="form__error">
-                            Adresse email ou mot de passe invalide
+                            Adresse e-mail ou mot de passe invalide
                         </div>
                     )}
 
@@ -57,9 +57,7 @@ const Login = ({ user, clearLoginError, onSubmitLoginForm, loginError }) => {
                             //label="Adresse e-mail"
                             register={register}
                             required="Email requis"
-                            errors={
-                                errors && errors.email ? errors.email : null
-                            }
+                            errors={errors.email ? errors.email : null}
                         />
                     </div>
 
@@ -71,11 +69,7 @@ const Login = ({ user, clearLoginError, onSubmitLoginForm, loginError }) => {
                             //label="Mot de passe"
                             register={register}
                             required="Mot de passe requis"
-                            errors={
-                                errors && errors.password
-                                    ? errors.password
-                                    : null
-                            }
+                            errors={errors.password ? errors.password : null}
                         />
                     </div>
 
