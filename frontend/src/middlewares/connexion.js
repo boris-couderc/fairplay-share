@@ -13,14 +13,17 @@ import {
 const connexion = (store) => (next) => (action) => {
   switch (action.type) {
     case FETCH_LOGIN: {
-      const { login } = store.getState();
-      // console.log('gg');
+      //const { login } = store.getState();
+
+      //bc
+      const { email, password } = action.data;
+
       axios
         .post(
           `${process.env.API_URL}/api/connexion`, 
           {
-            email: login.email,
-            password: login.password,
+            email: email,
+            password: password,
           },
           // pour set/get cookies /!\
           { withCredentials: true },

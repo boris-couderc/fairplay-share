@@ -1,47 +1,18 @@
 import {
-    SAVE_LOGIN,
+    LOGIN_ERROR,
+    CLEAR_LOGIN_ERROR,
     SAVE_CONNEXION_STATUT,
     DISCONNECT,
-    LOGIN_ERROR,
     SAVE_USER_POINTS,
-    CLEAR_LOGIN_ERROR,
 } from 'src/actions/login'
 
 const initialState = {
-    /*
-    email: 'clotildefauchille@gmail.com',
-    password: 'pass',
-    user: {},
-    error: false,
-    */
-    id: '',
-    email: '',
-    password: '',
     user: {},
     error: false,
 }
 
 const login = (state = initialState, action = {}) => {
     switch (action.type) {
-        case SAVE_LOGIN:
-            return {
-                ...state,
-                [action.input]: action.value,
-            }
-        case SAVE_CONNEXION_STATUT:
-            return {
-                ...state,
-                error: false,
-                user: action.data,
-            }
-        case SAVE_USER_POINTS:
-            return {
-                ...state,
-                error: false,
-                user: action.data,
-            }
-        case DISCONNECT:
-            return initialState
         case LOGIN_ERROR:
             return {
                 ...state,
@@ -51,6 +22,20 @@ const login = (state = initialState, action = {}) => {
             return {
                 ...state,
                 error: false,
+            }
+        case SAVE_CONNEXION_STATUT:
+            return {
+                ...state,
+                error: false,
+                user: action.data,
+            }
+        case DISCONNECT:
+            return initialState
+        case SAVE_USER_POINTS:
+            return {
+                ...state,
+                error: false,
+                user: action.data,
             }
         default:
             return state

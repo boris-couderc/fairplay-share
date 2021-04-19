@@ -17,8 +17,6 @@ const Input = ({
     errors,
 }) => {
 
-    console.log('test', required);
-
     const classes = classNames(
         'input',
         type && `input--${type}`,

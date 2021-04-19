@@ -2,14 +2,33 @@
 
 .form {
     margin: 0 auto 3rem auto;
-    width: min(100%, 35rem);
+    width : min(100%, 35rem);
 
     &__row {
         margin-bottom: 1.375rem;
-    } 
+    }
 
     &--small {
         width: min(100%, 25rem);
     }
-}
 
+    &__error {
+        margin-bottom: .55rem;
+        font-size    : .9rem;
+        color        : s.$error-color;
+        position     : relative;
+        animation    : 200ms ease-out slidein;
+    }
+
+    @keyframes slidein {
+        from {
+            transform: translateY(10px);
+            opacity  : 0;
+        }
+
+        to {
+            transform: translateY(0);
+            opacity  : 1;
+        }
+    }
+}

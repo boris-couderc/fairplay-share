@@ -10,7 +10,7 @@
     font-size       : .95rem;
     color           : #fff;
 
-    &::before {
+    &::after {
         content      : "";
         position     : absolute;
         top          : 0;
@@ -22,8 +22,8 @@
         transition   : transform 150ms s.$Power3EaseInOut;
     }
 
-    &:hover::before,
-    &:focus::before {
+    &:hover::after,
+    &:focus::after {
         transform: scale(1.075, 1.1);
     }
 
@@ -34,7 +34,7 @@
     &:not([class*=-outline]) {
         text-shadow: 1px 1px 2px rgba($color: #000000, $alpha: .2);
 
-        &::before {
+        &::after {
             box-shadow: 2px 2px 5px rgba($color: #000000, $alpha: .1) inset;
         }
     }
@@ -45,19 +45,18 @@
     }
 
     &--big {
-        //padding  : 0.75rem 1.5rem;
         padding  : .875rem 1.75rem;
         font-size: 1rem;
     }
 
     &--primary {
-        &::before {
+        &::after {
             background-color: s.$primary-color;
         }
     }
 
     &--secondary {
-        &::before {
+        &::after {
             background-color: s.$secondary-color;
         }
     }
@@ -67,9 +66,8 @@
         font-weight: 500;
         background : transparent;
 
-        &::before {
+        &::after {
             box-shadow        : 0 0 0 2px rgba($color: s.$dark-color, $alpha: 0.085) inset;
-            //background-color: rgba($color: s.$dark-color, $alpha: .035);
             background-color  : rgba($color: s.$dark-color-lightest, $alpha: .8);
         }
     }
@@ -79,9 +77,8 @@
         font-weight: 500;
         background : transparent;
 
-        &::before {
+        &::after {
             box-shadow        : 0 0 0 2px rgba($color: s.$primary-color, $alpha: 0.2) inset;
-            //background-color: rgba($color: s.$primary-color, $alpha: .1);
             background-color  : rgba($color: s.$primary-color-lightest, $alpha: .8);
         }
     }
@@ -91,9 +88,8 @@
         font-weight: 500;
         background : transparent;
 
-        &::before {
+        &::after {
             box-shadow        : 0 0 0 2px rgba($color: s.$secondary-color, $alpha: 0.2) inset;
-            //background-color: rgba($color: s.$secondary-color, $alpha: .1);
             background-color  : rgba($color: s.$secondary-color-lightest, $alpha: .8);
         }
     }
@@ -108,7 +104,9 @@
         z-index : 2;
     }
 
-    &__icon {
+    &__icon,
+    &--loading::before {
+        z-index: 2;
         display       : inline-block;
         vertical-align: middle;
         position      : relative;
@@ -118,11 +116,38 @@
         margin-right  : 0.625em;
     }
 
-    &--small &__icon {
-        margin-right: 0.5em;
+    &--small {
+        &__icon,
+        &--loading::before {
+            margin-right: 0.5em;
+        }
     }
 
-    &--big &__icon {
-        margin-right: 0.75em;
+    &--small {
+        &__icon,
+        &--loading::before {
+            margin-right: 0.75em;
+        }
+    }
+
+    &--loading {
+        &::before {
+            content: '';
+            display: inline-block;
+            opacity: .5;
+            animation: 1000ms infinite linear rotate;
+            transform-origin: 50%;
+            background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32'><path fill='white' d='M16 32c-4.274 0-8.292-1.664-11.314-4.686s-4.686-7.040-4.686-11.314c0-3.026 0.849-5.973 2.456-8.522 1.563-2.478 3.771-4.48 6.386-5.791l1.344 2.682c-2.126 1.065-3.922 2.693-5.192 4.708-1.305 2.069-1.994 4.462-1.994 6.922 0 7.168 5.832 13 13 13s13-5.832 13-13c0-2.459-0.69-4.853-1.994-6.922-1.271-2.015-3.066-3.643-5.192-4.708l1.344-2.682c2.615 1.31 4.824 3.313 6.386 5.791 1.607 2.549 2.456 5.495 2.456 8.522 0 4.274-1.664 8.292-4.686 11.314s-7.040 4.686-11.314 4.686z'></path></svg>");
+            background-size: 100%;
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
     }
 }

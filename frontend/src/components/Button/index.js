@@ -17,12 +17,14 @@ const Button = ({
     type,
     onClick,
     classProps,
+    loading,
 }) => {
     const classes = classNames(
         'button',
         size && `button--${size}`,
         appearance && `button--${appearance}`,
         classProps && `${classProps}`,
+        loading && `button--loading`,
     )
 
     const iconEl =
@@ -49,7 +51,7 @@ const Button = ({
             {labelEl}
         </a>
     ) : (
-        <button type={type} className={classes} onClick={onClick}>
+        <button type={type} className={classes} onClick={onClick} disabled={loading}>
             {iconEl}
             {labelEl}
         </button>
@@ -66,6 +68,7 @@ Button.propTypes = {
     type: PropTypes.string,
     onClick: PropTypes.func,
     classProps: PropTypes.string,
+    loading: PropTypes.bool,
 }
 
 Button.defaultProps = {
@@ -74,6 +77,7 @@ Button.defaultProps = {
     route: null,
     type: 'button',
     onClick: () => {},
+    loading: false,
 }
 
 export default Button;

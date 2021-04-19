@@ -1,11 +1,11 @@
-@use 'src/styles/settings' as s;
+@use 'src/styles/settings'as s;
 
 .heading {
-    margin-top: 0;
-    text-align: center;
+    margin-top : 0;
+    text-align : center;
     font-family: s.$font-family-heading;
     line-height: s.$line-height-heading;
-    color: s.$dark-color-dark;
+    color      : s.$dark-color-dark;
     font-weight: 700;
 
     &.heading--m0 {
@@ -14,24 +14,25 @@
 
     @at-root {
         &--h1 {
-            font-size: 3.19rem;
+            font-size    : 3.19rem;
             margin-bottom: 2rem;
         }
 
         &--h2 {
-            font-size: 2.38rem;
+            font-size    : 2.38rem;
             margin-bottom: 0.974rem;
         }
 
         &--h3 {
-            font-size: 1.75rem;
+            font-size    : 1.75rem;
             margin-bottom: 1.25rem;
         }
 
         &--h4 {
-            font-size: 1.31rem;
+            font-size    : 1.31rem;
             margin-bottom: 1rem;
         }
+
         /*
         &--h5 {
             font-size: 1.31rem;

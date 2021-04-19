@@ -1,25 +1,19 @@
-import { connect } from 'react-redux';
-import Login from 'src/views/Login';
-import { saveLogin, fetchLogin, clearLoginError } from 'src/actions/login';
+import { connect } from 'react-redux'
+import Login from 'src/views/Login'
+import { fetchLogin, clearLoginError } from 'src/actions/login'
 
 const mapStateToProps = (state) => ({
-  password: state.login.password,
-  email: state.login.email,
-  user: state.login.user,
-  error: state.login.error,
-});
+    user: state.login.user,
+    loginError: state.login.error,
+})
 
 const mapDispatchToProps = (dispatch) => ({
-  OnChangeValue: (event) => {
-    dispatch(saveLogin(event.target.value, event.target.type));
-  },
-  OnClickLoginForm: (event) => {
-    event.preventDefault();
-    dispatch(fetchLogin());
-  },
-  OnClearLoginError: () => {
-    dispatch(clearLoginError());
-  },
-});
+    onSubmitLoginForm: (data) => {
+        dispatch(fetchLogin(data))
+    },
+    clearLoginError: () => {
+        dispatch(clearLoginError())
+    },
+})
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(Login)

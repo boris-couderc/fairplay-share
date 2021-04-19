@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Redirect } from 'react-router-dom'
 import PropTypes from 'prop-types'
-import { useForm } from "react-hook-form";
+import { useForm } from 'react-hook-form'
 
 import View from 'src/components/View'
 import Wrapper from 'src/components/Wrapper'
@@ -12,30 +12,28 @@ import Input from 'src/components/Form/Input'
 
 import './style.scss'
 
-const Login = ({
-    //password,
-    //email,
-    user,
-    //OnChangeValue,
-    OnClickLoginForm,
-    OnClearLoginError,
-    error,
-}) => {
-    const { register, handleSubmit, formState: { errors } } = useForm();
+const Login = ({ user, clearLoginError, onSubmitLoginForm, loginError }) => {
+    const [isLoading, setIsLoading] = useState(false)
 
-    const onSubmit = data => console.log('data', data);
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm()
+
+    const onSubmit = (data) => {
+        clearLoginError()
+        setIsLoading(true)
+        onSubmitLoginForm(data)
+    }
 
     useEffect(() => {
-        return () => {
-            OnClearLoginError();
+        if (loginError) {
+            setIsLoading(false)
         }
-    }, []);
+    }, [loginError])
 
-    useEffect(() => {
-        console.log('errors', errors);
-    });
-
-    return user.pseudo !== undefined ? (
+    return user.id !== undefined ? (
         <Redirect to="/" />
     ) : (
         <View layoutClass="login">
@@ -44,11 +42,8 @@ const Login = ({
                     Connection
                 </Heading>
 
-
-                {/* <Form onSubmit={OnClickLoginForm} width="small"> */}
                 <Form onSubmit={handleSubmit(onSubmit)} width="small">
-
-                    {error && (
+                    {loginError && (
                         <div className="form__error">
                             Adresse email ou mot de passe invalide
                         </div>
@@ -61,11 +56,13 @@ const Login = ({
                             placeholder="Adresse e-mail"
                             //label="Adresse e-mail"
                             register={register}
-                            required="Email requis."
-                            errors={(errors && errors.email) ? errors.email : null}
+                            required="Email requis"
+                            errors={
+                                errors && errors.email ? errors.email : null
+                            }
                         />
                     </div>
-                    
+
                     <div className="form__row">
                         <Input
                             type="password"
@@ -73,15 +70,23 @@ const Login = ({
                             placeholder="Mot de passe"
                             //label="Mot de passe"
                             register={register}
-                            required="Mot de passe requis."
-                            errors={(errors && errors.password) ? errors.password : null}
+                            required="Mot de passe requis"
+                            errors={
+                                errors && errors.password
+                                    ? errors.password
+                                    : null
+                            }
                         />
                     </div>
-                    
-                    <Button appearance="primary" type="submit" classProps="u-margin-top-.5">
+
+                    <Button
+                        appearance="primary"
+                        type="submit"
+                        classProps="u-margin-top-.5"
+                        loading={isLoading}
+                    >
                         Se connecter
                     </Button>
-
                 </Form>
 
                 <div>
@@ -101,13 +106,10 @@ const Login = ({
 }
 
 Login.propTypes = {
-    password: PropTypes.string.isRequired,
-    email: PropTypes.string.isRequired,
     user: PropTypes.object.isRequired,
-    OnChangeValue: PropTypes.func.isRequired,
-    OnClickLoginForm: PropTypes.func.isRequired,
-    OnClearLoginError: PropTypes.func.isRequired,
-    error: PropTypes.bool.isRequired,
+    clearLoginError: PropTypes.func.isRequired,
+    onSubmitLoginForm: PropTypes.func.isRequired,
+    loginError: PropTypes.bool.isRequired,
 }
 
-export default Login;
+export default Login
