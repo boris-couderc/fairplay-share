@@ -9,6 +9,7 @@ import Button from 'src/components/Button'
 import Heading from 'src/components/Heading'
 import Form from 'src/components/Form'
 import Input from 'src/components/Form/Input'
+import Icon from 'src/components/Icon'
 
 import './style.scss'
 
@@ -99,6 +100,8 @@ const DesignSystem = (props) => {
                 </Form>
                 <Heading el="h2">Buttons</Heading>
                 
+
+                <div className="u-text-center">
                 <Button appearance="" size="small" route="/" icon="clock">
                     test
                 </Button>
@@ -139,6 +142,9 @@ const DesignSystem = (props) => {
                 <Button appearance="secondary-outline" icon="pin">
                     test
                 </Button>
+                <Button appearance="" icon="account">
+                    test
+                </Button>
                 
                 <br />
                 
@@ -169,15 +175,19 @@ const DesignSystem = (props) => {
                 <Button appearance="" size="big" route="/" loading={true}>
                     test
                 </Button>
+                </div>
                 
                 <Heading el="h2">Icons</Heading>
-                {/* <Icon name="account" />
-        <Icon name="checkmark" />
-        <Icon name="clock" />
-        <Icon name="cross" />
-        <Icon name="grade" />
-        <Icon name="pencil" />
-        <Icon name="pin" /> */}
+
+                <div style={{color:'#425359'}} className="u-text-center">
+                    <Icon name="account" />
+                    <Icon name="pin" />
+                    <Icon name="reward" />
+
+
+                </div>
+
+
                 <Heading el="h2">Heading</Heading>
                 <Heading el="h1">Heading h1</Heading>
                 <p>

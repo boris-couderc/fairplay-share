@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 
 import Wrapper from 'src/components/Wrapper'
 import Button from 'src/components/Button'
+import Icon from 'src/components/Icon'
 
 import { ReactComponent as Logo } from 'src/assets/fairplay-logo.svg'
 
@@ -13,7 +14,6 @@ import gradeIcon from 'src/assets/icons/grade.svg'
 import './style.scss'
 
 const Header = ({ isLogged, onLogOut, points, grade }) => {
-    // console.log(isLogged);
 
     return (
         <header className="header">
@@ -25,6 +25,8 @@ const Header = ({ isLogged, onLogOut, points, grade }) => {
 
                     {isLogged ? (
                         <div className="header__logged">
+
+                            <Icon name="account" />
 
                             <Button
                                 appearance="outline"
