@@ -6,7 +6,7 @@ import {
 } from 'src/actions/registration'
 
 const mapStateToProps = (state) => ({
-    userId: state.login.user.id,
+    isLogged: state.login.loggedUser,
     registrationError: state.registration.error,
 })
 

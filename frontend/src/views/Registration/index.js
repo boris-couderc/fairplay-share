@@ -14,7 +14,7 @@ import Input from 'src/components/Form/Input'
 import './style.scss'
 
 const Registration = ({
-    userId,
+    isLogged,
     onClearRegistrationError,
     onSubmitRegistrationForm,
     registrationError,
@@ -68,7 +68,7 @@ const Registration = ({
         }
     }, [registrationError])
 
-    return userId ? (
+    return isLogged ? (
         <Redirect to="/" />
     ) : (
         <View layoutClass="registration">
@@ -217,14 +217,13 @@ const Registration = ({
 }
 
 Registration.propTypes = {
-    userId: PropTypes.number,
+    isLogged: PropTypes.bool.isRequired,
     onSubmitRegistrationForm: PropTypes.func.isRequired,
     onClearRegistrationError: PropTypes.func.isRequired,
     registrationError: PropTypes.string,
 }
 
 Registration.defaultProps = {
-    userId: null,
     registrationError: null,
 }
 

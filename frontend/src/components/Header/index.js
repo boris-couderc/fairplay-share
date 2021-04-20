@@ -1,54 +1,66 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
 
-import Wrapper from 'src/components/Wrapper';
-import Button from 'src/components/Button';
+import Wrapper from 'src/components/Wrapper'
+import Button from 'src/components/Button'
 
-import userIcon from 'src/assets/icons/account_circle.svg';
-import gradeIcon from 'src/assets/icons/grade.svg';
-import { Link } from 'react-router-dom';
+import { ReactComponent as Logo } from 'src/assets/fairplay-logo.svg'
 
-import { ReactComponent as Logo } from 'src/assets/fairplay-logo.svg';
+import userIcon from 'src/assets/icons/account_circle.svg'
+import gradeIcon from 'src/assets/icons/grade.svg'
 
-import './style.scss';
+import './style.scss'
 
-const Header = ({ isLogged, DisconnectOnClick, points, grade }) => {
-  // console.log(isLogged);
-  
-  return (
-    <header className="header">
-      <Wrapper wide>
-        <div className="header__content">
-          <Link to="/" className="header__logo">
-            <Logo alt="FairPlay"/>
-          </Link>
+const Header = ({ isLogged, onLogOut, points, grade }) => {
+    // console.log(isLogged);
 
-          <ul className="header__buttons">
-            <li>
-              <Button 
-                appearance="outline"
-                route="/connexion"
-                icon="account"
-              >
-                Connexion
-              </Button> 
-            </li>
-            <li>
-              <Button 
-                appearance="primary"
-                route="/inscription"
-              >
-                Inscription
-              </Button>
-            </li>
-          </ul>
-        
-        </div>
-      </Wrapper>
-    </header>
-  )
+    return (
+        <header className="header">
+            <Wrapper wide>
+                <div className="header__content">
+                    <Link to="/" className="header__logo">
+                        <Logo alt="FairPlay" />
+                    </Link>
 
-  /*
+                    {isLogged ? (
+                        <div className="header__logged">
+
+                            <Button
+                                appearance="outline"
+                                onClick={onLogOut}
+                            >
+                                Déconnexion
+                            </Button>
+
+                        </div>
+                    ) : (
+                        <ul className="header__buttons">
+                            <li>
+                                <Button
+                                    appearance="outline"
+                                    route="/connexion"
+                                    icon="account"
+                                >
+                                    Connexion
+                                </Button>
+                            </li>
+                            <li>
+                                <Button
+                                    appearance="primary"
+                                    route="/inscription"
+                                >
+                                    Inscription
+                                </Button>
+                            </li>
+                        </ul>
+                    )}
+                </div>
+            </Wrapper>
+        </header>
+    )
+
+    /*
   switch (isLogged) {
     case true:
       return (
@@ -91,46 +103,21 @@ const Header = ({ isLogged, DisconnectOnClick, points, grade }) => {
           </nav>
         </header>
       );
-    default:
-      return (
-        <header className="header">
-          <Link to="/" className="header__home">
-            <img className="header__logo" src={logo} alt="FairPlay" />
-          </Link>
-          <nav className="header__nav">
-            <ul className="header__buttons">
-              <li>
-                <Link to="/connexion" className="header__login">
-                  <img
-                    className="header__icon"
-                    src={userIcon}
-                    alt="l'icône de l'utilisateur"
-                  />
-                  Connexion
-                </Link>
-              </li>
-              <li>
-                <Link to="/inscription" className="header__signup">
-                  Inscription
-                </Link>
-              </li>
-            </ul>
-          </nav>
-        </header>
-      );
+      
   }
   */
-};
+}
 
 Header.propTypes = {
-  isLogged: PropTypes.bool.isRequired,
-  DisconnectOnClick: PropTypes.func.isRequired,
-  points: PropTypes.number,
-  grade: PropTypes.object,
-};
+    isLogged: PropTypes.bool.isRequired,
+    onLogOut: PropTypes.func.isRequired,
+    points: PropTypes.number,
+    grade: PropTypes.object,
+}
 
 Header.defaultProps = {
-  points: 0,
-  grade: {},
-};
-export default Header;
+    points: 0,
+    grade: {},
+}
+
+export default Header

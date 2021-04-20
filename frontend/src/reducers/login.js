@@ -7,6 +7,7 @@ import {
 } from 'src/actions/login'
 
 const initialState = {
+    loggedUser: false,
     user: {},
     error: false,
 }
@@ -24,10 +25,10 @@ const login = (state = initialState, action = {}) => {
                 error: false,
             }
         case SAVE_LOGGED_USER:
-            console.log('SAVE_LOGGED_USER', action.user)
             return {
                 ...state,
                 error: false,
+                loggedUser: true,
                 user: action.user,
             }
         case LOG_OUT:
@@ -35,7 +36,6 @@ const login = (state = initialState, action = {}) => {
         case SAVE_USER_POINTS:
             return {
                 ...state,
-                error: false,
                 user: action.data,
             }
         default:

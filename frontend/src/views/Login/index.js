@@ -14,7 +14,7 @@ import Input from 'src/components/Form/Input'
 import './style.scss'
 
 const Login = ({
-    userId,
+    isLogged,
     onClearLoginError,
     onSubmitLoginForm,
     loginError,
@@ -39,7 +39,7 @@ const Login = ({
         }
     }, [loginError])
 
-    return userId ? (
+    return isLogged ? (
         <Redirect to="/" />
     ) : (
         <View layoutClass="login">
@@ -105,16 +105,12 @@ const Login = ({
         </View>
     )
 }
-
+ 
 Login.propTypes = {
-    userId: PropTypes.number,
+    isLogged: PropTypes.bool.isRequired,
     onClearLoginError: PropTypes.func.isRequired,
     onSubmitLoginForm: PropTypes.func.isRequired,
     loginError: PropTypes.bool.isRequired,
-}
-
-Login.defaultProps = {
-    userId: null,
 }
 
 export default Login
