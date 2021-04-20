@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { useHistory } from 'react-router-dom'
 
 import Button from 'src/components/Button'
-import Form from 'src/components/Form'
+import Autocomplete from './Autocomplete'
 
 import './style.scss'
 
@@ -31,7 +31,15 @@ const SearchBar = ({
     const history = useHistory()
 
     useEffect(() => {
-        // verification que la recherche vient bien d'être lancée après la verification des coordonnées grace à l'api stacklocation
+        return () => {
+            changeValue('')
+            clearListAutocompleteData()
+            clearTimeout(timer.current)
+        }
+    }, [])
+
+    useEffect(() => {
+        // verification que la recherche vient bien d'être lancée après la verification des coordonnées grace à l'api positionstack
         // searchQueryInProcess est à true si la lat et lng a bien été recupérée grace au midddleware et stockée dans le state
         if (searchQueryInProcess) {
             changeSearchQueryInProcessStatut()
@@ -41,14 +49,7 @@ const SearchBar = ({
                 `/search?lat=${validLocalisation.lat}&lng=${validLocalisation.lng}&query=${inputValue}`,
             )
         }
-
-        // quant le component unmount clearTimeout : pour ne pas afficher l'autocompletion sur la page suivante :
-        /*
-    return () => {
-      clearTimeout(timer.current);
-    }
-    */
-    })
+    }, [searchQueryInProcess])
 
     const handleOnChange = (e) => {
         const value = e.target.value
@@ -57,7 +58,6 @@ const SearchBar = ({
         clearTimeout(timer.current)
         timer.current = setTimeout(() => {
             // pas de réponse api (https://positionstack.com/documentation) si <= 2
-            // console.log('handleOnChange TIME');
             if (value.length > 2) {
                 fetchPlacesAutoCompletion()
             } else {
@@ -94,10 +94,13 @@ const SearchBar = ({
     return (
         <div className="searchbar">
             <form onSubmit={handleOnSubmit} className="searchbar__container">
-
+                {errorLocalisation && (
+                    <div className="searchbar__error">
+                        Localisation non trouvée, veuillez réessayer
+                    </div>
+                )}
                 <div className="searchbar__search">
                     <input
-                        // className="searchbar__input"
                         className="input searchbar__input"
                         type="text"
                         placeholder="Rehercher un lieu ..."
@@ -109,45 +112,18 @@ const SearchBar = ({
                         type="submit"
                         appearance="primary"
                         size="big"
-                        onClick={handleClickCreateActivity}
                         classProps="searchbar__search-button"
                     >
                         Rechercher
                     </Button>
-                
-                    {listAutocompleteData.length > 0 && (
-                        <ul className="autocomplete">
-                            {listAutocompleteData.map((el, index) => {
-                                return (
-                                    <li
-                                        className="autocomplete__item"
-                                        onClick={() =>
-                                            handleClickItemAutocompletion(index)
-                                        }
-                                        key={`${el.lat}${el.lng}${index}`}
-                                    >
-                                        {el.name}
-                                        <span className="autocomplete__detail">
-                                            {el.reg}
-                                        </span>
-                                    </li>
-                                )
-                            })}
-                        </ul>
-                    )}
-
+                    <Autocomplete
+                        data={listAutocompleteData}
+                        onClick={handleClickItemAutocompletion}
+                        initialIsVisible={false}
+                    />
                 </div>
-
-                {errorLocalisation && (
-                    <div className="searchbar__error">
-                        Localisation non trouvée, il faut que tu réessayes
-                    </div>
-                )}
-
             </form>
-
             <div className="searchbar__separator">OU</div>
-
             <Button
                 appearance="secondary"
                 size="big"

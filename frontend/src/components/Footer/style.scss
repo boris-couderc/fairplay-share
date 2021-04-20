@@ -6,7 +6,7 @@
     padding   : 2rem 0;
     font-size : 0.9rem;
     color     : s.$txt-color-light;
-    border-top: 2px solid rgba(0, 0, 0, .075);
+    border-top: 2px solid rgba(0, 0, 0, 0.075);
 
     &__content {
         display       : flex;
@@ -34,9 +34,9 @@
         }
 
         a {
-            position : relative;
-            padding: .25rem 0;
-            color    : s.$txt-color-light;
+            position: relative;
+            padding : 0.25rem 0;
+            color   : s.$txt-color-light;
 
             @include s.hover-link(s.$primary-color-light);
         }

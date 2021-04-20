@@ -9,17 +9,16 @@
         background      : $color;
         opacity         : .75;
         transform       : scaleX(0);
-        transition      : transform ease-in-out 500ms;
+        transition      : transform ease-in-out 300ms;
         transform-origin: right;
     }
 
     &:focus,
     &:hover {
         &::before {
-            //opacity         : .75;
             transform       : scaleX(1);
             transform-origin: left;
-            transition      : transform ease-in-out 200ms;
+            transition      : transform ease-in-out 150ms;
         }
     }
 }
