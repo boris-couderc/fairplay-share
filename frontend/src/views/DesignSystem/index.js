@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { useForm } from 'react-hook-form'
 
 import View from 'src/components/View'
+import ScrollToTop from 'src/components/ScrollToTop'
 import Wrapper from 'src/components/Wrapper'
 import Button from 'src/components/Button'
 import Heading from 'src/components/Heading'
@@ -21,6 +22,7 @@ const DesignSystem = (props) => {
 
     return (
         <View layoutClass="design-system">
+            <ScrollToTop />
             <Wrapper>
                 <Heading el="h1">Design system</Heading>
                 <Heading el="h2">Form</Heading>

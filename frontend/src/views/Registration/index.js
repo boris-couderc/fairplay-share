@@ -4,6 +4,7 @@ import { Redirect } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 
 import View from 'src/components/View'
+import ScrollToTop from 'src/components/ScrollToTop'
 import Wrapper from 'src/components/Wrapper'
 import Button from 'src/components/Button'
 import Heading from 'src/components/Heading'
@@ -71,6 +72,7 @@ const Registration = ({
         <Redirect to="/" />
     ) : (
         <View layoutClass="registration">
+            <ScrollToTop />
             <Wrapper>
                 <Heading el="h1" like="h3">
                     Inscription
@@ -151,7 +153,7 @@ const Registration = ({
                             name="address"
                             label="Adresse"
                             register={register}
-                            required="Adresse requis"
+                            required="Adresse requise"
                             errors={errors.address ? errors.address : null}
                         />
                     </div>
@@ -163,7 +165,7 @@ const Registration = ({
                                 name="city"
                                 label="Ville"
                                 register={register}
-                                required="Ville requis"
+                                required="Ville requise"
                                 errors={errors.city ? errors.city : null}
                             />
                         </div>
