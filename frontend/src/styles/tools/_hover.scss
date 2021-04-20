@@ -1,0 +1,25 @@
+@mixin hover-link($color) {
+    &::before {
+        content         : '';
+        position        : absolute;
+        left            : 0;
+        right           : 0;
+        bottom          : 0;
+        height          : 2px;
+        background      : $color;
+        opacity         : .75;
+        transform       : scaleX(0);
+        transition      : transform ease-in-out 500ms;
+        transform-origin: right;
+    }
+
+    &:focus,
+    &:hover {
+        &::before {
+            //opacity         : .75;
+            transform       : scaleX(1);
+            transform-origin: left;
+            transition      : transform ease-in-out 200ms;
+        }
+    }
+}

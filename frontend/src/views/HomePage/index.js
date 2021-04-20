@@ -6,6 +6,8 @@ import ScrollToTop from 'src/components/ScrollToTop'
 import Wrapper from 'src/components/Wrapper'
 import Button from 'src/components/Button'
 import Heading from 'src/components/Heading'
+import SearchBar from 'src/containers/SearchBar'
+
 
 import './style.scss';
 
@@ -16,6 +18,8 @@ const HomePage = props => {
             <Wrapper>
 
                 <Heading el="h1">Homepage</Heading>
+
+                <SearchBar />
 
             </Wrapper>
         </View>

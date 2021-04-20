@@ -1,22 +1,22 @@
 @use 'src/styles/settings'as s;
 
 .wrapper {
-  position    : relative;
-  width       : 100%;
-  margin-right: auto;
-  margin-left : auto;
+    position    : relative;
+    width       : 100%;
+    margin-right: auto;
+    margin-left : auto;
 
-  padding-right: s.$padding-small;
-  padding-left : s.$padding-small;
-  max-width    : calc(#{s.$container-width} + #{s.$padding-small*2});
+    padding-right: s.$padding-small;
+    padding-left : s.$padding-small;
+    max-width    : calc(#{s.$container-width} + #{s.$padding-small*2});
 
-  @media (min-width: s.$from-small) {
-    padding-right: s.$padding;
-    padding-left : s.$padding;
-    max-width    : calc(#{s.$container-width} + #{s.$padding*2});
+    @media (min-width: s.$from-small) {
+        padding-right: s.$padding;
+        padding-left : s.$padding;
+        max-width    : calc(#{s.$container-width} + #{s.$padding*2});
 
-    &--wide {
-      max-width: 100%;
+        &--wide {
+            max-width: 100%;
+        }
     }
-  }
 }

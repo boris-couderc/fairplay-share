@@ -16,18 +16,21 @@ $dark-color-light   : #546c75;
 $dark-color-lighter : #90a4ac;
 $dark-color-lightest: #eeece8;
 
-$txt-color        : #515151;
-$txt-color-dark   : #303030;
-$txt-color-light  : #8d8d8d;
-$txt-color-lighter: #b3b3b3;
+$txt-color         : #515151;
+$txt-color-dark    : #303030;
+$txt-color-light   : #8d8d8d;
+$txt-color-lighter : #b3b3b3;
+$txt-color-lightest: #cccccc;
 
 $link-color      : $primary-color;
 $link-color-hover: $primary-color-dark;
 
-$error-color: rgb(235, 4, 4);
+$error-color  : rgb(235, 4, 4);
 $success-color: $secondary-color;
 
-$background-color: #f5f1ed;
+$background-color       : #f5f1ed;
+$background-color-dark  : #ECE9E6;
+$background-color-darker: #E9E6E3;
 
 // Specific
 $selection-background-color: $primary-color;

@@ -1,39 +1,39 @@
-@use 'src/styles/settings' as s;
+@use 'src/styles/settings'as s;
 
 .header {
-    position: relative;
-    z-index: 100;
-    padding: 2rem 0;
+    position     : relative;
+    z-index      : 100;
+    padding      : 2rem 0;
     margin-bottom: 1rem;
 
     &__content {
-        display: flex;
+        display       : flex;
         flex-direction: column;
-        align-items: center;
-        row-gap: 1rem;
+        align-items   : center;
+        row-gap       : 1rem;
 
         @media (min-width: s.$from-tiny) {
-            flex-direction: row;
+            flex-direction : row;
             justify-content: space-between;
         }
     }
 
     &__logo {
         display: block;
-        
+
         svg {
-            width: 9rem;
+            width : 9rem;
             height: auto;
         }
     }
 
     &__login {
-        display: inline-flex;
-        align-items: center;
+        display        : inline-flex;
+        align-items    : center;
         justify-content: center;
-        position: relative;
+        position       : relative;
 
-        & > *:not(:first-child) {
+        &>*:not(:first-child) {
             margin-left: .75rem;
         }
     }
@@ -48,7 +48,7 @@
 
             .header__reward {
                 transform: translateY(0);
-                opacity: 1;
+                opacity  : 1;
             }
 
         }
@@ -56,13 +56,13 @@
 
     &__account-icon,
     &__reward-icon {
-        max-width: 3rem;
+        max-width : 3rem;
         max-height: 3rem;
     }
 
     &__account-icon {
-        position: relative;
-        transform: translateX(1rem);
+        position  : relative;
+        transform : translateX(1rem);
         transition: transform ease-in-out 200ms;
     }
 
@@ -71,30 +71,30 @@
     }
 
     &__reward {
-        position: absolute;
-        left: 0;
-        top: 100%;
-        margin-top: 1rem;
-        margin-left: calc( -90px + 3.25rem ) !important;
-        width: 175px;
-        text-align: center;
-        padding: 1rem 1.5rem;
-        background: #ffffff;
+        position     : absolute;
+        left         : 0;
+        top          : 100%;
+        margin-top   : 1rem;
+        margin-left  : calc(-105px + 3.25rem) !important;
+        width        : 200px;
+        text-align   : center;
+        padding      : 1rem 1.5rem;
+        background   : #ffffff;
         border-radius: s.$border-radius-small;
-        box-shadow: s.$shadow-small;
+        box-shadow   : s.$shadow-small;
 
-        opacity: 0;
-        transform: translateY(-10px);
+        opacity   : 0;
+        transform : translateY(-10px);
         transition: opacity ease-in-out 200ms, transform ease-in-out 200ms;
 
         &:before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            top: -9px;
-            margin-left: -10px;
-            width: 0;
-            height: 0;
+            content     : '';
+            position    : absolute;
+            left        : 50%;
+            top         : -9px;
+            margin-left : -10px;
+            width       : 0;
+            height      : 0;
             border-style: solid;
             border-width: 0 10px 10px 10px;
             border-color: transparent transparent #ffffff transparent;
@@ -102,8 +102,8 @@
     }
 
     &__grade {
-        display: block;
-        color: s.$primary-color;
+        display    : block;
+        color      : s.$primary-color;
+        font-family: s.$font-family-heading;
     }
 }
-

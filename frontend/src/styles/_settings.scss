@@ -1,9 +1,10 @@
-// Tools
-@forward 'tools/colors'; 
-
 // Settings
 @forward 'settings/colors';
 @forward 'settings/easings';
 @forward 'settings/config';
+
+// Tools
+@forward 'tools/colors'; 
+@forward 'tools/hover'; 
 
 

@@ -6,7 +6,6 @@
     border-radius: s.$border-radius;
     background: #fff;
     color: s.$txt-color-dark;
-    box-shadow: s.$shadow-small;
     box-shadow: s.$shadow-small, 0 0 0 2px rgba($color: s.$primary-color-lighter, $alpha: 0) inset;
     transition: box-shadow ease 200ms;
 
