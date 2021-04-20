@@ -13,6 +13,12 @@ const connectionController = {
             where: {
                 email: data.email,
             },
+            include: [
+                {
+                  association: 'user_grade',
+                  attributes: ['name'],
+                }
+            ]
         })
 
         // Test pour voir si l'email est valide
@@ -51,6 +57,7 @@ const connectionController = {
                         lastname: result.lastname,
                         pseudo: result.pseudo,
                         points: result.reward_count,
+                        grade: result.user_grade.name,
                     },
                 })
             }

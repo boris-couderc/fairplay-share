@@ -8,20 +8,21 @@
 
     &::before,
     &::after {
-        position: absolute;
-        z-index : -2;
-        top     : 0;
-        right   : 0;
-        left    : 0;
-        height  : 100vh;
+        position : absolute;
+        z-index  : -2;
+        top      : 0;
+        right    : 0;
+        left     : 0;
+        height   : 100vh;
+        min-height: 600px;
     }
 
     &::before {
-        z-index              : -2;
-        opacity              : .3;
-        background-repeat    : no-repeat;
-        background-position  : bottom center;
-        background-size      : auto 80%;
+        z-index            : -2;
+        opacity            : .3;
+        background-repeat  : no-repeat;
+        background-position: bottom center;
+        background-size    : auto 80%;
 
         @media (min-width: s.$from-medium) {
             opacity            : 1;

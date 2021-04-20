@@ -8,13 +8,9 @@ import Icon from 'src/components/Icon'
 
 import { ReactComponent as Logo } from 'src/assets/fairplay-logo.svg'
 
-import userIcon from 'src/assets/icons/account_circle.svg'
-import gradeIcon from 'src/assets/icons/grade.svg'
-
 import './style.scss'
 
 const Header = ({ isLogged, onLogOut, points, grade }) => {
-
     return (
         <header className="header">
             <Wrapper wide>
@@ -24,102 +20,57 @@ const Header = ({ isLogged, onLogOut, points, grade }) => {
                     </Link>
 
                     {isLogged ? (
-                        <div className="header__logged">
-
-                            <Icon name="account" />
-
-                            <Button
-                                appearance="outline"
-                                onClick={onLogOut}
-                            >
+                        <div className="header__login">
+                            <div className="header__account-reward-icons">
+                                <Icon
+                                    name="account"
+                                    classProps="header__account-icon"
+                                />
+                                <Icon
+                                    name="reward"
+                                    classProps="header__reward-icon"
+                                />
+                                <div className="header__reward">
+                                    <span className="header__grade">
+                                        {grade}
+                                    </span>
+                                    {points} {points > 0 ? 'points' : 'point'}
+                                </div>
+                            </div>
+                            <Button appearance="outline" onClick={onLogOut}>
                                 Déconnexion
                             </Button>
-
                         </div>
                     ) : (
-                        <ul className="header__buttons">
-                            <li>
-                                <Button
-                                    appearance="outline"
-                                    route="/connexion"
-                                    icon="account"
-                                >
-                                    Connexion
-                                </Button>
-                            </li>
-                            <li>
-                                <Button
-                                    appearance="primary"
-                                    route="/inscription"
-                                >
-                                    Inscription
-                                </Button>
-                            </li>
-                        </ul>
+                        <div className="header__login">
+                            <Button
+                                appearance="outline"
+                                route="/connexion"
+                                icon="account"
+                            >
+                                Connexion
+                            </Button>
+                            <Button appearance="primary" route="/inscription">
+                                Inscription
+                            </Button>
+                        </div>
                     )}
                 </div>
             </Wrapper>
         </header>
     )
-
-    /*
-  switch (isLogged) {
-    case true:
-      return (
-        <header className="header">
-          <Link to="/" className="header__home">
-            <img className="header__logo" src={logo} alt="FairPlay" />
-          </Link>
-          <nav className="header__nav">
-            <ul className="header__buttons">
-              <li>
-                <a>
-                  <img
-                    className="header__user"
-                    src={userIcon}
-                    alt="l'icone de l'utilisateur"
-                  />
-                </a>
-              </li>
-              <li>
-                <img
-                  className="header__grade"
-                  src={gradeIcon}
-                  alt="l'icone de son grade"
-                />
-                <div className="header__points">
-                  <strong>{grade.name}</strong> <br />
-                  {points} points
-                </div>
-              </li>
-              <li>
-                <button
-                  type="button"
-                  className="header__disconnect"
-                  onClick={DisconnectOnClick}
-                >
-                  Déconnexion
-                </button>
-              </li>
-            </ul>
-          </nav>
-        </header>
-      );
-      
-  }
-  */
 }
 
 Header.propTypes = {
     isLogged: PropTypes.bool.isRequired,
     onLogOut: PropTypes.func.isRequired,
     points: PropTypes.number,
-    grade: PropTypes.object,
+    grade: PropTypes.string,
 }
 
 Header.defaultProps = {
     points: 0,
-    grade: {},
+    grade: null,
 }
 
 export default Header

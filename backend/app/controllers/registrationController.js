@@ -2,7 +2,7 @@ const bcrypt = require('bcrypt')
 const saltRounds = 10
 const jsonwebtoken = require('jsonwebtoken')
 
-const { User, UserPlace } = require('../models')
+const { User, UserGrade } = require('../models')
 
 const Sequelize = require('sequelize')
 const sequelize = require('../database.js')
@@ -46,12 +46,14 @@ const registrationController = {
                             zip_code: data.place.postal_code,
                             lat: data.place.latitude,
                             lng: data.place.longitude,
-                        },
+                        }
                     },
                     {
                         include: ['user_place'],
                     },
-                ) 
+                )
+
+                const newUserGrade = await UserGrade.findByPk(1);
 
                 const jwtSecret = process.env.JWT_SECRET
                 const jwtContent = { userId: newUser.id }
@@ -73,6 +75,7 @@ const registrationController = {
                         lastname: newUser.lastname,
                         pseudo: newUser.pseudo,
                         points: newUser.reward_count,
+                        grade: newUserGrade.name,
                     },
                 })
             } catch (error) {

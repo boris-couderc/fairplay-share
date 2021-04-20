@@ -46,6 +46,7 @@ const registration = (store) => (next) => (action) => {
                                     lastname: user.lastname,
                                     pseudo: user.pseudo,
                                     points: user.points,
+                                    grade: user.grade,
                                 })
                                 store.dispatch(saveLoggedUser(user))
                             })
