@@ -5,7 +5,7 @@ import { fetchLastActivities, fetchUserActivities } from 'src/actions/cards';
 import { paginationReset } from 'src/actions/moreResults';
 
 const mapStateToProps = (state) => ({
-  isLogged: state.header.isLogged,
+  isLogged: state.login.isLogged,
   user: state.login.user,
   userActivities: state.userActivities.list,
   points: state.login.user.reward_count,

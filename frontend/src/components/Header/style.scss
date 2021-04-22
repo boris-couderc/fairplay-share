@@ -61,6 +61,7 @@
     }
 
     &__account-icon {
+        color     : s.$dark-color-dark;
         position  : relative;
         transform : translateX(1rem);
         transition: transform ease-in-out 200ms;

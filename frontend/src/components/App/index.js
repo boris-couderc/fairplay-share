@@ -1,94 +1,89 @@
-// == Import npm
-import React, { useEffect } from 'react';
-import { Route, Switch, Redirect } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import React, { useEffect } from 'react'
+import { Route, Switch, Redirect } from 'react-router-dom'
+import PropTypes from 'prop-types'
 
-// == Import
 //import Accueil from 'src/containers/Accueil';
-import Search from 'src/containers/Search';
+//import Search from 'src/containers/Search';
 //import Header from 'src/containers/Header';
 //import Footer from 'src/components/Footer';
 //import Login from 'src/containers/Login';
 //import LoginModal from 'src/containers/LoginModal';
 
 //import Team from 'src/components/Team';
-import Details from 'src/containers/Details';
-import CreationPage from 'src/containers/CreationPage';
+import Details from 'src/containers/Details'
+import CreationPage from 'src/containers/CreationPage'
 //import Registration from 'src/containers/Registration';
 
-import ScreenSizeHelper from 'src/components/ScreenSizeHelper';
 
-import DesignSystem from 'src/views/DesignSystem';
-import Team from 'src/views/Team';
-import NotFound from 'src/views/NotFound';
-import HomePage from 'src/views/HomePage';
-
-import Registration from 'src/containers/Registration';
-import Login from 'src/containers/Login';
+import ScreenSizeHelper from 'src/components/ScreenSizeHelper'
+import UserVerification from 'src/containers/UserVerification'
 
 
+import HomePage from 'src/containers/HomePage'
+import DesignSystem from 'src/views/DesignSystem'
+import Team from 'src/views/Team'
+import NotFound from 'src/views/NotFound'
+import Registration from 'src/containers/Registration'
+import Login from 'src/containers/Login'
 
-// == Composant
-const App = ({ getUser, isLogged }) => {
-  useEffect(() => {
-    getUser();
-  }, []); 
-  // console.log(isLogged);
+import Search from 'src/containers/Search'
 
-  return (
-    <>
-      <ScreenSizeHelper />
+const App = () => {
 
-      {/* <Header /> */}
-      <Switch>
-        <Route path="/" exact>
-          <HomePage />
-        </Route>
+    useEffect(() => {
+        console.log('render APP')
+    })
 
-        <Route path="/design-system" exact>
-          <DesignSystem />
-        </Route>
+    return (
+        <>
+            <UserVerification />
+            <ScreenSizeHelper />
+            <Switch>
+                <Route path="/" exact>
+                    <HomePage />
+                </Route>
 
-        <Route path="/connexion" exact>
-          <Login />
-        </Route>
-    
-        <Route path="/inscription" exact>
-            <Registration />
-        </Route>
+                <Route path="/design-system" exact>
+                    <DesignSystem />
+                </Route>
 
-        <Route path="/search">
-          <Search />
-        </Route>
-    
-        <Route path="/activity/:id">
-          {isLogged && <Details />}
-          {!isLogged && <Redirect to="/connexion" />}
-        </Route>
+                <Route path="/connexion" exact>
+                    <Login />
+                </Route>
 
-        <Route path="/creation">
-          <CreationPage />
-        </Route>
-    
-        <Route path="/equipe">
-          <Team />
-        </Route>
+                <Route path="/inscription" exact>
+                    <Registration />
+                </Route>
 
-        <Route>
-          <NotFound />
-        </Route>
+                <Route path="/search">
+                    <Search />
+                </Route>
 
-      </Switch>
-      {/* <Footer /> */}
+                {/* <Route path="/activity/:id">
+                    {isLogged && <Details />}
+                    {!isLogged && <Redirect to="/connexion" />}
+                </Route> */}
 
-      {/* <LoginModal /> */}
-    </>
-  );
-};
+                <Route path="/creation">
+                    <CreationPage />
+                </Route>
 
+                <Route path="/equipe">
+                    <Team />
+                </Route>
+
+                <Route>
+                    <NotFound />
+                </Route>
+            </Switch>
+        </>
+    )
+}
+
+/*
 App.propTypes = {
-  isLogged: PropTypes.bool.isRequired,
-};
+    isLogged: PropTypes.bool.isRequired,
+}
+*/
 
-// == Export
-export default App;
+export default App

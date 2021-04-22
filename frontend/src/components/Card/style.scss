@@ -1,130 +1,139 @@
-@use 'src/styles/settings' as s;
-
-@use "sass:color";
+@use 'src/styles/settings'as s;
 
 .card {
-  position: relative;
-  background-color:rgba(255,255,255,.80);
-  border-radius: 16px;
-  box-shadow: s.$shadow;
-  transition: all 0.3s;
-  width: 280px;
-  margin: 20px;
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
-  align-items: center;
-
-  &--user {
-    border: 2px solid color.scale(s.$primary-color, $alpha: -50%);
-    &::before {
-      content: 'Je participe';
-      background-image: url('src/assets/icons/check.svg');
-      background-size: 15px;
-      background-position: left 8px center;
-      background-repeat: no-repeat;
-      position: absolute;
-      width: 115px;
-      height: 24px;
-      background-color: s.$primary-color;
-      left: 50%;
-      top: 0;
-      margin-top: -12px;
-      margin-left: -12px;
-      border-radius: 12px;
-      font-size: 12px;
-      color: #ffffff;
-      line-height: 24px;
-      padding-left: 28px;
-      margin-left: -58px;
-    }
-  }
-
-  &--creator {
-    border: 2px solid color.scale(s.$secondary-color, $alpha: -50%);
-    &::before {
-      content: 'J\'organise';
-      background-image: url('src/assets/icons/pencil.svg');
-      background-color: s.$secondary-color;
-      background-size: 12px;
-      width: 105px;
-      margin-left: -52px;
-    }
-  }
-
-  &__link {
-    display: flex;
+    position      : relative;
+    text-align    : center;
+    display       : flex;
     flex-direction: column;
-    align-items: center;
-    padding: 10px 25px 0 20px;
-    border: none;
-    background: none;
-    border-radius: 16px;
-  }
+    align-items   : center;
 
-  &__image {
-    width: 200px;
-    margin: 15px auto 10px auto;
-    object-fit: contain;
-  }
+    &::after {
+        content      : '';
+        position     : absolute;
+        z-index      : -1;
+        left         : 0;
+        top          : 0;
+        right        : 0;
+        bottom       : 0;
+        background   : #fff;
+        border-radius: s.$border-radius;
+        box-shadow   : s.$shadow;
+        transition   : transform 150ms s.$Power3EaseInOut;
+    }
 
-  &__title {
-    font-size: 19px;
-    font-weight: 500;
-    color: s.$dark-color;
-    margin-bottom: 20px;
-  }
+    &--participant,
+    &--creator {
+        &::before {
+            content         : 'Je participe';
+            position        : relative;
+            position        : absolute;
+            padding         : .2rem .5rem;
+            top             : -.6rem;
+            border-radius   : 12px;
+            font-size       : .7rem;
+            color           : #ffffff;
+            background-color: s.$primary-color;
+            font-family     : s.$font-family-heading;
+            transition      : transform 150ms s.$Power3EaseInOut;
+        }
+    }
 
-  &__sport {
-    font-size: 0.9em;
-    opacity: .3;
-    padding-bottom: .75rem;
-  }
+    &--participant {
+        &::after {
+            border: 2px solid s.$primary-color-lighter;
+        }
+    }
 
-  &__container {
-    display: flex;
-    align-items: center;
-    margin-bottom: 5px;
-  }
+    &--creator {
+        &::after {
+            border: 2px solid s.$secondary-color-lighter;
+        }
 
-  &__text {
-    font-size: 16px;
-    font-weight: 400;
-    color: s.$primary-color;
-    line-height: 1.4;
-  }
+        &::before {
+            content         : 'J\'organise';
+            background-color: s.$secondary-color;
+        }
+    }
 
-  &__infos {
-    width: 100%;
-  }
+    &:hover {
+        &::after {
+            transform: scale(1.03) translateY(-.125rem);
+        }
+    }
 
-  &__icon {
-    width: 28px;
-    margin-right: 12px;
-  }
+    &--participant,
+    &--creator {
+        &:hover::before {
+            transform: translateY(-10px) !important;
+        }
+    }
 
-  &__description {
-    font-size: 16px;
-    font-weight: 300;
-    color: s.$dark-color-light;
-    line-height: 24px;
-    margin: 20px 0 30px 0;
-  }
+    .heading {
+        margin-bottom: .25rem;
+    }
 
-  &__join {
-    background-color: s.$primary-color;
-    padding: 12px 30px;
-    border-radius: 25px;
-    border: none;
-    font-size: 16px;
-    font-weight: 500;
-    color: white;
-    transition: all 0.3s;
-    margin: 0 0 40px 0;
-  }
+    &__link {
+        display       : flex;
+        width         : 100%;
+        flex-direction: column;
+        align-items   : center;
+        padding       : 1.5rem 1.5rem 2rem 1.5rem;
+        cursor        : pointer;
+    }
 
-  &__join:hover{
-    box-shadow: s.$shadow;
-  }
+    &__img {
+        align-items  : stretch;
+        margin-bottom: .5rem;
+        transition   : transform 500ms s.$Power4EaseOut;
+    }
+
+    &:hover &__img {
+        transform: translateY(-10px);
+    }
+
+    &__desc {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
+
+    &__infos {
+        width        : 100%;
+        text-align   : left;
+        margin-bottom: 1.25rem;
+    }
+
+    &__info {
+        display    : flex;
+        grid-template-columns: auto 1fr;
+        align-items: center;
+        font-weight: s.$font-weight-bold;
+        color: s.$primary-color;
+
+        &:not(:first-child) {
+            margin-top: .5rem;
+        }
+
+        .icon {
+            margin-right: .5rem;
+            width       : 1.6rem;
+            height      : 1.6rem;
+        }
+
+        &-time {
+            display     : inline-block;
+            margin-left : .5rem;
+            padding-left: .5rem;
+            border-left : 2px solid s.$primary-color-lightest;
+        }
+    }
+
+    &--creator {
+        .card__info {
+            color: s.$secondary-color;
+        }
+    }
 
 }

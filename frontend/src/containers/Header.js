@@ -4,7 +4,7 @@ import { logOut } from 'src/actions/login'
 import { clearUserActivities } from 'src/actions/cards'
 
 const mapStateToProps = (state) => ({
-    isLogged: state.login.loggedUser,
+    isLogged: state.login.isLogged,
     points: state.login.user.points,
     grade: state.login.user.grade,
 })

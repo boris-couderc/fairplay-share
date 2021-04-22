@@ -16,7 +16,7 @@ const mapStateToProps = (state) => ({
   errorLocalisation: state.searchBar.errorLocalisation,
   validLocalisation: state.searchBar.validLocalisation,
   searchQueryInProcess: state.searchBar.searchQueryInProcess,
-  isLogged: state.header.isLogged,
+  isLogged: state.login.isLogged,
 });
 
 const mapDispatchToProps = (dispatch) => ({

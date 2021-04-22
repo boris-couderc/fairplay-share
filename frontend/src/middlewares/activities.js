@@ -33,7 +33,6 @@ import {
 const activities = (store) => (next) => (action) => {
   const { moreResults } = store.getState();
   const page = moreResults.page;
-  // console.log(page);
 
   const idParams = action.id;
 
@@ -61,7 +60,6 @@ const activities = (store) => (next) => (action) => {
         });
       break;
 
-      
     case FETCH_USER_ACTIVITIES:
       const userId = store.getState().login.user.id;
       axios

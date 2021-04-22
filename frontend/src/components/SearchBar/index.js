@@ -13,13 +13,13 @@ import './style.scss'
 // == Composant
 const SearchBar = ({
     inputValue,
-    listAutocompleteData,
-    validLocalisation,
     changeValue,
     fetchPlacesAutoCompletion,
     fetchOnePlacesAutoCompletion,
-    changeValidLocalisation,
+    listAutocompleteData,
     clearListAutocompleteData,
+    validLocalisation,
+    changeValidLocalisation,
     errorLocalisation,
     searchQueryInProcess,
     changeSearchQueryInProcessStatut,
@@ -29,6 +29,10 @@ const SearchBar = ({
     const timer = useRef(null)
     const placeInput = useRef(null)
     const history = useHistory()
+
+    useEffect(() => {
+        console.log('render SearchBar');
+    })
 
     useEffect(() => {
         return () => {
@@ -138,16 +142,18 @@ const SearchBar = ({
 
 SearchBar.propTypes = {
     inputValue: PropTypes.string,
-    listAutocompleteData: PropTypes.array.isRequired,
     changeValue: PropTypes.func.isRequired,
     fetchPlacesAutoCompletion: PropTypes.func.isRequired,
-    changeValidLocalisation: PropTypes.func.isRequired,
-    clearListAutocompleteData: PropTypes.func.isRequired,
     fetchOnePlacesAutoCompletion: PropTypes.func.isRequired,
-    changeSearchQueryInProcessStatut: PropTypes.func.isRequired,
+    listAutocompleteData: PropTypes.array.isRequired,
+    clearListAutocompleteData: PropTypes.func.isRequired,
+    validLocalisation: PropTypes.object.isRequired,
+    changeValidLocalisation: PropTypes.func.isRequired,
     errorLocalisation: PropTypes.bool.isRequired,
     searchQueryInProcess: PropTypes.bool.isRequired,
-    validLocalisation: PropTypes.object.isRequired,
+    changeSearchQueryInProcessStatut: PropTypes.func.isRequired,
+    showLoginModal: PropTypes.func.isRequired,
+    isLogged: PropTypes.bool.isRequired,
 }
 
 SearchBar.defaultProps = {

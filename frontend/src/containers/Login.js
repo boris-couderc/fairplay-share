@@ -3,7 +3,7 @@ import Login from 'src/views/Login'
 import { fetchLogin, clearLoginError } from 'src/actions/login'
 
 const mapStateToProps = (state) => ({
-    isLogged: state.login.loggedUser,
+    isLogged: state.login.isLogged,
     loginError: state.login.error,
 })
 

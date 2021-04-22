@@ -141,7 +141,6 @@ const activityController = {
 
         formatedaActivity = formatActivity(activity);
 
-
         if(!formatedaActivity) {
           res.status(204).json("Error : can't find Activity");
           return;
@@ -332,7 +331,6 @@ const activityController = {
     }
   }, 
 
-  
 
   getActivitiesByUser: async (req, res) => {
     console.log('----------> getActivitiesByUser');
@@ -407,8 +405,8 @@ const activityController = {
       }
 
       const userForFront = {
+          id:user.id,
         firstname: user.firstname,
-        id:user.id,
         lastname: user.lastname,
         pseudo: user.pseudo,
         reward_count:user.reward_count,

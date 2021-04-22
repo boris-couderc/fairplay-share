@@ -4,12 +4,16 @@ import {
     SAVE_LOGGED_USER,
     LOG_OUT,
     SAVE_USER_POINTS,
+    CHECK_LOCAL_STORAGE_USER,
+    SAVE_CHECK_LOCAL_STORAGE_USER,
 } from 'src/actions/login'
 
 const initialState = {
-    loggedUser: false,
+    isLogged: false,
     user: {},
+    isLoading: false,
     error: false,
+    isCheckedLocalStorage: false,
 }
 
 const login = (state = initialState, action = {}) => {
@@ -28,15 +32,33 @@ const login = (state = initialState, action = {}) => {
             return {
                 ...state,
                 error: false,
-                loggedUser: true,
+                isLogged: true,
+                isCheckedLocalStorage: true,
                 user: action.user,
             }
         case LOG_OUT:
-            return initialState
+            return {
+                ...state,
+                error: false,
+                isLogged: false,
+                isCheckedLocalStorage: true,
+                user: {},
+            }
         case SAVE_USER_POINTS:
             return {
                 ...state,
                 user: action.data,
+            }
+        case CHECK_LOCAL_STORAGE_USER:
+            return {
+                ...state,
+                isLoading: true,
+            }
+        case SAVE_CHECK_LOCAL_STORAGE_USER:
+            return {
+                ...state,
+                isLoading: false,
+                isCheckedLocalStorage: true,
             }
         default:
             return state

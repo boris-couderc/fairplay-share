@@ -2,8 +2,8 @@ import { SAVE_USER_ACTIVITIES, CLEAR_USER_ACTIVITIES } from 'src/actions/cards';
 
 const initialState = {
   list: [],
-  ids: [],
-  idsCreator: [],
+  ids: [5,6],
+  idsCreator: [8],
 };
 
 const userActivities = (state = initialState, action = {}) => {

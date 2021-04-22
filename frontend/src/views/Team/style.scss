@@ -25,7 +25,7 @@
         }
 
         &:hover::before {
-            transform: scale(1.03) translateY(-5px);
+            transform: scale(1.03) translateY(-.125rem);
         }
 
         .heading {

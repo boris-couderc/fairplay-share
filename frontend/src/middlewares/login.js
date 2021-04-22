@@ -1,11 +1,17 @@
 import axios from 'axios'
 import {
     FETCH_LOGIN,
-    GET_USER,
+    CHECK_LOCAL_STORAGE_USER,
     LOG_OUT,
     saveLoggedUser,
     saveLoginError,
+    saveCheckLocalStorageUser,
 } from 'src/actions/login'
+
+import {
+    fetchUserActivities,
+    clearUserActivities,
+} from 'src/actions/cards'
 
 const login = (store) => (next) => (action) => {
     switch (action.type) {
@@ -31,6 +37,7 @@ const login = (store) => (next) => (action) => {
                         grade: user.grade,
                     })
                     store.dispatch(saveLoggedUser(user))
+                    //store.dispatch(fetchUserActivities())
                 })
                 .catch((error) => {
                     store.dispatch(saveLoginError())
@@ -38,11 +45,13 @@ const login = (store) => (next) => (action) => {
             break
         }
 
-        case GET_USER:
+        case CHECK_LOCAL_STORAGE_USER:
             if (localStorage.fairplayUser) {
                 const user = JSON.parse(localStorage.fairplayUser)
                 store.dispatch(saveLoggedUser(user))
+                //store.dispatch(fetchUserActivities())
             }
+            store.dispatch(saveCheckLocalStorageUser())
             break
 
         case LOG_OUT:
