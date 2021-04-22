@@ -1,35 +1,64 @@
-import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
-import './style.scss';
-import {Link} from 'react-router-dom';
+import React, { useState, useEffect } from 'react'
+import PropTypes from 'prop-types'
 
-import cross from 'src/assets/icons/cross.svg';
+import Button from 'src/components/Button'
+import Heading from 'src/components/Heading'
+import Icon from 'src/components/Icon'
 
-const LoginModal = ({ displayed, closeModal }) => {
+import useVisible from 'src/hooks/useVisible'
 
-  return (
-    <>
-      {displayed && (
-        <div className="modal">
-          <div className="modal__container">
-            <img onClick={closeModal} src={cross} alt="" className="icon modal__bt-close" />
-            <div onClick={closeModal}>Inscris-toi pour rejoindre ou créer une activité !</div>
-            <Link onClick={closeModal} to="/inscription" className="modal__signup">
-              Inscription
-            </Link>
-            <Link onClick={closeModal} to="/connexion" className="modal__login">
-              Connexion
-            </Link>
-          </div>
-        </div>
-      )}
-    </>
-  );
-};
+import './style.scss'
+
+const LoginModal = ({ isDisplayed, closeModal }) => {
+    const { ref, isVisible, setIsVisible } = useVisible(false)
+
+    useEffect(() => {
+        if (!isVisible) {
+            closeModal()
+        }
+    }, [isVisible])
+
+    useEffect(() => {
+        if (isDisplayed) {
+            setIsVisible(true)
+        }
+    }, [isDisplayed])
+
+    return (
+        <>
+            {isDisplayed && (
+                <div className="modal">
+                    <div className="modal__container" ref={ref}>
+                        {/* <img onClick={closeModal} src={cross} alt="" className="icon modal__bt-close" /> */}
+
+                        <button onClick={closeModal} className="modal__button-close">
+                            <Icon name="clear" />
+                        </button>
+                        
+                        <Heading el="p" like="h4">
+                            Inscris-toi !
+                        </Heading>
+                        <p>
+                            pour rejoindre ou organiser une activité
+                        </p>
+                        <div className="modal__buttons">
+                            <Button appearance="primary" route="/inscription">
+                                Inscription
+                            </Button>
+                            <Button appearance="outline" route="/connexion">
+                                Connexion
+                            </Button>
+                        </div>
+                    </div>
+                </div>
+            )}
+        </>
+    )
+}
 
 LoginModal.propTypes = {
-  displayed: PropTypes.bool.isRequired,
-  closeModal: PropTypes.func.isRequired,
-};
+    isDisplayed: PropTypes.bool.isRequired,
+    closeModal: PropTypes.func.isRequired,
+}
 
-export default LoginModal;
+export default LoginModal

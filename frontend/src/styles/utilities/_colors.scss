@@ -1,0 +1,15 @@
+@use '../settings'as s;
+
+// Colors
+
+.u-color-primary {
+    color: s.$primary-color;
+}
+
+.u-color-secondary {
+    color: s.$secondary-color;
+}
+
+.u-color-dark {
+    color: s.$dark-color;
+}

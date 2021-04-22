@@ -16,7 +16,7 @@ const NotFound = () => {
             <Wrapper>
                 <Heading el="h1">Oups !</Heading>
                 <Heading el="p" like="h4">
-                    Désolé mais ce lien est introuvable !<br />
+                    Désolé mais ce lien est introuvable !
                 </Heading>
                 <p>
                     Mais vous pouvez toujours revenir sur l'acceuil,

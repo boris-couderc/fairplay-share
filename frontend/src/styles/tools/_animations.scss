@@ -1,12 +1,11 @@
 @mixin animation-slide-up($duration: 200ms, $height: 10px) {
-    animation: $duration ease-out slidein;
+    animation: $duration ease-out slidein#{$height};
 
-    @keyframes slidein {
+    @keyframes slidein#{$height} {
         from {
             transform: translateY($height);
             opacity  : 0;
         }
-
         to {
             transform: translateY(0);
             opacity  : 1;

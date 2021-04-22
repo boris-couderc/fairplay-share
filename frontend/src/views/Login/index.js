@@ -24,6 +24,7 @@ const Login = ({
     const {
         register,
         handleSubmit,
+        setError,
         formState: { errors },
     } = useForm()
 
@@ -36,6 +37,12 @@ const Login = ({
     useEffect(() => {
         if (loginError) {
             setIsLoading(false)
+            setError('email', {
+                type: 'custom',
+            })
+            setError('password', {
+                type: 'custom',
+            })
         }
     }, [loginError])
 

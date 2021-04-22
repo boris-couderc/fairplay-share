@@ -42,10 +42,6 @@ const HomePage = ({
             }
         }
         
-        if(!isLogged && isCheckedLoginLocalStorage) {
-            console.log('-------> fetchUserActivities', userActivities);
-        }
-
     }, [isLogged, isCheckedLoginLocalStorage])
 
     return (
@@ -86,8 +82,8 @@ const HomePage = ({
                 
                 {!isLogged && isCheckedLoginLocalStorage && (
                     <>
-                        <Heading el="h2">
-                            Last activities
+                        <Heading el="h2" like="h3">
+                            Explorez les dernières activités proposées :
                         </Heading>
                         {!lastActivitiesLoaded ? (
                             <Loader />

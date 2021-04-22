@@ -17,7 +17,7 @@ const Registration = ({
     isLogged,
     onClearRegistrationError,
     onSubmitRegistrationForm,
-    registrationError,
+    registrationError, 
 }) => {
     const [isLoading, setIsLoading] = useState(false)
 

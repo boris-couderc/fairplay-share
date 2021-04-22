@@ -36,6 +36,7 @@ const Card = ({ activity, loggedUserRole, isLogged, showLoginModal }) => {
                 />
                 <Heading el="h2" like="h5">
                     {activity.title}
+                    {/* dflmsdkflmsk flmskfsglmsd kgmsldk gmdfklgmdlfkghmlk */}
                 </Heading>
                 <p className="card__desc">{activity.description}</p>
                 <ul className="card__infos">

@@ -9,7 +9,6 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   showLoginModal: () => {
-    console.log('showLoginModal');
     dispatch(showLoginModal());
   },
 });

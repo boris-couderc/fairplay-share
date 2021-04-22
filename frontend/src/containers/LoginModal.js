@@ -1,15 +1,15 @@
-import { connect } from 'react-redux';
-import LoginModal from 'src/components/LoginModal';
-import {closeModal} from 'src/actions/login'
+import { connect } from 'react-redux'
+import LoginModal from 'src/components/LoginModal'
+import { closeModal } from 'src/actions/login'
 
 const mapStateToProps = (state) => ({
-  displayed : state.loginModal.displayed,
-});
+    isDisplayed: state.loginModal.isDisplayed,
+})
 
 const mapDispatchToProps = (dispatch) => ({
-  closeModal: () => {
-    dispatch(closeModal());
-  }
-});
+    closeModal: () => {
+        dispatch(closeModal())
+    },
+})
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginModal);
+export default connect(mapStateToProps, mapDispatchToProps)(LoginModal)

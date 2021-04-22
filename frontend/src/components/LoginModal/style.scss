@@ -1,73 +1,77 @@
-@use 'src/styles/settings' as s;
-
-// .container{
-//   display: flex;
-//   flex-direction: column;
-// }
+@use 'src/styles/settings'as s;
 
 .modal {
-  position: fixed;
-  z-index: 10000;
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0,0,0,.2);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  backdrop-filter: blur(2px);
+    position       : fixed;
+    z-index        : 10000;
+    left           : 0;
+    top            : 0;
+    right          : 0;
+    bottom         : 0;
+    background     : rgba(0, 0, 0, .2);
+    display        : flex;
+    flex-direction : column;
+    justify-content: center;
+    align-items    : center;
+    backdrop-filter: blur(2px);
 
-  &__container {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 3rem 2rem;
-    background-color: white;
-    text-align: center;
-    color: s.$primary-color;
-    //font-size: 1.2em;
-    z-index: 1;
-    border: 0.2em black;
-    border-radius: 1em;
-    //font-weight: 600;
-  }
-  
-  &__login {
-    margin-top:1.5rem;
-    background-color: s.$background-color;
-    padding: 15px 50px;
-    border-radius: 25px;
-    //color: white;
-    font-weight: 500;
-    transition: all 0.3s;
-  }
-  
-  &__signup {
-    margin-top:1.5rem;
-    background-color: s.$primary-color;
-    padding: 15px 50px;
-    border-radius: 25px;
-    color: white;
-    font-weight: 500;
-    transition: all 0.3s;
-  }
+    &__container {
+        position        : relative;
+        padding         : 3rem;
+        margin          : auto 2rem;
+        background-color: white;
+        text-align      : center;
+        border-radius   : s.$border-radius-medium;
+        box-shadow      : s.$shadow;
 
-  &__bt-close {
-    align-self: flex-end;
-    position: absolute;
-    right: 1rem;
-    top: 1rem;
-    cursor: pointer;
-  }
+        @include s.animation-slide-up(200ms, 20px);
+    }
+
+    .heading {
+        margin-bottom: .5rem;
+    }
+
+    &__buttons {
+        display       : flex;
+        flex-direction: column;
+        align-items   : center;
+        margin-top    : 2rem;
+
+        &>*:not(:first-child) {
+            margin-top: 1rem;
+        }
+    }
+
+    &__button-close {
+        position  : absolute;
+        width     : 1.75rem;
+        height    : 1.75rem;
+        right     : 1rem;
+        top       : 1rem;
+        color     : s.$dark-color-light;
+        opacity   : .5;
+        transition: opacity ease 100ms;
+
+        &:hover {
+            opacity: 1;
+        }
+    }
 }
 
-@media (min-width: 640px) {  
-  .modal {
-    &__container {
-      padding: 3rem 5rem;
+
+@media (min-width: s.$from-tiny) {
+
+    .modal {
+        &__container {
+            padding: 3rem 4.5rem;
+        }
+
+        &__buttons {
+            flex-direction: row;
+
+            &>*:not(:first-child) {
+                margin-top : 0;
+                margin-left: 1rem;
+            }
+        }
     }
-  }
 }

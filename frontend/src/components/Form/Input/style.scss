@@ -1,13 +1,13 @@
 @use 'src/styles/settings'as s;
 
 .input {
-    padding: 0.75rem 1.5rem;
-    line-height: s.$line-height;
+    padding      : 0.75rem 1.5rem;
+    line-height  : s.$line-height;
     border-radius: s.$border-radius;
-    background: #fff;
-    color: s.$txt-color-dark;
-    box-shadow: s.$shadow-small, 0 0 0 2px rgba($color: s.$primary-color-lighter, $alpha: 0) inset;
-    transition: box-shadow ease 200ms;
+    background   : #fff;
+    color        : s.$txt-color-dark;
+    box-shadow   : s.$shadow-small, 0 0 0 2px rgba($color: s.$primary-color-lighter, $alpha: 0) inset;
+    transition   : box-shadow ease 200ms;
 
     &:not(&--error):focus {
         box-shadow: s.$shadow-small, 0 0 0 2px rgba($color: s.$primary-color-lighter, $alpha: 1.0) inset;
@@ -18,23 +18,24 @@
     }
 
     &__error {
-        margin-top: .35rem;
+        margin-top  : .35rem;
         padding-left: 1.5rem;
-        font-size: .75rem;
-        text-align: left;
-        color: s.$error-color;
-        position: relative;
-        animation: 200ms ease-out slidein;
+        font-size   : .75rem;
+        text-align  : left;
+        color       : s.$error-color;
+        position    : relative;
+        animation   : 200ms ease-out slidein;
     }
 
     @keyframes slidein {
-        from { 
+        from {
             transform: translateY(-5px);
-            opacity: 0;
+            opacity  : 0;
         }
-        to { 
+
+        to {
             transform: translateY(0);
-            opacity: 1;
+            opacity  : 1;
         }
     }
 
@@ -44,26 +45,26 @@
 
     &__checkbox-label {
         display: flex;
-        cursor: pointer;
+        cursor : pointer;
     }
 
     &--checkbox {
-        position: relative;
-        width: 1.25rem;
-        height: 1.25rem;
-        padding: 0;
-        margin-right: 1rem;
+        position     : relative;
+        width        : 1.25rem;
+        height       : 1.25rem;
+        padding      : 0;
+        margin-right : 1rem;
         border-radius: .25rem;
-        
+
         &::before {
-            content: '';
-            position: absolute;
-            left: 4px;
-            top: 4px;
-            right: 4px;
-            bottom: 4px;
+            content      : '';
+            position     : absolute;
+            left         : 4px;
+            top          : 4px;
+            right        : 4px;
+            bottom       : 4px;
             border-radius: 2px;
-            transition: background-color ease-in-out 200ms;
+            transition   : background-color ease-in-out 200ms;
         }
 
         &:checked::before {
@@ -72,23 +73,23 @@
     }
 
     &__label {
-        display: block;
-        text-align: left;
-        padding: 0 0 .5rem 1.5rem;
+        display    : block;
+        text-align : left;
+        padding    : 0 0 .5rem 1.5rem;
         font-weight: s.$font-weight-medium;
 
         &--required::after {
-            content: '*';
-            display: inline-block;
+            content     : '*';
+            display     : inline-block;
             padding-left: .25rem;
         }
 
         &--optional::after {
-            content: '(optionnel)';
-            display: inline-block;
+            content     : '(optionnel)';
+            display     : inline-block;
             padding-left: .5rem;
-            font-size: .8rem;
-            color: s.$txt-color-lighter;
+            font-size   : .8rem;
+            color       : s.$txt-color-lighter;
         }
     }
 }

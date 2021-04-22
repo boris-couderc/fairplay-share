@@ -63,8 +63,9 @@ const Search = ({
             <ScrollToTop />
             <Wrapper>
                 <SearchBar />
-                <Heading el="h1" like="h2">
-                    Search
+
+                <Heading el="h1" like="h3">
+                    Prochaines activités proche de : <span className="u-color-primary">{queryString}</span>
                 </Heading>
 
                 {!activitiesLoaded ? ( 
