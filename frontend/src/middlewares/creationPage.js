@@ -10,7 +10,7 @@ import {
 
 import {
   fetchUserActivities,
-} from 'src/actions/cards';
+} from 'src/actions/activities';
 
 const creationPage = (store) => (next) => (action) => {
   switch (action.type) {

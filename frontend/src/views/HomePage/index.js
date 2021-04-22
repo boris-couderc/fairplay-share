@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 
 import View from 'src/components/View'
@@ -7,36 +7,46 @@ import Wrapper from 'src/components/Wrapper'
 import Button from 'src/components/Button'
 import Heading from 'src/components/Heading'
 import SearchBar from 'src/containers/SearchBar'
+import CardsGrid from 'src/components/CardsGrid'
+import Card from 'src/containers/Card'
+import Loader from 'src/components/Loader'
 
 import './style.scss'
 
 const HomePage = ({
     isLogged,
-    isLoadingUser,
     isCheckedLoginLocalStorage,
-    
+
     fetchLastActivities,
+    lastActivities,
+    lastActivitiesLoaded,
+    lastActivitiesIsLoading,
+
+    //fetchUserActivities,
+    userActivities,
+    userActivitiesLoaded,
+    userActivitiesIsLoading,
+    
 }) => {
+
     useEffect(() => {
         console.log('render HomePage');
-
-        console.log('test', isLogged, isCheckedLoginLocalStorage);
     })
 
     useEffect(() => {
         //paginationReset()
-        /*
+        
         if (!isLogged) {
-            fetchLastActivities()
+            if(!lastActivitiesLoaded && !lastActivitiesIsLoading) {
+                fetchLastActivities()
+            }
         }
-        */
-
+        
         if(!isLogged && isCheckedLoginLocalStorage) {
-            console.log('-------> fetchLastActivities');
+            console.log('-------> fetchUserActivities', userActivities);
         }
 
     }, [isLogged, isCheckedLoginLocalStorage])
-
 
     return (
         <View layoutClass="homepage">
@@ -44,23 +54,61 @@ const HomePage = ({
             <Wrapper>
 
                 {isLogged && (
-                    // <Heading el="h1">Homepage LOGGED</Heading>
-                    <div className="logged"></div>
+                    <div>
+                        <Heading el="h1">
+                            Hello logged
+                        </Heading>
+                    </div>
                 )}
                 
                 {!isLogged && isCheckedLoginLocalStorage && (
-                    <div className="nologged"></div>
-                    // <Heading el="h1">Homepage</Heading>
+                    <div>
+                        <Heading el="h1">
+                        Hello no logged
+                        </Heading>
+                    </div>
                 )}
 
                 <SearchBar />
 
                 {isLogged && (
-                    <div>user activities</div>
+                    <>
+                        <Heading el="h2">
+                            User activities
+                        </Heading>
+                        {/* {activitiesLoaded ? (
+                            <div>user activities</div>
+                        ) : (
+                            <div>user activities LOADING</div>
+                        )} */}
+                    </>
                 )}
                 
                 {!isLogged && isCheckedLoginLocalStorage && (
-                    <div>last activities</div>
+                    <>
+                        <Heading el="h2">
+                            Last activities
+                        </Heading>
+                        {!lastActivitiesLoaded ? (
+                            <Loader />
+                        ) : (   
+                            <>
+                                {lastActivities.length > 0 ? (
+                                    <CardsGrid>
+                                    {
+                                        lastActivities.map((activity, index) => {
+                                            return (
+                                                <Card key={`card-${activity.id}`} activity={activity}/>
+                                            )
+                                        })
+                                    }
+                                    </CardsGrid>
+                                ) : (
+                                    <div>no activities</div>
+                                )}
+                            </>
+                        )}
+                    </>
                 )}
 
             </Wrapper>
@@ -69,7 +117,18 @@ const HomePage = ({
 }
 
 HomePage.propTypes = {
-    //isLogged: PropTypes.bool.isRequired,
+    isLogged: PropTypes.bool.isRequired,
+    isCheckedLoginLocalStorage: PropTypes.bool.isRequired,
+
+    fetchLastActivities: PropTypes.func.isRequired,
+    lastActivities: PropTypes.array.isRequired,
+    lastActivitiesLoaded: PropTypes.bool.isRequired,
+    lastActivitiesIsLoading: PropTypes.bool.isRequired,
+
+    //fetchUserActivities: PropTypes.func.isRequired,
+    userActivities: PropTypes.array.isRequired,
+    userActivitiesLoaded: PropTypes.bool.isRequired,
+    userActivitiesIsLoading: PropTypes.bool.isRequired,
 }
 
 export default HomePage

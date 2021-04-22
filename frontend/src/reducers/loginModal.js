@@ -1,4 +1,4 @@
-import { SHOW_LOGIN_MODAL } from 'src/actions/cards';
+import { SHOW_LOGIN_MODAL } from 'src/actions/activities';
 import { CLOSE_MODAL } from 'src/actions/login';
 const initialState = {
   displayed: false,

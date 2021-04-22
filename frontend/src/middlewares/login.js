@@ -11,7 +11,7 @@ import {
 import {
     fetchUserActivities,
     clearUserActivities,
-} from 'src/actions/cards'
+} from 'src/actions/activities'
 
 const login = (store) => (next) => (action) => {
     switch (action.type) {

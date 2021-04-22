@@ -1,16 +1,16 @@
 import { connect } from 'react-redux';
 import Accueil from 'src/components/Accueil';
 
-import { fetchLastActivities, fetchUserActivities } from 'src/actions/cards';
+import { fetchLastActivities, fetchUserActivities } from 'src/actions/activities';
 import { paginationReset } from 'src/actions/moreResults';
 
 const mapStateToProps = (state) => ({
   isLogged: state.login.isLogged,
   user: state.login.user,
-  userActivities: state.userActivities.list,
+  userActivities: state.userActivities.activities,
   points: state.login.user.reward_count,
-  registredActivities: state.userActivities.ids.length,
-  myCreatedActivities: state.userActivities.idsCreator.length,
+  registredActivities: state.userActivities.idsParticipantRole.length,
+  myCreatedActivities: state.userActivities.idsCreatorRole.length,
   pageValue: state.moreResults.page,
   count: state.cards.count,
 });

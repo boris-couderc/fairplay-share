@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
-import { useLocation } from "react-router-dom"
+import { useLocation } from 'react-router-dom'
 
 import View from 'src/components/View'
 import ScrollToTop from 'src/components/ScrollToTop'
@@ -9,12 +9,11 @@ import Button from 'src/components/Button'
 import Heading from 'src/components/Heading'
 import SearchBar from 'src/containers/SearchBar'
 import CardsGrid from 'src/components/CardsGrid'
-//import Cards from 'src/containers/Cards'
-
+import Loader from 'src/components/Loader'
 import Card from 'src/containers/Card'
 
 import './style.scss'
-import img from 'src/assets/images/noActivities.svg';
+import img from 'src/assets/images/noActivities.svg'
 
 const useQuery = () => {
     return new URLSearchParams(useLocation().search)
@@ -24,6 +23,9 @@ const Search = ({
     activities,
     fetchActivitiesByLocalisation,
     fetchActivitiesByLocalisationAndSports,
+    activitiesLoaded,
+    activitiesIsLoading,
+
     pageValue,
     count,
     loaded,
@@ -31,11 +33,11 @@ const Search = ({
     userActivitiesCreatorIds,
     paginationReset,
 }) => {
-    const query = useQuery();
-    const queryString = query.get('query');
-    const lat = query.get('lat');
-    const lng = query.get('lng');
-    const sports = query.get('sports');
+    const query = useQuery()
+    const queryString = query.get('query')
+    const lat = query.get('lat')
+    const lng = query.get('lng')
+    const sports = query.get('sports')
 
     /*
     useEffect(() => {
@@ -45,28 +47,16 @@ const Search = ({
 
     useEffect(() => {
         if (sports) {
-          fetchActivitiesByLocalisationAndSports({ queryString, lat, lng, sports });
+            fetchActivitiesByLocalisationAndSports({
+                queryString,
+                lat,
+                lng,
+                sports,
+            })
         } else {
-          fetchActivitiesByLocalisation({ queryString, lat, lng });
+            fetchActivitiesByLocalisation({ queryString, lat, lng })
         }
-    }, [lat, lng, queryString, sports, pageValue]);
-
-    const cards = []
-    activities.forEach((activity) => {
-        if (userActivitiesCreatorIds.includes(activity.id)) {
-            cards.push(
-                <Card key={`card-${activity.id}`} activity={activity} loggedUserRole="creator"/>,
-            )
-        } else if (userActivitiesIds.includes(activity.id)) {
-            cards.push(
-                <Card key={`card-${activity.id}`} activity={activity} loggedUserRole="participant"/>,
-            )
-        } else {
-            cards.push(
-                <Card key={`card-${activity.id}`} activity={activity}/>,
-            )
-        }
-    })
+    }, [lat, lng, queryString, sports, pageValue])
 
     return (
         <View layoutClass="search">
@@ -77,29 +67,60 @@ const Search = ({
                     Search
                 </Heading>
 
-                {cards.length > 0 && (
-                    <CardsGrid>
-                        {cards}
-                    </CardsGrid>
-                )}
-                
-
-                
-                {/* 
-                // AJOUT LOADING
-                {cards.length === 0 && (
+                {!activitiesLoaded ? ( 
+                    <Loader />
+                ) : ( 
                     <>
-                    <div className="search__no-result">
-                        Désolé aucune activité trouvée{' '}
-                    </div>
-                    <img
-                        src={img}
-                        alt="pas d'activites"
-                        className="search__no-result-img"
-                    />
+                        {activities.length > 0 ? (
+                            <>
+                                <CardsGrid>
+                                    {activities.map((activity) => {
+                                        if (
+                                            userActivitiesCreatorIds.includes(activity.id)
+                                        ) {
+                                            return (
+                                                <Card
+                                                    key={`card-${activity.id}`}
+                                                    activity={activity}
+                                                    loggedUserRole="creator"
+                                                />
+                                            )
+                                        } else if (
+                                            userActivitiesIds.includes(activity.id)
+                                        ) {
+                                            return (
+                                                <Card
+                                                    key={`card-${activity.id}`}
+                                                    activity={activity}
+                                                    loggedUserRole="participant"
+                                                />
+                                            )
+                                        } else {
+                                            return (
+                                                <Card
+                                                    key={`card-${activity.id}`}
+                                                    activity={activity}
+                                                />
+                                            )
+                                        }
+                                    })}
+                                </CardsGrid>
+                                </>
+                        ) : (
+                            <>
+                                <div>no activities</div>
+                                {/* <div className="search__no-result">
+                                    Désolé aucune activité trouvée{' '}
+                                </div>
+                                <img
+                                    src={img}
+                                    alt="pas d'activites"
+                                    className="search__no-result-img"
+                                /> */}
+                            </>
+                        )}
                     </>
-                )} */}
-
+                )}
 
             </Wrapper>
         </View>
@@ -110,11 +131,15 @@ Search.propTypes = {
     activities: PropTypes.array.isRequired,
     fetchActivitiesByLocalisation: PropTypes.func.isRequired,
     fetchActivitiesByLocalisationAndSports: PropTypes.func.isRequired,
+    activitiesLoaded: PropTypes.bool.isRequired,
+    activitiesIsLoading: PropTypes.bool.isRequired,
+
     pageValue: PropTypes.number.isRequired,
     count: PropTypes.number.isRequired,
-    loaded: PropTypes.bool.isRequired,
+
     userActivitiesIds: PropTypes.array.isRequired,
     userActivitiesCreatorIds: PropTypes.array.isRequired,
+
     paginationReset: PropTypes.func.isRequired,
 }
 

@@ -1,0 +1,36 @@
+@use 'src/styles/settings'as s;
+
+.loader {
+    padding   : 3rem;
+    text-align: center;
+    opacity   : .2;
+
+    .icon {
+        position : relative;
+        animation: 1000ms infinite linear rotate;
+    }
+
+    &--small {
+        .icon {
+            max-width : 1.5rem;
+            max-height: 1.5rem;
+        }
+    }
+
+    &--big {
+        .icon {
+            max-width : 2.5rem;
+            max-height: 2.5rem;
+        }
+    }
+
+    @keyframes rotate {
+        from {
+            transform: rotate(0deg);
+        }
+
+        to {
+            transform: rotate(360deg);
+        }
+    }
+}

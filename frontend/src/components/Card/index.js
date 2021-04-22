@@ -31,12 +31,18 @@ const Card = ({ activity, loggedUserRole, isLogged, showLoginModal }) => {
                     src={sports[activity.sport.name]}
                     alt=""
                     className="card__img"
+                    width="300"
+                    height="300"
                 />
                 <Heading el="h2" like="h5">
                     {activity.title}
                 </Heading>
                 <p className="card__desc">{activity.description}</p>
                 <ul className="card__infos">
+                    <li className="card__info">
+                        <Icon name="pin" classProps="card__info-pin" />
+                        {activity.activity_place.city}
+                    </li>
                     <li className="card__info">
                         <Icon name="clock" />
                         {activity.date}
@@ -45,10 +51,6 @@ const Card = ({ activity, loggedUserRole, isLogged, showLoginModal }) => {
                                 {activity.time}
                             </span>
                         )}
-                    </li>
-                    <li className="card__info">
-                        <Icon name="pin" classProps="card__info-pin" />
-                        {activity.activity_place.city}
                     </li>
                 </ul>
                 <Button appearance={buttonAppearance} size="small">

@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import Header from 'src/components/Header'
 import { logOut } from 'src/actions/login'
-import { clearUserActivities } from 'src/actions/cards'
+import { clearUserActivities } from 'src/actions/activities'
 
 const mapStateToProps = (state) => ({
     isLogged: state.login.isLogged,

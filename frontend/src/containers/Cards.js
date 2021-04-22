@@ -5,8 +5,8 @@ const mapStateToProps = (state) => ({
   isLogged: state.login.isLogged,
   count: state.cards.count,
   activities: state.cards.activities,
-  userActivitiesIds: state.userActivities.ids,
-  userActivitiesCreatorIds: state.userActivities.idsCreator,
+  userActivitiesIds: state.userActivities.idsParticipantRole,
+  userActivitiesCreatorIds: state.userActivities.idsCreatorRole,
 });
 
 const mapDispatchToProps = (dispatch) => ({});

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import SearchBar from 'src/components/SearchBar';
-import {showLoginModal} from 'src/actions/cards';
+import {showLoginModal} from 'src/actions/activities';
 import {
   fetchPlacesAutoCompletion,
   fetchOnePlacesAutoCompletion,

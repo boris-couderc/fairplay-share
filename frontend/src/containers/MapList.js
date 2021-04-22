@@ -3,8 +3,8 @@ import MapList from 'src/components/MapList';
 
 const mapStateToProps = (state) => ({
   activities: state.search.activities,
-  userActivitiesIds: state.userActivities.ids,
-  userActivitiesCreatorIds: state.userActivities.idsCreator,
+  userActivitiesIds: state.userActivities.idsParticipantRole,
+  userActivitiesCreatorIds: state.userActivities.idsCreatorRole,
 });
 
 const mapDispatchToProps = (dispatch) => ({});

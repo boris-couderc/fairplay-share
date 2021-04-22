@@ -4,7 +4,7 @@ import { fetchDataActivity, joinActivity, quitActivity } from 'src/actions/detai
 
 const mapStateToProps = (state) => ({
   activity: state.details,
-  userActivities: state.userActivities.list,
+  userActivities: state.userActivities.activities,
 });
 
 const mapDispatchToProps = (dispatch) => ({

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Card from 'src/components/Card';
-import {showLoginModal} from 'src/actions/cards'
+import {showLoginModal} from 'src/actions/activities'
 
 const mapStateToProps = (state, ownProps) => ({
   isLogged: state.login.isLogged,

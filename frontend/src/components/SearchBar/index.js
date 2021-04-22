@@ -134,7 +134,7 @@ const SearchBar = ({
                 onClick={handleClickCreateActivity}
                 classProps="searchbar__button"
             >
-                Créer une activité
+                Organiser une activité
             </Button>
         </div>
     )
