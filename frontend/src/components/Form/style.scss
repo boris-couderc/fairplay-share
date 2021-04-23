@@ -1,10 +1,8 @@
 @use 'src/styles/settings'as s;
 
 .form {
-    margin-left  : auto;
-    margin-right : auto;
-    margin-bottom: 3rem;
-    width        : min(100%, 40rem);
+    margin: 2rem auto 3rem auto;
+    width : min(100%, 40rem);
 
     &--small {
         width: min(100%, 25rem);
@@ -15,10 +13,20 @@
     }
 
     &__cols {
+        gap: 0 2rem;
+
+        &--3-cols {
+            display              : grid;
+            grid-template-columns: 1fr 1fr;
+        }
+
         @media (min-width: s.$from-small) {
             display              : grid;
             grid-template-columns: 1fr 1fr;
-            gap                  : 2rem;
+
+            &--3-cols {
+                grid-template-columns: 1fr 11rem 11rem;
+            }
         }
     }
 

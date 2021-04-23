@@ -9,7 +9,7 @@ import { paginationReset } from 'src/actions/moreResults'
 
 const mapStateToProps = (state) => ({
     isLogged: state.login.isLogged,
-    isLoadingUser: state.login.isLoading,
+    //isLoadingUser: state.login.isLoading,
     isCheckedLoginLocalStorage: state.login.isCheckedLocalStorage,
 
     lastActivities: state.lastActivities.activities,

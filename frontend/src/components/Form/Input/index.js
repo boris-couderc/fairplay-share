@@ -15,6 +15,8 @@ const Input = ({
     register,
     required,
     errors,
+    min,
+    options,
 }) => {
 
     const classes = classNames(
@@ -57,6 +59,7 @@ const Input = ({
                 name={name}
                 placeholder={placeholder}
                 defaultValue={defaultValue}
+                min={min}
                 {...register(name, { required })}
             />
             {htmlError}
@@ -70,6 +73,7 @@ const Input = ({
                 name={name}
                 placeholder={placeholder}
                 defaultValue={defaultValue}
+                min={min}
                 {...register(name, { required })}
             />
             {htmlError}
@@ -123,12 +127,12 @@ const Input = ({
                 name={name}
                 placeholder={placeholder}
                 defaultValue={defaultValue}
-                {...register(name, { 
+                {...register(name, {
                     required,
                     pattern: {
-                        value: /[0-9]*/i,
+                        value: EMAIL_REGEX,
                         message: 'Email invalide',
-                    }
+                    },
                 })}
             />
             {htmlError}
@@ -142,14 +146,36 @@ const Input = ({
                 name={name}
                 placeholder={placeholder}
                 defaultValue={defaultValue}
-                {...register(name, { 
+                {...register(name, {
                     required,
                     pattern: {
                         value: ZIP_REGEX,
                         message: 'Code postal invalide',
-                    }
+                    },
                 })}
             />
+            {htmlError}
+        </>
+    ) : type === 'select' ? (
+        <>
+            {htmlLabel}
+            <select
+                className={classes}
+                name={name}
+                {...register(name, { required })}
+            >
+                <option value="">{placeholder}</option>
+                {options.map((option) => {
+                    return (
+                        <option
+                            key={`option${option.id}`}
+                            value={option.id}
+                        >
+                            {option.name}
+                        </option>
+                    )
+                })}
+            </select>
             {htmlError}
         </>
     ) : (
@@ -177,6 +203,8 @@ Input.propTypes = {
     register: PropTypes.func.isRequired,
     required: PropTypes.string,
     errors: PropTypes.object,
+    min: PropTypes.string,
+    options: PropTypes.array,
 }
 
 Input.defaultProps = {
@@ -186,6 +214,8 @@ Input.defaultProps = {
     defaultValue: null,
     required: null,
     errors: null,
+    min: null,
+    options: null,
 }
 
 export default Input;

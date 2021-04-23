@@ -137,6 +137,7 @@ const CreationPage = ({
             />
           </div>
         </div>
+        
         {/* <h2 className="create-form__subtitle">Information</h2> */}
         <div className="create-form__container-inner">
           <div>

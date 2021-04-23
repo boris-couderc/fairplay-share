@@ -2,17 +2,17 @@ import { connect } from 'react-redux'
 import Registration from 'src/views/Registration'
 import {
     clearRegistrationError,
-    fetchRegistrationForm,
+    sendRegistration,
 } from 'src/actions/registration'
 
 const mapStateToProps = (state) => ({
     isLogged: state.login.isLogged,
-    registrationError: state.registration.error,
+    error: state.registration.error,
 })
 
 const mapDispatchToProps = (dispatch) => ({
     onSubmitRegistrationForm: (data) => {
-        dispatch(fetchRegistrationForm(data))
+        dispatch(sendRegistration(data))
     },
     onClearRegistrationError: () => {
         dispatch(clearRegistrationError())
@@ -20,4 +20,3 @@ const mapDispatchToProps = (dispatch) => ({
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Registration)
- 

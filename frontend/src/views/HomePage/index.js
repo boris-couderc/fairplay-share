@@ -24,9 +24,8 @@ const HomePage = ({
 
     //fetchUserActivities,
     userActivities,
-    userActivitiesLoaded,
-    userActivitiesIsLoading,
-    
+    //userActivitiesLoaded,
+    //userActivitiesIsLoading,
 }) => {
 
     useEffect(() => {
@@ -41,7 +40,6 @@ const HomePage = ({
                 fetchLastActivities()
             }
         }
-        
     }, [isLogged, isCheckedLoginLocalStorage])
 
     return (
@@ -56,11 +54,10 @@ const HomePage = ({
                         </Heading>
                     </div>
                 )}
-                
                 {!isLogged && isCheckedLoginLocalStorage && (
                     <div>
                         <Heading el="h1">
-                        Hello no logged
+                            Hello no logged
                         </Heading>
                     </div>
                 )}
@@ -69,14 +66,23 @@ const HomePage = ({
 
                 {isLogged && (
                     <>
-                        <Heading el="h2">
-                            User activities
+                        <Heading el="h2" like="h3">
+                            Mes prochaines activités :
                         </Heading>
-                        {/* {activitiesLoaded ? (
-                            <div>user activities</div>
+
+                        {userActivities.length > 0 ? (
+                            <CardsGrid>
+                            {
+                                userActivities.map((activity, index) => {
+                                    return (
+                                        <Card key={`card-${activity.id}`} activity={activity}/>
+                                    )
+                                })
+                            }
+                            </CardsGrid>
                         ) : (
-                            <div>user activities LOADING</div>
-                        )} */}
+                            <div>no activities</div>
+                        )}
                     </>
                 )}
                 
@@ -123,8 +129,8 @@ HomePage.propTypes = {
 
     //fetchUserActivities: PropTypes.func.isRequired,
     userActivities: PropTypes.array.isRequired,
-    userActivitiesLoaded: PropTypes.bool.isRequired,
-    userActivitiesIsLoading: PropTypes.bool.isRequired,
+    //userActivitiesLoaded: PropTypes.bool.isRequired,
+    //userActivitiesIsLoading: PropTypes.bool.isRequired,
 }
 
 export default HomePage

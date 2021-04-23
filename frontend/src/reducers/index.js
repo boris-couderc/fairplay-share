@@ -7,7 +7,7 @@ import loginModal from './loginModal'
 import search from './search'
 import details from './details'
 import registration from './registration'
-import creationPage from './creationPage'
+import createActivity from './createActivity'
 import filter from './filter'
 import messages from './messages'
 import moreResults from './moreResults'
@@ -20,7 +20,7 @@ const globalReducer = combineReducers({
     search,
     details,
     registration,
-    creationPage,
+    createActivity,
     userActivities,
     filter,
     messages,

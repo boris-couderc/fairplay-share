@@ -1,9 +1,9 @@
-export const FETCH_REGISTRATION_FORM = 'FETCH_REGISTRATION_FORM';
+export const SEND_REGISTRATION = 'SEND_REGISTRATION';
 export const SAVE_REGISTRATION_ERROR = 'SAVE_REGISTRATION_ERROR';
 export const CLEAR_REGISTRATION_ERROR = 'CLEAR_REGISTRATION_ERROR';
 
-export const fetchRegistrationForm = (data) => ({
-    type: FETCH_REGISTRATION_FORM,
+export const sendRegistration = (data) => ({
+    type: SEND_REGISTRATION,
     data
 });
 

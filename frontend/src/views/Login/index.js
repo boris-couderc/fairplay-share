@@ -6,10 +6,10 @@ import { useForm } from 'react-hook-form'
 import View from 'src/components/View'
 import ScrollToTop from 'src/components/ScrollToTop'
 import Wrapper from 'src/components/Wrapper'
-import Button from 'src/components/Button'
 import Heading from 'src/components/Heading'
 import Form from 'src/components/Form'
 import Input from 'src/components/Form/Input'
+import Button from 'src/components/Button'
 
 import './style.scss'
 
@@ -52,8 +52,8 @@ const Login = ({
         <View layoutClass="login">
             <ScrollToTop />
             <Wrapper>
-                <Heading el="h1" like="h3">
-                    Connection
+                <Heading el="h1" like="h2">
+                    Connexion
                 </Heading>
 
                 <Form onSubmit={handleSubmit(onSubmit)} width="small">

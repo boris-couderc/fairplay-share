@@ -69,13 +69,13 @@
     }
 
     .heading {
-        margin-bottom: .5rem;
-        display: -webkit-box;
-        overflow: hidden;
-        text-overflow: ellipsis;
+        margin-bottom     : .5rem;
+        display           : -webkit-box;
+        overflow          : hidden;
+        text-overflow     : ellipsis;
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
-        word-break: break-all;
+        word-break        : break-all;
     }
 
     &__link {
@@ -98,28 +98,27 @@
     }
 
     &__desc {
-        margin-bottom: 1.5rem;
-        display: -webkit-box;
-        overflow: hidden;
-        text-overflow: ellipsis;
+        margin-bottom     : 1.5rem;
+        display           : -webkit-box;
+        overflow          : hidden;
+        text-overflow     : ellipsis;
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
-        word-break: break-all;
+        word-break        : break-all;
     }
 
     &__infos {
-        //width        : 100%;
         text-align   : left;
         margin-bottom: 1.75rem;
-        margin-right: 1rem;
+        margin-right : 1rem;
     }
 
     &__info {
-        display    : flex;
+        display              : flex;
         grid-template-columns: auto 1fr;
-        align-items: center;
-        font-weight: s.$font-weight-bold;
-        color: s.$primary-color;
+        align-items          : center;
+        font-weight          : s.$font-weight-bold;
+        color                : s.$primary-color;
 
         &:not(:first-child) {
             margin-top: .5rem;
@@ -127,8 +126,10 @@
 
         .icon {
             margin-right: .5rem;
-            width       : 1.4rem;
-            height      : 1.4rem;
+            width       : 1.6rem;
+            height      : 1.6rem;
+            color       : s.$primary-color-light;
+            opacity     : .6;
         }
 
         &-time {

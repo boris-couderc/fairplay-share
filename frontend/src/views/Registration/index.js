@@ -17,7 +17,7 @@ const Registration = ({
     isLogged,
     onClearRegistrationError,
     onSubmitRegistrationForm,
-    registrationError, 
+    error, 
 }) => {
     const [isLoading, setIsLoading] = useState(false)
 
@@ -35,7 +35,8 @@ const Registration = ({
     }
 
     useEffect(() => {
-        if (registrationError === 'mail') {
+        if (error === 'mail') {
+
             setIsLoading(false)
             setError('email', {
                 type: 'custom',
@@ -43,7 +44,9 @@ const Registration = ({
             })
             errors.email.ref.scrollIntoView({ behavior: 'smooth' })
             errors.email.ref.focus()
-        } else if (registrationError === 'pseudo') {
+            
+        } else if (error === 'pseudo') {
+
             setIsLoading(false)
             setError('pseudo', {
                 type: 'custom',
@@ -51,7 +54,9 @@ const Registration = ({
             })
             errors.pseudo.ref.scrollIntoView({ behavior: 'smooth' })
             errors.pseudo.ref.focus()
-        } else if (registrationError === 'address') {
+
+        } else if (error === 'address') {
+
             setIsLoading(false)
             setError('address', {
                 type: 'custom',
@@ -65,22 +70,20 @@ const Registration = ({
             })
             errors.address.ref.scrollIntoView({ behavior: 'smooth' })
             errors.address.ref.focus()
+
         }
-    }, [registrationError])
+    }, [error])
 
     return isLogged ? (
         <Redirect to="/" />
     ) : (
-        <View layoutClass="registration">
+        <View layoutClass="registration"> 
             <ScrollToTop />
             <Wrapper>
-                <Heading el="h1" like="h3">
+                <Heading el="h1" like="h2">
                     Inscription
                 </Heading>
-                <Form
-                    onSubmit={handleSubmit(onSubmit)}
-                    classProps="u-margin-top-2"
-                >
+                <Form onSubmit={handleSubmit(onSubmit)}>
                     <div className="form__cols">
                         <div className="form__row">
                             <Input
@@ -220,11 +223,11 @@ Registration.propTypes = {
     isLogged: PropTypes.bool.isRequired,
     onSubmitRegistrationForm: PropTypes.func.isRequired,
     onClearRegistrationError: PropTypes.func.isRequired,
-    registrationError: PropTypes.string,
+    error: PropTypes.string,
 }
 
 Registration.defaultProps = {
-    registrationError: null,
+    error: null,
 }
 
 export default Registration

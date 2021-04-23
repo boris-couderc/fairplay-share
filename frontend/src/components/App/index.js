@@ -11,13 +11,11 @@ import PropTypes from 'prop-types'
 
 //import Team from 'src/components/Team';
 import Details from 'src/containers/Details'
-import CreationPage from 'src/containers/CreationPage'
-//import Registration from 'src/containers/Registration';
 
+//import Registration from 'src/containers/Registration';
 
 import ScreenSizeHelper from 'src/components/ScreenSizeHelper'
 import UserVerification from 'src/containers/UserVerification'
-
 
 import HomePage from 'src/containers/HomePage'
 import DesignSystem from 'src/views/DesignSystem'
@@ -25,8 +23,9 @@ import Team from 'src/views/Team'
 import NotFound from 'src/views/NotFound'
 import Registration from 'src/containers/Registration'
 import Login from 'src/containers/Login'
-
 import Search from 'src/containers/Search'
+
+import CreateActivity from 'src/containers/CreateActivity'
 
 const App = () => {
 
@@ -65,7 +64,7 @@ const App = () => {
                 </Route> */}
 
                 <Route path="/creation">
-                    <CreationPage />
+                    <CreateActivity />
                 </Route>
 
                 <Route path="/equipe">
