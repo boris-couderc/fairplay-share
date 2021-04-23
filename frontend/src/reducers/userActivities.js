@@ -6,8 +6,8 @@ import {
 
 const initialState = {
     activities: [],
-    idsParticipantRole: [5, 6],
-    idsCreatorRole: [8],
+    idsParticipantRole: [],
+    idsCreatorRole: [],
     loaded: false,
     isLoading: false,
 }
@@ -18,24 +18,29 @@ const userActivities = (state = initialState, action = {}) => {
         case FETCH_USER_ACTIVITIES:
             return {
                 ...initialState,
-                isLoading: true,
+                isLoading: true, 
+                loaded: false,
             }
 
         case SAVE_USER_ACTIVITIES:
             const idsCreatorRole = []
             const idsParticipantRole = []
-            const activities = action.data.activities
-            activities.forEach((activity) => {
+            const userActivities = action.data.activities
+            userActivities.forEach((activity) => {
                 if (activity.creator_id === action.data.user.id) {
                     idsCreatorRole.push(activity.id)
+                } else {
                 }
-                idsRegistered.push(activity.id)
+                idsParticipantRole.push(activity.id)
             })
+            
             return {
                 ...state,
-                activities: [...activities],
+                activities: [...userActivities],
                 idsParticipantRole,
                 idsCreatorRole,
+                isLoading: false,
+                loaded: true,
             }
 
         case CLEAR_USER_ACTIVITIES:

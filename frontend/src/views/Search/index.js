@@ -68,7 +68,7 @@ const Search = ({
                     Prochaines activités proche de : <span className="u-color-primary">{queryString}</span>
                 </Heading>
 
-                {!activitiesLoaded ? ( 
+                {!activitiesLoaded ? (  
                     <Loader />
                 ) : ( 
                     <>

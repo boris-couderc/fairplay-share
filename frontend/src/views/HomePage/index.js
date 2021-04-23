@@ -15,6 +15,7 @@ import './style.scss'
 
 const HomePage = ({
     isLogged,
+    userId,
     isCheckedLoginLocalStorage,
 
     fetchLastActivities,
@@ -24,7 +25,7 @@ const HomePage = ({
 
     //fetchUserActivities,
     userActivities,
-    //userActivitiesLoaded,
+    userActivitiesLoaded,
     //userActivitiesIsLoading,
 }) => {
 
@@ -35,7 +36,7 @@ const HomePage = ({
     useEffect(() => {
         //paginationReset()
         
-        if (!isLogged) {
+        if (!isLogged && isCheckedLoginLocalStorage) {
             if(!lastActivitiesLoaded && !lastActivitiesIsLoading) {
                 fetchLastActivities()
             }
@@ -69,19 +70,34 @@ const HomePage = ({
                         <Heading el="h2" like="h3">
                             Mes prochaines activités :
                         </Heading>
-
-                        {userActivities.length > 0 ? (
-                            <CardsGrid>
-                            {
-                                userActivities.map((activity, index) => {
-                                    return (
-                                        <Card key={`card-${activity.id}`} activity={activity}/>
-                                    )
-                                })
-                            }
-                            </CardsGrid>
-                        ) : (
-                            <div>no activities</div>
+                        {!userActivitiesLoaded ? (
+                            <Loader />
+                        ) : (  
+                            <>
+                                {userActivities.length > 0 ? (
+                                    <CardsGrid>
+                                    {
+                                        userActivities.map((activity) => {
+                                            return activity.creator_id == userId ? (
+                                                <Card 
+                                                    key={`card-${activity.id}`} 
+                                                    activity={activity} 
+                                                    loggedUserRole="creator"
+                                                />
+                                            ) : (
+                                                <Card 
+                                                    key={`card-${activity.id}`} 
+                                                    activity={activity} 
+                                                    loggedUserRole="participant"
+                                                />
+                                            )
+                                        })
+                                    }
+                                    </CardsGrid>
+                                ) : (
+                                    <div>no activities</div>
+                                )}
+                            </>
                         )}
                     </>
                 )}
@@ -120,6 +136,7 @@ const HomePage = ({
 
 HomePage.propTypes = {
     isLogged: PropTypes.bool.isRequired,
+    userId: PropTypes.number,
     isCheckedLoginLocalStorage: PropTypes.bool.isRequired,
 
     fetchLastActivities: PropTypes.func.isRequired,
@@ -129,8 +146,12 @@ HomePage.propTypes = {
 
     //fetchUserActivities: PropTypes.func.isRequired,
     userActivities: PropTypes.array.isRequired,
-    //userActivitiesLoaded: PropTypes.bool.isRequired,
+    userActivitiesLoaded: PropTypes.bool.isRequired,
     //userActivitiesIsLoading: PropTypes.bool.isRequired,
+}
+
+HomePage.defaultProps = {
+    userId: null,
 }
 
 export default HomePage

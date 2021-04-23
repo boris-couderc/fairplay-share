@@ -138,12 +138,24 @@
             padding-left: .5rem;
             border-left : 2px solid s.$primary-color-lightest;
         }
+
+
     }
 
+    /*
     &--creator {
         .card__info {
             color: s.$secondary-color;
+
+            .icon {
+                color: s.$secondary-color-light;
+            }
+
+            &-time {
+                border-left : 2px solid s.$secondary-color-lightest;
+            }
         }
     }
+    */
 
 }

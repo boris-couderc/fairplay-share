@@ -3,22 +3,26 @@ import HomePage from 'src/views/HomePage'
 
 import {
     fetchLastActivities,
-    fetchUserActivities,
+    //fetchUserActivities,
 } from 'src/actions/activities'
 import { paginationReset } from 'src/actions/moreResults'
 
 const mapStateToProps = (state) => ({
     isLogged: state.login.isLogged,
+    userId: state.login.user.id,
     //isLoadingUser: state.login.isLoading,
     isCheckedLoginLocalStorage: state.login.isCheckedLocalStorage,
 
     lastActivities: state.lastActivities.activities,
     lastActivitiesLoaded: state.lastActivities.loaded,
     lastActivitiesIsLoading: state.lastActivities.isLoading,
-
+ 
     userActivities: state.userActivities.activities,
     userActivitiesLoaded: state.userActivities.loaded,
     userActivitiesIsLoading: state.userActivities.isLoading,
+
+    userActivitiesIds: state.userActivities.idsParticipantRole,
+    userActivitiesCreatorIds: state.userActivities.idsCreatorRole,
 
     /*
     points: state.login.user.reward_count,

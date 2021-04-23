@@ -17,8 +17,11 @@ const Card = ({ activity, loggedUserRole, isLogged, showLoginModal }) => {
         loggedUserRole === 'participant' && 'card--participant',
     )
 
+    /*
     const buttonAppearance =
         loggedUserRole === 'creator' ? 'secondary' : 'primary'
+    */
+        const buttonAppearance = 'primary'
 
     return (
         <li className={classes}>

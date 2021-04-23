@@ -9,6 +9,7 @@ import {
 } from 'src/actions/login'
 
 import {
+    saveUserActivities,
     fetchUserActivities,
     clearUserActivities,
 } from 'src/actions/activities'
@@ -27,7 +28,7 @@ const login = (store) => (next) => (action) => {
                     { withCredentials: true },
                 )
                 .then((res) => {
-                    const { user } = res.data
+                    const { user, activities } = res.data
                     localStorage.fairplayUser = JSON.stringify({
                         id: user.id,
                         firstname: user.firstname,
@@ -37,6 +38,7 @@ const login = (store) => (next) => (action) => {
                         grade: user.grade,
                     })
                     store.dispatch(saveLoggedUser(user))
+                    store.dispatch(saveUserActivities({activities, user}))
                     //store.dispatch(fetchUserActivities())
                 })
                 .catch((error) => {
@@ -49,7 +51,7 @@ const login = (store) => (next) => (action) => {
             if (localStorage.fairplayUser) {
                 const user = JSON.parse(localStorage.fairplayUser)
                 store.dispatch(saveLoggedUser(user))
-                //store.dispatch(fetchUserActivities())
+                store.dispatch(fetchUserActivities())
             }
             store.dispatch(saveCheckLocalStorageUser())
             break
