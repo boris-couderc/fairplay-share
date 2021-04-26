@@ -1,5 +1,23 @@
 @use 'src/styles/settings'as s;
 
-.view--homepage {
+.view--homepage {}
 
+
+.homepage {
+
+    &__no-result {
+        text-align: center;
+        margin-top: 1.5rem;
+    }
+    
+    &__no-result-img {
+        display: block;
+        position: relative;
+        margin: -3vw auto 0 auto;
+        width: min( 70vw, 600px);
+    }
+    
 }
+
+
+

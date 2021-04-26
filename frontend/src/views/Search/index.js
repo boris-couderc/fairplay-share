@@ -13,7 +13,8 @@ import Loader from 'src/components/Loader'
 import Card from 'src/containers/Card'
 
 import './style.scss'
-import img from 'src/assets/images/noActivities.svg'
+
+import imgNoResult from 'src/assets/images/noActivities.svg'
 
 const useQuery = () => {
     return new URLSearchParams(useLocation().search)
@@ -108,17 +109,21 @@ const Search = ({
                                 </CardsGrid>
                                 </>
                         ) : (
-                            <>
-                                <div>no activities</div>
-                                {/* <div className="search__no-result">
-                                    Désolé aucune activité trouvée{' '}
+                            <div className="search__no-result">
+                                <Heading el="p" like="h6">
+                                    Désolé aucune activité trouvée ...
+                                </Heading>
+                                <div className="u-margin-top-2">
+                                    <Button appearance="secondary" route="/creation">
+                                        Proposer une activité
+                                    </Button>
                                 </div>
                                 <img
-                                    src={img}
+                                    src={imgNoResult}
                                     alt="pas d'activites"
                                     className="search__no-result-img"
-                                /> */}
-                            </>
+                                />
+                            </div>
                         )}
                     </>
                 )}

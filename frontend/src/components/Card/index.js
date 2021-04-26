@@ -8,7 +8,7 @@ import Heading from 'src/components/Heading'
 import Button from 'src/components/Button'
 import Icon from 'src/components/Icon'
 import CardLink from './CardLink'
-import sports from './sports'
+import sports from 'src/assets/sports/sports'
 
 const Card = ({ activity, loggedUserRole, isLogged, showLoginModal }) => {
     const classes = classNames(

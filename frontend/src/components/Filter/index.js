@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation } from "react-router-dom";
 import PropTypes from 'prop-types';
-import { useHistory } from "react-router-dom";
+import { useLocation, useHistory } from "react-router-dom";
+
+import sports from 'src/components/Card/sports';
 
 import './style.scss';
-
-import sports from '../Card/sports';
 
 const useQuery = () => {
   return new URLSearchParams(useLocation().search);

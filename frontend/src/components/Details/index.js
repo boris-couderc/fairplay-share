@@ -12,7 +12,7 @@ import Messages from 'src/containers/Messages';
 import './style.scss';
 import userIcon from 'src/assets/icons/account_circle.svg';
 import pin from 'src/assets/icons/pin.svg';
-import sports from 'src/components/Card/sports';
+//import sports from 'src/components/Card/sports';
 
 const Map = ReactMapboxGl({
   accessToken:

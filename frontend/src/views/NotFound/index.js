@@ -15,7 +15,7 @@ const NotFound = () => {
             <ScrollToTop />
             <Wrapper>
                 <Heading el="h1">Oups !</Heading>
-                <Heading el="p" like="h4">
+                <Heading el="h2" like="h4">
                     Désolé mais ce lien est introuvable !
                 </Heading>
                 <p>

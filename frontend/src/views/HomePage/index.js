@@ -13,6 +13,8 @@ import Loader from 'src/components/Loader'
 
 import './style.scss'
 
+import imgNoResult from 'src/assets/images/noActivities.svg'
+
 const HomePage = ({
     isLogged,
     userId,
@@ -67,35 +69,49 @@ const HomePage = ({
 
                 {isLogged && (
                     <>
-                        <Heading el="h2" like="h3">
-                            Mes prochaines activités :
-                        </Heading>
                         {!userActivitiesLoaded ? (
                             <Loader />
                         ) : (  
                             <>
                                 {userActivities.length > 0 ? (
-                                    <CardsGrid>
-                                    {
-                                        userActivities.map((activity) => {
-                                            return activity.creator_id == userId ? (
-                                                <Card 
-                                                    key={`card-${activity.id}`} 
-                                                    activity={activity} 
-                                                    loggedUserRole="creator"
-                                                />
-                                            ) : (
-                                                <Card 
-                                                    key={`card-${activity.id}`} 
-                                                    activity={activity} 
-                                                    loggedUserRole="participant"
-                                                />
-                                            )
-                                        })
-                                    }
-                                    </CardsGrid>
+                                    <>
+                                        <Heading el="h2" like="h3">
+                                            Mes prochaines activités :
+                                        </Heading>
+                                        <CardsGrid>
+                                        {
+                                            userActivities.map((activity) => {
+                                                return activity.creator_id == userId ? (
+                                                    <Card 
+                                                        key={`card-${activity.id}`} 
+                                                        activity={activity} 
+                                                        loggedUserRole="creator"
+                                                    />
+                                                ) : (
+                                                    <Card 
+                                                        key={`card-${activity.id}`} 
+                                                        activity={activity} 
+                                                        loggedUserRole="participant"
+                                                    />
+                                                )
+                                            })
+                                        }
+                                        </CardsGrid>
+                                    </>
                                 ) : (
-                                    <div>no activities</div>
+                                    <div className="homepage__no-result">
+                                        <Heading el="h2" like="h3">
+                                            Encore inscris à aucune activité ?
+                                        </Heading>
+                                        <Heading el="p" like="h6">
+                                            Crées en une ou inscris toi vite !
+                                        </Heading>
+                                        <img
+                                            src={imgNoResult}
+                                            alt="pas d'activites"
+                                            className="homepage__no-result-img"
+                                        />
+                                    </div>
                                 )}
                             </>
                         )}
@@ -104,31 +120,47 @@ const HomePage = ({
                 
                 {!isLogged && isCheckedLoginLocalStorage && (
                     <>
-                        <Heading el="h2" like="h3">
-                            Explorez les dernières activités proposées :
-                        </Heading>
                         {!lastActivitiesLoaded ? (
                             <Loader />
                         ) : (   
                             <>
                                 {lastActivities.length > 0 ? (
-                                    <CardsGrid>
-                                    {
-                                        lastActivities.map((activity, index) => {
-                                            return (
-                                                <Card key={`card-${activity.id}`} activity={activity}/>
-                                            )
-                                        })
-                                    }
-                                    </CardsGrid>
+                                    <>
+                                        <Heading el="h2" like="h3">
+                                            Explorez les dernières activités proposées :
+                                        </Heading>
+                                        <CardsGrid>
+                                        {
+                                            lastActivities.map((activity, index) => {
+                                                return (
+                                                    <Card key={`card-${activity.id}`} activity={activity}/>
+                                                )
+                                            })
+                                        }
+                                        </CardsGrid>
+                                    </>
                                 ) : (
-                                    <div>no activities</div>
+                                    <div className="homepage__no-result">
+                                        <Heading el="h2" like="h4">
+                                            Désolé aucune activité trouvée ...
+                                        </Heading>
+                                        <div className="u-margin-top-2">
+                                            <Button appearance="secondary" route="/creation">
+                                                Proposer une activité
+                                            </Button>
+                                        </div>
+                                        <img
+                                            src={imgNoResult}
+                                            alt="pas d'activites"
+                                            className="homepage__no-result-img"
+                                        />
+                                    </div>
                                 )}
                             </>
                         )}
                     </>
                 )}
-
+                
             </Wrapper>
         </View>
     )
