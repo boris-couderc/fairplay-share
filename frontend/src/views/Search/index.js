@@ -27,13 +27,16 @@ const Search = ({
     fetchActivitiesByLocalisationAndSports,
     activitiesLoaded,
     activitiesIsLoading,
-
+ 
     pageValue,
     count,
     loaded,
     userActivitiesIds,
     userActivitiesCreatorIds,
     paginationReset,
+
+    clearSearchedActivities,
+    changeInputValueSearchBar,
 }) => {
     const query = useQuery()
     const queryString = query.get('query')
@@ -46,6 +49,13 @@ const Search = ({
         paginationReset();
     }, []);
     */
+
+    useEffect(() => {
+        return () => {
+            clearSearchedActivities();
+            changeInputValueSearchBar('');
+        }
+    }, [])
 
     useEffect(() => {
         if (sports) {
@@ -73,7 +83,7 @@ const Search = ({
                 <Filter />
 
                 {!activitiesLoaded ? (  
-                    <Loader />
+                    <Loader classProps="loader--p3" />
                 ) : ( 
                     <>
                         {activities.length > 0 ? (
@@ -149,6 +159,8 @@ Search.propTypes = {
     userActivitiesCreatorIds: PropTypes.array.isRequired,
 
     paginationReset: PropTypes.func.isRequired,
+
+    clearSearchedActivities: PropTypes.func.isRequired,
 }
 
 export default Search

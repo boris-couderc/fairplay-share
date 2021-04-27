@@ -1,7 +1,6 @@
 @use 'src/styles/settings'as s;
 
 .loader {
-    padding   : 3rem;
     text-align: center;
     opacity   : .2;
 
@@ -22,6 +21,10 @@
             max-width : 2.5rem;
             max-height: 2.5rem;
         }
+    }
+
+    &--p3 {
+        padding: 3rem;
     }
 
     @keyframes rotate {

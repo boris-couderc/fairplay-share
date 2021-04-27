@@ -16,6 +16,7 @@ const Filter = ({
     activitiesIsLoading,
     fetchFilterSportsByLocalisation,
     sportsList,
+    clearFilter,
 }) => {
     const [sportsFilter, setSportsFilter] = useState([])
 
@@ -30,6 +31,13 @@ const Filter = ({
     }
 
     useEffect(() => {
+        return () => {
+            clearFilter()
+        } 
+    }, [])
+
+    useEffect(() => {
+        clearFilter()
         fetchFilterSportsByLocalisation({ lat, lng })
     }, [lat, lng])
 
@@ -46,7 +54,7 @@ const Filter = ({
                 return updatedSport
             }),
         )
-    }, [sportsList])
+    }, [sportsList, querySports])
 
     const handleCheck = (index) => {
         const updatedSport = [...sportsFilter]
@@ -126,16 +134,16 @@ const Filter = ({
                         >
                             Filtrer
                         </Button>
-                        {querySports && querySports.length > 0 && (
-                            <Button
-                                appearance="outline"
-                                size="small"
-                                onClick={handleClearFilter}
-                                icon="clear"
-                            >
-                                Supprimer
-                            </Button>
-                        )}
+                        <Button
+                            appearance="outline"
+                            size="small"
+                            onClick={handleClearFilter}
+                            icon="clear"
+                            //{querySports && querySports.length > 0 &&  disabled={true} }
+                            disabled={!querySports}
+                        >
+                            Supprimer
+                        </Button>
                     </div>
                 </div>
             )}
@@ -146,6 +154,7 @@ const Filter = ({
 Filter.propTypes = {
     fetchFilterSports: PropTypes.func.isRequired,
     sportsList: PropTypes.array.isRequired,
+    clearFilter: PropTypes.func.isRequired,
 }
 
 export default Filter

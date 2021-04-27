@@ -12,7 +12,6 @@ const loginModal = (state = initialState, action = {}) => {
             return { ...state, isDisplayed: true }
 
         case CLOSE_MODAL:
-            console.log('CLOSE_MODAL')
             return { ...state, isDisplayed: false }
 
         default:

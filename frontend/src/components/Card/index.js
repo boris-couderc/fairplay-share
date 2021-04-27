@@ -5,7 +5,7 @@ import classNames from 'classnames'
 import './style.scss'
 
 import Heading from 'src/components/Heading'
-import Button from 'src/components/Button'
+//import Button from 'src/components/Button'
 import Icon from 'src/components/Icon'
 import CardLink from './CardLink'
 import sports from 'src/assets/sports/sports'

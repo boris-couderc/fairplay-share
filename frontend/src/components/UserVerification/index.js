@@ -1,15 +1,10 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-const UserVerification = ({ isLogged, isLoadingUser, checkLocalStorageUser, isCheckedLoginLocalStorage }) => {
-
-    useEffect(() => {
-        console.log('render UserVerification')
-    })
+const UserVerification = ({ isLogged, checkLocalStorageUser, isCheckedLoginLocalStorage }) => {
 
     useEffect(() => {
         if(!isLogged && !isCheckedLoginLocalStorage) {
-            console.log('checkLocalStorageUser')
             checkLocalStorageUser()
         }
     }, [])
@@ -18,7 +13,9 @@ const UserVerification = ({ isLogged, isLoadingUser, checkLocalStorageUser, isCh
 };
 
 UserVerification.propTypes = {
-  
+    isLogged: PropTypes.bool.isRequired,
+    checkLocalStorageUser: PropTypes.func.isRequired,
+    isCheckedLoginLocalStorage: PropTypes.bool.isRequired,
 };
 
 export default UserVerification;

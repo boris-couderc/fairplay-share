@@ -4,9 +4,12 @@ import Search from 'src/views/Search'
 import {
     fetchActivitiesByLocalisation,
     fetchActivitiesByLocalisationAndSports,
+    clearSearchedActivities,
 } from 'src/actions/search'
 
 import { paginationReset } from 'src/actions/moreResults'
+
+import { changeInputValueSearchBar } from 'src/actions/searchBar'
 
 const mapStateToProps = (state) => ({
     activities: state.search.activities,
@@ -28,6 +31,15 @@ const mapDispatchToProps = (dispatch) => ({
     fetchActivitiesByLocalisationAndSports: (query) => {
         dispatch(fetchActivitiesByLocalisationAndSports(query))
     },
+    clearSearchedActivities: () => {
+        dispatch(clearSearchedActivities())
+    },
+
+    
+    changeInputValueSearchBar: () => {
+        dispatch(changeInputValueSearchBar())
+    },
+
 
     paginationReset: () => {
         dispatch(paginationReset())

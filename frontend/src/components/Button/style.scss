@@ -33,6 +33,17 @@
         transform: scale(1);
     }
 
+    &:disabled, 
+    &--disabled {
+        pointer-events: none;
+        // opacity: .9;
+        &::before,
+        .button__label,
+        .button__icon {
+            opacity: .5;
+        }
+    }
+
     /*
     &+& {
         margin-left: .5rem;

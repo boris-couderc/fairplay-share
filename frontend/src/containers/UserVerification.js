@@ -4,7 +4,6 @@ import { checkLocalStorageUser } from 'src/actions/login'
 
 const mapStateToProps = (state) => ({
     isLogged: state.login.isLogged,
-    isLoadingUser: state.login.isLoading,
     isCheckedLoginLocalStorage: state.login.isCheckedLocalStorage,
 });
 

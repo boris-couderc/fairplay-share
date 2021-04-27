@@ -222,14 +222,14 @@ const activityController = {
                         association: 'creator',
                         attributes: ['pseudo'],
                     },
+                    /*
                     {
                         association: 'activity_place',
-                        /*
-            attributes: {
-              include: [[sequelize.literal(distanceCalculSQL(lat, lng)), 'distance']],
-            },
-            */
+                        attributes: {
+                        include: [[sequelize.literal(distanceCalculSQL(lat, lng)), 'distance']],
+                        },
                     },
+                    */
                 ],
                 where: {
                     [Op.and]: [
@@ -265,11 +265,11 @@ const activityController = {
 
             //formatedaActivities = formatActivitiesFilterByDistance(activities, activityController.defaultLimitDistance);
             /*
-      if(formatedaActivities.length < 1) {
-        res.status(204).json("Error : can't find Activity");
-        return;
-      }
-      */
+            if(formatedaActivities.length < 1) {
+                res.status(204).json("Error : can't find Activity");
+                return;
+            }
+            */
             formatedaActivities = formatActivities(activities.rows)
             res.json({
                 activities: formatedaActivities,
@@ -305,19 +305,34 @@ const activityController = {
         try {
             const activities = await Activity.findAndCountAll({
                 include: [
-                    'activity_statut',
-                    'creator',
-                    'sport',
+                    {
+                        association: 'sport',
+                        attributes: ['name', 'icon'],
+                    },
+                    {
+                        association: 'activity_statut',
+                        attributes: {
+                            exclude: ['id'],
+                        },
+                    },
                     {
                         association: 'activity_place',
                         attributes: ['city', 'lat', 'lng'],
-                        /*
-            attributes: {
-              include: [[sequelize.literal(distanceCalculSQL(lat, lng)), 'distance']],
-            },
-            */
                     },
+                    {
+                        association: 'creator',
+                        attributes: ['pseudo'],
+                    },
+                    /*
+                    {
+                        association: 'activity_place',
+                        attributes: {
+                        include: [[sequelize.literal(distanceCalculSQL(lat, lng)), 'distance']],
+                        },
+                    },
+                    */
                 ],
+
                 where: {
                     [Op.and]: [
                         sequelize.where(

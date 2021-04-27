@@ -175,6 +175,28 @@ const DesignSystem = (props) => {
                 <Button appearance="" size="big" route="/" loading={true}>
                     test
                 </Button>
+                <br />
+
+                <Button appearance="primary-outline" route="/" loading={true} disabled={true}>
+                    test
+                </Button>
+                <Button appearance="secondary-outline" route="/" loading={true} disabled={true}>
+                    test
+                </Button>
+                <Button appearance="primary" size="big" icon="account" disabled={true}>
+                    test avec icon
+                </Button>
+                <Button appearance="primary-outline" size="big" disabled={true}>
+                    test
+                </Button>
+                <br />
+                <Button appearance="secondary" disabled={true}>test</Button>
+                <Button appearance="secondary-outline" icon="pin" disabled={true}>
+                    test
+                </Button>
+                <Button appearance="" icon="account" disabled={true}>
+                    test
+                </Button>
                 </div>
                 
                 <Heading el="h2">Icons</Heading>

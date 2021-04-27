@@ -3,7 +3,8 @@ import Filter from 'src/components/Filter';
 
 import {
     fetchFilterSports,
-    fetchFilterSportsByLocalisation
+    fetchFilterSportsByLocalisation,
+    clearFilter,
 } from 'src/actions/filter';
 
 const mapStateToProps = (state) => ({
@@ -17,6 +18,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   fetchFilterSportsByLocalisation: (query) => {
     dispatch(fetchFilterSportsByLocalisation(query));
+  },
+  clearFilter: () => {
+    dispatch(clearFilter());
   },
 });
 

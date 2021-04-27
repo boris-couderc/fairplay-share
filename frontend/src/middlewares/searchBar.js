@@ -58,6 +58,7 @@ const searchBar = (store) => (next) => (action) => {
                         console.log('error', error)
                     })
             }
+            next(action)
             break
 
         case FETCH_ONE_PLACES_AUTOCOMPLETION:
@@ -103,6 +104,7 @@ const searchBar = (store) => (next) => (action) => {
                 // console.log('RESULTAT POUR RECHERCHE  2 ----->>>', inputValue)
                 store.dispatch(confirmValidLocalisation())
             }
+            next(action)
             break
 
         default:

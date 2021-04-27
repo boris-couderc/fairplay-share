@@ -1,19 +1,23 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import PropTypes from 'prop-types'
-import { useHistory } from 'react-router-dom'
+import { useHistory, useLocation } from 'react-router-dom'
 
 import Button from 'src/components/Button'
 import Autocomplete from './Autocomplete'
+import Loader from 'src/components/Loader'
+import Icon from 'src/components/Icon'
 
 import './style.scss'
 
-////////////////
-// VOIR : https://www.robinwieruch.de/react-hooks-fetch-data
+const useQuery = () => {
+    return new URLSearchParams(useLocation().search)
+}
 
-// == Composant
 const SearchBar = ({
+    isLogged,
     inputValue,
     changeValue,
+    isFetchingLocalisation,
     fetchPlacesAutoCompletion,
     fetchOnePlacesAutoCompletion,
     listAutocompleteData,
@@ -24,23 +28,33 @@ const SearchBar = ({
     searchQueryInProcess,
     changeSearchQueryInProcessStatut,
     showLoginModal,
-    isLogged,
 }) => {
+    const query = useQuery()
+    const queryString = query.get('query')
+    const history = useHistory()
     const timer = useRef(null)
     const placeInput = useRef(null)
-    const history = useHistory()
+
+    const [geolocationAvailable, setGeolocationAvailable] = useState(false)
 
     useEffect(() => {
-        console.log('render SearchBar');
-    })
-
-    useEffect(() => {
+        if ('geolocation' in navigator) {
+            setGeolocationAvailable(true)
+        } else {
+            setGeolocationAvailable(false)
+        }
         return () => {
             changeValue('')
             clearListAutocompleteData()
             clearTimeout(timer.current)
         }
     }, [])
+
+    useEffect(() => {
+        if(queryString) {
+            changeValue(queryString)
+        }
+    }, [queryString])
 
     useEffect(() => {
         // verification que la recherche vient bien d'être lancée après la verification des coordonnées grace à l'api positionstack
@@ -95,28 +109,57 @@ const SearchBar = ({
         }
     }
 
+    const handleGetGps = (e) => {
+        console.log('handleGetGps');
+        e.preventDefault()
+        const geolocalisationSuccess = (pos) => {
+            changeValue('ma position')
+            clearTimeout(timer.current)
+            clearListAutocompleteData()
+            history.push(`/search?lat=${pos.coords.latitude}&lng=${pos.coords.longitude}&query=ma%20position`)
+        }
+        navigator.geolocation.getCurrentPosition(geolocalisationSuccess)
+    }
+
     return (
         <div className="searchbar">
             <form onSubmit={handleOnSubmit} className="searchbar__container">
                 {errorLocalisation && (
                     <div className="searchbar__error">
+                        <Icon
+                            name="pin-off"
+                            classProps="searchbar__error-icon"
+                        />
                         Localisation non trouvée, veuillez réessayer
                     </div>
                 )}
                 <div className="searchbar__search">
-                    <input
-                        className="input searchbar__input"
-                        type="text"
-                        placeholder="Rehercher un lieu ..."
-                        value={inputValue}
-                        onChange={handleOnChange}
-                        ref={placeInput}
-                    />
+                    <div className="searchbar__input-loader">
+                        {isFetchingLocalisation && (
+                            <Loader classProps="searchbar__loader" />
+                        )}
+                        {!isFetchingLocalisation && geolocationAvailable && (
+                            <div
+                                className="searchbar__gps"
+                                onClick={handleGetGps}
+                            >
+                                <Icon name="gps" />
+                            </div>
+                        )}
+                        <input
+                            className="input searchbar__input"
+                            type="text"
+                            placeholder="Rehercher un lieu ..."
+                            value={inputValue}
+                            onChange={handleOnChange}
+                            ref={placeInput}
+                        />
+                    </div>
                     <Button
                         type="submit"
                         appearance="primary"
                         size="big"
-                        classProps="searchbar__search-button"
+                        classProps="searchbar__search-button button--no-focus"
                     >
                         Rechercher
                     </Button>
@@ -143,6 +186,7 @@ const SearchBar = ({
 SearchBar.propTypes = {
     inputValue: PropTypes.string,
     changeValue: PropTypes.func.isRequired,
+    isFetchingLocalisation: PropTypes.bool.isRequired,
     fetchPlacesAutoCompletion: PropTypes.func.isRequired,
     fetchOnePlacesAutoCompletion: PropTypes.func.isRequired,
     listAutocompleteData: PropTypes.array.isRequired,

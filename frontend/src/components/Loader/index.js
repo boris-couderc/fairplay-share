@@ -6,8 +6,12 @@ import Icon from 'src/components/Icon'
 
 import './style.scss'
 
-const Loader = ({ size }) => {
-    const classes = classNames('loader', size && `loader--${size}`)
+const Loader = ({ size, classProps }) => {
+    const classes = classNames(
+        'loader', 
+        size && `loader--${size}`,
+        classProps && `${classProps}`,
+    )
 
     return (
         <div className={classes}>
@@ -18,10 +22,12 @@ const Loader = ({ size }) => {
 
 Loader.propTypes = {
     size: PropTypes.string,
+    classProps: PropTypes.string,
 }
 
 Loader.defaultProps = {
-    size: '',
+    size: null,
+    classProps: null,
 }
 
 export default Loader

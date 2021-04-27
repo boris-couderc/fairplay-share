@@ -29,10 +29,6 @@ import CreateActivity from 'src/containers/CreateActivity'
 
 const App = () => {
 
-    useEffect(() => {
-        console.log('render APP')
-    })
-
     return (
         <>
             <UserVerification />

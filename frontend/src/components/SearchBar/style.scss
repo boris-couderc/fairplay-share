@@ -37,6 +37,19 @@
         }
     }
 
+    &__input-loader {
+        position: relative;
+    }
+
+    &__loader {
+        position  : absolute;
+        z-index   : 2;
+        right     : .75rem;
+        top       : .75rem;
+        max-width : 1.5rem;
+        max-height: 1.5rem;
+    }
+
     &__search {
         display              : grid;
         position             : relative;
@@ -46,6 +59,7 @@
     & &__input {
         position           : relative;
         width              : calc(100% + 50px);
+        height             : 100%;
         padding-left       : 3.5rem;
         border-radius      : 100em;
         border-top         : 1px solid rgba(0, 0, 0, 0.1);
@@ -58,6 +72,27 @@
 
         &:focus {
             background-position: left 1rem top .625rem;
+        }
+    }
+
+    &__gps {
+        position  : absolute;
+        z-index   : 2;
+        right     : .6rem;
+        top       : 1rem;
+        cursor    : pointer;
+
+        color     : s.$dark-color-lighter;
+        opacity   : .6;
+        transition: opacity ease 100ms;
+
+        &:hover {
+            opacity: 1;
+        }
+        
+        .icon {
+            max-width : 1.675rem;
+            max-height: 1.675rem;
         }
     }
 
@@ -121,5 +156,12 @@
         position     : relative;
 
         @include s.animation-slide-up();
+    }
+
+    &__error-icon {
+        max-width: 1.5rem;
+        max-height: 1.5rem;
+        margin-right: .5rem;
+        opacity: .8;
     }
 }

@@ -32,10 +32,6 @@ const HomePage = ({
 }) => {
 
     useEffect(() => {
-        console.log('render HomePage');
-    })
-
-    useEffect(() => {
         //paginationReset()
         
         if (!isLogged && isCheckedLoginLocalStorage) {
@@ -70,7 +66,7 @@ const HomePage = ({
                 {isLogged && (
                     <>
                         {!userActivitiesLoaded ? (
-                            <Loader />
+                            <Loader classProps="loader--p3" />
                         ) : (  
                             <>
                                 {userActivities.length > 0 ? (
@@ -121,7 +117,7 @@ const HomePage = ({
                 {!isLogged && isCheckedLoginLocalStorage && (
                     <>
                         {!lastActivitiesLoaded ? (
-                            <Loader />
+                            <Loader classProps="loader--p3" />
                         ) : (   
                             <>
                                 {lastActivities.length > 0 ? (
