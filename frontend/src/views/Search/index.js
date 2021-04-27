@@ -8,6 +8,7 @@ import Wrapper from 'src/components/Wrapper'
 import Button from 'src/components/Button'
 import Heading from 'src/components/Heading'
 import SearchBar from 'src/containers/SearchBar'
+import Filter from 'src/containers/Filter';
 import CardsGrid from 'src/components/CardsGrid'
 import Loader from 'src/components/Loader'
 import Card from 'src/containers/Card'
@@ -68,6 +69,8 @@ const Search = ({
                 <Heading el="h1" like="h3">
                     Prochaines activités proche de : <span className="u-color-primary">{queryString}</span>
                 </Heading>
+
+                <Filter />
 
                 {!activitiesLoaded ? (  
                     <Loader />

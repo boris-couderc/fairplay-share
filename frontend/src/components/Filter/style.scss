@@ -1,59 +1,98 @@
-@use 'src/styles/settings' as s;
+@use 'src/styles/settings'as s;
 
 .filter {
-  margin: 1rem 0 2rem 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  max-width: s.$container-width;
-  flex-wrap: wrap;
+    margin: 2rem 0 4rem 0;
 
-  &__item {
-    //border: 1px solid grey;
-    margin: 10px 10px;
-    display: grid;
-    grid-template-columns: 1fr;
-    justify-items: center;
-  }
+    &__items {
+        display: flex;
 
-  &__picture {
-    width: 80px;
-    height: 80px;
-    margin-bottom: 0.5rem;
-  }
-
-  &__item-txt {
-    text-align: center;
-    font-size: 0.9em;
-  }
-
-  &__label {
-    border: 2px solid rgba(0,0,0,.1);
-    border-radius: 20px;
-    padding: 10px;
-  }
-
-  &__checkbox {
-    position: absolute;
-    opacity: 0; 
-    &:checked ~ * {
-      border: 2px solid s.$primary-color;
+        display        : flex;
+        justify-content: center;
+        align-items    : center;
+        width          : 100%;
+        flex-wrap      : wrap;
     }
-  }
 
-  &__actions {
-    width: 100%;
-    text-align: center;
-  }
+    &__item {
+        margin               : .375rem;
+        display              : grid;
+        grid-template-columns: 1fr;
+        justify-items        : center;
+    }
 
-  &__button {
-    padding: 12px 35px;
-    margin: 10px s.$padding;
-    background: s.$primary-color;
-    border: none;
-    color: #fff;
-    border-radius: 40px;
-    font-size: 1.05rem;
-  }
+    &__img {
+        width        : 5rem;
+        height       : 5rem;
+        margin-bottom: 0.5rem;
+        transition   : transform ease 300ms;
+    }
+
+    &__item-txt {
+        text-align : center;
+        font-size  : 0.85em;
+        font-family: s.$font-family-heading;
+    }
+
+    &__label {
+        position: relative;
+
+        padding: .75rem .625rem;
+        cursor : pointer;
+
+        &::before {
+            content      : '';
+            position     : absolute;
+            left         : 0;
+            top          : 0;
+            right        : 0;
+            bottom       : 0;
+            border-radius: 1rem;
+            transform    : scale(1) translateY(0);
+            border       : 2px solid rgba(0, 0, 0, .1);
+            transition   : border ease 200ms, transform ease 200ms;
+        }
+
+        &:hover {
+            .filter__img {
+                transform: translateY(-2px);
+            }
+
+            &::before {
+                transform: scale(1.05) translateY(-2px);
+                border   : 2px solid s.$primary-color-lighter;
+            }
+        }
+    }
+
+    &__checkbox {
+        position: absolute;
+        opacity : 0;
+
+        &:checked~* {
+            &::before {
+                transform: scale(1.05) translateY(-2px);
+                border   : 2px solid s.$primary-color-light;
+            }
+        }
+    }
+
+    &__actions {
+        width     : 100%;
+        text-align: center;
+        margin-top: 1rem;
+
+        &>*:not(:first-child) {
+            margin-left: .5rem;
+        }
+    }
+
+    &__button {
+        padding      : 12px 35px;
+        margin       : 10px s.$padding;
+        background   : s.$primary-color;
+        border       : none;
+        color        : #fff;
+        border-radius: 40px;
+        font-size    : 1.05rem;
+    }
 }

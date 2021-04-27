@@ -25,9 +25,13 @@
         transition   : transform 150ms s.$Power3EaseInOut;
     }
 
-    &:hover::after,
-    &:focus::after {
+    &:focus::after,
+    &:hover::after {
         transform: scale(1.075, 1.1);
+    }
+
+    &--no-focus:focus::after {
+        transform: scale(1);
     }
 
     /*
@@ -142,7 +146,7 @@
 
         &::after {
             box-shadow      : 0 0 0 2px rgba($color: s.$dark-color, $alpha: 0.085) inset;
-            background-color: rgba($color: s.$dark-color-lightest, $alpha: .8);
+            background-color: rgba($color: s.$dark-color-lightest, $alpha: .6);
         }
 
         &.button--loading {

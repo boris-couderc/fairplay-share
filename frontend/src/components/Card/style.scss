@@ -40,13 +40,13 @@
 
     &--participant {
         &::after {
-            border: 2px solid s.$primary-color-lighter;
+           border-top: 2px solid s.$primary-color-lighter;
         }
     }
 
     &--creator {
         &::after {
-            border: 2px solid s.$secondary-color-lighter;
+           border-top: 2px solid s.$secondary-color-lighter;
         }
 
         &::before {
@@ -109,7 +109,7 @@
 
     &__infos {
         text-align   : left;
-        margin-bottom: 1.75rem;
+        margin-bottom: .5rem;
         margin-right : 1rem;
     }
 
@@ -128,8 +128,7 @@
             margin-right: .5rem;
             width       : 1.6rem;
             height      : 1.6rem;
-            color       : s.$primary-color-light;
-            opacity     : .6;
+            color       : s.$primary-color;
         }
 
         &-time {
@@ -138,17 +137,14 @@
             padding-left: .5rem;
             border-left : 2px solid s.$primary-color-lightest;
         }
-
-
     }
 
-    /*
     &--creator {
         .card__info {
             color: s.$secondary-color;
 
             .icon {
-                color: s.$secondary-color-light;
+                color: s.$secondary-color;
             }
 
             &-time {
@@ -156,6 +152,4 @@
             }
         }
     }
-    */
-
 }

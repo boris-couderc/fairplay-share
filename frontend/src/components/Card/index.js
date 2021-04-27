@@ -17,12 +17,6 @@ const Card = ({ activity, loggedUserRole, isLogged, showLoginModal }) => {
         loggedUserRole === 'participant' && 'card--participant',
     )
 
-    /*
-    const buttonAppearance =
-        loggedUserRole === 'creator' ? 'secondary' : 'primary'
-    */
-        const buttonAppearance = 'primary'
-
     return (
         <li className={classes}>
             <CardLink
@@ -39,7 +33,6 @@ const Card = ({ activity, loggedUserRole, isLogged, showLoginModal }) => {
                 />
                 <Heading el="h2" like="h5">
                     {activity.title}
-                    {/* dflmsdkflmsk flmskfsglmsd kgmsldk gmdfklgmdlfkghmlk */}
                 </Heading>
                 <p className="card__desc">{activity.description}</p>
                 <ul className="card__infos">
@@ -57,9 +50,9 @@ const Card = ({ activity, loggedUserRole, isLogged, showLoginModal }) => {
                         )}
                     </li>
                 </ul>
-                <Button appearance={buttonAppearance} size="small">
+                {/* <Button appearance="outline" size="small">
                     Voir les détails
-                </Button>
+                </Button> */}
             </CardLink>
         </li>
     )
