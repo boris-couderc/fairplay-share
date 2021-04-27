@@ -11,7 +11,7 @@ const { distanceCalculSQL } = require('../selectors/distanceCalculSQL')
 const {
     formatActivities,
     formatActivity,
-    formatActivitiesFilterByDistance,
+    //formatActivitiesFilterByDistance,
 } = require('../selectors/formatActivities')
 const { formatDate, formatTime } = require('../selectors/formatDate')
 
@@ -200,7 +200,6 @@ const activityController = {
         try {
             const activities = await Activity.findAndCountAll({
                 attributes: {
-                    // exclude: ['activity_status_id','activity_place_id','sport_id','creator_id']
                     exclude: ['activity_place_id', 'sport_id', 'creator_id'],
                 },
                 include: [
@@ -209,27 +208,24 @@ const activityController = {
                         attributes: ['name', 'icon'],
                     },
                     {
-                        association: 'activity_statut',
-                        attributes: {
-                            exclude: ['id'],
-                        },
-                    },
-                    {
-                        association: 'activity_place',
-                        attributes: ['city', 'lat', 'lng'],
-                    },
-                    {
                         association: 'creator',
                         attributes: ['pseudo'],
                     },
-                    /*
                     {
                         association: 'activity_place',
                         attributes: {
-                        include: [[sequelize.literal(distanceCalculSQL(lat, lng)), 'distance']],
+                            include: [[sequelize.literal(distanceCalculSQL(lat, lng)), 'distance']],
+                            exclude: [
+                                'id',
+                                'google_place_key',
+                                'department',
+                                'indoor',
+                                'private',
+                                'region',
+                                'zip_code',
+                            ],
                         },
                     },
-                    */
                 ],
                 where: {
                     [Op.and]: [
@@ -254,7 +250,6 @@ const activityController = {
                 },
                 offset: (page - 1) * activityController.defaultNumCardInPage,
                 limit: activityController.defaultNumCardInPage,
-                //order: [sequelize.literal(`"activity_place.distance"`)],
                 order: [['date', 'ASC']],
             })
 
@@ -310,29 +305,25 @@ const activityController = {
                         attributes: ['name', 'icon'],
                     },
                     {
-                        association: 'activity_statut',
-                        attributes: {
-                            exclude: ['id'],
-                        },
-                    },
-                    {
-                        association: 'activity_place',
-                        attributes: ['city', 'lat', 'lng'],
-                    },
-                    {
                         association: 'creator',
                         attributes: ['pseudo'],
                     },
-                    /*
                     {
                         association: 'activity_place',
                         attributes: {
-                        include: [[sequelize.literal(distanceCalculSQL(lat, lng)), 'distance']],
+                            include: [[sequelize.literal(distanceCalculSQL(lat, lng)), 'distance']],
+                            exclude: [
+                                'id',
+                                'google_place_key',
+                                'department',
+                                'indoor',
+                                'private',
+                                'region',
+                                'zip_code',
+                            ],
                         },
                     },
-                    */
                 ],
-
                 where: {
                     [Op.and]: [
                         sequelize.where(
@@ -361,7 +352,6 @@ const activityController = {
                 },
                 offset: (page - 1) * activityController.defaultNumCardInPage,
                 limit: activityController.defaultNumCardInPage,
-                //order: [sequelize.literal(`"activity_place.distance"`)],
                 order: [['date', 'ASC']],
             })
 
@@ -370,12 +360,12 @@ const activityController = {
                 return
             }
             /*
-      formatedaActivities = formatActivitiesFilterByDistance(activities, activityController.defaultLimitDistance);
-      if(formatedaActivities.length < 1) {
-        res.status(204).json("Error : can't find Activity");
-        return;
-      }
-      */
+            formatedaActivities = formatActivitiesFilterByDistance(activities, activityController.defaultLimitDistance);
+            if(formatedaActivities.length < 1) {
+                res.status(204).json("Error : can't find Activity");
+                return;
+            }
+            */
             //formatedaActivities = formatActivities(activities);
             //res.json(formatedaActivities);
             formatedaActivities = formatActivities(activities.rows)

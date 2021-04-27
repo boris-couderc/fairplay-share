@@ -39,12 +39,17 @@ const Card = ({ activity, loggedUserRole, isLogged, showLoginModal }) => {
                     <li className="card__info">
                         <Icon name="pin" classProps="card__info-pin" />
                         {activity.activity_place.city}
+                        {activity.activity_place.distance && (
+                            <span className="card__info-sup">
+                                { parseFloat(activity.activity_place.distance.toFixed(1))} km
+                            </span>
+                        )}
                     </li>
                     <li className="card__info">
                         <Icon name="clock" />
                         {activity.date}
                         {activity.time && (
-                            <span className="card__info-time">
+                            <span className="card__info-sup">
                                 {activity.time}
                             </span>
                         )}

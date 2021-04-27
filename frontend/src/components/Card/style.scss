@@ -131,7 +131,7 @@
             color       : s.$primary-color;
         }
 
-        &-time {
+        &-sup {
             display     : inline-block;
             margin-left : .5rem;
             padding-left: .5rem;
@@ -147,7 +147,7 @@
                 color: s.$secondary-color;
             }
 
-            &-time {
+            &-sup {
                 border-left : 2px solid s.$secondary-color-lightest;
             }
         }

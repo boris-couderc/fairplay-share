@@ -48,7 +48,6 @@ const searchBar = (store) => (next) => (action) => {
                                     })
                                 }
                             })
-
                             store.dispatch(saveAutocompletionList(formatedData))
                         } else {
                             store.dispatch(clearListAutocompleteData())
