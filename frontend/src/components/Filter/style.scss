@@ -23,13 +23,13 @@
     &__img {
         width        : 5rem;
         height       : 5rem;
-        margin-bottom: 0.5rem;
-        transition   : transform ease 300ms;
+        margin-bottom: .5rem;
+        transition   : transform ease 200ms;
     }
 
     &__item-txt {
         text-align : center;
-        font-size  : 0.85em;
+        font-size  : .85em;
         font-family: s.$font-family-heading;
     }
 
@@ -46,10 +46,10 @@
             top          : 0;
             right        : 0;
             bottom       : 0;
-            border-radius: 1rem;
+            border-radius: s.$border-radius-small;
             transform    : scale(1) translateY(0);
             border       : 2px solid rgba(0, 0, 0, .1);
-            transition   : border ease 200ms, transform ease 200ms;
+            transition   : border ease 100ms, transform ease 100ms;
         }
 
         &:hover {
@@ -84,15 +84,5 @@
         &>*:not(:first-child) {
             margin-left: .5rem;
         }
-    }
-
-    &__button {
-        padding      : 12px 35px;
-        margin       : 10px s.$padding;
-        background   : s.$primary-color;
-        border       : none;
-        color        : #fff;
-        border-radius: 40px;
-        font-size    : 1.05rem;
     }
 }

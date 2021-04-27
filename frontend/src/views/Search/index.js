@@ -130,7 +130,6 @@ const Search = ({
                         )}
                     </>
                 )}
-
             </Wrapper>
         </View>
     )

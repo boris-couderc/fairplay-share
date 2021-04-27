@@ -12,7 +12,11 @@ const useQuery = () => {
     return new URLSearchParams(useLocation().search)
 }
 
-const Filter = ({ fetchFilterSportsByLocalisation, sportsList }) => {
+const Filter = ({
+    activitiesIsLoading,
+    fetchFilterSportsByLocalisation,
+    sportsList,
+}) => {
     const [sportsFilter, setSportsFilter] = useState([])
 
     const history = useHistory()
@@ -118,6 +122,7 @@ const Filter = ({ fetchFilterSportsByLocalisation, sportsList }) => {
                             size="small"
                             onClick={handleOnClick}
                             classProps="button--no-focus"
+                            loading={activitiesIsLoading}
                         >
                             Filtrer
                         </Button>

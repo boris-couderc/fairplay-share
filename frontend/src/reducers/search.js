@@ -19,12 +19,14 @@ const search = (state = initialState, action = {}) => {
         case FETCH_ACTIVITIES_BY_LOCALISATION:
             return {
                 ...initialState,
+                loaded: false,
                 isLoading: true,
             }
 
         case FETCH_ACTIVITIES_BY_LOCALISATION_AND_SPORTS:
             return {
                 ...initialState,
+                loaded: false,
                 isLoading: true,
             }
 
@@ -34,6 +36,7 @@ const search = (state = initialState, action = {}) => {
                 count: action.data.count,
                 activities: [...action.data.activities],
                 loaded: true,
+                isLoading: false,
             }
 
         case SAVE_ALL_SEARCHED_ACTIVITIES:
@@ -42,6 +45,7 @@ const search = (state = initialState, action = {}) => {
                 count: action.data.count,
                 activities: [...state.activities, ...action.data.activities],
                 loaded: true,
+                isLoading: false,
             }
 
         case CLEAR_SEARCHED_ACTIVITIES:
