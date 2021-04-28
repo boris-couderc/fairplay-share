@@ -1,11 +1,9 @@
 @use 'src/styles/settings'as s;
 
 .filter {
-    margin: 2rem 0 4rem 0;
+    margin: 2.25rem 0 2.5rem 0;
 
     &__items {
-        display: flex;
-
         display        : flex;
         justify-content: center;
         align-items    : center;

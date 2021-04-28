@@ -78,6 +78,9 @@ const searchBar = (store) => (next) => (action) => {
                         // pas de résultat : {data: Array(0)}
 
                         const localisation = response.data.data[0]
+
+                        console.log('0 ----> ', localisation );
+
                         if (localisation && localisation.latitude) {
                             //console.log('RESULTAT POUR RECHERCHE ----->>>', inputValue, localisation)
                             const validLocalisation = {
@@ -91,8 +94,11 @@ const searchBar = (store) => (next) => (action) => {
                             store.dispatch(
                                 saveValidLocalisation(validLocalisation),
                             )
+                        } else if(localisation && localisation[0] && Array.isArray(localisation[0]) ) {
+                            console.log('ERREUR POSITION STACK ----->>>')
+                            store.dispatch(errorApiInVerifLocalisation())
                         } else {
-                            //console.log('PAS DE RESULTAT ----->>>')
+                            console.log('PAS DE RESULTAT ----->>>')
                             store.dispatch(noResultInVerifLocalisation())
                         }
                     })

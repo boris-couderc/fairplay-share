@@ -10,7 +10,7 @@ import PropTypes from 'prop-types'
 //import LoginModal from 'src/containers/LoginModal';
 
 //import Team from 'src/components/Team';
-import Details from 'src/containers/Details'
+//import Details from 'src/containers/Details'
 
 //import Registration from 'src/containers/Registration';
 

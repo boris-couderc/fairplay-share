@@ -25,6 +25,7 @@ const SearchBar = ({
     validLocalisation,
     changeValidLocalisation,
     errorLocalisation,
+    errorApiLocalisation,
     searchQueryInProcess,
     changeSearchQueryInProcessStatut,
     showLoginModal,
@@ -133,6 +134,15 @@ const SearchBar = ({
                         Localisation non trouvée, veuillez réessayer
                     </div>
                 )}
+                {errorApiLocalisation && (
+                    <div className="searchbar__error">
+                        <Icon
+                            name="pin-off"
+                            classProps="searchbar__error-icon"
+                        />
+                        Erreur positionstackAPI, veuillez réessayer
+                    </div>
+                )}
                 <div className="searchbar__search">
                     <div className="searchbar__input-loader">
                         {isFetchingLocalisation && (
@@ -194,6 +204,7 @@ SearchBar.propTypes = {
     validLocalisation: PropTypes.object.isRequired,
     changeValidLocalisation: PropTypes.func.isRequired,
     errorLocalisation: PropTypes.bool.isRequired,
+    errorApiLocalisation: PropTypes.bool.isRequired,
     searchQueryInProcess: PropTypes.bool.isRequired,
     changeSearchQueryInProcessStatut: PropTypes.func.isRequired,
     showLoginModal: PropTypes.func.isRequired,

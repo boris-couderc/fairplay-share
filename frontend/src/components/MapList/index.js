@@ -1,9 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react'
 import PropTypes from 'prop-types'
-import './style.scss'
+
+import Button from 'src/components/Button'
 
 import ReactMapGL, { NavigationControl } from 'react-map-gl'
 import CustomMarker from './CustomMarker'
+
+import './style.scss'
+import '/src/assets/css/mapbox-gl.css'
 
 const navControlStyle = {
     right: 10,
@@ -16,8 +20,12 @@ const MapList = ({
     lng,
     userActivitiesIds,
     userActivitiesCreatorIds,
-    scrollToFilter,
+    //scrollToFilter,
 }) => {
+
+    console.log('MapList --------------------->')
+
+
     // Clusterise les activités si plusieurs activité avec la même adresse
     const formatedActivity = (activity, userRole) => {
         return {
@@ -113,7 +121,7 @@ const MapList = ({
             setbtOpenMapTxt('Fermer la carte')
             document.body.style.overflow = 'hidden'
         } else {
-            scrollToFilter()
+            //scrollToFilter()
             setClassNameMap('map-list')
             setbtOpenMapTxt('Voir sur la carte')
             document.body.style.overflow = 'visible'
@@ -124,12 +132,16 @@ const MapList = ({
         <>
             {activities && (
                 <div className={classNameMap} ref={map}>
-                    <button
-                        className="map-list__button-open"
+
+                    <Button
+                        appearance=""
+                        size="small"
                         onClick={handleChangeMapSize}
+                        classProps="map-list__button"
                     >
                         {btOpenMapTxt}
-                    </button>
+                    </Button>
+
                     <ReactMapGL
                         {...viewport}
                         {...settings}
@@ -138,10 +150,11 @@ const MapList = ({
                         onViewportChange={(viewport) => setViewport(viewport)}
                         // TOKEN à sécurisé
                         mapboxApiAccessToken={
-                            'pk.eyJ1IjoiYm9yaXNjb3VkZXJjIiwiYSI6ImNrbGszY2pjODF5YTAydnByaTZveGs5azIifQ.lyPoAYY3DSqpu8D8R1ULGw'
+                            'pk.eyJ1IjoiYm9yaXNjb3VkZXJjIiwiYSI6ImNrbzBxbXd0MzAxOGIydm8zZ2Fydnhla3IifQ.cocyKytOUzSpdyZi_UNqmQ'
                         }
                     >
                         <NavigationControl style={navControlStyle} />
+                        
                         <CustomMarker
                             key={`marker-user`}
                             index={0}
@@ -175,7 +188,7 @@ MapList.propTypes = {
     lng: PropTypes.string.isRequired,
     userActivitiesIds: PropTypes.array.isRequired,
     userActivitiesCreatorIds: PropTypes.array.isRequired,
-    scrollToFilter: PropTypes.func.isRequired,
+    //scrollToFilter: PropTypes.func.isRequired,
 }
 
 export default MapList

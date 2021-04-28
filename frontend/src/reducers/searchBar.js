@@ -7,6 +7,7 @@ import {
     SAVE_AUTOCOMPLETION_LIST,
     CLEAR_LIST_AUTOCOMPLETE_DATA,
     NO_RESULT_IN_VERIF_LOCALISATION,
+    ERROR_API_IN_VERIFICATION_LOCALISATION,
     CONFIRM_VALID_LOCALISATION,
     CHANGE_SEARCH_QUERY_IN_PROCESS_STATUT,
 } from 'src/actions/searchBar'
@@ -22,6 +23,7 @@ const initialState = {
     },
     isFetchingLocalisation: false,
     errorLocalisation: false,
+    errorApiLocalisation: false,
     searchQueryInProcess: false,
 }
 
@@ -45,6 +47,7 @@ const searchBar = (state = initialState, action = {}) => {
             return {
                 ...state,
                 errorLocalisation: false,
+                errorApiLocalisation: false,
                 inputValue: action.value,
             }
         }
@@ -64,6 +67,7 @@ const searchBar = (state = initialState, action = {}) => {
             return {
                 ...state,
                 errorLocalisation: false,
+                errorApiLocalisation: false,
                 searchQueryInProcess: true,
                 validLocalisation: {
                     ...action.data,
@@ -91,6 +95,7 @@ const searchBar = (state = initialState, action = {}) => {
             return {
                 ...state,
                 errorLocalisation: false,
+                errorApiLocalisation: false,
                 inputValue: state.autocomplete.list[action.index].name,
                 validLocalisation: {
                     ...state.autocomplete.list[action.index],
@@ -113,9 +118,20 @@ const searchBar = (state = initialState, action = {}) => {
             return {
                 ...state,
                 errorLocalisation: true,
+                errorApiLocalisation: false,
                 isFetchingLocalisation: false,
             }
         }
+
+        case ERROR_API_IN_VERIFICATION_LOCALISATION: {
+            return {
+                ...state,
+                errorApiLocalisation: true,
+                errorLocalisation: false,
+                isFetchingLocalisation: false,
+            }
+        }
+
         default:
             return state
     }

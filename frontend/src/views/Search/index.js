@@ -9,6 +9,7 @@ import Button from 'src/components/Button'
 import Heading from 'src/components/Heading'
 import SearchBar from 'src/containers/SearchBar'
 import Filter from 'src/containers/Filter';
+import MapList from 'src/containers/MapList';
 import CardsGrid from 'src/components/CardsGrid'
 import Loader from 'src/components/Loader'
 import Card from 'src/containers/Card'
@@ -81,6 +82,11 @@ const Search = ({
                 </Heading>
 
                 <Filter />
+                <MapList 
+                    lat={lat} 
+                    lng={lng} 
+                    //scrollToFilter={scrollToFilter} 
+                />
 
                 {!activitiesLoaded ? (  
                     <Loader classProps="loader--p3" />

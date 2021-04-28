@@ -16,6 +16,7 @@ const mapStateToProps = (state) => ({
     isFetchingLocalisation: state.searchBar.isFetchingLocalisation,
     listAutocompleteData: state.searchBar.autocomplete.list,
     errorLocalisation: state.searchBar.errorLocalisation,
+    errorApiLocalisation: state.searchBar.errorApiLocalisation,
     validLocalisation: state.searchBar.validLocalisation,
     searchQueryInProcess: state.searchBar.searchQueryInProcess,
     isLogged: state.login.isLogged,
