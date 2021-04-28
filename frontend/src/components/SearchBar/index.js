@@ -37,6 +37,7 @@ const SearchBar = ({
     const placeInput = useRef(null)
 
     const [geolocationAvailable, setGeolocationAvailable] = useState(false)
+    const [geolocation, setGeolocation] = useState({})
 
     useEffect(() => {
         if ('geolocation' in navigator) {
@@ -88,7 +89,12 @@ const SearchBar = ({
     const handleOnSubmit = (e) => {
         e.preventDefault()
         clearTimeout(timer.current)
-        if (inputValue.length > 2) {
+        if(inputValue === 'ma position' && geolocation.lat && geolocation.lng) {
+            clearListAutocompleteData()
+            history.push(
+                `/search?lat=${geolocation.lat}&lng=${geolocation.lng}&query=${inputValue}`,
+            )
+        } else if (inputValue.length > 2) {
             clearListAutocompleteData()
             fetchOnePlacesAutoCompletion()
         }
@@ -117,7 +123,10 @@ const SearchBar = ({
             changeValue('ma position')
             clearTimeout(timer.current)
             clearListAutocompleteData()
-            history.push(`/search?lat=${pos.coords.latitude}&lng=${pos.coords.longitude}&query=ma%20position`)
+            setGeolocation({
+                lat: pos.coords.latitude,
+                lng: pos.coords.longitude,
+            })
         }
         navigator.geolocation.getCurrentPosition(geolocalisationSuccess)
     }

@@ -6,6 +6,14 @@
     display       : flex;
     flex-direction: column;
     align-items   : center;
+    transition    : transform s.$Power1EaseOut 400ms, opacity ease 300ms;
+    transform     : translateY(3rem);
+    opacity       : 0;
+
+    &--inview {
+        opacity  : 1;
+        transform: translateY(0);
+    }
 
     &::after {
         content      : '';
@@ -19,13 +27,13 @@
         border-radius: s.$border-radius-medium;
         box-shadow   : s.$shadow;
         transition   : transform 150ms s.$Power3EaseInOut;
-        background: linear-gradient( #ffffff 80%, #f8f8f8 100%);
+        background   : linear-gradient(#ffffff 80%, #f8f8f8 100%);
     }
 
     &--participant,
     &--creator {
         &::before {
-            content      : 'Je participe';
+            content         : 'Je participe';
             position        : relative;
             position        : absolute;
             padding         : .2rem .5rem;
@@ -41,13 +49,13 @@
 
     &--participant {
         &::after {
-           border-top: 2px solid s.$primary-color-lighter;
+            border-top: 2px solid s.$primary-color-lighter;
         }
     }
 
     &--creator {
         &::after {
-           border-top: 2px solid s.$secondary-color-lighter;
+            border-top: 2px solid s.$secondary-color-lighter;
         }
 
         &::before {
@@ -109,7 +117,7 @@
     }
 
     &__infos {
-        text-align   : left;
+        text-align     : left;
         //margin-bottom: .5rem;
         //margin-right : 1rem;
     }
@@ -134,16 +142,16 @@
         }
 
         &-sup {
-            display     : inline-block;
-            position    : relative;
-            margin-left : .5rem;
+            display    : inline-block;
+            position   : relative;
+            margin-left: .5rem;
 
             &::before {
-                content: '';
-                position: relative;
-                top: 0;
-                left: 0;
-                height: 1rem;
+                content     : '';
+                position    : relative;
+                top         : 0;
+                left        : 0;
+                height      : 1rem;
                 margin-right: .5rem;
                 border-left : 2px solid s.$primary-color-lightest;
             }
@@ -159,7 +167,7 @@
             }
 
             &-sup::before {
-                border-left : 2px solid s.$secondary-color-lightest;
+                border-left: 2px solid s.$secondary-color-lightest;
             }
         }
     }

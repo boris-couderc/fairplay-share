@@ -1,24 +1,38 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
-import './style.scss'
-
 import Heading from 'src/components/Heading'
-//import Button from 'src/components/Button'
 import Icon from 'src/components/Icon'
 import CardLink from './CardLink'
 import sports from 'src/assets/sports/sports'
 
+import './style.scss'
+
+import { useInView } from 'react-intersection-observer';
+
 const Card = ({ activity, loggedUserRole, isLogged, showLoginModal }) => {
-    const classes = classNames(
-        'card',
-        loggedUserRole === 'creator' && 'card--creator',
-        loggedUserRole === 'participant' && 'card--participant',
-    )
+    
+    const [classes, setClasses] = useState('card')
+
+    const { ref, inView, entry } = useInView({
+        threshold: 0,
+        triggerOnce: true,
+        delay: 200,
+    });
+
+    useEffect(() => {
+        console.log('inView', inView);
+        setClasses(classNames(
+            'card',
+            loggedUserRole === 'creator' && 'card--creator',
+            loggedUserRole === 'participant' && 'card--participant',
+            inView && 'card--inview'
+        ))
+    }, [inView])
 
     return (
-        <li className={classes}>
+        <li className={classes} ref={ref}>
             <CardLink
                 isLogged={isLogged}
                 id={activity.id}
@@ -55,9 +69,6 @@ const Card = ({ activity, loggedUserRole, isLogged, showLoginModal }) => {
                         )}
                     </li>
                 </ul>
-                {/* <Button appearance="outline" size="small">
-                    Voir les détails
-                </Button> */}
             </CardLink>
         </li>
     )

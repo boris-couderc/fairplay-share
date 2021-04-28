@@ -6,6 +6,7 @@ import {
     saveValidLocalisation,
     clearListAutocompleteData,
     noResultInVerifLocalisation,
+    errorApiInVerifLocalisation,
     confirmValidLocalisation,
 } from 'src/actions/searchBar'
 
@@ -79,7 +80,7 @@ const searchBar = (store) => (next) => (action) => {
 
                         const localisation = response.data.data[0]
 
-                        console.log('0 ----> ', localisation );
+                        console.log('0 ----> ', localisation, ' / ', Array.isArray(localisation) );
 
                         if (localisation && localisation.latitude) {
                             //console.log('RESULTAT POUR RECHERCHE ----->>>', inputValue, localisation)
@@ -94,7 +95,7 @@ const searchBar = (store) => (next) => (action) => {
                             store.dispatch(
                                 saveValidLocalisation(validLocalisation),
                             )
-                        } else if(localisation && localisation[0] && Array.isArray(localisation[0]) ) {
+                        } else if(localisation && Array.isArray(localisation) ) {
                             console.log('ERREUR POSITION STACK ----->>>')
                             store.dispatch(errorApiInVerifLocalisation())
                         } else {

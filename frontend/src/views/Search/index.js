@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { useLocation } from 'react-router-dom'
 
@@ -45,6 +45,7 @@ const Search = ({
     const lng = query.get('lng')
     const sports = query.get('sports')
 
+    const [firstMapDisplayForLocalisation, setfirstMapDisplayForLocalisation] = useState(true)
     /*
     useEffect(() => {
         paginationReset();
@@ -52,6 +53,11 @@ const Search = ({
     */
 
     useEffect(() => {
+        console.log('firstMapDisplayForLocalisation', firstMapDisplayForLocalisation);
+    })
+
+    useEffect(() => {
+        setfirstMapDisplayForLocalisation(false)
         return () => {
             clearSearchedActivities();
             changeInputValueSearchBar('');
@@ -59,7 +65,12 @@ const Search = ({
     }, [])
 
     useEffect(() => {
+        setfirstMapDisplayForLocalisation(true)
+    }, [lat, lng, queryString])
+
+    useEffect(() => {
         if (sports) {
+            setfirstMapDisplayForLocalisation(false)
             fetchActivitiesByLocalisationAndSports({
                 queryString,
                 lat,
@@ -82,11 +93,13 @@ const Search = ({
                 </Heading>
 
                 <Filter />
-                <MapList 
-                    lat={lat} 
-                    lng={lng} 
-                    //scrollToFilter={scrollToFilter} 
-                />
+                {(!firstMapDisplayForLocalisation || activitiesLoaded && activities.length > 0) && ( 
+                    <MapList 
+                        lat={lat} 
+                        lng={lng} 
+                        //scrollToFilter={scrollToFilter} 
+                    />
+                )}
 
                 {!activitiesLoaded ? (  
                     <Loader classProps="loader--p3" />
