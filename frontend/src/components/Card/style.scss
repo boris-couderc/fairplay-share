@@ -19,6 +19,7 @@
         border-radius: s.$border-radius-medium;
         box-shadow   : s.$shadow;
         transition   : transform 150ms s.$Power3EaseInOut;
+        background: linear-gradient( #ffffff 80%, #f8f8f8 100%);
     }
 
     &--participant,
@@ -28,7 +29,7 @@
             position        : relative;
             position        : absolute;
             padding         : .2rem .5rem;
-            top             : -.6rem;
+            top             : -.55rem;
             border-radius   : 12px;
             font-size       : .7rem;
             color           : #ffffff;
@@ -57,14 +58,14 @@
 
     &:hover {
         &::after {
-            transform: scale(1.03) translateY(-.125rem);
+            transform: scale(1.02) translateY(-.125rem);
         }
     }
 
     &--participant,
     &--creator {
         &:hover::before {
-            transform: translateY(-10px) !important;
+            transform: translateY(-8px) !important;
         }
     }
 
@@ -83,7 +84,7 @@
         width         : 100%;
         flex-direction: column;
         align-items   : center;
-        padding       : 1.5rem 1.5rem 2rem 1.5rem;
+        padding       : 1.5rem 1.5rem 2.25rem 1.5rem;
         cursor        : pointer;
     }
 
@@ -109,14 +110,15 @@
 
     &__infos {
         text-align   : left;
-        margin-bottom: .5rem;
-        margin-right : 1rem;
+        //margin-bottom: .5rem;
+        //margin-right : 1rem;
     }
 
     &__info {
         display              : flex;
         grid-template-columns: auto 1fr;
         align-items          : center;
+        justify-content      : center;
         font-weight          : s.$font-weight-bold;
         color                : s.$primary-color;
 
@@ -133,9 +135,18 @@
 
         &-sup {
             display     : inline-block;
+            position    : relative;
             margin-left : .5rem;
-            padding-left: .5rem;
-            border-left : 2px solid s.$primary-color-lightest;
+
+            &::before {
+                content: '';
+                position: relative;
+                top: 0;
+                left: 0;
+                height: 1rem;
+                margin-right: .5rem;
+                border-left : 2px solid s.$primary-color-lightest;
+            }
         }
     }
 
@@ -147,7 +158,7 @@
                 color: s.$secondary-color;
             }
 
-            &-sup {
+            &-sup::before {
                 border-left : 2px solid s.$secondary-color-lightest;
             }
         }

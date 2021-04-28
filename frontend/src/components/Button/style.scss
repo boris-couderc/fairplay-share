@@ -26,7 +26,7 @@
 
     &:focus::after,
     &:hover::after {
-        transform: scale(1.075, 1.1);
+        transform: scale(1.06, 1.075);
     }
 
     &--no-focus:focus::after {
