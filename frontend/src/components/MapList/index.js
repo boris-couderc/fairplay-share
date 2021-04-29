@@ -9,54 +9,40 @@ import CustomMarker from './CustomMarker'
 import './style.scss'
 import '/src/assets/css/mapbox-gl.css'
 
-const navControlStyle = {
-    right: 10,
-    bottom: 10,
+const formatedActivity = (activity, userRole) => {
+    return {
+        id: activity.id,
+        title: activity.title,
+        date: activity.date,
+        time: activity.time,
+        sport: activity.sport.name,
+        icon: activity.sport.icon,
+        userRole: userRole,
+    }
 }
 
 const MapList = ({
+    isLogged,
+    showLoginModal,
     activities,
     lat,
     lng,
     userActivitiesIds,
     userActivitiesCreatorIds,
-    //scrollToFilter,
 }) => {
-
-    console.log('MapList --------------------->')
-
-
-    // Clusterise les activités si plusieurs activité avec la même adresse
-    const formatedActivity = (activity, userRole) => {
-        return {
-            id: activity.id,
-            title: activity.title,
-            date: activity.date,
-            time: activity.time,
-            sport: activity.sport.name,
-            icon: activity.sport.icon,
-            userRole: userRole,
-        }
-    }
+    // Clusterize markers if activities are close to each other
     const markerPoints = []
     activities.forEach((activity, index) => {
-        //const activityLat = activity.activity_place.lat.toFixed(2);
-        //const activityLng = activity.activity_place.lng.toFixed(2);
         const activityLat =
             Math.round(activity.activity_place.lat * 1000) / 1000
         const activityLng =
             Math.round(activity.activity_place.lng * 1000) / 1000
-
-        // controle si le user logged est creator ou participant
         let userRole = ''
         if (userActivitiesCreatorIds.includes(activity.id)) {
-            //cardsCreated.push(<Card key={`card-${card.id}`} card={card} userCard={2} />)
             userRole = 'creator'
         } else if (userActivitiesIds.includes(activity.id)) {
-            //cardsCreated.push(<Card key={`card-${card.id}`} card={card} userCard={1} />)
-            userRole = 'registered'
+            userRole = 'participant'
         }
-
         let markerFind = markerPoints.find(
             (marker) =>
                 marker.lat === activityLat && marker.lng === activityLng,
@@ -73,12 +59,6 @@ const MapList = ({
         }
     })
 
-    /*
-    useEffect(() => {
-        console.log(activities);
-    }, [activities])
-    */
-
     useEffect(() => {
         setViewport({
             latitude: parseFloat(lat),
@@ -94,52 +74,36 @@ const MapList = ({
     })
 
     const [settings, setsettings] = useState({
-        //dragPan: false,
-        //dragRotate: false,
         scrollZoom: false,
-        //touchZoom: false,
-        //touchRotate: false,
-        //keyboard: false,
-        //doubleClickZoom: false
         mapStyle: 'mapbox://styles/mapbox/streets-v11',
     })
 
-    useEffect(() => {
-        return () => {
-            // au unmount du composent (changement de page ... ) o  veux être dur de remettre le body overflow à visible
-            document.body.style.overflow = 'visible'
-        }
-    }, [])
-
     const map = useRef(null)
-    const [btOpenMapTxt, setbtOpenMapTxt] = useState('Voir sur la carte')
-    const [classNameMap, setClassNameMap] = useState('map-list')
+    const [mapIsOpen, setMapIsOpen] = useState(false)
     const handleChangeMapSize = () => {
-        if (classNameMap === 'map-list') {
+        if (!mapIsOpen) {
             map.current.scrollIntoView({ behavior: 'smooth' })
-            setClassNameMap('map-list map-list--open')
-            setbtOpenMapTxt('Fermer la carte')
-            document.body.style.overflow = 'hidden'
+            setMapIsOpen(true)
         } else {
-            //scrollToFilter()
-            setClassNameMap('map-list')
-            setbtOpenMapTxt('Voir sur la carte')
-            document.body.style.overflow = 'visible'
+            setMapIsOpen(false)
         }
     }
 
     return (
-        <>
+        <div
+            className={mapIsOpen ? 'map-list map-list--open' : 'map-list'}
+            ref={map}
+        >
             {activities && (
-                <div className={classNameMap} ref={map}>
-
+                <div className="map-list__container">
                     <Button
                         appearance=""
                         size="small"
                         onClick={handleChangeMapSize}
                         classProps="map-list__button"
+                        icon={`${mapIsOpen ? 'clear' : 'map'}`}
                     >
-                        {btOpenMapTxt}
+                        {mapIsOpen ? 'Fermer la carte' : 'Voir sur la carte'}
                     </Button>
 
                     <ReactMapGL
@@ -148,20 +112,12 @@ const MapList = ({
                         width="100%"
                         height="100%"
                         onViewportChange={(viewport) => setViewport(viewport)}
-                        // TOKEN à sécurisé
-                        mapboxApiAccessToken={
-                            'pk.eyJ1IjoiYm9yaXNjb3VkZXJjIiwiYSI6ImNrbzBxbXd0MzAxOGIydm8zZ2Fydnhla3IifQ.cocyKytOUzSpdyZi_UNqmQ'
-                        }
+                        mapboxApiAccessToken={`${process.env.MAPBOX_API_KEY}`}
                     >
-                        <NavigationControl style={navControlStyle} />
-                        
-                        <CustomMarker
-                            key={`marker-user`}
-                            index={0}
-                            user={true}
-                            marker={{
-                                lat: parseFloat(lat),
-                                lng: parseFloat(lng),
+                        <NavigationControl
+                            style={{
+                                right: 7,
+                                bottom: 7,
                             }}
                         />
                         {markerPoints[0] &&
@@ -169,26 +125,27 @@ const MapList = ({
                                 return (
                                     <CustomMarker
                                         key={`marker-${index}`}
-                                        index={index}
-                                        user={false}
                                         marker={marker}
+                                        isLogged={isLogged}
+                                        showLoginModal={showLoginModal}
                                     />
                                 )
                             })}
                     </ReactMapGL>
                 </div>
             )}
-        </>
+        </div>
     )
 }
 
 MapList.propTypes = {
+    isLogged: PropTypes.bool.isRequired,
+    showLoginModal: PropTypes.func.isRequired,
     activities: PropTypes.array.isRequired,
     lat: PropTypes.string.isRequired,
     lng: PropTypes.string.isRequired,
     userActivitiesIds: PropTypes.array.isRequired,
     userActivitiesCreatorIds: PropTypes.array.isRequired,
-    //scrollToFilter: PropTypes.func.isRequired,
 }
 
 export default MapList

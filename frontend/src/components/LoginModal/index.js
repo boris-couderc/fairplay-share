@@ -30,16 +30,14 @@ const LoginModal = ({ isDisplayed, closeModal }) => {
                 <div className="modal">
                     <div className="modal__container" ref={ref}>
                         {/* <img onClick={closeModal} src={cross} alt="" className="icon modal__bt-close" /> */}
-
                         <button onClick={closeModal} className="modal__button-close">
                             <Icon name="clear" />
                         </button>
-                        
                         <Heading el="p" like="h4">
                             Inscris-toi !
                         </Heading>
                         <p>
-                            pour rejoindre ou organiser une activité
+                            Pour rejoindre ou organiser une activité
                         </p>
                         <div className="modal__buttons">
                             <Button appearance="primary" route="/inscription">

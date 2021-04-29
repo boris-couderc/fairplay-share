@@ -7,7 +7,7 @@ import './style.scss';
 
 const Footer = () => (
   <footer className="footer">
-    <Wrapper wide>
+    <Wrapper /* wide */>
       <div className="footer__content">
         <span className="footer__copyright">FairPlay © 2021</span>
         <ul className="footer__links">

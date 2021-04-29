@@ -1,16 +1,16 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
- 
-const CardLink = ({ children, isLogged, id, onClick }) => { 
+
+const ActivityLink = ({ children, isLogged, id, onClick, classProps }) => {
     return (
         <>
             {isLogged ? (
-                <Link to={`/activity/${id}`} className="card__link">
+                <Link to={`/activity/${id}`} className={classProps}>
                     {children}
                 </Link>
-            ) : ( 
-                <div onClick={onClick} className="card__link">
+            ) : (
+                <div onClick={onClick} className={classProps}>
                     {children}
                 </div>
             )}
@@ -18,11 +18,16 @@ const CardLink = ({ children, isLogged, id, onClick }) => {
     )
 }
 
-PropTypes.PropTypes = {
+ActivityLink.propTypes = {
     children: PropTypes.node.isRequired,
     isLogged: PropTypes.bool.isRequired,
     id: PropTypes.number.isRequired,
     onClick: PropTypes.func.isRequired,
+    classProps: PropTypes.string,
 }
 
-export default CardLink
+ActivityLink.defaultProps = {
+    classProps: '',
+}
+
+export default ActivityLink

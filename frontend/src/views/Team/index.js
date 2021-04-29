@@ -16,7 +16,7 @@ const Team = () => {
         <View layoutClass="page-test">
             <ScrollToTop />
             <Wrapper>
-                <Heading el="h1">L'équipe</Heading>
+                <Heading el="h1">La team</Heading>
                 {dataTeam.length > 0 && (
                     <ul className="team">
                         {dataTeam.map((profil) => (

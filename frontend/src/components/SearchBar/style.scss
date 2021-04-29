@@ -4,27 +4,29 @@
     display         : grid;
     position        : relative;
     z-index         : 4 !important;
-    background-color: rgba(255, 255, 255, 0.75);
     border-radius   : s.$border-radius;
     box-shadow      : s.$shadow-small;
     margin-bottom   : 3rem;
+    background      : linear-gradient(rgba(255,255,255,.8) 80%, rgba(250,250,250,.8) 100%);
 
     &__container {
-        margin: 1.5rem 1.5rem;
+        margin: 1.5rem var(--horizontal-wrapper-content-margin) 1rem;
     }
 
     &__button {
-        margin    : 1.5rem auto;
-        align-self: center;
+        margin    : .75rem auto 1.5rem;
+        align-self: center; 
     }
 
     @media (min-width: s.$from-small) {
+        grid-template-columns: 1fr auto auto;
+
         &__container {
-            margin: 2rem 3rem;
+            margin: 2rem 1.5rem 2rem var(--horizontal-wrapper-content-margin);
         }
 
         &__button {
-            margin: 2rem auto;
+            margin: 2rem var(--horizontal-wrapper-content-margin) 2rem 1.5rem;
         }
     }
 
@@ -33,7 +35,7 @@
 
         &__container,
         &__button {
-            margin: 2.5rem 3rem;
+            margin: 2.5rem var(--horizontal-wrapper-content-margin);
         }
     }
 
@@ -122,7 +124,7 @@
             right: calc(50% + 3rem);
         }
 
-        @media (min-width: s.$from-medium) {
+        @media (min-width: s.$from-small) {
 
             &::before,
             &::after {

@@ -45,22 +45,21 @@ const Search = ({
     const lng = query.get('lng')
     const sports = query.get('sports')
 
-    const [firstMapDisplayForLocalisation, setfirstMapDisplayForLocalisation] = useState(true)
     /*
     useEffect(() => {
         paginationReset();
     }, []);
     */
 
-    useEffect(() => {
-        console.log('firstMapDisplayForLocalisation', firstMapDisplayForLocalisation);
-    })
+    // control to avoid display jump when filter change
+    const [firstMapDisplayForLocalisation, setfirstMapDisplayForLocalisation] = useState(true)
 
     useEffect(() => {
-        setfirstMapDisplayForLocalisation(false)
+        setfirstMapDisplayForLocalisation(true)
         return () => {
-            clearSearchedActivities();
-            changeInputValueSearchBar('');
+            setfirstMapDisplayForLocalisation(true)
+            clearSearchedActivities()
+            changeInputValueSearchBar('')
         }
     }, [])
 
@@ -82,6 +81,14 @@ const Search = ({
         }
     }, [lat, lng, queryString, sports, pageValue])
 
+    const displayMap = () => {
+        if (!firstMapDisplayForLocalisation || activitiesLoaded && activities.length > 0) {
+            return true
+        } else {
+            return false
+        }
+    }
+
     return (
         <View layoutClass="search">
             <ScrollToTop />
@@ -93,11 +100,10 @@ const Search = ({
                 </Heading>
 
                 <Filter />
-                {(!firstMapDisplayForLocalisation || activitiesLoaded && activities.length > 0) && ( 
+                {displayMap() && ( 
                     <MapList 
                         lat={lat} 
-                        lng={lng} 
-                        //scrollToFilter={scrollToFilter} 
+                        lng={lng}
                     />
                 )}
 

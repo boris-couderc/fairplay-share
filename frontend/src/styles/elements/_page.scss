@@ -1,56 +1,73 @@
 @use '../settings'as s;
 
 html {
-  overflow-y: scroll;
-  scroll-behavior: smooth;
-  color: s.$txt-color;
-  font-family: s.$font-family;
-  line-height: s.$line-height;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-color: s.$background-color;
+    overflow-y             : scroll;
+    scroll-behavior        : smooth;
+    color                  : s.$txt-color;
+    font-family            : s.$font-family;
+    line-height            : s.$line-height;
+    -webkit-font-smoothing : antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color       : s.$background-color;
 
-  @media (max-width: s.$to-small) {
-    font-size: s.$font-size - 2;
-  }
+    @media (max-width: s.$to-small) {
+        font-size: s.$font-size - 2;
+    }
 
-  @media (min-width: s.$from-small) and (max-width: s.$to-medium) {
-    font-size: s.$font-size - 2;
-  }
+    @media (min-width: s.$from-small) and (max-width: s.$to-medium) {
+        font-size: s.$font-size - 2;
+    }
 
-  @media (min-width: s.$from-medium) and (max-width: s.$to-large) {
-    font-size: s.$font-size - 1;
-  }
+    @media (min-width: s.$from-medium) and (max-width: s.$to-large) {
+        font-size: s.$font-size - 1;
+    }
 
-  @media (min-width: s.$from-large) and (max-width: s.$to-huge) {
-    font-size: s.$font-size; /* Default font-size */
-  }
+    @media (min-width: s.$from-large) and (max-width: s.$to-huge) {
+        font-size: s.$font-size;
+        /* Default font-size */
+    }
 
-  @media (min-width: s.$from-huge) and (max-width: s.$to-gigantic) {
-    font-size: s.$font-size + 1;
-  }
+    @media (min-width: s.$from-huge) and (max-width: s.$to-gigantic) {
+        font-size: s.$font-size + 1;
+    }
 
-  @media (min-width: s.$from-gigantic) and (max-width: s.$to-colossal) {
-    font-size: s.$font-size + 2;
-  }
+    @media (min-width: s.$from-gigantic) and (max-width: s.$to-colossal) {
+        font-size: s.$font-size + 2;
+    }
 
-  @media (min-width: s.$from-colossal) {
-    font-size: s.$font-size + 2;
-  }
+    @media (min-width: s.$from-colossal) {
+        font-size: s.$font-size + 2;
+    }
 }
 
 html,
 body {
-  min-height: 100%;
+    min-height: 100%;
+}
+
+body {
+    overflow: hidden;
 }
 
 ::selection {
-  background-color: s.$selection-background-color;
-  color: s.$selection-text-color;
-  text-shadow: none;
+    background-color: s.$selection-background-color;
+    color           : s.$selection-text-color;
+    text-shadow     : none;
 }
 
 p {
     margin-bottom: 1rem;
-    color: s.$txt-color;
+    color        : s.$txt-color;
+}
+
+:root {
+    --horizontal-wrapper-content-margin: 1.5rem;
+
+    @media (min-width: s.$from-small) {
+        --horizontal-wrapper-content-margin: 2rem;
+    }
+
+    @media (min-width: s.$from-medium) {
+        --horizontal-wrapper-content-margin: 3rem;
+    }
 }

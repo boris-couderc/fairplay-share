@@ -13,7 +13,7 @@ import './style.scss'
 const Header = ({ isLogged, onLogOut, points, grade }) => {
     return (
         <header className="header">
-            <Wrapper wide>
+            <Wrapper /* wide */>
                 <div className="header__content">
                     <Link to="/" className="header__logo">
                         <Logo alt="FairPlay" />

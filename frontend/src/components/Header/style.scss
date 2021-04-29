@@ -3,14 +3,17 @@
 .header {
     position     : relative;
     z-index      : 100;
+    //padding      : 2rem 0;
     padding      : 2rem 0;
-    margin-bottom: 1rem;
+    //margin-bottom: 1rem;
 
     &__content {
         display       : flex;
         flex-direction: column;
         align-items   : center;
         row-gap       : 1rem;
+
+        margin: 0 var(--horizontal-wrapper-content-margin);
 
         @media (min-width: s.$from-tiny) {
             flex-direction : row;
@@ -20,6 +23,7 @@
 
     &__logo {
         display: block;
+        margin-left: .25rem;
 
         svg {
             width : 9rem;
@@ -64,7 +68,7 @@
         color     : s.$dark-color-dark;
         position  : relative;
         transform : translateX(1rem);
-        transition: transform ease-in-out 200ms;
+        transition: transform ease-in-out 150ms;
     }
 
     &__reward-icon {
@@ -86,7 +90,7 @@
 
         opacity   : 0;
         transform : translateY(-10px);
-        transition: opacity ease-in-out 200ms, transform ease-in-out 200ms;
+        transition: opacity ease-in-out 150ms, transform ease-in-out 200ms;
 
         &:before {
             content     : '';

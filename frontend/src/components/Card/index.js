@@ -4,10 +4,10 @@ import classNames from 'classnames'
 
 import Heading from 'src/components/Heading'
 import Icon from 'src/components/Icon'
-import CardLink from './CardLink'
-import sports from 'src/assets/sports/sports'
+import ActivityLink from 'src/components/ActivityLink'
 
 import './style.scss'
+import sports from 'src/assets/sports/sports'
 
 import { useInView } from 'react-intersection-observer';
 
@@ -22,7 +22,6 @@ const Card = ({ activity, loggedUserRole, isLogged, showLoginModal }) => {
     });
 
     useEffect(() => {
-        console.log('inView', inView);
         setClasses(classNames(
             'card',
             loggedUserRole === 'creator' && 'card--creator',
@@ -33,10 +32,11 @@ const Card = ({ activity, loggedUserRole, isLogged, showLoginModal }) => {
 
     return (
         <li className={classes} ref={ref}>
-            <CardLink
+            <ActivityLink
                 isLogged={isLogged}
                 id={activity.id}
                 onClick={showLoginModal}
+                classProps="card__link"
             >
                 <img
                     src={sports[activity.sport.name]}
@@ -69,9 +69,9 @@ const Card = ({ activity, loggedUserRole, isLogged, showLoginModal }) => {
                         )}
                     </li>
                 </ul>
-            </CardLink>
+            </ActivityLink>
         </li>
-    )
+    ) 
 }
 
 Card.propTypes = {
