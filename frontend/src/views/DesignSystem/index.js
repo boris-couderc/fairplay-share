@@ -8,7 +8,7 @@ import Wrapper from 'src/components/Wrapper'
 import Button from 'src/components/Button'
 import Heading from 'src/components/Heading'
 import Form from 'src/components/Form'
-import Input from 'src/components/Form/Input'
+import Input from 'src/components/Input'
 import Icon from 'src/components/Icon'
 
 import './style.scss'

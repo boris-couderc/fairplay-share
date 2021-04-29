@@ -8,7 +8,7 @@ import ScrollToTop from 'src/components/ScrollToTop'
 import Wrapper from 'src/components/Wrapper'
 import Heading from 'src/components/Heading'
 import Form from 'src/components/Form'
-import Input from 'src/components/Form/Input'
+import Input from 'src/components/Input'
 import Button from 'src/components/Button'
 
 import './style.scss'
