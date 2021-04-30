@@ -1,37 +1,37 @@
-$primary-color         : #ec7253;
-$primary-color-dark    : #c75a40;
-$primary-color-light   : #fc8668;
-$primary-color-lighter : #ffc7b9;
-$primary-color-lightest: #f4e5dd;
+$color-primary         : #ec7253;
+$color-primary-dark    : #c75a40;
+$color-primary-light   : #fc8668;
+$color-primary-lighter : #ffc7b9;
+$color-primary-lightest: #f4e5dd;
 
-$secondary-color         : #5ab4a9;
-$secondary-color-dark    : #438f86;
-$secondary-color-light   : #6cccc0;
-$secondary-color-lighter : #9cd8d1;
-$secondary-color-lightest: #e5ebe6;
+$color-secondary         : #5ab4a9;
+$color-secondary-dark    : #438f86;
+$color-secondary-light   : #6cccc0;
+$color-secondary-lighter : #9cd8d1;
+$color-secondary-lightest: #e5ebe6;
 
-$dark-color         : #425359;
-$dark-color-dark    : #273940;
-$dark-color-light   : #546c75;
-$dark-color-lighter : #90a4ac;
-$dark-color-lightest: #eeece8;
+$color-dark         : #425359;
+$color-dark-dark    : #273940;
+$color-dark-light   : #546c75;
+$color-dark-lighter : #90a4ac;
+$color-dark-lightest: #eeece8;
 
-$txt-color         : #515151;
-$txt-color-dark    : #303030;
-$txt-color-light   : #8d8d8d;
-$txt-color-lighter : #b3b3b3;
-$txt-color-lightest: #cccccc;
+$color-txt         : #515151;
+$color-txt-dark    : #303030;
+$color-txt-light   : #8d8d8d;
+$color-txt-lighter : #b3b3b3;
+$color-txt-lightest: #cccccc;
 
-$link-color      : $primary-color;
-$link-color-hover: $primary-color-dark;
+$color-link      : $color-primary;
+$color-link-hover: $color-primary-dark;
 
-$error-color  : rgb(199, 2, 2);
-$success-color: $secondary-color;
+$color-error  : rgb(199, 2, 2);
+$color-success: $color-secondary;
 
-$background-color       : #f5f1ed;
-$background-color-dark  : #ECE9E6;
-$background-color-darker: #E9E6E3;
+$color-background       : #f5f1ed;
+$color-background-dark  : #ECE9E6;
+$color-background-darker: #E9E6E3;
 
 // Specific
-$selection-background-color: $primary-color;
-$selection-text-color      : #ffffff;
+$color-selection-background: $color-primary;
+$color-selection-text      : #ffffff;

@@ -73,7 +73,7 @@
                 font-size       : .65rem;
                 list-style      : .65rem;
                 color           : #ffffff;
-                background-color: s.$primary-color;
+                background-color: s.$color-primary;
                 font-family     : s.$font-family-heading;
                 transform-origin: center;
                 left            : -1.5rem;
@@ -89,7 +89,7 @@
             &::before {
                 content         : 'J\'organise';
                 left            : -1.5rem;
-                background-color: s.$secondary-color;
+                background-color: s.$color-secondary;
             }
         }
     }
@@ -106,14 +106,14 @@
         display        : flex;
         flex-direction : column;
         justify-content: center;
-        color          : s.$txt-color;
+        color          : s.$color-txt;
         transform      : translateX(0);
         transition     : transform ease-in-out 150ms;
     }
 
     &__title {
         font-family       : s.$font-family-heading;
-        color             : s.$txt-color-dark;
+        color             : s.$color-txt-dark;
         font-size         : .95rem;
         line-height       : 1.35;
         display           : -webkit-box;
@@ -126,7 +126,7 @@
 
     &__date {
         padding-top      : .2rem;
-        color            : s.$primary-color;
+        color            : s.$color-primary;
         grid-column-start: 2;
         font-size        : .9rem;
         font-weight      : s.$font-weight-bold;
@@ -141,16 +141,16 @@
             height      : 1rem;
             margin-left : .5rem;
             margin-right: .5rem;
-            border-left : 2px solid s.$primary-color-lightest;
+            border-left : 2px solid s.$color-primary-lightest;
         }
     }
 
     &__link--creator &__date {
-        color: s.$secondary-color;
+        color: s.$color-secondary;
     }
 
     &__link--creator &__time::before {
-        border-left: 2px solid s.$secondary-color-lightest;
+        border-left: 2px solid s.$color-secondary-lightest;
     }
 
     &__link:hover &__content,

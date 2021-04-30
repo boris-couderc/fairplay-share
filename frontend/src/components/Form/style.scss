@@ -48,7 +48,7 @@
     &__error {
         margin-bottom: 1rem;
         font-size    : .9rem;
-        color        : s.$error-color;
+        color        : s.$color-error;
         position     : relative;
 
         @include s.animation-slide-up();

@@ -24,13 +24,13 @@
   }
 
   &__inputName {
-    color: s.$dark-color-light;
+    color: s.$color-dark-light;
     margin: 0 0 10px 25px;
     margin-bottom: 15px;
   }
 
   &__required {
-    color: s.$primary-color;
+    color: s.$color-primary;
   }
 
   &__container {
@@ -51,7 +51,7 @@
   &__title {
     font-size: 32px;
     margin-bottom: 45px;
-    color: s.$dark-color;
+    color: s.$color-dark;
   }
 
   &__input {
@@ -73,7 +73,7 @@
   }
 
   &__submit {
-    background-color: s.$primary-color;
+    background-color: s.$color-primary;
     color: white;
     border-radius: 25px;
     border: none;
@@ -90,7 +90,7 @@
 
   &__noAccount {
     font-size: 16px;
-    color: s.$dark-color-light;
+    color: s.$color-dark-light;
   }
 
   &__error {
@@ -103,7 +103,7 @@
     flex: 1;
     text-align: center;
     font-size: 16px;
-    color: s.$dark-color-light;
+    color: s.$color-dark-light;
   }
 
   &__textarea {

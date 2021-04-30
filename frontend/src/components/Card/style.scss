@@ -41,7 +41,7 @@
             font-size       : .7rem;
             font-family     : s.$font-family-heading;
             color           : #ffffff;
-            background-color: s.$primary-color;
+            background-color: s.$color-primary;
             box-shadow      : 0 -2px 2px 0 rgba($color: #000000, $alpha: .1) inset;
             transition      : transform 150ms s.$Power3EaseInOut;
         }
@@ -49,18 +49,18 @@
 
     &--participant {
         &::after {
-            border-top: 2px solid s.$primary-color-lighter;
+            border-top: 2px solid s.$color-primary-lighter;
         }
     }
 
     &--creator {
         &::after {
-            border-top: 2px solid s.$secondary-color-lighter;
+            border-top: 2px solid s.$color-secondary-lighter;
         }
 
         &::before {
             content         : 'J\'organise';
-            background-color: s.$secondary-color;
+            background-color: s.$color-secondary;
         }
     }
 
@@ -126,7 +126,7 @@
         align-items          : center;
         justify-content      : center;
         font-weight          : s.$font-weight-bold;
-        color                : s.$primary-color;
+        color                : s.$color-primary;
 
         &:not(:first-child) {
             margin-top: .75rem;
@@ -136,7 +136,7 @@
             margin-right: .5rem;
             width       : 1.7rem;
             height      : 1.7rem;
-            color       : s.$primary-color;
+            color       : s.$color-primary;
         }
 
         &--date {

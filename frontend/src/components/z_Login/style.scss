@@ -21,7 +21,7 @@
   &__title {
     font-size: 32px;
     margin-bottom: 45px;
-    color: s.$dark-color;
+    color: s.$color-dark;
   }
 
   &__input {
@@ -37,7 +37,7 @@
   }
 
   &__button {
-    background-color: s.$primary-color;
+    background-color: s.$color-primary;
     color: white;
     padding: 10px;
     border-radius: 25px;
@@ -57,7 +57,7 @@
 
   &__noAccount {
     font-size: 16px;
-    color: s.$dark-color-light;
+    color: s.$color-dark-light;
   }
 
   &__error {

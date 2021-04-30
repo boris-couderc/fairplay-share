@@ -28,26 +28,26 @@
 
   &__title {
     font-weight: 600;
-    color: s.$primary-color;
+    color: s.$color-primary;
     font-size: 3rem;
     margin-bottom: 10px;
   }
 
   &__timeplace {
     font-size: 1.5rem;
-    color: s.$dark-color;
+    color: s.$color-dark;
     padding-top: 15px;
     margin-bottom: 10px;
   }
 
   &__duration {
     font-size: 1.5rem;
-    color: s.$dark-color;
+    color: s.$color-dark;
     padding-top: 5px;
   }
 
   &__join {
-    background-color: s.$primary-color;
+    background-color: s.$color-primary;
     transition: all 0.3s;
     padding: 15px 30px;
     font-size: 1.05em;
@@ -61,7 +61,7 @@
   }
 
   &__join-quit {
-    background-color: s.$secondary-color;
+    background-color: s.$color-secondary;
   }
 
   &__join:hover {
@@ -80,7 +80,7 @@
 
   &__description {
     font-size: 1.3rem;
-    color: s.$dark-color;
+    color: s.$color-dark;
     background-color: rgba(255, 255, 255, 0.85);
     border-radius: 16px;
     line-height: 1.2;
@@ -91,13 +91,13 @@
   }
 
   &__descriptionTitle{
-    color: s.$primary-color;
+    color: s.$color-primary;
     font-weight: 600;
     margin-bottom: 10px;
   }
 
   &__description span {
-    color: s.$primary-color;
+    color: s.$color-primary;
     font-weight: 600;
     margin-bottom: 20px;
   }
@@ -131,23 +131,23 @@
   }
 
   &__pseudo {
-    color: s.$dark-color;
+    color: s.$color-dark;
     font-size: 1.5rem;
   }
 
   &__role {
-    color: s.$dark-color-light;
+    color: s.$color-dark-light;
     margin-top: 5px;
   }
 
   &__participantsNumber {
-    color: s.$dark-color;
+    color: s.$color-dark;
     font-size: 1.5rem;
   }
 
   &__minParticipants {
     margin-top: 5px;
-    color: s.$dark-color-light;
+    color: s.$color-dark-light;
   }
 
   &__map {

@@ -5,7 +5,7 @@
     margin-top: 4rem;
     padding   : 2rem 0;
     font-size : 0.9rem;
-    color     : s.$txt-color-light;
+    color     : s.$color-txt-light;
     border-top: 2px solid rgba(0, 0, 0, 0.075);
 
     &__content {
@@ -38,9 +38,9 @@
         a {
             position: relative;
             padding : 0.25rem 0;
-            color   : s.$txt-color-light;
+            color   : s.$color-txt-light;
 
-            @include s.hover-link(s.$primary-color-light);
+            @include s.hover-link(s.$color-primary-light);
         }
     }
 }

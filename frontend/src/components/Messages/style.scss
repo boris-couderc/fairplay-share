@@ -43,7 +43,7 @@
   }
 
   &__pseudo{
-    color: s.$primary-color;
+    color: s.$color-primary;
     font-size: 0.9em;
     font-weight: 600;
   }
@@ -71,7 +71,7 @@
 
   &__button {
     border: none;
-    background-color: s.$primary-color;
+    background-color: s.$color-primary;
     font-family: s.$font-family-heading;
     color: white;
     box-shadow: s.$shadow;

@@ -6,7 +6,7 @@
     text-align: center;
     font-size: 1.25rem;
     font-weight: 500;
-    color: s.$primary-color;
+    color: s.$color-primary;
   }
   &__no-result-img{
     position: relative;
@@ -22,12 +22,12 @@
   font-family: s.$font-family-heading;
   font-size: 1.5rem;
   font-weight: 600;
-  color: s.$dark-color;
+  color: s.$color-dark;
   padding-bottom: 1rem;
   padding-top: 2rem;
 
   &__txt-color {
-    color: s.$primary-color;
+    color: s.$color-primary;
   }
 }
 

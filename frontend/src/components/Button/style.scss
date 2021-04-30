@@ -19,7 +19,7 @@
         right        : 0;
         bottom       : 0;
         left         : 0;
-        background   : s.$dark-color;
+        background   : s.$color-dark;
         border-radius: 100em;
         transition   : transform 150ms s.$Power3EaseInOut;
     }
@@ -143,24 +143,24 @@
 
     &--primary {
         &::after {
-            background-color: s.$primary-color;
+            background-color: s.$color-primary;
         }
     }
 
     &--secondary {
         &::after {
-            background-color: s.$secondary-color;
+            background-color: s.$color-secondary;
         }
     }
 
     &--outline {
-        color      : s.$dark-color-dark;
+        color      : s.$color-dark-dark;
         font-weight: 500;
         background : transparent;
 
         &::after {
-            box-shadow      : 0 0 0 2px rgba($color: s.$dark-color, $alpha: 0.085) inset;
-            background-color: rgba($color: s.$dark-color-lightest, $alpha: .6);
+            box-shadow      : 0 0 0 2px rgba($color: s.$color-dark, $alpha: 0.085) inset;
+            background-color: rgba($color: s.$color-dark-lightest, $alpha: .6);
         }
 
         &.button--loading {
@@ -173,13 +173,13 @@
     }
 
     &--primary-outline {
-        color      : s.$primary-color;
+        color      : s.$color-primary;
         font-weight: 500;
         background : transparent;
 
         &::after {
-            box-shadow        : 0 0 0 2px rgba($color: s.$primary-color, $alpha: 0.2) inset;
-            background-color  : rgba($color: s.$primary-color-lighter, $alpha: .2);
+            box-shadow        : 0 0 0 2px rgba($color: s.$color-primary, $alpha: 0.2) inset;
+            background-color  : rgba($color: s.$color-primary-lighter, $alpha: .2);
         }
 
         &.button--loading {
@@ -192,13 +192,13 @@
     }
 
     &--secondary-outline {
-        color      : s.$secondary-color;
+        color      : s.$color-secondary;
         font-weight: 500;
         background : transparent;
 
         &::after {
-            box-shadow      : 0 0 0 2px rgba($color: s.$secondary-color, $alpha: 0.2) inset;
-            background-color: rgba($color: s.$secondary-color-lightest, $alpha: .8);
+            box-shadow      : 0 0 0 2px rgba($color: s.$color-secondary, $alpha: 0.2) inset;
+            background-color: rgba($color: s.$color-secondary-lightest, $alpha: .8);
         }
 
         &.button--loading {

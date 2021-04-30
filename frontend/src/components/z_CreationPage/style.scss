@@ -29,20 +29,20 @@
   &__label {
     display: block;
     font-size: 17px;
-    color: s.$dark-color;
+    color: s.$color-dark;
     text-align: left;
     padding-bottom: 15px;
     padding-left: 25px;
   }
 
   &__required {
-    color: s.$primary-color;
+    color: s.$color-primary;
   }
 
   &__title {
     font-size: 32px;
     margin-bottom: 45px;
-    color: s.$dark-color;
+    color: s.$color-dark;
     text-align: center;
   }
 
@@ -58,7 +58,7 @@
   }
 
   &__input--submit {
-    background-color: s.$primary-color;
+    background-color: s.$color-primary;
     color: white;
     padding: 10px;
     border-radius: 25px;
@@ -107,7 +107,7 @@ color: grey
 
   &__noAccount {
     font-size: 16px;
-    color: s.$dark-color-light;
+    color: s.$color-dark-light;
   }
 
   &__error {

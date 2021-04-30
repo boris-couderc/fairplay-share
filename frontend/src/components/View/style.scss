@@ -44,14 +44,14 @@
         z-index   : -1;
         opacity   : .5;
         max-width : s.$from-large;
-        background: linear-gradient(90deg, rgba($color: s.$background-color, $alpha: .8) 50%, rgba($color: s.$background-color, $alpha: 0));
+        background: linear-gradient(90deg, rgba($color: s.$color-background, $alpha: .8) 50%, rgba($color: s.$color-background, $alpha: 0));
 
         @media (min-width: s.$from-medium) {
             opacity: 1;
         }
 
         @media (min-width: s.$from-huge) {
-            background: linear-gradient(90deg, rgba($color: s.$background-color, $alpha: .8) 30%, rgba($color: s.$background-color, $alpha: 0));
+            background: linear-gradient(90deg, rgba($color: s.$color-background, $alpha: .8) 30%, rgba($color: s.$color-background, $alpha: 0));
         }
     }
 }

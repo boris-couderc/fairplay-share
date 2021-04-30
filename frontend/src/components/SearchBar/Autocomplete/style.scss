@@ -9,7 +9,7 @@
     width        : 100%;
     padding      : 1rem;
     border-radius: s.$border-radius-medium;
-    background   : s.$background-color-dark;
+    background   : s.$color-background-dark;
     box-shadow   : 0 0 10px rgba(0, 0, 0, 0.05) inset;
     animation    : 200ms s.$Power1EaseOut autocompleteSlidein;
 
@@ -31,7 +31,7 @@
         margin      : 0.375rem 0 0.375rem 1rem;
         cursor       : pointer;
 
-        @include s.hover-link(s.$primary-color-light);
+        @include s.hover-link(s.$color-primary-light);
     }
 
     &__detail {

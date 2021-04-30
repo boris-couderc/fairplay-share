@@ -3,12 +3,12 @@
 html {
     overflow-y             : scroll;
     scroll-behavior        : smooth;
-    color                  : s.$txt-color;
+    color                  : s.$color-txt;
     font-family            : s.$font-family;
     line-height            : s.$line-height;
     -webkit-font-smoothing : antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-color       : s.$background-color;
+    background-color       : s.$color-background;
 
     @media (max-width: s.$to-small) {
         font-size: s.$font-size - 2;
@@ -50,14 +50,14 @@ body {
 }
 
 ::selection {
-    background-color: s.$selection-background-color;
-    color           : s.$selection-text-color;
+    background-color: s.$color-selection-background;
+    color           : s.$color-selection-text;
     text-shadow     : none;
 }
 
 p {
     margin-bottom: 1rem;
-    color        : s.$txt-color;
+    color        : s.$color-txt;
 }
 
 :root {

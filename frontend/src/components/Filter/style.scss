@@ -56,7 +56,7 @@
 
             &::before {
                 transform : scale(1.05) translateY(-2px);
-                //border  : 2px solid s.$primary-color-lighter;
+                //border  : 2px solid s.$color-primary-lighter;
             }
         }
     }
@@ -68,7 +68,7 @@
         &:checked~* {
             &::before {
                 transform : scale(1.05) translateY(-2px);
-                border    : 2px solid rgba($color: s.$primary-color-light, $alpha: .8);
+                border    : 2px solid rgba($color: s.$color-primary-light, $alpha: .8);
                 box-shadow: 0 -10px 10px -10px rgba($color: #000, $alpha: .05) inset;
             }
         }

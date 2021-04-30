@@ -65,14 +65,14 @@
     }
 
     &__account-icon {
-        color     : s.$dark-color-dark;
+        color     : s.$color-dark-dark;
         position  : relative;
         transform : translateX(1rem);
         transition: transform ease-in-out 150ms;
     }
 
     &__reward-icon {
-        color: s.$primary-color;
+        color: s.$color-primary;
     }
 
     &__reward {
@@ -108,7 +108,7 @@
 
     &__grade {
         display    : block;
-        color      : s.$primary-color;
+        color      : s.$color-primary;
         font-family: s.$font-family-heading;
     }
 }

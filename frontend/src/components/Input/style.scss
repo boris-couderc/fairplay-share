@@ -5,16 +5,16 @@
     line-height  : s.$line-height;
     border-radius: s.$border-radius;
     background   : #fff;
-    color        : s.$txt-color-dark;
-    box-shadow   : s.$shadow-small, 0 0 0 2px rgba($color: s.$primary-color-lighter, $alpha: 0) inset;
+    color        : s.$color-txt-dark;
+    box-shadow   : s.$shadow-small, 0 0 0 2px rgba($color: s.$color-primary-lighter, $alpha: 0) inset;
     transition   : box-shadow ease 200ms;
 
     &:not(&--error):focus {
-        box-shadow: s.$shadow-small, 0 0 0 2px rgba($color: s.$primary-color-lighter, $alpha: 1.0) inset;
+        box-shadow: s.$shadow-small, 0 0 0 2px rgba($color: s.$color-primary-lighter, $alpha: 1.0) inset;
     }
 
     &--error {
-        box-shadow: s.$shadow-small, 0 0 0 2px rgba($color: s.$error-color, $alpha: .35) inset;
+        box-shadow: s.$shadow-small, 0 0 0 2px rgba($color: s.$color-error, $alpha: .35) inset;
     }
 
     &__error {
@@ -22,7 +22,7 @@
         padding-left: 1.5rem;
         font-size   : .75rem;
         text-align  : left;
-        color       : s.$error-color;
+        color       : s.$color-error;
         position    : relative;
         animation   : 200ms ease-out slidein;
     }
@@ -97,7 +97,7 @@
         }
 
         &:checked::before {
-            background-color: s.$primary-color;
+            background-color: s.$color-primary;
         }
     }
 
@@ -118,7 +118,7 @@
             display     : inline-block;
             padding-left: .5rem;
             font-size   : .8rem;
-            color       : s.$txt-color-lighter;
+            color       : s.$color-txt-lighter;
         }
     }
 }

@@ -64,7 +64,7 @@
             align-items          : center;
             font-family          : s.$font-family-heading;
             line-height          : s.$line-height-heading;
-            color                : s.$primary-color;
+            color                : s.$color-primary;
             font-weight          : 700;
             font-size            : 1.125rem;
 
@@ -72,7 +72,7 @@
                 margin-right: .55rem;
                 width       : 1.6rem;
                 height      : 1.6rem;
-                color       : s.$primary-color;
+                color       : s.$color-primary;
             }
 
             &:not(:first-child) {
@@ -85,7 +85,7 @@
                     height     : 100%;
                     left       : 0;
                     width      : 1.5rem;
-                    border-left: 2px solid s.$primary-color-lighter;
+                    border-left: 2px solid s.$color-primary-lighter;
                     opacity    : .9;
                 }
             }
@@ -190,7 +190,7 @@
             padding-left: 2.25rem;
 
             &--light {
-                color    : s.$txt-color-lighter;
+                color    : s.$color-txt-lighter;
                 font-size: .8rem;
             }
         }
@@ -207,7 +207,7 @@
 
         &-txt {
             padding-top: 1rem;
-            color      : s.$txt-color-lighter;
+            color      : s.$color-txt-lighter;
             font-size  : .75rem;
             line-height: 1.6;
         }
