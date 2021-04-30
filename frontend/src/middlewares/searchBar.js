@@ -56,6 +56,7 @@ const searchBar = (store) => (next) => (action) => {
                     })
                     .catch((error) => {
                         console.log('error', error)
+                        //store.dispatch(errorApiInVerifLocalisation())
                     })
             }
             next(action)
@@ -105,6 +106,7 @@ const searchBar = (store) => (next) => (action) => {
                     })
                     .catch((error) => {
                         console.log('error', error)
+                        store.dispatch(errorApiInVerifLocalisation())
                     })
             } else {
                 // console.log('RESULTAT POUR RECHERCHE  2 ----->>>', inputValue)

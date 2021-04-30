@@ -1,4 +1,4 @@
-import { SAVE_ACTTIVITY, SAVE_NEW_MESSAGE } from 'src/actions/details';
+import { SAVE_ACTTIVITY, SAVE_NEW_MESSAGE } from 'src/actions/activity';
 
 const initialState = [];
 

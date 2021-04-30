@@ -5,7 +5,7 @@ import login from './login'
 import searchBar from './searchBar'
 import loginModal from './loginModal'
 import search from './search'
-import details from './details'
+import activity from './activity'
 import registration from './registration'
 import createActivity from './createActivity'
 import filter from './filter'
@@ -18,7 +18,7 @@ const globalReducer = combineReducers({
     searchBar,
     loginModal,
     search,
-    details,
+    activity,
     registration,
     createActivity,
     userActivities,

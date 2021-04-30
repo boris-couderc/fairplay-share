@@ -24,22 +24,26 @@ import NotFound from 'src/views/NotFound'
 import Registration from 'src/containers/Registration'
 import Login from 'src/containers/Login'
 import Search from 'src/containers/Search'
-
 import CreateActivity from 'src/containers/CreateActivity'
+import Activity from 'src/containers/Activity'
 
 const App = () => {
-
     return (
         <>
             <UserVerification />
             <ScreenSizeHelper />
             <Switch>
+
                 <Route path="/" exact>
                     <HomePage />
                 </Route>
 
-                <Route path="/design-system" exact>
-                    <DesignSystem />
+                <Route path="/search">
+                    <Search />
+                </Route>
+
+                <Route path="/activity/:id">
+                    <Activity />
                 </Route>
 
                 <Route path="/connexion" exact>
@@ -50,20 +54,15 @@ const App = () => {
                     <Registration />
                 </Route>
 
-                <Route path="/search">
-                    <Search />
-                </Route>
-
-                {/* <Route path="/activity/:id">
-                    {isLogged && <Details />}
-                    {!isLogged && <Redirect to="/connexion" />}
-                </Route> */}
-
-                <Route path="/creation">
+                <Route path="/creation" exact>
                     <CreateActivity />
                 </Route>
 
-                <Route path="/equipe">
+                <Route path="/design-system" exact>
+                    <DesignSystem />
+                </Route>
+
+                <Route path="/equipe" exact>
                     <Team />
                 </Route>
 
@@ -74,11 +73,5 @@ const App = () => {
         </>
     )
 }
-
-/*
-App.propTypes = {
-    isLogged: PropTypes.bool.isRequired,
-}
-*/
 
 export default App

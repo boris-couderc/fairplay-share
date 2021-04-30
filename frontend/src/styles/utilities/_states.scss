@@ -1,0 +1,31 @@
+@use '../settings'as s;
+
+// Hidden
+
+.is-hidden {
+    display: none !important;
+}
+
+.is-hidden\@to-small {
+    @media (max-width: s.$to-small) {
+        display: none !important;
+    }
+}
+
+.is-hidden\@to-medium {
+    @media (max-width: s.$to-medium) {
+        display: none !important;
+    }
+}
+
+.is-hidden\@to-large {
+    @media (max-width: s.$to-large) {
+        display: none !important;
+    }
+}
+
+// .is-hidden\@from-large {
+//     @media (min-width: $from-large) {
+//         display: none;
+//     }
+// }

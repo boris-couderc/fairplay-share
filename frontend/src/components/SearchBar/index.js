@@ -173,6 +173,14 @@ const SearchBar = ({
                             onChange={handleOnChange}
                             ref={placeInput}
                         />
+
+                        {/* <select>
+                            <option value="">2km</option>
+                            <option value="">10km</option>
+                            <option value="">50km</option>
+                            <option value="">100km</option>
+                        </select> */}
+
                     </div>
                     <Button
                         type="submit"

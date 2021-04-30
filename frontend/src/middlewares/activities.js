@@ -17,13 +17,13 @@ import {
 } from 'src/actions/search'
 
 import {
-    FETCH_DATA_ACTTIVITY,
+    FETCH_ACTTIVITY,
     saveActivity,
     JOIN_ACTIVITY,
     QUIT_ACTIVITY,
     updateStatus,
     errorStatus,
-} from 'src/actions/details'
+} from 'src/actions/activity'
 
 import { saveUserPoints, logOut } from 'src/actions/login'
 
@@ -78,7 +78,7 @@ const activities = (store) => (next) => (action) => {
                 next(action)
             break
 
-        case FETCH_DATA_ACTTIVITY:
+        case FETCH_ACTTIVITY:
             axios
                 .get(`${process.env.API_URL}/api/activity/${idParams}`, {
                     withCredentials: true,

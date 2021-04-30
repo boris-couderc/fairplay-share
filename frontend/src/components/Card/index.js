@@ -58,15 +58,15 @@ const Card = ({ activity, loggedUserRole, isLogged, showLoginModal }) => {
                                 { parseFloat(activity.activity_place.distance.toFixed(1))} km
                             </span>
                         )}
+                        {` (9 km)` }
                     </li>
-                    <li className="card__info">
-                        <Icon name="clock" />
+                    <li className="card__info card__info--date">
+                        {/* <Icon name="clock" /> */}
+                        <Icon name="calendar" />
                         {activity.date}
-                        {activity.time && (
-                            <span className="card__info-sup">
-                                {activity.time}
-                            </span>
-                        )}
+                        <Icon name="clock" classProps="icon--clock" />
+                        {/* <Icon name="calendar" /> */}
+                        {activity.time}
                     </li>
                 </ul>
             </ActivityLink>

@@ -3,7 +3,7 @@ import axios from 'axios';
 import {
   SEND_MESSAGE,
   saveNewMessage,
-} from 'src/actions/details';
+} from 'src/actions/activity';
 
 const messages = (store) => (next) => (action) => {
   switch (action.type) {

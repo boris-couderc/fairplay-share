@@ -23,10 +23,10 @@
         top          : 0;
         right        : 0;
         bottom       : 0;
-        background   : #fff;
         border-radius: s.$border-radius-medium;
         box-shadow   : s.$shadow;
         transition   : transform 150ms s.$Power3EaseInOut;
+        background   : #fff;
         background   : linear-gradient(#ffffff 80%, #f8f8f8 100%);
     }
 
@@ -129,44 +129,27 @@
         color                : s.$primary-color;
 
         &:not(:first-child) {
-            margin-top: .5rem;
+            margin-top: .75rem;
         }
 
         .icon {
             margin-right: .5rem;
-            width       : 1.6rem;
-            height      : 1.6rem;
+            width       : 1.7rem;
+            height      : 1.7rem;
             color       : s.$primary-color;
         }
 
-        &-sup {
-            display    : inline-block;
-            position   : relative;
-            margin-left: .5rem;
-
-            &::before {
-                content     : '';
-                position    : relative;
-                top         : 0;
-                left        : 0;
-                height      : 1rem;
-                margin-right: .5rem;
-                border-left : 2px solid s.$primary-color-lightest;
+        &--date {
+            opacity: .8;
+            .icon {
+                width: 1.3rem;
+                height: 1.3rem;
+                margin-right: .375rem;
             }
         }
-    }
-
-    &--creator {
-        .card__info {
-            color: s.$secondary-color;
-
-            .icon {
-                color: s.$secondary-color;
-            }
-
-            &-sup::before {
-                border-left: 2px solid s.$secondary-color-lightest;
-            }
+        
+        .icon--clock {
+            margin-left: 1rem;
         }
     }
 }

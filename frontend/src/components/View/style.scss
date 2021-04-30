@@ -5,7 +5,9 @@
     min-height    : 100vh;
     display       : flex;
     flex-direction: column;
+    overflow      : hidden;
 
+    &__background,
     &::before,
     &::after {
         position : absolute;
@@ -17,6 +19,7 @@
         min-height: 600px;
     }
 
+    &__background,
     &::before {
         z-index            : -2;
         opacity            : .3;

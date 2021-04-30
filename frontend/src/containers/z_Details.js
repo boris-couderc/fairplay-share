@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Details from 'src/components/Details';
-import { fetchDataActivity, joinActivity, quitActivity } from 'src/actions/details';
+import { fetchDataActivity, joinActivity, quitActivity } from 'src/actions/activity';
 
 const mapStateToProps = (state) => ({
   activity: state.details,
