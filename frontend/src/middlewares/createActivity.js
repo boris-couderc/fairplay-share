@@ -63,8 +63,13 @@ const createActivity = (store) => (next) => (action) => {
 
 
                             })
+                            .catch((error) => {
+                                console.log(error)
+                                if (error.response.status === 401) {
+                                    store.dispatch(logOut())
+                                }
+                            })
                     })
-
                     .catch((error) => {
                         console.log(error)
                         if (error.response.status === 401) {

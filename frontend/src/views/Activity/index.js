@@ -9,6 +9,7 @@ import Button from 'src/components/Button'
 import Heading from 'src/components/Heading'
 import Icon from 'src/components/Icon'
 import Loader from 'src/components/Loader'
+import Map from 'src/components/Map'
 
 import './style.scss'
 
@@ -128,6 +129,21 @@ const Activity = ({
                                             Je m'engage à être présent le jour de l'activité, mais je peux si besoin me désinscrire à tout moment !
                                         </div>
                                     </div>
+                                </div>
+
+                                <div className="activity__map-messages">
+
+                                    <div className="activity__map">
+                                        <Map
+                                            lat={activity.activity_place.lat}
+                                            lng={activity.activity_place.lng}
+                                        />
+                                    </div>
+
+                                    <div className="activity__messages">
+                                        messages
+                                    </div>
+
                                 </div>
 
                             </div>

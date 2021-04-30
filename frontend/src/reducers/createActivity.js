@@ -37,7 +37,7 @@ const createActivity = (state = initialState, action = {}) => {
             return { 
                 ...state, 
                 isCreated: true,
-                error: null,
+                error: null, 
             }
 
         case ACTIVITY_CREATED_CHANGE_TO_FALSE:
