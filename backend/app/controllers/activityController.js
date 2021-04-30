@@ -23,6 +23,7 @@ const activityController = {
     defaultNumCardInPage: 8,
     defaultLimitDistance: 100, // en km
 
+    
     getLastActivities: async (req, res) => {
         console.log('----------> getLastActivity')
 
@@ -100,6 +101,7 @@ const activityController = {
             res.status(500).json(error.toString())
         }
     },
+
 
     getOneActivity: async (req, res) => {
         console.log('----------> getOneActivity')
@@ -180,6 +182,7 @@ const activityController = {
             res.status(500).json(error.toString())
         }
     },
+
 
     getActivitiesByUserLocalisation: async (req, res) => {
         console.log('----------> getActivitiesByUserLocalisation2')
@@ -378,6 +381,7 @@ const activityController = {
             res.status(500).json(error.toString())
         }
     },
+
 
     getActivitiesByUser: async (req, res) => {
         console.log('----------> getActivitiesByUser')
