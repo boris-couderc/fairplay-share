@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
-import { useParams, useHistory, Redirect } from 'react-router-dom';
+import { useParams, useHistory, Redirect } from 'react-router-dom'
 
 import View from 'src/components/View'
 import ScrollToTop from 'src/components/ScrollToTop'
@@ -10,6 +10,7 @@ import Heading from 'src/components/Heading'
 import Icon from 'src/components/Icon'
 import Loader from 'src/components/Loader'
 import Map from 'src/components/Map'
+import Messages from 'src/containers/Messages'
 
 import './style.scss'
 
@@ -20,29 +21,29 @@ const Activity = ({
     fetchActivity,
     activity,
     activityLoaded,
-    
+
     userActivitiesIds,
     userActivitiesCreatorIds,
 
     clearActivity,
 }) => {
     const history = useHistory()
-    const { id } = useParams();
+    const { id } = useParams()
 
     useEffect(() => {
         if (!isLogged && isCheckedLoginLocalStorage) {
-            history.push('/');
+            history.push('/')
         }
     }, [isLogged, isCheckedLoginLocalStorage])
 
     useEffect(() => {
-        fetchActivity(id);
+        fetchActivity(id)
         return () => {
             clearActivity()
         }
-    }, []);
+    }, [])
 
-    console.log('activity', activity);
+    console.log('activity', activity)
 
     return (
         <View
@@ -52,17 +53,19 @@ const Activity = ({
         >
             <ScrollToTop />
             <Wrapper>
-                
-                {!activityLoaded ? (  
+                {!activityLoaded ? (
                     <Loader classProps="loader--p3" />
                 ) : (
                     <>
                         {activityLoaded ? (
                             <div className="activity">
+                                <Heading el="h1" classProps="h1--activity">
+                                    {activity.title}
+                                </Heading>
 
                                 <div className="activity__header">
-                                    <Button 
-                                        appearance="" 
+                                    <Button
+                                        appearance=""
                                         size="small"
                                         icon="arrow-left"
                                         classProps="is-hidden@to-medium"
@@ -70,25 +73,23 @@ const Activity = ({
                                     >
                                         Retour
                                     </Button>
-                                    <Heading el="h1" classProps="h1--activity">{activity.title}</Heading>
-                                </div>
-
-                                <div className="activity__infos">
-                                    <div className="activity__localisation">
-                                        <Icon name="pin" /> 
-                                        {activity.activity_place.city}
-                                    </div>
-                                    <div className="activity__calendar">
-                                        <Icon name="calendar"/> 
-                                        {activity.date}
-                                    </div>
-                                    <div className="activity__time">
-                                        <Icon name="clock" />
-                                        {activity.time}
-                                    </div>
-                                    <div className="activity__duration">
-                                        <Icon name="timer" />
-                                        {activity.duration}
+                                    <div className="activity__infos">
+                                        <div className="activity__localisation">
+                                            <Icon name="pin" />
+                                            {activity.activity_place.city}
+                                        </div>
+                                        <div className="activity__calendar">
+                                            <Icon name="calendar" />
+                                            {activity.date}
+                                        </div>
+                                        <div className="activity__time">
+                                            <Icon name="clock" />
+                                            {activity.time}
+                                        </div>
+                                        <div className="activity__duration">
+                                            <Icon name="timer" />
+                                            {activity.duration}
+                                        </div>
                                     </div>
                                 </div>
 
@@ -98,27 +99,39 @@ const Activity = ({
                                     </div>
                                     <div className="activity__organization">
                                         <div className="activity__organization-bloc">
-                                            <Heading el="h3" classProps="activity__organization-title">
-                                                <Icon name="flag"/>
+                                            <Heading
+                                                el="h3"
+                                                classProps="activity__organization-title"
+                                            >
+                                                <Icon name="flag" />
                                                 Organisateur :
                                             </Heading>
-                                            <div className="activity__organization-txt">{activity.creator.pseudo}</div>
+                                            <div className="activity__organization-txt">
+                                                {activity.creator.pseudo}
+                                            </div>
                                         </div>
                                         <div className="activity__organization-bloc">
-                                            <Heading el="h3" classProps="activity__organization-title activity__organization-title--2">
-                                                <Icon name="group"/>
+                                            <Heading
+                                                el="h3"
+                                                classProps="activity__organization-title activity__organization-title--2"
+                                            >
+                                                <Icon name="group" />
                                                 Participants :
                                             </Heading>
                                             <div className="activity__organization-txt">
                                                 {activity.participant_count}
-                                                {activity.participant_count > 1 ? ' participants ' : ' participant '}
-                                                <span className="activity__organization-txt--light">{` (${activity.min_participant} requis)`} </span>
+                                                {activity.participant_count > 1
+                                                    ? ' participants '
+                                                    : ' participant '}
+                                                <span className="activity__organization-txt--light">
+                                                    {` (${activity.min_participant} requis)`}{' '}
+                                                </span>
                                             </div>
                                         </div>
                                     </div>
                                     <div className="activity__registration">
-                                        <Button 
-                                            appearance="primary" 
+                                        <Button
+                                            appearance="primary"
                                             size="big"
                                             icon="pin-check"
                                             //onClick={}
@@ -126,33 +139,30 @@ const Activity = ({
                                             Je participe
                                         </Button>
                                         <div className="activity__registration-txt">
-                                            Je m'engage à être présent le jour de l'activité, mais je peux si besoin me désinscrire à tout moment !
+                                            Je m'engage à être présent le jour
+                                            de l'activité, mais je peux si
+                                            besoin me désinscrire à tout moment
+                                            !
                                         </div>
                                     </div>
                                 </div>
 
                                 <div className="activity__map-messages">
-
-                                    <div className="activity__map">
-                                        <Map
-                                            lat={activity.activity_place.lat}
-                                            lng={activity.activity_place.lng}
-                                        />
-                                    </div>
-
-                                    <div className="activity__messages">
-                                        messages
-                                    </div>
-
+                                    <Map
+                                        lat={activity.activity_place.lat}
+                                        lng={activity.activity_place.lng}
+                                    />
+                                    <Messages
+                                        activityId={activity.id}
+                                        messages={activity.messages}
+                                    />
                                 </div>
-
                             </div>
                         ) : (
                             <Redirect to="/404" />
                         )}
                     </>
                 )}
-
             </Wrapper>
         </View>
     )

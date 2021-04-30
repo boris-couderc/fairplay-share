@@ -50,7 +50,9 @@ $to-colossal  : $from-colossal - 1;
 $border-radius       : 1.5rem;
 $border-radius-medium: 1rem;
 $border-radius-small : .75rem;
+$border-radius-tiny  : .5rem;
 
 $shadow       : 0 5px 10px rgba(0, 0, 0, .1);
 $shadow-small : 0 2px 5px rgba(0, 0, 0, .1);
+$shadow-tiny : 0 1px 3px rgba(0, 0, 0, .05);
 $shadowHover  : 0 4px 6px rgb(170, 170, 170);

@@ -4,7 +4,7 @@ import Messages from 'src/components/Messages';
 import { sendMessage } from 'src/actions/activity';
 
 const mapStateToProps = (state, ownProps) => ({
-  messages: state.messages,
+  //messages: state.messages,
   //userId: state.login.user.id,
 });
 
