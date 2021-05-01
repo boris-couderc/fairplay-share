@@ -9,7 +9,7 @@ import activity from './activity'
 import registration from './registration'
 import createActivity from './createActivity'
 import filter from './filter'
-import messages from './messages'
+// import messages from './messages'
 import moreResults from './moreResults'
 
 const globalReducer = combineReducers({
@@ -23,7 +23,7 @@ const globalReducer = combineReducers({
     createActivity,
     userActivities,
     filter,
-    messages,
+    // messages,
     moreResults,
 })
 

@@ -6,8 +6,8 @@ export const JOIN_ACTIVITY = 'JOIN_ACTIVITY'
 export const UPDATE_STATUS = 'UPDATE_STATUS'
 export const ERROR_STATUS = 'ERROR_STATUS'
 export const QUIT_ACTIVITY = 'QUIT_ACTIVITY'
-export const SAVE_NEW_MESSAGE = 'SAVE_NEW_MESSAGE'
 export const SEND_MESSAGE = 'SEND_MESSAGE'
+export const SAVE_NEW_MESSAGE = 'SAVE_NEW_MESSAGE'
 
 export const fetchActivity = (id) => ({
     type: FETCH_ACTTIVITY,

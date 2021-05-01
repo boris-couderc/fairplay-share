@@ -8,6 +8,8 @@ const { User, Activity } = require('../models')
 const { formatDate, formatTime } = require('../selectors/formatDate')
 
 const connectionController = {
+
+
     getUser: async (req, res) => {
         const data = req.body
         console.log(data.email)
@@ -50,7 +52,7 @@ const connectionController = {
                     where: {
                         id: user.id,
                     },
-                },
+                }, 
                 {
                     association: 'sport',
                     attributes: ['name', 'icon'],
@@ -70,11 +72,13 @@ const connectionController = {
                     attributes: ['pseudo'],
                 },
             ],
+            /*
             where: {
                 date: {
                     [Op.gte]: Sequelize.literal("NOW() - INTERVAL '1d'"),
                 },
             },
+            */
             order: [['date', 'ASC']],
         })
 

@@ -1,9 +1,13 @@
 import {
     FETCH_ACTTIVITY,
     SAVE_ACTTIVITY,
+    CLEAR_ACTIVITY,
+    SEND_MESSAGE,
+    SAVE_NEW_MESSAGE,
+    
     UPDATE_STATUS,
     ERROR_STATUS,
-    CLEAR_ACTIVITY,
+
 } from 'src/actions/activity'
 
 const initialState = {
@@ -12,11 +16,12 @@ const initialState = {
     joinMessage: 'Rejoindre',
     quitMessage: "Quitter l'activité",
     */
-    errorMessage: '',
-    messages: [],
+    activity: null,
     loaded: false,
     isLoading: false,
-    activity: null,
+    messageSent: false,
+    isMessageSending: false,
+    // errorMessage: '',
 }
 
 const activity = (state = initialState, action = {}) => {
@@ -36,19 +41,37 @@ const activity = (state = initialState, action = {}) => {
                 isLoading: false,
                 activity: { ...action.data },
             }
+        
+        case SEND_MESSAGE:
+            return {
+                ...state,
+                messageSent: false,
+                isMessageSending: true,
+            }
+
+        case SAVE_NEW_MESSAGE:
+            return {
+                ...state,
+                activity: {
+                    ...state.activity,
+                    messages: [action.message, ...state.activity.messages],
+                },
+                messageSent: true,
+                isMessageSending: false,
+            }
 
         case CLEAR_ACTIVITY:
             return initialState
 
+        
 
-
-
+        /*
         case ERROR_STATUS:
             return {
                 ...state,
                 errorMessage: 'ERROR',
             }
-
+        
         case UPDATE_STATUS:
             if (action.operateur === '+') {
                 return {
@@ -66,6 +89,7 @@ const activity = (state = initialState, action = {}) => {
                 ...initialState,
                 ...action.data,
             }
+        */
 
         default:
             return state

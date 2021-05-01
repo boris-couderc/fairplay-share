@@ -148,7 +148,7 @@ const activityController = {
                         ],
                         include: [
                             {
-                                association: 'users',
+                                association: 'user',
                                 attributes: ['id', 'pseudo'],
                             },
                         ],

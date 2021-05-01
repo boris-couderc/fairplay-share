@@ -3,27 +3,26 @@ import PropTypes from 'prop-types'
 
 import Button from 'src/components/Button'
 import Icon from 'src/components/Icon'
+import Loader from 'src/components/Loader'
 
 import './style.scss'
 
-const Messages = ({ messages, sendMessage, /* userId, */ activityId }) => {
+const Messages = ({
+    messages, 
+    sendMessage, 
+    userId, 
+    activityId,
+    isMessageSending,
+}) => {
     const [inputValue, setInputValue] = useState('')
 
     const handleClickForm = (e) => {
         e.preventDefault()
-
-        // console.log('activityId comp', activityId);
-        // console.log('---------------------------------- userId > ', userId );
-
-        //if(userId) {
         sendMessage({
             comment: inputValue,
             activityId: parseInt(activityId),
-            //userId: parseInt(userId),
         })
         setInputValue('')
-
-        //}
     }
 
     const handleOnChange = (e) => {
@@ -32,8 +31,6 @@ const Messages = ({ messages, sendMessage, /* userId, */ activityId }) => {
 
     const inputMessage = useRef(null)
     const handleClickEmpty = (e) => {
-        console.log('Empty')
-
         inputMessage.current.focus()
     }
 
@@ -42,18 +39,31 @@ const Messages = ({ messages, sendMessage, /* userId, */ activityId }) => {
             <div className="messages__container">
                 {messages.length > 0 ? (
                     <div className="messages__container-inner">
-                        {messages.map((message, index) => {
+                        {messages.map((message) => {
                             return (
                                 <div
-                                    key={`message-${index}`}
-                                    className="message"
+                                    key={`message-${message.id}`}
+                                    className={
+                                        message.user.id == userId
+                                            ? 'message message--logged-user'
+                                            : 'message'
+                                    }
                                 >
                                     <div className="message__content">
-                                        {message.comment}
+                                        {message.comment} {userId}
                                     </div>
                                     <div className="message__author">
                                         <span className="message__pseudo">
-                                            {message.users.pseudo}
+                                            {message.user.id == userId ? (
+                                                <>
+                                                    <Icon
+                                                        name="check"
+                                                        classProps="message__pseudo-icon"
+                                                    ></Icon>
+                                                </>
+                                            ) : (
+                                                <>{message.user.pseudo}</>
+                                            )}
                                         </span>{' '}
                                         <span className="message__date">
                                             {message.created_at}
@@ -80,17 +90,22 @@ const Messages = ({ messages, sendMessage, /* userId, */ activityId }) => {
                 onSubmit={handleClickForm}
                 className="messages__form"
             >
-                <input
-                    className="input input--messages"
-                    type="text"
-                    onChange={handleOnChange}
-                    value={inputValue}
-                    placeholder="Ecrire un message"
-                    ref={inputMessage}
-                />
-                <Button
-                    appearance="primary"
-                    classProps=""
+                <div className="messages__input">
+                    <input
+                        className="input input--messages"
+                        type="text"
+                        onChange={handleOnChange}
+                        value={inputValue}
+                        placeholder="Ecrire un message"
+                        ref={inputMessage}
+                    />
+                    {isMessageSending && (
+                        <Loader classProps="messages__loader" />
+                    )}
+                </div>
+                <Button 
+                    appearance="primary" 
+                    classProps="" 
                     type="submit"
                 >
                     Envoyer
@@ -103,14 +118,13 @@ const Messages = ({ messages, sendMessage, /* userId, */ activityId }) => {
 Messages.propTypes = {
     messages: PropTypes.array.isRequired,
     sendMessage: PropTypes.func.isRequired,
-    //userId: PropTypes.number,
+    userId: PropTypes.number,
     activityId: PropTypes.number.isRequired,
+    isMessageSending: PropTypes.bool.isRequired,
 }
 
-/*
 Messages.defaultProps = {
-  userId: null,
-};
-*/
+    userId: null,
+}
 
 export default Messages

@@ -30,7 +30,7 @@ const messageController = {
             const message = await Message.findOne({
                 include: [
                     {
-                        association: 'users',
+                        association: 'user',
                         attributes: ['id', 'pseudo'],
                     }
                 ],
@@ -47,7 +47,7 @@ const messageController = {
             res.status(201).json(formatedMessage);
             
         } catch (error) {
-        console.trace(error);
+        console.trace('error',error);
         res.status(500).json(error.toString());
       }
     },

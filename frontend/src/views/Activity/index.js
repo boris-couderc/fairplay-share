@@ -154,7 +154,6 @@ const Activity = ({
                                     />
                                     <Messages
                                         activityId={activity.id}
-                                        messages={activity.messages}
                                     />
                                 </div>
                             </div>
