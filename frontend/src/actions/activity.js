@@ -3,6 +3,8 @@ export const CLEAR_ACTIVITY = 'CLEAR_ACTIVITY'
 
 export const SAVE_ACTTIVITY = 'SAVE_ACTTIVITY'
 export const JOIN_ACTIVITY = 'JOIN_ACTIVITY'
+export const SAVE_JOIN_ACTIVITY = 'SAVE_JOIN_ACTIVITY'
+
 export const UPDATE_STATUS = 'UPDATE_STATUS'
 export const ERROR_STATUS = 'ERROR_STATUS'
 export const QUIT_ACTIVITY = 'QUIT_ACTIVITY'
@@ -27,6 +29,12 @@ export const saveActivity = (data) => ({
 export const joinActivity = () => ({
     type: JOIN_ACTIVITY,
 })
+
+export const saveJoinActivity = (data) => ({
+    type: SAVE_JOIN_ACTIVITY,
+    data,
+})
+
 
 export const updateStatus = (operateur) => ({
     type: UPDATE_STATUS,

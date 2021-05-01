@@ -9,7 +9,7 @@ const messageController = {
     addMessageToActivity: async (req, res) => {
         let activityId = parseInt(req.params.id);
         const { userId, comment } = req.body;
-        // nettoie toutes les balises
+        // clean message content
         const cleanComment = sanitizeHtml(comment, {
             allowedTags: [],
             allowedAttributes: {}

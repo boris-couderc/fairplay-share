@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { useParams, useHistory, Redirect } from 'react-router-dom'
 
@@ -22,8 +22,13 @@ const Activity = ({
     activity,
     activityLoaded,
 
-    userActivitiesIds,
-    userActivitiesCreatorIds,
+    userId,
+    userActivitiesLoaded,
+    userActivitiesParticipantRole,
+    userActivitiesCreatorRole,
+
+    joinActivity,
+    quitActivity,
 
     clearActivity,
 }) => {
@@ -43,7 +48,48 @@ const Activity = ({
         }
     }, [])
 
-    console.log('activity', activity)
+    const [userRole, setUserRole] = useState(null)
+    useEffect(() => {
+        if (userActivitiesLoaded && isLogged && activityLoaded) {
+            const alreadyJoin = userActivitiesParticipantRole.find(
+                (id) => id == activity.id,
+            )
+            const organize = userActivitiesCreatorRole.find(
+                (id) => id == activity.id,
+            )
+            setUserRole(
+                organize ? 'creator' : alreadyJoin ? 'participant' : 'visitor',
+            )
+        }
+    }, [userActivitiesLoaded, isLogged, activityLoaded, userActivitiesParticipantRole])
+
+    useEffect(() => {
+        console.log('userRole', userRole)
+    }, [userRole])
+
+    const handleClickCancel = (e) => {
+        e.preventDefault()
+
+        //joinActivity()
+
+        console.log('handleClickCancel')
+    }
+
+    const handleClickQuit = (e) => {
+        e.preventDefault()
+
+        //quitActivity()
+
+        console.log('handleClickQuit')
+    }
+
+    const handleClickJoin = (e) => {
+        e.preventDefault()
+
+        joinActivity()
+
+        console.log('handleClickJoin')
+    }
 
     return (
         <View
@@ -93,7 +139,9 @@ const Activity = ({
                                     </div>
                                 </div>
 
-                                <div className="activity__infos-sup">
+                                <div
+                                    className={`activity__infos-sup activity__infos-sup--${userRole}`}
+                                >
                                     <div className="activity__desc">
                                         {activity.description}
                                     </div>
@@ -130,14 +178,36 @@ const Activity = ({
                                         </div>
                                     </div>
                                     <div className="activity__registration">
-                                        <Button
-                                            appearance="primary"
-                                            size="big"
-                                            icon="pin-check"
-                                            //onClick={}
-                                        >
-                                            Je participe
-                                        </Button>
+                                        {userRole && userRole === 'creator' ? (
+                                            <Button
+                                                appearance="secondary"
+                                                size="big"
+                                                icon="pin-off"
+                                                onClick={handleClickCancel}
+                                            >
+                                                Annuler l'activité
+                                            </Button>
+                                        ) : userRole &&
+                                          userRole === 'participant' ? (
+                                            <Button
+                                                appearance="primary"
+                                                size="big"
+                                                icon="user-remove"
+                                                onClick={handleClickQuit}
+                                            >
+                                                Je me désinscris
+                                            </Button>
+                                        ) : (
+                                            <Button
+                                                appearance="primary"
+                                                size="big"
+                                                icon="user-add"
+                                                onClick={handleClickJoin}
+                                            >
+                                                Je m'inscris
+                                            </Button>
+                                        )}
+
                                         <div className="activity__registration-txt">
                                             Je m'engage à être présent le jour
                                             de l'activité, mais je peux si
@@ -152,9 +222,7 @@ const Activity = ({
                                         lat={activity.activity_place.lat}
                                         lng={activity.activity_place.lng}
                                     />
-                                    <Messages
-                                        activityId={activity.id}
-                                    />
+                                    <Messages activityId={activity.id} />
                                 </div>
                             </div>
                         ) : (

@@ -1,36 +1,36 @@
-import { connect } from 'react-redux'
-import Activity from 'src/views/Activity'
+import { connect } from 'react-redux';
+import Activity from 'src/views/Activity';
 import {
     fetchActivity,
     joinActivity,
     quitActivity,
     clearActivity,
-} from 'src/actions/activity'
+} from 'src/actions/activity';
 
 const mapStateToProps = (state) => ({
+    userId: state.login.user.id,
     isLogged: state.login.isLogged,
     isCheckedLoginLocalStorage: state.login.isCheckedLocalStorage,
     activity: state.activity.activity,
     activityLoaded: state.activity.loaded,
-    userActivitiesIds: state.userActivities.idsParticipantRole,
-    userActivitiesCreatorIds: state.userActivities.idsCreatorRole,
-})
+    userActivitiesLoaded: state.userActivities.loaded,
+    userActivitiesParticipantRole: state.userActivities.idsParticipantRole,
+    userActivitiesCreatorRole: state.userActivities.idsCreatorRole,
+});
 
 const mapDispatchToProps = (dispatch) => ({
     fetchActivity: (id) => {
-        dispatch(fetchActivity(id))
+        dispatch(fetchActivity(id));
     },
     clearActivity: (id) => {
-        dispatch(clearActivity(id))
+        dispatch(clearActivity(id));
     },
-
-
-    onClickJoin: () => {
-        dispatch(joinActivity())
+    joinActivity: () => {
+        dispatch(joinActivity());
     },
-    onClickQuit: () => {
-        dispatch(quitActivity())
+    quitActivity: () => {
+        dispatch(quitActivity());
     },
-})
+});
 
-export default connect(mapStateToProps, mapDispatchToProps)(Activity)
+export default connect(mapStateToProps, mapDispatchToProps)(Activity);

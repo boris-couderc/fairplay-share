@@ -1,91 +1,113 @@
-const Sequelize = require('sequelize');
-const { QueryTypes } = require('sequelize');
-const sequelize = require('../database.js');
-const Op = Sequelize.Op;
+const Sequelize = require('sequelize')
+const { QueryTypes } = require('sequelize')
+const sequelize = require('../database.js')
+const Op = Sequelize.Op
 
-const { Activity, User, UserGrade } = require('../models');
+const { Activity, User, UserGrade } = require('../models')
 
 const joinActivityController = {
-  joinActivity: async (req, res) => {
-    console.log('body', req.body);
-    const user = await User.findOne({
-      where: {
-        pseudo: req.body.pseudo
-      },
-      include: [{
-        model: Activity,
-        as: 'activities',
-      }],
-    });
-    // console.log(user.activities);
 
-    const verifResult = await sequelize.query(
-      `SELECT id FROM "user_has_activity" WHERE "activity_id"=:activity_id AND "user_id"=:user_id;`,
-      {
-        replacements: {
-          activity_id: req.body.id,
-          user_id: user.dataValues.id
-        },
-        type: QueryTypes.INSERT
-      }
-    );
+    joinActivity: async (req, res) => {
+        const { activityId, userId } = req.body
 
-    if (verifResult[0][0]) {
-      res.status(403).json({
-        error: "alreadyRegistered"
-      })
-      return;
-    }
+        try {
+            // check user and his activities
+            const user = await User.findOne({
+                where: {
+                    id: userId,
+                },
+                attributes: [
+                    'id',
+                    'firstname',
+                    'lastname',
+                    'pseudo',
+                    'reward_count',
+                ],
+                include: [
+                    {
+                        association: 'activities',
+                        attributes: ['id'],
+                    },
+                    {
+                        association: 'user_grade',
+                    }
+                ],
+            })
+            
+            // check if user if not already registered
+            const userActivitiesIds = user.activities.map(activity => activity.id)
+            console.log('userActivitiesIds------------', userActivitiesIds)
 
-    try{
-      const result = await sequelize.query(
-        `INSERT INTO "user_has_activity" ("user_id", "activity_id") VALUES (':user_id', ':activity_id');`,
-        {
-          replacements: {
-            activity_id: req.body.id,
-            user_id: user.dataValues.id
-          },
-          type: QueryTypes.INSERT
+            const alreadyJoin = userActivitiesIds.find(
+                (id) => id == activityId,
+            )
+            if(alreadyJoin) {
+                //throw new Error("already join");
+                res.status(403).json({
+                    error: 'already join',
+                })
+                return
+            }
+
+            // find activity
+            const activity = await Activity.findOne({
+                attributes: [
+                    'id',
+                    'participant_count',
+                ],
+                where: {
+                    id: activityId,
+                },
+                include: [
+                    {
+                        association: 'users',
+                        attributes: ['id'],
+                    }
+                ],
+            })
+
+            // join activity to user
+            await user.addActivity(activity)
+            activity.participant_count = activity.users.length + 1
+            await activity.save()
+
+            
+            // Add motivation points to user
+            const newUserRewardCount = user.reward_count + 10
+            user.reward_count = newUserRewardCount
+
+            // Check and update user grade
+            const grades = await UserGrade.findAll({
+                where: {
+                    point: {
+                        [Op.lte]: newUserRewardCount,
+                    },
+                },
+                order: [['point', 'DESC']],
+            })
+            const newGrade = grades[0].id
+            user.user_grade_id = newGrade
+
+            await user.save()
+            
+            res.status(200).json({
+                user: {
+                    points: newUserRewardCount,
+                    grade: newGrade,
+                },
+                activity: {
+                    id: activity.id,
+                    participantCount: activity.participant_count,
+                }
+            })
+            return
+
+        } catch (error) {
+            res.status(403).json({
+                error: 'errorServer',
+            })
         }
-      );
-      
-      const participant_count = await Activity.findByPk(req.body.id);
-      newParticipant_count = participant_count.dataValues.participant_count + 1;
-      // on incrémente le participant_count
-      Activity.update({ participant_count: newParticipant_count }, {
-        where: {
-          id: req.body.id,
-        }
-      });
+    },
+}
 
-      // ajoute les points motiv 
-      const new_reward_count = user.dataValues.reward_count + 10;
-      user.reward_count = new_reward_count;
-      
-      // on verif à quel user_grade corresponde les points
-      const grades = await UserGrade.findAll({
-        where: {
-          point: {
-            [Op.lte]: new_reward_count,
-          }
-        },
-        order: [['point', 'DESC']],
-      });
-      user.user_grade_id = grades[0].id;
-      await user.save();
-
-      res.json({
-        result: "success"
-      })
-
-    } catch (error) {
-      res.status(403).json({
-        error: "errorServer"
-      })
-      return;
-    }
-    
-},
-};
-
-module.exports = joinActivityController;
+module.exports = joinActivityController

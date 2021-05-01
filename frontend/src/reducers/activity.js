@@ -4,6 +4,7 @@ import {
     CLEAR_ACTIVITY,
     SEND_MESSAGE,
     SAVE_NEW_MESSAGE,
+    SAVE_JOIN_ACTIVITY,
     
     UPDATE_STATUS,
     ERROR_STATUS,
@@ -42,7 +43,7 @@ const activity = (state = initialState, action = {}) => {
                 activity: { ...action.data },
             }
         
-        case SEND_MESSAGE:
+        case SEND_MESSAGE: 
             return {
                 ...state,
                 messageSent: false,
@@ -63,7 +64,15 @@ const activity = (state = initialState, action = {}) => {
         case CLEAR_ACTIVITY:
             return initialState
 
-        
+
+        case SAVE_JOIN_ACTIVITY:
+            return {
+                ...state,
+                activity: {
+                    ...state.activity,
+                    participant_count: action.data.participantCount,
+                }
+            }
 
         /*
         case ERROR_STATUS:

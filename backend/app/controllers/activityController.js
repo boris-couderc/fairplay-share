@@ -70,6 +70,7 @@ const activityController = {
                         {
                             activity_status_id: 3,
                         },
+                        /*
                         {
                             date: {
                                 [Op.gte]: Sequelize.literal(
@@ -77,6 +78,7 @@ const activityController = {
                                 ),
                             },
                         },
+                        */
                     ],
                 },
                 offset: (page - 1) * activityController.defaultNumCardInPage,
@@ -156,6 +158,7 @@ const activityController = {
                     {
                         association: 'creator',
                         attributes: [
+                            'id',
                             'pseudo',
                             'firstname',
                             'lastname',
@@ -242,6 +245,7 @@ const activityController = {
                         {
                             activity_status_id: 3,
                         },
+                        /*
                         {
                             date: {
                                 [Op.gte]: Sequelize.literal(
@@ -249,6 +253,7 @@ const activityController = {
                                 ),
                             },
                         },
+                        */
                     ],
                 },
                 offset: (page - 1) * activityController.defaultNumCardInPage,
@@ -344,6 +349,7 @@ const activityController = {
                                 [Op.or]: sports,
                             },
                         },
+                        /*
                         {
                             date: {
                                 [Op.gte]: Sequelize.literal(
@@ -351,6 +357,7 @@ const activityController = {
                                 ),
                             },
                         },
+                        */
                     ],
                 },
                 offset: (page - 1) * activityController.defaultNumCardInPage,
@@ -441,11 +448,13 @@ const activityController = {
                         attributes: ['pseudo'],
                     },
                 ],
+                /*
                 where: {
                     date: {
                         [Op.gte]: Sequelize.literal("NOW() - INTERVAL '1d'"),
                     },
                 },
+                */
                 order: [['date', 'ASC']],
             })
 

@@ -153,18 +153,27 @@
     }
 
     &__error {
-        margin-bottom: 1rem;
-        text-align   : center;
+        margin-bottom: .75rem;
+        text-align   : left;
         color        : s.$color-error;
         position     : relative;
 
+        font-size: .9rem;
+        padding-left: 1.5rem;
+        margin-top: -.25rem;
+
         @include s.animation-slide-up();
+
+        @media (min-width: s.$from-medium) {
+            margin-top: -1rem;
+            margin-bottom: .75rem;
+        }
     }
 
     &__error-icon {
-        max-width: 1.5rem;
-        max-height: 1.5rem;
-        margin-right: .5rem;
+        max-width: 1.2rem;
+        max-height: 1.2rem;
+        margin-right: .375rem;
         opacity: .8;
     }
 }

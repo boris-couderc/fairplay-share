@@ -4,12 +4,16 @@ import {
     CLEAR_USER_ACTIVITIES,
 } from 'src/actions/activities'
 
+import { 
+    SAVE_JOIN_ACTIVITY,
+} from 'src/actions/activity'
+
 const initialState = {
     activities: [],
     idsParticipantRole: [],
     idsCreatorRole: [],
     loaded: false,
-    isLoading: false,
+    isLoading: false, 
 }
 
 const userActivities = (state = initialState, action = {}) => {
@@ -45,6 +49,12 @@ const userActivities = (state = initialState, action = {}) => {
 
         case CLEAR_USER_ACTIVITIES:
             return initialState
+
+        case SAVE_JOIN_ACTIVITY:
+            return {
+                ...state,
+                idsParticipantRole: [ ...state.idsParticipantRole, action.data.id]
+            }
 
         default:
             return state

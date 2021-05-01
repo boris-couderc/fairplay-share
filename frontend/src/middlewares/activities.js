@@ -4,7 +4,7 @@ import {
     FETCH_LAST_ACTIVITIES,
     saveAllActivities,
     FETCH_USER_ACTIVITIES,
-    fetchUserActivities,
+    //fetchUserActivities,
     saveActivities,
     saveUserActivities,
 } from 'src/actions/activities'
@@ -16,25 +16,13 @@ import {
     saveAllSearchedActivities,
 } from 'src/actions/search'
 
-import {
-    FETCH_ACTTIVITY,
-    saveActivity,
-    JOIN_ACTIVITY,
-    QUIT_ACTIVITY,
-    updateStatus,
-    errorStatus,
-} from 'src/actions/activity'
 
 import { saveUserPoints, logOut } from 'src/actions/login'
 
 const activities = (store) => (next) => (action) => {
+
     const { moreResults } = store.getState()
     const page = moreResults.page
-
-    const idParams = action.id
-
-    const { details } = store.getState()
-    const { user } = store.getState().login
 
     switch (action.type) {
         
@@ -59,6 +47,7 @@ const activities = (store) => (next) => (action) => {
                 next(action)
             break
 
+
         case FETCH_USER_ACTIVITIES:
             const userId = store.getState().login.user.id
             axios
@@ -78,21 +67,6 @@ const activities = (store) => (next) => (action) => {
                 next(action)
             break
 
-        case FETCH_ACTTIVITY:
-            axios
-                .get(`${process.env.API_URL}/api/activity/${idParams}`, {
-                    withCredentials: true,
-                })
-                .then((response) => {
-                    store.dispatch(saveActivity(response.data))
-                })
-                .catch((error) => {
-                    if (error.response.status === 401) {
-                        store.dispatch(logOut())
-                    }
-                    console.log('error', error)
-                })
-            break
 
         case FETCH_ACTIVITIES_BY_LOCALISATION:
             // console.log('action.query ----> ', action.query);
@@ -148,71 +122,6 @@ const activities = (store) => (next) => (action) => {
                     })
             }
             next(action)
-            break
-
-
-
-        case JOIN_ACTIVITY:
-            if (!user.pseudo) {
-                console.error(
-                    'ERROR il faut être connecté pour rejoindre une activité',
-                )
-                break
-            }
-            axios
-                .post(
-                    `${process.env.API_URL}/api/activity/join`,
-                    {
-                        id: details.id,
-                        pseudo: user.pseudo,
-                    },
-                    { withCredentials: true },
-                )
-                .then((response) => {
-                    // console.log('activité rejointe', response);
-                    store.dispatch(updateStatus('+'))
-                    store.dispatch(fetchUserActivities())
-                })
-                .catch((error) => {
-                    if (error.response.status === 401) {
-                        store.dispatch(logOut())
-                    } else {
-                        store.dispatch(errorStatus())
-                    }
-                    console.log('error', error.response.data)
-                })
-            break
-
-
-        case QUIT_ACTIVITY:
-            if (!user.pseudo) {
-                console.error(
-                    'ERROR il faut être connecté pour quitter une activité',
-                )
-                break
-            }
-            axios
-                .post(
-                    `${process.env.API_URL}/api/activity/quit`,
-                    {
-                        id: details.id,
-                        pseudo: user.pseudo,
-                    },
-                    { withCredentials: true },
-                )
-                .then((response) => {
-                    // console.log('activité quittée', response);
-                    store.dispatch(updateStatus('-'))
-                    store.dispatch(fetchUserActivities())
-                })
-                .catch((error) => {
-                    if (error.response.status === 401) {
-                        store.dispatch(logOut())
-                    } else {
-                        store.dispatch(errorStatus())
-                    }
-                    console.log('error', error.response.data)
-                })
             break
 
 

@@ -18,16 +18,19 @@ const initialState = {
 
 const login = (state = initialState, action = {}) => {
     switch (action.type) {
+        
         case SAVE_LOGIN_ERROR:
             return {
                 ...state,
                 error: true,
             }
-        case CLEAR_LOGIN_ERROR:
+
+        case CLEAR_LOGIN_ERROR: 
             return {
                 ...state,
                 error: false,
             }
+
         case SAVE_LOGGED_USER:
             return {
                 ...state,
@@ -36,6 +39,7 @@ const login = (state = initialState, action = {}) => {
                 isCheckedLocalStorage: true,
                 user: action.user,
             }
+
         case LOG_OUT:
             return {
                 ...state,
@@ -44,22 +48,29 @@ const login = (state = initialState, action = {}) => {
                 isCheckedLocalStorage: true,
                 user: {},
             }
+
         case SAVE_USER_POINTS:
             return {
                 ...state,
-                user: action.data,
+                user: {
+                    ...state.user,
+                    points: action.data.points, 
+                }
             }
+
         case CHECK_LOCAL_STORAGE_USER:
             return {
                 ...state,
                 isLoading: true,
             }
+
         case SAVE_CHECK_LOCAL_STORAGE_USER:
             return {
                 ...state,
                 isLoading: false,
                 isCheckedLocalStorage: true,
             }
+
         default:
             return state
     }

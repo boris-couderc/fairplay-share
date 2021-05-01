@@ -84,8 +84,6 @@
         max-height: 1.375rem;
     }
 
-
-
     &__empty {
         display        : flex;
         flex-direction : column;
@@ -105,7 +103,7 @@
 
         &-txt {
             padding-top: 1rem;
-            opacity    : .3;
+            opacity    : .4;
         }
 
         &:hover &-icon {
@@ -166,10 +164,6 @@
 
     &--logged-user {
         align-self: flex-end;
-    }
-
-    &--logged-user &__content {
-        //background-color: rgba($color: #000000, $alpha: 0.005)
     }
 
     &--logged-user &__author {
