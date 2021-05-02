@@ -40,7 +40,15 @@ const Autocomplete = ({ data, onClick, initialIsVisible }) => {
                             >
                                 {el.name}
                                 <span className="autocomplete__detail">
-                                    {el.reg}
+                                    {el.city && (
+                                        <>{el.city}, </>
+                                    )}
+                                    {el.postcode && (
+                                        <>{el.postcode}, </>
+                                    )}
+                                    {el.reg && (
+                                        <>{el.reg}, </>
+                                    )}
                                 </span>
                             </li>
                         )

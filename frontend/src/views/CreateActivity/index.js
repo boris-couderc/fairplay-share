@@ -48,7 +48,6 @@ const CreateActivity = ({
     } = useForm()
 
     const onSubmit = (data) => {
-        //onClearLoginError()
         setIsLoading(true)
         onSubmitCreateActivity(data)
     }
@@ -257,6 +256,5 @@ CreateActivity.propTypes = {
 CreateActivity.defaultProps = {
     error: null,
 }
-
 
 export default CreateActivity
