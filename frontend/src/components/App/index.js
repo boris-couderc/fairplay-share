@@ -1,22 +1,8 @@
 import React, { useEffect } from 'react'
 import { Route, Switch, Redirect } from 'react-router-dom'
-import PropTypes from 'prop-types'
-
-//import Accueil from 'src/containers/Accueil';
-//import Search from 'src/containers/Search';
-//import Header from 'src/containers/Header';
-//import Footer from 'src/components/Footer';
-//import Login from 'src/containers/Login';
-//import LoginModal from 'src/containers/LoginModal';
-
-//import Team from 'src/components/Team';
-//import Details from 'src/containers/Details'
-
-//import Registration from 'src/containers/Registration';
 
 import ScreenSizeHelper from 'src/components/ScreenSizeHelper'
 import UserVerification from 'src/containers/UserVerification'
-
 import HomePage from 'src/containers/HomePage'
 import DesignSystem from 'src/views/DesignSystem'
 import Team from 'src/views/Team'

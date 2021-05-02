@@ -19,19 +19,15 @@ import './style.scss'
 const Activity = ({
     isLogged,
     isCheckedLoginLocalStorage,
-
     fetchActivity,
     activity,
     activityLoaded,
-
     userActivitiesLoaded,
     userActivitiesParticipantRole,
     userActivitiesCreatorRole,
-
     joinActivity,
     quitActivity,
     cancelActivity,
-
     clearActivity,
 }) => {
     const history = useHistory()
@@ -63,17 +59,27 @@ const Activity = ({
                 organize ? 'creator' : alreadyJoin ? 'participant' : 'visitor',
             )
         }
-    }, [userActivitiesLoaded, isLogged, activityLoaded, userActivitiesParticipantRole, activity])
+    }, [
+        userActivitiesLoaded,
+        isLogged,
+        activityLoaded,
+        userActivitiesParticipantRole,
+        activity,
+    ])
 
-    const [infosSupClasses, setinfosSupClasses] = useState('activity__infos-sup')
+    const [infosSupClasses, setinfosSupClasses] = useState(
+        'activity__infos-sup',
+    )
     useEffect(() => {
-        console.log('infosSupClasses',infosSupClasses, userRole)
-
-        setinfosSupClasses(classNames(
-            'activity__infos-sup',
-            userRole && `activity__infos-sup--${userRole}`,
-            activity && activity.activity_status_id == 2 && `activity__infos-sup--cancelled`
-        ))
+        setinfosSupClasses(
+            classNames(
+                'activity__infos-sup',
+                userRole && `activity__infos-sup--${userRole}`,
+                activity &&
+                    activity.activity_status_id == 2 &&
+                    `activity__infos-sup--cancelled`,
+            ),
+        )
     }, [activity, userRole])
 
     const [modalDisplayed, setModalDisplayed] = useState(false)
@@ -83,7 +89,6 @@ const Activity = ({
         setUserRole(null)
         setModalCandelDisplayed(false)
         cancelActivity()
-        console.log('handleClickCancel')
     }
     const handleClickQuit = (e) => {
         e.preventDefault()
@@ -179,25 +184,37 @@ const Activity = ({
                                         </div>
                                     </div>
                                     <div className="activity__registration">
-                                        {userRole && userRole === 'creator' && activity.activity_status_id == 3 ? (
+                                        {userRole &&
+                                        userRole === 'creator' &&
+                                        activity.activity_status_id == 3 ? (
                                             <Button
                                                 appearance="outline"
                                                 size="big"
                                                 icon="pin-off"
-                                                onClick={()=>setModalCandelDisplayed(true)}
+                                                onClick={() =>
+                                                    setModalCandelDisplayed(
+                                                        true,
+                                                    )
+                                                }
                                             >
                                                 Annuler l'activité
                                             </Button>
-                                        ) : userRole && userRole === 'participant' && activity.activity_status_id == 3 ? (
+                                        ) : userRole &&
+                                          userRole === 'participant' &&
+                                          activity.activity_status_id == 3 ? (
                                             <Button
                                                 appearance="outline"
                                                 size="big"
                                                 icon="user-remove"
-                                                onClick={()=>setModalDisplayed(true)}
+                                                onClick={() =>
+                                                    setModalDisplayed(true)
+                                                }
                                             >
                                                 Je me désinscris
                                             </Button>
-                                        ) : userRole && userRole === 'visitor' && activity.activity_status_id == 3 ? (
+                                        ) : userRole &&
+                                          userRole === 'visitor' &&
+                                          activity.activity_status_id == 3 ? (
                                             <Button
                                                 appearance="primary"
                                                 size="big"
@@ -208,8 +225,14 @@ const Activity = ({
                                             </Button>
                                         ) : activity.activity_status_id == 2 ? (
                                             <div className="u-color-error">
-                                                <Icon name="error" classProps="u-margin-bottom-.25"/>
-                                                <Heading el="p" classProps="u-color-error">
+                                                <Icon
+                                                    name="error"
+                                                    classProps="u-margin-bottom-.25"
+                                                />
+                                                <Heading
+                                                    el="p"
+                                                    classProps="u-color-error"
+                                                >
                                                     Activité annulée
                                                 </Heading>
                                             </div>
@@ -219,7 +242,8 @@ const Activity = ({
                                         <div className="activity__registration-txt">
                                             Je m'engage à être présent le jour
                                             de l'activité, mais je peux si
-                                            besoin me désinscrire à tout moment !
+                                            besoin me désinscrire à tout moment
+                                            !
                                         </div>
                                     </div>
                                 </div>
@@ -237,7 +261,6 @@ const Activity = ({
                     </>
                 )}
             </Wrapper>
-
             <Modal
                 isDisplayed={modalDisplayed}
                 icon="sentiment-dissatisfied"
@@ -246,10 +269,9 @@ const Activity = ({
                 txtBtYes="Je me désinscris"
                 txtBtNo="Annuler"
                 onClickYes={handleClickQuit}
-                onClickNo={()=>setModalDisplayed(false)}
-                closeModal={()=>setModalDisplayed(false)}
+                onClickNo={() => setModalDisplayed(false)}
+                closeModal={() => setModalDisplayed(false)}
             />
-
             <Modal
                 isDisplayed={modalCandelDisplayed}
                 icon="sentiment-dissatisfied"
@@ -258,14 +280,30 @@ const Activity = ({
                 txtBtYes="Oui j'annule"
                 txtBtNo="Non"
                 onClickYes={handleClickCancel}
-                onClickNo={()=>setModalCandelDisplayed(false)}
-                closeModal={()=>setModalCandelDisplayed(false)}
+                onClickNo={() => setModalCandelDisplayed(false)}
+                closeModal={() => setModalCandelDisplayed(false)}
             />
-
         </View>
     )
 }
 
-Activity.propTypes = {}
+Activity.propTypes = {
+    isLogged: PropTypes.bool.isRequired,
+    isCheckedLoginLocalStorage: PropTypes.bool.isRequired,
+    fetchActivity: PropTypes.func.isRequired,
+    activity: PropTypes.object,
+    activityLoaded: PropTypes.bool.isRequired,
+    userActivitiesLoaded: PropTypes.bool.isRequired,
+    userActivitiesParticipantRole: PropTypes.array.isRequired,
+    userActivitiesCreatorRole: PropTypes.array.isRequired,
+    joinActivity: PropTypes.PropTypes.func.isRequired,
+    quitActivity: PropTypes.PropTypes.func.isRequired,
+    cancelActivity: PropTypes.PropTypes.func.isRequired,
+    clearActivity: PropTypes.PropTypes.func.isRequired,
+}
+
+Activity.defaultProps = {
+    activity: null,
+}
 
 export default Activity

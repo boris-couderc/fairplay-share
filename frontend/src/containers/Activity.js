@@ -23,9 +23,6 @@ const mapDispatchToProps = (dispatch) => ({
     fetchActivity: (id) => {
         dispatch(fetchActivity(id));
     },
-    clearActivity: (id) => {
-        dispatch(clearActivity(id));
-    },
     joinActivity: () => {
         dispatch(joinActivity());
     },
@@ -34,6 +31,9 @@ const mapDispatchToProps = (dispatch) => ({
     },
     cancelActivity: () => {
         dispatch(cancelActivity());
+    },
+    clearActivity: (id) => {
+        dispatch(clearActivity(id));
     },
 });
 

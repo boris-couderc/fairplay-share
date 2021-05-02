@@ -7,7 +7,7 @@ import Icon from 'src/components/Icon'
 
 import useVisible from 'src/hooks/useVisible'
 
-import './style.scss'
+import '../style.scss'
 
 const LoginModal = ({ isDisplayed, closeModal }) => {
     const { ref, isVisible, setIsVisible } = useVisible(false)

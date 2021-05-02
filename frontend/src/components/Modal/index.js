@@ -9,7 +9,7 @@ import useVisible from 'src/hooks/useVisible'
 
 import './style.scss'
 
-const Modal = ({ 
+const Modal = ({
     isDisplayed,
     icon,
     title,
@@ -20,8 +20,6 @@ const Modal = ({
     onClickNo,
     closeModal,
 }) => {
-
-    
     const { ref, isVisible, setIsVisible } = useVisible(false)
 
     useEffect(() => {
@@ -35,34 +33,28 @@ const Modal = ({
             setIsVisible(true)
         }
     }, [isDisplayed])
-    
-
 
     return (
         <>
             {isDisplayed && (
                 <div className="modal">
-                    <div className="modal__container" ref={ref} >
-                        <button onClick={closeModal} className="modal__button-close">
+                    <div className="modal__container" ref={ref}>
+                        <button
+                            onClick={closeModal}
+                            className="modal__button-close"
+                        >
                             <Icon name="clear" />
                         </button>
-                        <Icon name={icon} classProps="modal__icon"/>
+                        <Icon name={icon} classProps="modal__icon" />
                         <Heading el="p" like="h4">
                             {title}
                         </Heading>
-                        {txt && (
-                            <p>
-                                {txt}
-                            </p>
-                        )}
+                        {txt && <p>{txt}</p>}
                         <div className="modal__buttons">
                             <Button appearance="outline" onClick={onClickNo}>
                                 {txtBtNo}
                             </Button>
-                            <Button 
-                                appearance="primary" 
-                                onClick={onClickYes}
-                            >
+                            <Button appearance="primary" onClick={onClickYes}>
                                 {txtBtYes}
                             </Button>
                         </div>
@@ -75,7 +67,21 @@ const Modal = ({
 
 Modal.propTypes = {
     isDisplayed: PropTypes.bool.isRequired,
-    //closeModal: PropTypes.func.isRequired,
+    icon: PropTypes.string,
+    title: PropTypes.string.isRequired,
+    txt: PropTypes.string,
+    txtBtYes: PropTypes.string.isRequired,
+    txtBtNo: PropTypes.string,
+    onClickYes: PropTypes.func.isRequired,
+    onClickNo: PropTypes.func,
+    closeModal: PropTypes.func.isRequired,
+}
+
+Modal.defaultProps = {
+    icon: PropTypes.string.isRequired,
+    txt: null,
+    txtBtNo: null,
+    onClickNo: () => {},
 }
 
 export default Modal
