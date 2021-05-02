@@ -4,6 +4,7 @@ import {
     CLEAR_CREATE_ACTIVITY_ERROR,
     ACTIVITY_CREATED,
     ACTIVITY_CREATED_CHANGE_TO_FALSE,
+    ERROR_API_VERIF_LOCALISATION_CREATE_ACTIVITY,
 } from 'src/actions/createActivity'
 
 const initialState = {
@@ -44,6 +45,12 @@ const createActivity = (state = initialState, action = {}) => {
             return { 
                 ...state, 
                 isCreated: false,
+            }
+
+        case ERROR_API_VERIF_LOCALISATION_CREATE_ACTIVITY:
+            return { 
+                ...state, 
+                error: 'api',
             }
 
         default:

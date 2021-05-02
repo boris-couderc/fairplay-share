@@ -56,7 +56,6 @@ const searchBar = (store) => (next) => (action) => {
                     })
                     .catch((error) => {
                         console.log('error', error)
-                        //store.dispatch(errorApiInVerifLocalisation())
                     })
             }
             next(action)
@@ -64,8 +63,7 @@ const searchBar = (store) => (next) => (action) => {
 
         case FETCH_ONE_PLACES_AUTOCOMPLETION:
             // ne pas relancer la verif avec l'API si l'adresse à déjà été enregistré sur la même inputValue
-            let lastValidLocalisationQuery = store.getState().searchBar
-                .validLocalisation.query
+            let lastValidLocalisationQuery = store.getState().searchBar.validLocalisation.query
             if (
                 inputValue.toLowerCase().trim() !==
                 lastValidLocalisationQuery.toLowerCase().trim()
@@ -84,7 +82,6 @@ const searchBar = (store) => (next) => (action) => {
                         console.log('0 ----> ', localisation, ' / ', Array.isArray(localisation) );
 
                         if (localisation && localisation.latitude) {
-                            //console.log('RESULTAT POUR RECHERCHE ----->>>', inputValue, localisation)
                             const validLocalisation = {
                                 query: inputValue,
                                 name: localisation.name,

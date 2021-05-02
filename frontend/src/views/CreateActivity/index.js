@@ -11,6 +11,7 @@ import Heading from 'src/components/Heading'
 import Form from 'src/components/Form'
 import Input from 'src/components/Input'
 import Button from 'src/components/Button'
+import Icon from 'src/components/Icon'
 
 import './style.scss'
 
@@ -67,6 +68,9 @@ const CreateActivity = ({
             })
             errors.address.ref.scrollIntoView({ behavior: 'smooth' })
             errors.address.ref.focus()
+        }
+        if (error === 'api') {
+            setIsLoading(false)
         }
     }, [error])
 
@@ -181,6 +185,16 @@ const CreateActivity = ({
                             }
                         />
                     </div>
+
+                    {error && error == 'api' && (
+                        <div className="form__error">
+                            <Icon
+                                name="pin-off"
+                                classProps="searchbar__error-icon"
+                            />
+                            Erreur positionstackAPI, veuillez réessayer
+                        </div>
+                    )}
 
                     <div className="form__row">
                         <Input

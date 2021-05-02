@@ -5,19 +5,16 @@ import {
     SEND_CREATE_ACTIVITY,
     saveCreateActivityError,
     activityCreated,
+    errorApiVerifLocalisationCreateActivity,
 } from 'src/actions/createActivity'
-
-//import { fetchUserActivities } from 'src/actions/activities'
  
 const createActivity = (store) => (next) => (action) => {
     switch (action.type) {
+
         case SEND_CREATE_ACTIVITY:
             {
                 const { login } = store.getState()
                 const newActivity = action.data
-
-                console.log(newActivity)
-
                 axios
                     .get(
                         `http://api.positionstack.com/v1/forward?access_key=${process.env.POSITIONSTACK_API_KEY}&country=FR&limit=1&query=${newActivity.address} ${newActivity.city} ${newActivity.zip}`,
@@ -74,6 +71,10 @@ const createActivity = (store) => (next) => (action) => {
                         console.log(error)
                         if (error.response.status === 401) {
                             store.dispatch(logOut())
+                        }
+                        if (error.response.status === 503) {
+                            //store.dispatch(logOut())
+                            store.dispatch(errorApiVerifLocalisationCreateActivity())
                         }
                     })
             }

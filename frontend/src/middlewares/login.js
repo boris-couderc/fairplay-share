@@ -11,11 +11,12 @@ import {
 import {
     saveUserActivities,
     fetchUserActivities,
-    clearUserActivities,
 } from 'src/actions/activities'
 
 const login = (store) => (next) => (action) => {
     switch (action.type) {
+
+        
         case FETCH_LOGIN: {
             const { email, password } = action.data
             axios
@@ -39,7 +40,6 @@ const login = (store) => (next) => (action) => {
                     })
                     store.dispatch(saveLoggedUser(user))
                     store.dispatch(saveUserActivities({activities, user}))
-                    //store.dispatch(fetchUserActivities())
                 })
                 .catch((error) => {
                     store.dispatch(saveLoginError())
@@ -56,12 +56,14 @@ const login = (store) => (next) => (action) => {
             store.dispatch(saveCheckLocalStorageUser())
             break
 
+
         case LOG_OUT:
             if (localStorage.fairplayUser) {
                 localStorage.removeItem('fairplayUser')
             }
             next(action)
             break
+
 
         default:
             next(action)
