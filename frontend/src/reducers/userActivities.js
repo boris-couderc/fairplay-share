@@ -7,6 +7,7 @@ import {
 import { 
     SAVE_JOIN_ACTIVITY,
     SAVE_QUIT_ACTIVITY,
+    SAVE_CANCEL_ACTIVITY,
 } from 'src/actions/activity'
 
 const initialState = {
@@ -50,7 +51,7 @@ const userActivities = (state = initialState, action = {}) => {
 
         case CLEAR_USER_ACTIVITIES:
             return initialState
-
+ 
         case SAVE_JOIN_ACTIVITY:
             return {
                 ...state,
@@ -58,9 +59,22 @@ const userActivities = (state = initialState, action = {}) => {
             }
 
         case SAVE_QUIT_ACTIVITY:
+            const indexActivityToSuppr = state.activities.findIndex(activity=>activity.id==action.data.id)
+            const updatedActivitiesQuit = [...state.activities]
+            updatedActivitiesQuit.splice(indexActivityToSuppr, 1)
             return {
                 ...state,
-                idsParticipantRole: state.idsParticipantRole.filter(id=>id!==action.data.id)
+                idsParticipantRole: state.idsParticipantRole.filter(id=>id!==action.data.id),
+                activities: updatedActivitiesQuit,
+            }
+
+        case SAVE_CANCEL_ACTIVITY:
+            const indexActivityToUpdate = state.activities.findIndex(activity=>activity.id==action.data.id)
+            const updatedActivitiesCancel = [...state.activities]
+            updatedActivitiesCancel[indexActivityToUpdate].activity_status_id = 2
+            return {
+                ...state,
+                activities: updatedActivitiesCancel,
             }
 
         default:

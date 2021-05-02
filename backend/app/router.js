@@ -10,6 +10,7 @@ const registrationController = require("./controllers/registrationController");
 const messageController = require("./controllers/messageController");
 const joinActivityController = require("./controllers/joinActivityController");
 const quitActivityController = require("./controllers/quitActivityController");
+const cancelActivityController = require("./controllers/cancelActivityController");
 const authorizationMiddleware = require("./middleware/authorization");
 
 router.get('/', (req, res) => { res.send('hello') });
@@ -23,8 +24,8 @@ router.post('/api/connexion', connectionController.getUser);
 router.get('/api/activities?', activityController.getLastActivities);
 
 router.post('/api/activity/join',authorizationMiddleware,joinActivityController.joinActivity);
-
 router.post('/api/activity/quit', authorizationMiddleware, quitActivityController.quitActivity);
+router.post('/api/activity/cancel', authorizationMiddleware, cancelActivityController.cancelActivity);
 
 router.get('/api/activity/:id', authorizationMiddleware, activityController.getOneActivity); 
 

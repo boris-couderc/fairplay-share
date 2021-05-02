@@ -14,7 +14,7 @@ const connectionController = {
         const data = req.body
         console.log(data.email)
         const user = await User.findOne({
-            where: { 
+            where: {  
                 email: data.email,
             },
             include: [
@@ -57,20 +57,24 @@ const connectionController = {
                     association: 'sport',
                     attributes: ['name', 'icon'],
                 },
+                /*
                 {
                     association: 'activity_statut',
                     attributes: {
                         exclude: ['id'],
                     },
                 },
+                */
                 {
                     association: 'activity_place',
                     attributes: ['city'],
                 },
+                /*
                 {
                     association: 'creator',
                     attributes: ['pseudo'],
                 },
+                */
             ],
             /*
             where: {
@@ -79,7 +83,10 @@ const connectionController = {
                 },
             },
             */
-            order: [['date', 'ASC']],
+            order: [
+                ['date', 'ASC'],
+                ['time', 'ASC']
+            ],
         })
 
         let formatedaUserActivities = []

@@ -26,12 +26,21 @@ const Card = ({ activity, loggedUserRole, isLogged, showLoginModal }) => {
             'card',
             loggedUserRole === 'creator' && 'card--creator',
             loggedUserRole === 'participant' && 'card--participant',
+            activity.activity_status_id == 2 && 'card--cancelled',
             inView && 'card--inview'
         ))
     }, [inView])
 
     return (
         <li className={classes} ref={ref}>
+            {/* {activity.activity_status_id && activity.activity_status_id==2 && (
+                <div className="u-color-error">
+                    <Icon name="error" classProps="u-margin-bottom-.25"/>
+                    <Heading el="p" classProps="u-color-error">
+                        Activité annulée
+                    </Heading>
+                </div>
+            )} */}
             <ActivityLink
                 isLogged={isLogged}
                 id={activity.id}

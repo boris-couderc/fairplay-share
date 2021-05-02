@@ -7,9 +7,8 @@ import {
     saveJoinActivity,
     QUIT_ACTIVITY,
     saveQuitActivity,
-
-    updateStatus,
-    errorStatus,
+    CANCEL_ACTIVITY,
+    saveCancelActivity,
 } from 'src/actions/activity'
 
 import { saveUserPoints, logOut } from 'src/actions/login'
@@ -40,7 +39,6 @@ const activities = (store) => (next) => (action) => {
             break
 
 
-
         case JOIN_ACTIVITY:
             if (!user.id) {
                 console.error(
@@ -65,8 +63,6 @@ const activities = (store) => (next) => (action) => {
                     console.log(error)
                     if (error.response.status === 401) {
                         store.dispatch(logOut())
-                    } else {
-                        store.dispatch(errorStatus())
                     }
                     console.log('error', error)
                 })
@@ -98,12 +94,41 @@ const activities = (store) => (next) => (action) => {
                     console.log(error)
                     if (error.response.status === 401) {
                         store.dispatch(logOut())
-                    } else {
-                        store.dispatch(errorStatus())
                     }
                     console.log('error', error)
                 })
             break
+
+
+        case CANCEL_ACTIVITY:
+            if (!user.id) {
+                console.error(
+                    'ERROR il faut être connecté pour annuler une activité',
+                )
+                break
+            }
+            axios
+                .post(
+                    `${process.env.API_URL}/api/activity/cancel`,
+                    {
+                        activityId: activity.id,
+                        userId: user.id,
+                    },
+                    { withCredentials: true },
+                )
+                .then((response) => {
+                    console.log(response.data)
+                    store.dispatch(saveCancelActivity(response.data.activity))
+                    store.dispatch(saveUserPoints(response.data.user))
+                })
+                .catch((error) => {
+                    console.log(error)
+                    if (error.response.status === 401) {
+                        store.dispatch(logOut())
+                    }
+                })
+            break
+
 
         default:
             next(action)

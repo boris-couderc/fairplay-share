@@ -35,9 +35,8 @@ const quitActivityController = {
             })
 
             // check if user if not already registered
-            const userActivitiesIds = user.activities.map(activity => activity.id)
-            const userHasActivity = userActivitiesIds.find(
-                (id) => id == activityId,
+            const userHasActivity = user.activities.find(
+                (activity) => activity.id == activityId,
             )
             if(!userHasActivity) {
                 res.status(403).json({

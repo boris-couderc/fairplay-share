@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { useParams, useHistory, Redirect } from 'react-router-dom'
+import classNames from 'classnames'
 
 import View from 'src/components/View'
 import ScrollToTop from 'src/components/ScrollToTop'
@@ -23,13 +24,13 @@ const Activity = ({
     activity,
     activityLoaded,
 
-    userId,
     userActivitiesLoaded,
     userActivitiesParticipantRole,
     userActivitiesCreatorRole,
 
     joinActivity,
     quitActivity,
+    cancelActivity,
 
     clearActivity,
 }) => {
@@ -62,42 +63,43 @@ const Activity = ({
                 organize ? 'creator' : alreadyJoin ? 'participant' : 'visitor',
             )
         }
-    }, [userActivitiesLoaded, isLogged, activityLoaded, userActivitiesParticipantRole])
+    }, [userActivitiesLoaded, isLogged, activityLoaded, userActivitiesParticipantRole, activity])
 
+    const [infosSupClasses, setinfosSupClasses] = useState('activity__infos-sup')
     useEffect(() => {
-        console.log('userRole', userRole)
-    }, [userRole])
+        console.log('infosSupClasses',infosSupClasses, userRole)
 
-    /////////////////////
+        setinfosSupClasses(classNames(
+            'activity__infos-sup',
+            userRole && `activity__infos-sup--${userRole}`,
+            activity && activity.activity_status_id == 2 && `activity__infos-sup--cancelled`
+        ))
+    }, [activity, userRole])
 
     const [modalDisplayed, setModalDisplayed] = useState(false)
-
+    const [modalCandelDisplayed, setModalCandelDisplayed] = useState(false)
     const handleClickCancel = (e) => {
         e.preventDefault()
-        //joinActivity()
-        //setModalDisplayed(false)
+        setUserRole(null)
+        setModalCandelDisplayed(false)
+        cancelActivity()
         console.log('handleClickCancel')
     }
-
     const handleClickQuit = (e) => {
         e.preventDefault()
-        console.log('handleClickQuit')
         quitActivity()
         setUserRole(null)
         setModalDisplayed(false)
     }
-
     const handleClickJoin = (e) => {
         e.preventDefault()
         setUserRole(null)
         joinActivity()
-        console.log('handleClickJoin')
     }
 
     return (
         <View
             layoutClass="activity"
-            //backgroundImg={`url(${currentSport})`}
             backgroundImg={`${activity ? activity.sport.icon : ''}`}
         >
             <ScrollToTop />
@@ -111,7 +113,6 @@ const Activity = ({
                                 <Heading el="h1" classProps="h1--activity">
                                     {activity.title}
                                 </Heading>
-
                                 <div className="activity__header">
                                     <Button
                                         appearance=""
@@ -141,10 +142,7 @@ const Activity = ({
                                         </div>
                                     </div>
                                 </div>
-
-                                <div
-                                    className={`activity__infos-sup activity__infos-sup--${userRole}`}
-                                >
+                                <div className={infosSupClasses}>
                                     <div className="activity__desc">
                                         {activity.description}
                                     </div>
@@ -181,16 +179,16 @@ const Activity = ({
                                         </div>
                                     </div>
                                     <div className="activity__registration">
-                                        {userRole && userRole === 'creator' ? (
+                                        {userRole && userRole === 'creator' && activity.activity_status_id == 3 ? (
                                             <Button
                                                 appearance="outline"
                                                 size="big"
                                                 icon="pin-off"
-                                                onClick={handleClickCancel}
+                                                onClick={()=>setModalCandelDisplayed(true)}
                                             >
                                                 Annuler l'activité
                                             </Button>
-                                        ) : userRole && userRole === 'participant' ? (
+                                        ) : userRole && userRole === 'participant' && activity.activity_status_id == 3 ? (
                                             <Button
                                                 appearance="outline"
                                                 size="big"
@@ -199,7 +197,7 @@ const Activity = ({
                                             >
                                                 Je me désinscris
                                             </Button>
-                                        ) : userRole && userRole === 'visitor' ? (
+                                        ) : userRole && userRole === 'visitor' && activity.activity_status_id == 3 ? (
                                             <Button
                                                 appearance="primary"
                                                 size="big"
@@ -208,14 +206,20 @@ const Activity = ({
                                             >
                                                 Je m'inscris
                                             </Button>
+                                        ) : activity.activity_status_id == 2 ? (
+                                            <div className="u-color-error">
+                                                <Icon name="error" classProps="u-margin-bottom-.25"/>
+                                                <Heading el="p" classProps="u-color-error">
+                                                    Activité annulée
+                                                </Heading>
+                                            </div>
                                         ) : (
                                             <Loader />
                                         )}
                                         <div className="activity__registration-txt">
                                             Je m'engage à être présent le jour
                                             de l'activité, mais je peux si
-                                            besoin me désinscrire à tout moment
-                                            !
+                                            besoin me désinscrire à tout moment !
                                         </div>
                                     </div>
                                 </div>
@@ -233,10 +237,11 @@ const Activity = ({
                     </>
                 )}
             </Wrapper>
+
             <Modal
                 isDisplayed={modalDisplayed}
                 icon="sentiment-dissatisfied"
-                title="Etes vous sûr de vouloir vous désinscrire ?"
+                title="Êtes-vous sûr de vouloir vous désinscrire ?"
                 txt=""
                 txtBtYes="Je me désinscris"
                 txtBtNo="Annuler"
@@ -244,6 +249,19 @@ const Activity = ({
                 onClickNo={()=>setModalDisplayed(false)}
                 closeModal={()=>setModalDisplayed(false)}
             />
+
+            <Modal
+                isDisplayed={modalCandelDisplayed}
+                icon="sentiment-dissatisfied"
+                title="Êtes-vous sûr de vouloir annuler l'activité ?"
+                txt=""
+                txtBtYes="Oui j'annule"
+                txtBtNo="Non"
+                onClickYes={handleClickCancel}
+                onClickNo={()=>setModalCandelDisplayed(false)}
+                closeModal={()=>setModalCandelDisplayed(false)}
+            />
+
         </View>
     )
 }

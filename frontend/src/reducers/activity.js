@@ -6,24 +6,15 @@ import {
     SAVE_NEW_MESSAGE,
     SAVE_JOIN_ACTIVITY,
     SAVE_QUIT_ACTIVITY,
-    
-    UPDATE_STATUS,
-    ERROR_STATUS,
-
+    SAVE_CANCEL_ACTIVITY,
 } from 'src/actions/activity'
 
 const initialState = { 
-    /*
-    classname: '',
-    joinMessage: 'Rejoindre',
-    quitMessage: "Quitter l'activité",
-    */
     activity: null,
     loaded: false,
     isLoading: false,
     messageSent: false,
     isMessageSending: false,
-    // errorMessage: '',
 }
 
 const activity = (state = initialState, action = {}) => {
@@ -82,33 +73,16 @@ const activity = (state = initialState, action = {}) => {
                     ...state.activity,
                     participant_count: action.data.participantCount,
                 }
-            } 
+            }
 
-        /*
-        case ERROR_STATUS:
+        case SAVE_CANCEL_ACTIVITY: 
             return {
                 ...state,
-                errorMessage: 'ERROR',
-            }
-        
-        case UPDATE_STATUS:
-            if (action.operateur === '+') {
-                return {
-                    ...state,
-                    participant_count: state.participant_count + 1,
+                activity: {
+                    ...state.activity,
+                    activity_status_id: action.data.activityStatusId,
                 }
             }
-            return {
-                ...state,
-                participant_count: state.participant_count - 1,
-            }
-
-        case SAVE_ACTTIVITY:
-            return {
-                ...initialState,
-                ...action.data,
-            }
-        */
 
         default:
             return state

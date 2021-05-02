@@ -50,20 +50,24 @@ const activityController = {
                         association: 'sport',
                         attributes: ['name', 'icon'],
                     },
+                    /*
                     {
                         association: 'activity_statut',
                         attributes: {
                             exclude: ['id'],
                         },
                     },
+                    */
                     {
                         association: 'activity_place',
                         attributes: ['city'],
                     },
+                    /*
                     {
                         association: 'creator',
                         attributes: ['pseudo'],
                     },
+                    */
                 ],
                 where: {
                     [Op.and]: [
@@ -117,19 +121,20 @@ const activityController = {
                 },
                 attributes: {
                     exclude: [
-                        'activity_status_id',
                         'activity_place_id',
                         'sport_id',
                         'creator_id',
                     ],
                 },
                 include: [
+                    /*
                     {
                         association: 'activity_statut',
                         attributes: {
                             exclude: ['id'],
                         },
                     },
+                    */
                     {
                         association: 'sport',
                         attributes: ['name', 'icon'],
@@ -433,20 +438,24 @@ const activityController = {
                         association: 'sport',
                         attributes: ['name', 'icon'],
                     },
+                    /*
                     {
                         association: 'activity_statut',
                         attributes: {
                             exclude: ['id'],
                         },
                     },
+                    */
                     {
                         association: 'activity_place',
                         attributes: ['city'],
                     },
+                    /*
                     {
                         association: 'creator',
                         attributes: ['pseudo'],
                     },
+                    */
                 ],
                 /*
                 where: {
@@ -455,7 +464,10 @@ const activityController = {
                     },
                 },
                 */
-                order: [['date', 'ASC']],
+                order: [
+                    ['date', 'ASC'],
+                    ['time', 'ASC']
+                ],
             })
 
             let formatedaActivities = []

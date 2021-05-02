@@ -64,6 +64,19 @@
         }
     }
 
+    &.card--cancelled.card--participant,
+    &.card--cancelled.card--creator {
+        opacity: .5;
+        filter: grayscale(70%);
+        &::before {
+            content: 'Annulée';
+            background-color: s.$color-dark-lighter;
+        }
+        &::after {
+            border-top: 2px solid s.$color-dark-lightest;
+        }
+    } 
+    
     &:hover {
         &::after {
             transform: scale(1.02) translateY(-.125rem);
@@ -78,7 +91,7 @@
     }
 
     .heading {
-        margin-bottom     : .45rem;
+        margin-bottom     : .375rem;
         display           : -webkit-box;
         overflow          : hidden;
         text-overflow     : ellipsis;
@@ -107,16 +120,18 @@
     }
 
     &__desc {
-        margin-bottom     : 1.5rem;
         display           : -webkit-box;
+        margin-bottom     : 0;
         overflow          : hidden;
         text-overflow     : ellipsis;
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
         word-break        : break-all;
+        height            : 3rem;
     }
 
     &__infos {
+        margin-top     : 1rem;
         text-align     : left;
     }
 
@@ -129,7 +144,7 @@
         color                : s.$color-primary;
 
         &:not(:first-child) {
-            margin-top: .75rem;
+            margin-top: .45rem;
         }
 
         &-sup {

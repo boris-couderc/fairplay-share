@@ -5,12 +5,15 @@ const Op = Sequelize.Op
 
 const { Activity, User, UserGrade } = require('../models')
 
-const joinActivityController = {
+const cancelActivityController = {
 
-    joinActivity: async (req, res) => {
+    cancelActivity: async (req, res) => {
         const { activityId, userId } = req.body
 
         try {
+
+            console.log('////////////////// cancelActivityController')
+
             // check user and his activities
             const user = await User.findOne({
                 where: {
@@ -27,21 +30,26 @@ const joinActivityController = {
                     {
                         association: 'activities',
                         attributes: ['id'],
+                        include: [
+                            {
+                                association: 'creator',
+                                attributes: ['id'],
+                            },
+                        ],
                     },
                     {
                         association: 'user_grade',
-                    }
+                    },
                 ],
             })
-            
-            // check if user if not already registered
-            const alreadyJoin = user.activities.find(
-                (activity) => activity.id == activityId,
-            )
 
-            if(alreadyJoin) {
+            // check if user has activity as creator role
+            const userHasActivity = user.activities.find(
+                activity => activity.creator.id === userId && activity.id === activityId
+            )
+            if(!userHasActivity) {
                 res.status(403).json({
-                    error: 'already join',
+                    error: 'this user has not created this activity',
                 })
                 return
             }
@@ -51,6 +59,7 @@ const joinActivityController = {
                 attributes: [
                     'id',
                     'participant_count',
+                    'activity_status_id',
                 ],
                 where: {
                     id: activityId,
@@ -63,14 +72,12 @@ const joinActivityController = {
                 ],
             })
 
-            // join activity to user
-            await user.addActivity(activity)
-            activity.participant_count = activity.users.length + 1
+            // change activity status
+            activity.activity_status_id = 2
             await activity.save()
 
-            
-            // Add motivation points to user
-            const newUserRewardCount = user.reward_count + 10
+            // Remove motivation points to user
+            const newUserRewardCount = user.reward_count - 100
             user.reward_count = newUserRewardCount
 
             // Check and update user grade
@@ -86,7 +93,7 @@ const joinActivityController = {
             user.user_grade_id = newGrade
 
             await user.save()
-            
+
             res.status(200).json({
                 user: {
                     points: newUserRewardCount,
@@ -95,8 +102,10 @@ const joinActivityController = {
                 activity: {
                     id: activity.id,
                     participantCount: activity.participant_count,
+                    activityStatusId: 2,
                 }
             })
+
             return
 
         } catch (error) {
@@ -107,4 +116,4 @@ const joinActivityController = {
     },
 }
 
-module.exports = joinActivityController
+module.exports = cancelActivityController

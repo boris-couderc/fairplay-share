@@ -4,6 +4,7 @@ import {
     fetchActivity,
     joinActivity,
     quitActivity,
+    cancelActivity,
     clearActivity,
 } from 'src/actions/activity';
 
@@ -30,6 +31,9 @@ const mapDispatchToProps = (dispatch) => ({
     },
     quitActivity: () => {
         dispatch(quitActivity());
+    },
+    cancelActivity: () => {
+        dispatch(cancelActivity());
     },
 });
 
