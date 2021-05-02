@@ -32,6 +32,13 @@
         margin-bottom: .5rem;
     }
 
+    &__icon {
+        margin-bottom: .5rem;
+        max-width: 3rem;
+        max-height: 3rem;
+        color: s.$color-dark-lightest;
+    }
+
     &__buttons {
         display        : flex;
         flex-direction : column;

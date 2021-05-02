@@ -36,13 +36,11 @@ const joinActivityController = {
             
             // check if user if not already registered
             const userActivitiesIds = user.activities.map(activity => activity.id)
-            console.log('userActivitiesIds------------', userActivitiesIds)
 
             const alreadyJoin = userActivitiesIds.find(
                 (id) => id == activityId,
             )
             if(alreadyJoin) {
-                //throw new Error("already join");
                 res.status(403).json({
                     error: 'already join',
                 })

@@ -6,6 +6,7 @@ import {
 
 import { 
     SAVE_JOIN_ACTIVITY,
+    SAVE_QUIT_ACTIVITY,
 } from 'src/actions/activity'
 
 const initialState = {
@@ -54,6 +55,12 @@ const userActivities = (state = initialState, action = {}) => {
             return {
                 ...state,
                 idsParticipantRole: [ ...state.idsParticipantRole, action.data.id]
+            }
+
+        case SAVE_QUIT_ACTIVITY:
+            return {
+                ...state,
+                idsParticipantRole: state.idsParticipantRole.filter(id=>id!==action.data.id)
             }
 
         default:

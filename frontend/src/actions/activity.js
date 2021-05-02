@@ -4,10 +4,11 @@ export const CLEAR_ACTIVITY = 'CLEAR_ACTIVITY'
 export const SAVE_ACTTIVITY = 'SAVE_ACTTIVITY'
 export const JOIN_ACTIVITY = 'JOIN_ACTIVITY'
 export const SAVE_JOIN_ACTIVITY = 'SAVE_JOIN_ACTIVITY'
+export const QUIT_ACTIVITY = 'QUIT_ACTIVITY'
+export const SAVE_QUIT_ACTIVITY = 'SAVE_QUIT_ACTIVITY'
 
 export const UPDATE_STATUS = 'UPDATE_STATUS'
 export const ERROR_STATUS = 'ERROR_STATUS'
-export const QUIT_ACTIVITY = 'QUIT_ACTIVITY'
 export const SEND_MESSAGE = 'SEND_MESSAGE'
 export const SAVE_NEW_MESSAGE = 'SAVE_NEW_MESSAGE'
 
@@ -35,6 +36,19 @@ export const saveJoinActivity = (data) => ({
     data,
 })
 
+export const quitActivity = () => ({
+    type: QUIT_ACTIVITY,
+})
+
+export const saveQuitActivity = (data) => ({
+    type: SAVE_QUIT_ACTIVITY,
+    data,
+})
+
+
+
+
+
 
 export const updateStatus = (operateur) => ({
     type: UPDATE_STATUS,
@@ -43,10 +57,6 @@ export const updateStatus = (operateur) => ({
 
 export const errorStatus = () => ({
     type: ERROR_STATUS,
-})
-
-export const quitActivity = () => ({
-    type: QUIT_ACTIVITY,
 })
 
 export const saveNewMessage = (message) => ({

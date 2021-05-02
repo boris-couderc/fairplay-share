@@ -5,13 +5,14 @@ import {
     SEND_MESSAGE,
     SAVE_NEW_MESSAGE,
     SAVE_JOIN_ACTIVITY,
+    SAVE_QUIT_ACTIVITY,
     
     UPDATE_STATUS,
     ERROR_STATUS,
 
 } from 'src/actions/activity'
 
-const initialState = {
+const initialState = { 
     /*
     classname: '',
     joinMessage: 'Rejoindre',
@@ -73,6 +74,15 @@ const activity = (state = initialState, action = {}) => {
                     participant_count: action.data.participantCount,
                 }
             }
+
+        case SAVE_QUIT_ACTIVITY:
+            return {
+                ...state,
+                activity: {
+                    ...state.activity,
+                    participant_count: action.data.participantCount,
+                }
+            } 
 
         /*
         case ERROR_STATUS:

@@ -1,72 +1,109 @@
-const Sequelize = require('sequelize');
-const { QueryTypes } = require('sequelize');
-const sequelize = require('../database.js');
+const Sequelize = require('sequelize')
+const { QueryTypes } = require('sequelize')
+const sequelize = require('../database.js')
+const Op = Sequelize.Op
 
-const { Activity, User } = require('../models');
+const { Activity, User, UserGrade } = require('../models')
 
 const quitActivityController = {
-  quitActivity: async (req, res) => {
-    console.log('body', req.body);
-    const user = await User.findOne({
-      where: {
-        pseudo: req.body.pseudo
-      },
-      include: [{
-        model: Activity,
-        as: 'activities',
-      }],
-    });
-    console.log(user.activities);
 
-    const verifResult = await sequelize.query(
-      `SELECT id FROM "user_has_activity" WHERE "activity_id"=:activity_id AND "user_id"=:user_id;`,
-      {
-        replacements: {
-          activity_id: req.body.id,
-          user_id: user.dataValues.id
-        },
-        type: QueryTypes.INSERT
-      }
-    );
+    quitActivity: async (req, res) => {
+        const { activityId, userId } = req.body
 
-    if (!verifResult[0][0]) {
-      res.status(403).json({
-        error: "notRegisteredToActivity"
-      })
-      return;
-    }
+        try {
+            // check user and his activities
+            const user = await User.findOne({
+                where: {
+                    id: userId,
+                },
+                attributes: [
+                    'id',
+                    'firstname',
+                    'lastname',
+                    'pseudo',
+                    'reward_count',
+                ],
+                include: [
+                    {
+                        association: 'activities',
+                        attributes: ['id'],
+                    },
+                    {
+                        association: 'user_grade',
+                    },
+                ],
+            })
 
-    try{
-      const result = await sequelize.query(
-        `DELETE FROM "user_has_activity" WHERE "user_id"=':user_id' AND "activity_id"=':activity_id';`,
-        {
-          replacements: {
-            activity_id: req.body.id,
-            user_id: user.dataValues.id
-          },
-          type: QueryTypes.DELETE
+            // check if user if not already registered
+            const userActivitiesIds = user.activities.map(activity => activity.id)
+            const userHasActivity = userActivitiesIds.find(
+                (id) => id == activityId,
+            )
+            if(!userHasActivity) {
+                res.status(403).json({
+                    error: 'already quit',
+                })
+                return
+            }
+
+            // find activity
+            const activity = await Activity.findOne({
+                attributes: [
+                    'id',
+                    'participant_count',
+                ],
+                where: {
+                    id: activityId,
+                },
+                include: [
+                    {
+                        association: 'users',
+                        attributes: ['id'],
+                    }
+                ],
+            })
+
+            // suppr activity to user
+            await user.removeActivity(activity)
+            activity.participant_count = activity.users.length - 1
+            await activity.save()
+
+            // Remove motivation points to user
+            const newUserRewardCount = user.reward_count - 10
+            user.reward_count = newUserRewardCount
+
+            // Check and update user grade
+            const grades = await UserGrade.findAll({
+                where: {
+                    point: {
+                        [Op.lte]: newUserRewardCount,
+                    },
+                },
+                order: [['point', 'DESC']],
+            })
+            const newGrade = grades[0].id
+            user.user_grade_id = newGrade
+
+            await user.save()
+
+            res.status(200).json({
+                user: {
+                    points: newUserRewardCount,
+                    grade: newGrade,
+                },
+                activity: {
+                    id: activity.id,
+                    participantCount: activity.participant_count,
+                }
+            })
+            return
+
+        } catch (error) {
+            res.status(403).json({
+                error: 'errorServer',
+            })
         }
-      );
-      res.json({
-        result: "success"
-      })
-      const participant_count = await Activity.findByPk(req.body.id);
-      newParticipant_count = participant_count.dataValues.participant_count - 1;
-      // on incrémente le participant_count
-      Activity.update({ participant_count: newParticipant_count }, {
-        where: {
-          id: req.body.id,
-        }
-      });
-    } catch (error) {
-      res.status(403).json({
-        error: "errorServer"
-      })
-      return;
-    }
-    
+    },
+}
 
-},
-};
-
-module.exports = quitActivityController;
+module.exports = quitActivityController

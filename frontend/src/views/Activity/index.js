@@ -11,6 +11,7 @@ import Icon from 'src/components/Icon'
 import Loader from 'src/components/Loader'
 import Map from 'src/components/Map'
 import Messages from 'src/containers/Messages'
+import Modal from 'src/components/Modal'
 
 import './style.scss'
 
@@ -67,27 +68,29 @@ const Activity = ({
         console.log('userRole', userRole)
     }, [userRole])
 
+    /////////////////////
+
+    const [modalDisplayed, setModalDisplayed] = useState(false)
+
     const handleClickCancel = (e) => {
         e.preventDefault()
-
         //joinActivity()
-
+        //setModalDisplayed(false)
         console.log('handleClickCancel')
     }
 
     const handleClickQuit = (e) => {
         e.preventDefault()
-
-        //quitActivity()
-
         console.log('handleClickQuit')
+        quitActivity()
+        setUserRole(null)
+        setModalDisplayed(false)
     }
 
     const handleClickJoin = (e) => {
         e.preventDefault()
-
+        setUserRole(null)
         joinActivity()
-
         console.log('handleClickJoin')
     }
 
@@ -180,24 +183,23 @@ const Activity = ({
                                     <div className="activity__registration">
                                         {userRole && userRole === 'creator' ? (
                                             <Button
-                                                appearance="secondary"
+                                                appearance="outline"
                                                 size="big"
                                                 icon="pin-off"
                                                 onClick={handleClickCancel}
                                             >
                                                 Annuler l'activité
                                             </Button>
-                                        ) : userRole &&
-                                          userRole === 'participant' ? (
+                                        ) : userRole && userRole === 'participant' ? (
                                             <Button
-                                                appearance="primary"
+                                                appearance="outline"
                                                 size="big"
                                                 icon="user-remove"
-                                                onClick={handleClickQuit}
+                                                onClick={()=>setModalDisplayed(true)}
                                             >
                                                 Je me désinscris
                                             </Button>
-                                        ) : (
+                                        ) : userRole && userRole === 'visitor' ? (
                                             <Button
                                                 appearance="primary"
                                                 size="big"
@@ -206,8 +208,9 @@ const Activity = ({
                                             >
                                                 Je m'inscris
                                             </Button>
+                                        ) : (
+                                            <Loader />
                                         )}
-
                                         <div className="activity__registration-txt">
                                             Je m'engage à être présent le jour
                                             de l'activité, mais je peux si
@@ -216,7 +219,6 @@ const Activity = ({
                                         </div>
                                     </div>
                                 </div>
-
                                 <div className="activity__map-messages">
                                     <Map
                                         lat={activity.activity_place.lat}
@@ -231,6 +233,17 @@ const Activity = ({
                     </>
                 )}
             </Wrapper>
+            <Modal
+                isDisplayed={modalDisplayed}
+                icon="sentiment-dissatisfied"
+                title="Etes vous sûr de vouloir vous désinscrire ?"
+                txt=""
+                txtBtYes="Je me désinscris"
+                txtBtNo="Annuler"
+                onClickYes={handleClickQuit}
+                onClickNo={()=>setModalDisplayed(false)}
+                closeModal={()=>setModalDisplayed(false)}
+            />
         </View>
     )
 }

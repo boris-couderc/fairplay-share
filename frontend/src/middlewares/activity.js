@@ -4,8 +4,9 @@ import {
     FETCH_ACTTIVITY,
     saveActivity,
     JOIN_ACTIVITY,
-    QUIT_ACTIVITY,
     saveJoinActivity,
+    QUIT_ACTIVITY,
+    saveQuitActivity,
 
     updateStatus,
     errorStatus,
@@ -41,9 +42,6 @@ const activities = (store) => (next) => (action) => {
 
 
         case JOIN_ACTIVITY:
-
-            console.log('user.id',user.id, activity.id);
-
             if (!user.id) {
                 console.error(
                     'ERROR il faut être connecté pour rejoindre une activité',
@@ -60,14 +58,8 @@ const activities = (store) => (next) => (action) => {
                     { withCredentials: true },
                 )
                 .then((response) => {
-                    console.log('activité rejointe', response);
-
-                    //store.dispatch(updateStatus('+'))
-                    
                     store.dispatch(saveJoinActivity(response.data.activity))
                     store.dispatch(saveUserPoints(response.data.user))
-                    
-
                 })
                 .catch((error) => {
                     console.log(error)
@@ -81,9 +73,8 @@ const activities = (store) => (next) => (action) => {
             break
 
 
-
         case QUIT_ACTIVITY:
-            if (!user.pseudo) {
+            if (!user.id) {
                 console.error(
                     'ERROR il faut être connecté pour quitter une activité',
                 )
@@ -93,23 +84,24 @@ const activities = (store) => (next) => (action) => {
                 .post(
                     `${process.env.API_URL}/api/activity/quit`,
                     {
-                        id: details.id,
-                        pseudo: user.pseudo,
+                        activityId: activity.id,
+                        userId: user.id,
                     },
                     { withCredentials: true },
                 )
                 .then((response) => {
-                    // console.log('activité quittée', response);
-                    store.dispatch(updateStatus('-'))
-                    // store.dispatch(fetchUserActivities())
+                    console.log(response.data)
+                    store.dispatch(saveQuitActivity(response.data.activity))
+                    store.dispatch(saveUserPoints(response.data.user))
                 })
                 .catch((error) => {
+                    console.log(error)
                     if (error.response.status === 401) {
                         store.dispatch(logOut())
                     } else {
                         store.dispatch(errorStatus())
                     }
-                    console.log('error', error.response.data)
+                    console.log('error', error)
                 })
             break
 

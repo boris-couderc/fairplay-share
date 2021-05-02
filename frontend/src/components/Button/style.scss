@@ -160,7 +160,7 @@
 
         &::after {
             box-shadow      : 0 0 0 2px rgba($color: s.$color-dark, $alpha: 0.085) inset;
-            background-color: rgba($color: s.$color-dark-lightest, $alpha: .6);
+            background-color: rgba($color: s.$color-dark-lightest-bg-bt, $alpha: .6);
         }
 
         &.button--loading {

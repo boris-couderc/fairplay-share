@@ -9,7 +9,19 @@ import useVisible from 'src/hooks/useVisible'
 
 import './style.scss'
 
-const LoginModal = ({ isDisplayed, closeModal }) => {
+const Modal = ({ 
+    isDisplayed,
+    icon,
+    title,
+    txt,
+    txtBtYes,
+    txtBtNo,
+    onClickYes,
+    onClickNo,
+    closeModal,
+}) => {
+
+    
     const { ref, isVisible, setIsVisible } = useVisible(false)
 
     useEffect(() => {
@@ -23,28 +35,35 @@ const LoginModal = ({ isDisplayed, closeModal }) => {
             setIsVisible(true)
         }
     }, [isDisplayed])
+    
+
 
     return (
         <>
             {isDisplayed && (
                 <div className="modal">
-                    <div className="modal__container" ref={ref}>
-                        {/* <img onClick={closeModal} src={cross} alt="" className="icon modal__bt-close" /> */}
+                    <div className="modal__container" ref={ref} >
                         <button onClick={closeModal} className="modal__button-close">
                             <Icon name="clear" />
                         </button>
+                        <Icon name={icon} classProps="modal__icon"/>
                         <Heading el="p" like="h4">
-                            Inscris-toi !
+                            {title}
                         </Heading>
-                        <p>
-                            Pour rejoindre ou organiser une activité
-                        </p>
+                        {txt && (
+                            <p>
+                                {txt}
+                            </p>
+                        )}
                         <div className="modal__buttons">
-                            <Button appearance="outline" route="/connexion">
-                                Connexion
+                            <Button appearance="outline" onClick={onClickNo}>
+                                {txtBtNo}
                             </Button>
-                            <Button appearance="primary" route="/inscription">
-                                Inscription
+                            <Button 
+                                appearance="primary" 
+                                onClick={onClickYes}
+                            >
+                                {txtBtYes}
                             </Button>
                         </div>
                     </div>
@@ -54,9 +73,9 @@ const LoginModal = ({ isDisplayed, closeModal }) => {
     )
 }
 
-LoginModal.propTypes = {
+Modal.propTypes = {
     isDisplayed: PropTypes.bool.isRequired,
-    closeModal: PropTypes.func.isRequired,
+    //closeModal: PropTypes.func.isRequired,
 }
 
-export default LoginModal
+export default Modal
