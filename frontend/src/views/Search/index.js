@@ -40,6 +40,7 @@ const Search = ({
     const lat = query.get('lat')
     const lng = query.get('lng')
     const sports = query.get('sports')
+    const distance = query.get('distance') ? query.get('distance') : 100
 
     // control to avoid display jump when filter change
     const [firstMapDisplayForLocalisation, setfirstMapDisplayForLocalisation] = useState(true)
@@ -59,7 +60,7 @@ const Search = ({
 
     useEffect(() => {
         loadActivities(1)
-    }, [lat, lng, queryString, sports])
+    }, [lat, lng, queryString, sports, distance])
 
     const [currentPage, setCurrentPage] = useState(1)
 
@@ -72,6 +73,7 @@ const Search = ({
                 lng,
                 sports,
                 page,
+                distance,
             })
         } else {
             if(page>1) {
@@ -82,6 +84,7 @@ const Search = ({
                 lat, 
                 lng,
                 page,
+                distance,
             })
         }
         setCurrentPage(page)

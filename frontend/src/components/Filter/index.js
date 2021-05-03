@@ -21,6 +21,8 @@ const Filter = ({
     clearFilter,
 }) => {
     const [sportsFilter, setSportsFilter] = useState([])
+    const [distance, setDistance] = useState('100')
+    const [filterActive, setFilterActive] = useState(false)
 
     const history = useHistory()
     const query = useQuery()
@@ -42,6 +44,14 @@ const Filter = ({
         clearFilter()
         fetchFilterSportsByLocalisation({ lat, lng })
     }, [lat, lng])
+
+    useEffect(() => {
+        if(querySports || distance != '100') {
+            setFilterActive(true)
+        } else {
+            setFilterActive(false)
+        }
+    }, [querySports, distance])
 
     useEffect(() => {
         setSportsFilter(
@@ -78,7 +88,7 @@ const Filter = ({
         history.push(
             `/search?lat=${lat}&lng=${lng}&sports=${selectedSportIds.join(
                 ',',
-            )}&query=${queryString}`,
+            )}&query=${queryString}&distance=${distance}`,
         )
     }
 
@@ -89,7 +99,9 @@ const Filter = ({
                 isChecked: false,
             })),
         )
-        history.push(`/search?lat=${lat}&lng=${lng}&query=${queryString}`)
+        setDistance(100)
+        setFilterActive(false)
+        history.push(`/search?lat=${lat}&lng=${lng}&query=${queryString}&distance=100`)
     }
 
     return (
@@ -133,7 +145,8 @@ const Filter = ({
                             </Heading>
                             <select
                                 className="input input--select input--small"
-                                defaultValue='100'
+                                value={distance}
+                                onChange={(e)=>setDistance(e.target.value)}
                             >
                                 <option value="5">5km</option>
                                 <option value="10">10km</option>
@@ -152,7 +165,6 @@ const Filter = ({
                                 size="small"
                                 onClick={handleOnClick}
                                 classProps="button--no-focus"
-                                //loading={activitiesIsLoading}
                             >
                                 Filtrer les activités
                             </Button>
@@ -161,7 +173,7 @@ const Filter = ({
                                 size="small"
                                 onClick={handleClearFilter}
                                 icon="clear"
-                                disabled={!querySports}
+                                disabled={!filterActive}
                                 classProps="button--clear-filter"
                             >
                                 Annuler les filtres

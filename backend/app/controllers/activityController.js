@@ -195,6 +195,7 @@ const activityController = {
         let lat = parseFloat(req.query.lat)
         let lng = parseFloat(req.query.lng)
         let page = parseInt(req.query.page)
+        let distance = parseInt(req.query.distance)
 
         if (!lat || !lng) {
             res.status(404).json(
@@ -203,6 +204,9 @@ const activityController = {
         }
         if (!page) {
             page = 1
+        }
+        if (!distance) {
+            distance = activityController.defaultLimitDistance
         }
 
         try {
@@ -241,7 +245,7 @@ const activityController = {
                             sequelize.literal(distanceCalculSQL(lat, lng)),
                             {
                                 [Op.lte]:
-                                    activityController.defaultLimitDistance,
+                                    distance,
                             },
                         ),
                         {
@@ -295,10 +299,9 @@ const activityController = {
         let lng = parseFloat(req.query.lng)
         let page = parseInt(req.query.page)
         let sports = req.query.sports.split(',')
+        let distance = parseInt(req.query.distance)
 
         sports.map((sport) => parseInt(sport))
-
-        console.log('sports2', sports)
 
         if (!lat || !lng) {
             res.status(404).json(
@@ -307,6 +310,9 @@ const activityController = {
         }
         if (!page) {
             page = 1
+        }
+        if (!distance) {
+            distance = activityController.defaultLimitDistance
         }
 
         try {
@@ -342,7 +348,7 @@ const activityController = {
                             sequelize.literal(distanceCalculSQL(lat, lng)),
                             {
                                 [Op.lte]:
-                                    activityController.defaultLimitDistance,
+                                    distance,
                             },
                         ),
                         {
