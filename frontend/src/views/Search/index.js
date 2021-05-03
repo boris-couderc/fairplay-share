@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, Suspense } from 'react'
 import PropTypes from 'prop-types'
 import { useLocation } from 'react-router-dom'
 
@@ -8,11 +8,12 @@ import Wrapper from 'src/components/Wrapper'
 import Button from 'src/components/Button'
 import Heading from 'src/components/Heading'
 import SearchBar from 'src/containers/SearchBar'
-import Filter from 'src/containers/Filter';
-import MapList from 'src/containers/MapList';
 import CardsGrid from 'src/components/CardsGrid'
 import Loader from 'src/components/Loader'
 import Card from 'src/containers/Card'
+
+const MapList = React.lazy(() => import('src/containers/MapList'));
+const Filter = React.lazy(() => import('src/containers/Filter'));
 
 import './style.scss'
 
@@ -106,13 +107,20 @@ const Search = ({
                 <Heading el="h1" like="h3">
                     Prochaines activités proche de : <span className="u-color-primary">{queryString}</span>
                 </Heading>
-                <Filter />
-                {displayMap() && ( 
-                    <MapList 
-                        lat={lat} 
-                        lng={lng}
-                    />
-                )}
+
+                <Suspense 
+                    //fallback={<Loader classProps="u-margin-3" />}
+                    fallback={<></>}
+                >
+                    <Filter />
+                    {displayMap() && ( 
+                        <MapList 
+                            lat={lat} 
+                            lng={lng}
+                        />
+                    )}
+                </Suspense>
+
                 {!activitiesLoaded ? (  
                     <Loader classProps="u-margin-3" />
                 ) : ( 

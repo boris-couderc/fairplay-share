@@ -14,6 +14,8 @@ const useQuery = () => {
     return new URLSearchParams(useLocation().search)
 }
 
+const initialDistance = '100'
+
 const Filter = ({
     activitiesIsLoading,
     fetchFilterSportsByLocalisation,
@@ -21,7 +23,7 @@ const Filter = ({
     clearFilter,
 }) => {
     const [sportsFilter, setSportsFilter] = useState([])
-    const [distance, setDistance] = useState('100')
+    const [distance, setDistance] = useState(initialDistance)
     const [filterActive, setFilterActive] = useState(false)
 
     const history = useHistory()
@@ -37,16 +39,18 @@ const Filter = ({
     useEffect(() => {
         return () => {
             clearFilter()
+            setDistance(initialDistance)
         } 
     }, [])
 
     useEffect(() => {
         clearFilter()
+        setDistance(initialDistance)
         fetchFilterSportsByLocalisation({ lat, lng })
     }, [lat, lng])
 
     useEffect(() => {
-        if(querySports || distance != '100') {
+        if(querySports || distance != initialDistance) {
             setFilterActive(true)
         } else {
             setFilterActive(false)
@@ -99,9 +103,9 @@ const Filter = ({
                 isChecked: false,
             })),
         )
-        setDistance(100)
+        setDistance(initialDistance)
         setFilterActive(false)
-        history.push(`/search?lat=${lat}&lng=${lng}&query=${queryString}&distance=100`)
+        history.push(`/search?lat=${lat}&lng=${lng}&query=${queryString}&distance=${initialDistance}`)
     }
 
     return (

@@ -11,7 +11,6 @@ const { distanceCalculSQL } = require('../selectors/distanceCalculSQL')
 const {
     formatActivities,
     formatActivity,
-    //formatActivitiesFilterByDistance,
 } = require('../selectors/formatActivities')
 const { formatDate, formatTime } = require('../selectors/formatDate')
 
