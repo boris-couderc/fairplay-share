@@ -117,7 +117,6 @@ const SearchBar = ({
     }
 
     const handleGetGps = (e) => {
-        console.log('handleGetGps');
         e.preventDefault()
         const geolocalisationSuccess = (pos) => {
             changeValue('ma position')

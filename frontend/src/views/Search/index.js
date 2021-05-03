@@ -24,29 +24,22 @@ const useQuery = () => {
 
 const Search = ({
     activities,
-    fetchActivitiesByLocalisation,
-    fetchActivitiesByLocalisationAndSports,
-    activitiesLoaded,
- 
     count,
-
-    loaded,
-    paginationReset,
-
+    activitiesLoaded,
+    moreActivitiesisLoading,
     userActivitiesIds,
     userActivitiesCreatorIds,
-
-    moreActivitiesisLoading,
-
+    fetchActivitiesByLocalisation,
+    fetchActivitiesByLocalisationAndSports,
     clearSearchedActivities,
     changeInputValueSearchBar,
+    paginationReset,
 }) => {
     const query = useQuery()
     const queryString = query.get('query')
     const lat = query.get('lat')
     const lng = query.get('lng')
     const sports = query.get('sports')
-
 
     // control to avoid display jump when filter change
     const [firstMapDisplayForLocalisation, setfirstMapDisplayForLocalisation] = useState(true)
@@ -71,8 +64,6 @@ const Search = ({
     const [currentPage, setCurrentPage] = useState(1)
 
     const loadActivities = (page) => {
-        console.log('loadActivities', currentPage, ' / ', page)
-
         if (sports) {
             setfirstMapDisplayForLocalisation(false)
             fetchActivitiesByLocalisationAndSports({
@@ -201,21 +192,16 @@ const Search = ({
 
 Search.propTypes = {
     activities: PropTypes.array.isRequired,
-    fetchActivitiesByLocalisation: PropTypes.func.isRequired,
-    fetchActivitiesByLocalisationAndSports: PropTypes.func.isRequired,
-    activitiesLoaded: PropTypes.bool.isRequired,
-    activitiesIsLoading: PropTypes.bool.isRequired,
-
-    //pageZ: PropTypes.number.isRequired,
-    
     count: PropTypes.number.isRequired,
-
+    activitiesLoaded: PropTypes.bool.isRequired,
+    moreActivitiesisLoading: PropTypes.bool.isRequired,
     userActivitiesIds: PropTypes.array.isRequired,
     userActivitiesCreatorIds: PropTypes.array.isRequired,
-
-    paginationReset: PropTypes.func.isRequired,
-
+    fetchActivitiesByLocalisation: PropTypes.func.isRequired,
+    fetchActivitiesByLocalisationAndSports: PropTypes.func.isRequired,
+    changeInputValueSearchBar: PropTypes.func.isRequired,
     clearSearchedActivities: PropTypes.func.isRequired,
+    paginationReset: PropTypes.func.isRequired,
 }
 
 export default Search

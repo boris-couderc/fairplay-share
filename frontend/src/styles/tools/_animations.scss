@@ -12,3 +12,18 @@
         }
     }
 }
+
+@mixin animation-slide-down($duration: 200ms, $height: 10px) {
+    animation: $duration ease-out slidedown#{$height};
+
+    @keyframes slidedown#{$height} {
+        from {
+            transform: translateY(-$height);
+            opacity  : 0;
+        }
+        to {
+            transform: translateY(0);
+            opacity  : 1;
+        }
+    }
+}

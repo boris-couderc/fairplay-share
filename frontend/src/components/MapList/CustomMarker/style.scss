@@ -23,6 +23,8 @@
         background-position: center;
         pointer-events     : none;
         transition         : transform ease-in-out 100ms;
+
+        @include s.animation-slide-down();
     }
 
     &__card {

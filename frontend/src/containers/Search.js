@@ -12,16 +12,9 @@ import { changeInputValueSearchBar } from 'src/actions/searchBar'
 
 const mapStateToProps = (state) => ({
     activities: state.search.activities,
-
-    pageZ: state.search.page,
-
     count: state.search.count,
-
     activitiesLoaded: state.search.loaded,
-    activitiesIsLoading: state.search.isLoading,
-
     moreActivitiesisLoading: state.search.moreActivitiesisLoading,
-
     userActivitiesIds: state.userActivities.idsParticipantRole,
     userActivitiesCreatorIds: state.userActivities.idsCreatorRole,
 })
@@ -36,11 +29,9 @@ const mapDispatchToProps = (dispatch) => ({
     clearSearchedActivities: () => {
         dispatch(clearSearchedActivities())
     },
-
     changeInputValueSearchBar: () => {
         dispatch(changeInputValueSearchBar())
     },
-
     paginationReset: () => {
         dispatch(paginationReset())
     },
