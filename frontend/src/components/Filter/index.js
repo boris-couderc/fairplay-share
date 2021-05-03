@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 import { useLocation, useHistory } from 'react-router-dom'
 
 import Button from 'src/components/Button'
+import Loader from 'src/components/Loader'
+import Heading from 'src/components/Heading'
 
 import sports from 'src/assets/sports/sports'
 
@@ -125,25 +127,46 @@ const Filter = ({
                         ))}
                     </ul>
                     <div className="filter__actions">
-                        <Button
-                            appearance="primary"
-                            size="small"
-                            onClick={handleOnClick}
-                            classProps="button--no-focus"
-                            loading={activitiesIsLoading}
-                        >
-                            Filtrer
-                        </Button>
-                        <Button
-                            appearance="outline"
-                            size="small"
-                            onClick={handleClearFilter}
-                            icon="clear"
-                            //{querySports && querySports.length > 0 &&  disabled={true} }
-                            disabled={!querySports}
-                        >
-                            Supprimer
-                        </Button>
+                        <div className="filter__distance">
+                            <Heading el="p" classProps="u-margin-none">
+                                Distance :
+                            </Heading>
+                            <select
+                                className="input input--select input--small"
+                                defaultValue='100'
+                            >
+                                <option value="5">5km</option>
+                                <option value="10">10km</option>
+                                <option value="50">50km</option>
+                                <option value="100">100km</option>
+                            </select>
+                        </div>
+                        <div className="filter__validation">
+                            <div className="filter__loader">
+                                {activitiesIsLoading && (
+                                    <Loader size="tiny" />
+                                )}
+                            </div>
+                            <Button
+                                appearance="primary"
+                                size="small"
+                                onClick={handleOnClick}
+                                classProps="button--no-focus"
+                                //loading={activitiesIsLoading}
+                            >
+                                Filtrer les activités
+                            </Button>
+                            <Button
+                                appearance="outline"
+                                size="small"
+                                onClick={handleClearFilter}
+                                icon="clear"
+                                disabled={!querySports}
+                                classProps="button--clear-filter"
+                            >
+                                Annuler les filtres
+                            </Button>
+                        </div>
                     </div>
                 </div>
             )}

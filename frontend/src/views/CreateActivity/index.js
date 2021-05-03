@@ -141,7 +141,7 @@ const CreateActivity = ({
                     </div>
 
                     <div className="form__cols">
-                        <div className="form__row">
+                        <div className="form__row"> 
                             <Input
                                 type="select"
                                 name="sport"

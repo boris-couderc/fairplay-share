@@ -13,6 +13,11 @@
         box-shadow: s.$shadow-small, 0 0 0 2px rgba($color: s.$color-primary-lighter, $alpha: 1.0) inset;
     }
 
+    &--small {
+        padding  : 0.5rem 1.125rem;
+        font-size: .95rem;
+    }
+
     &--error {
         box-shadow: s.$shadow-small, 0 0 0 2px rgba($color: s.$color-error, $alpha: .35) inset;
     }
@@ -48,6 +53,10 @@
         background-repeat: no-repeat;
         background-size: 2.75rem;
         background-position: top .5rem right 0rem;
+    }
+
+    &--small.input--select { 
+        background-position: top .2rem right 0rem;
     }
 
     &--date::-webkit-calendar-picker-indicator,
