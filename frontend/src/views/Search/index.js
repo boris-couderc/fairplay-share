@@ -27,14 +27,16 @@ const Search = ({
     fetchActivitiesByLocalisation,
     fetchActivitiesByLocalisationAndSports,
     activitiesLoaded,
-    activitiesIsLoading,
  
-    pageValue,
     count,
+
     loaded,
+    paginationReset,
+
     userActivitiesIds,
     userActivitiesCreatorIds,
-    paginationReset,
+
+    moreActivitiesisLoading,
 
     clearSearchedActivities,
     changeInputValueSearchBar,
@@ -68,6 +70,12 @@ const Search = ({
     }, [lat, lng, queryString])
 
     useEffect(() => {
+        loadActivities(1)
+    }, [lat, lng, queryString, sports])
+
+    const loadActivities = (page) => {
+        console.log('loadActivities', page)
+
         if (sports) {
             setfirstMapDisplayForLocalisation(false)
             fetchActivitiesByLocalisationAndSports({
@@ -75,11 +83,20 @@ const Search = ({
                 lat,
                 lng,
                 sports,
+                page,
             })
         } else {
-            fetchActivitiesByLocalisation({ queryString, lat, lng })
+            if(page>1) {
+                setfirstMapDisplayForLocalisation(false)
+            }
+            fetchActivitiesByLocalisation({ 
+                queryString, 
+                lat, 
+                lng,
+                page,
+            })
         }
-    }, [lat, lng, queryString, sports, pageValue])
+    }
 
     const displayMap = () => {
         if (!firstMapDisplayForLocalisation || activitiesLoaded && activities.length > 0) {
@@ -94,11 +111,9 @@ const Search = ({
             <ScrollToTop />
             <Wrapper>
                 <SearchBar />
-
                 <Heading el="h1" like="h3">
                     Prochaines activités proche de : <span className="u-color-primary">{queryString}</span>
                 </Heading>
-
                 <Filter />
                 {displayMap() && ( 
                     <MapList 
@@ -106,9 +121,8 @@ const Search = ({
                         lng={lng}
                     />
                 )}
-
                 {!activitiesLoaded ? (  
-                    <Loader classProps="loader--p3" />
+                    <Loader classProps="u-margin-3" />
                 ) : ( 
                     <>
                         {activities.length > 0 ? (
@@ -145,7 +159,24 @@ const Search = ({
                                         }
                                     })}
                                 </CardsGrid>
-                                </>
+
+                                {activities.length < count ? (
+                                    <div className="u-text-center u-margin-top-3">
+                                        {moreActivitiesisLoading && (
+                                            <Loader classProps="u-margin-3" />
+                                        )}
+                                        <Button
+                                            appearance="primary"
+                                            onClick={()=>{loadActivities(2)}}
+                                        >
+                                            Voir plus d'activités
+                                        </Button>
+                                    </div>
+                                ) : (
+                                    <></>
+                                )}
+
+                            </>
                         ) : (
                             <div className="search__no-result">
                                 <Heading el="p" like="h6">
@@ -177,7 +208,8 @@ Search.propTypes = {
     activitiesLoaded: PropTypes.bool.isRequired,
     activitiesIsLoading: PropTypes.bool.isRequired,
 
-    pageValue: PropTypes.number.isRequired,
+    //pageZ: PropTypes.number.isRequired,
+    
     count: PropTypes.number.isRequired,
 
     userActivitiesIds: PropTypes.array.isRequired,

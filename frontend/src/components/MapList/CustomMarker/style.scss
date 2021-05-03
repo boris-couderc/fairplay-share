@@ -36,7 +36,7 @@
         padding          : 0 .75rem;
         border-radius    : s.$border-radius-small;
         box-shadow       : 2px 2px 7px 0 rgba(0, 0, 0, .1);
-        max-height       : 500px;
+        max-height       : 400px;
         overflow-y       : auto;
 
         @include s.animation-slide-up();

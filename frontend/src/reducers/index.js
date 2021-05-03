@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux'
+
 import lastActivities from './lastActivities'
 import userActivities from './userActivities'
 import login from './login'
@@ -9,8 +10,6 @@ import activity from './activity'
 import registration from './registration'
 import createActivity from './createActivity'
 import filter from './filter'
-// import messages from './messages'
-import moreResults from './moreResults'
 
 const globalReducer = combineReducers({
     lastActivities,
@@ -23,8 +22,6 @@ const globalReducer = combineReducers({
     createActivity,
     userActivities,
     filter,
-    // messages,
-    moreResults,
 })
 
 export default globalReducer

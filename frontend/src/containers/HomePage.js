@@ -5,7 +5,6 @@ import {
     fetchLastActivities,
     //fetchUserActivities,
 } from 'src/actions/activities'
-import { paginationReset } from 'src/actions/moreResults'
 
 const mapStateToProps = (state) => ({
     isLogged: state.login.isLogged,
@@ -47,10 +46,6 @@ const mapDispatchToProps = (dispatch) => ({
         dispatch(fetchUserActivities());
     },
     */
-
-    paginationReset: () => {
-        dispatch(paginationReset())
-    },
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomePage)

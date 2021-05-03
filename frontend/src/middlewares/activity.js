@@ -20,9 +20,7 @@ import { saveUserPoints, logOut } from 'src/actions/login'
 const activities = (store) => (next) => (action) => {
     const { activity } = store.getState().activity
     const { user } = store.getState().login
-
-    const { moreResults } = store.getState()
-    const page = moreResults.page
+    
 
     switch (action.type) {
         
@@ -61,7 +59,6 @@ const activities = (store) => (next) => (action) => {
                 )
                 .then((response) => {
                     store.dispatch(saveJoinActivity(response.data.activity))
-                    //store.dispatch(saveUserPoints(response.data.user))
                     store.dispatch(fetchUserActivities())
                 })
                 .catch((error) => {

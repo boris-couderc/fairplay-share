@@ -144,7 +144,7 @@
         color                : s.$color-primary;
 
         &:not(:first-child) {
-            margin-top: .45rem;
+            margin-top: .5rem;
         }
 
         &-sup {
@@ -161,6 +161,7 @@
 
         &--date {
             opacity: .8;
+            line-height: 1.3rem;
             .icon {
                 width: 1.3rem;
                 height: 1.3rem;

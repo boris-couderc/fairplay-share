@@ -8,29 +8,49 @@ import {
 
 const initialState = {
     activities: [],
+    // page: 1,
     count: 0,
     loaded: false,
     isLoading: false,
+    moreActivitiesLoaded: false,
+    moreActivitiesisLoading: false,
 }
 
 const search = (state = initialState, action = {}) => {
     switch (action.type) {
 
         case FETCH_ACTIVITIES_BY_LOCALISATION:
-            return {
-                ...initialState,
-                loaded: false,
-                isLoading: true,
+            if(action.query.page > 1) {
+                return {
+                    ...state,
+                    moreActivitiesLoaded: false,
+                    moreActivitiesisLoading: true,
+                }
+            } else {
+                return {
+                    ...initialState,
+                    loaded: false,
+                    isLoading: true,
+                }
             }
 
         case FETCH_ACTIVITIES_BY_LOCALISATION_AND_SPORTS:
-            return {
-                ...initialState,
-                loaded: false,
-                isLoading: true,
+            if(action.query.page > 1) {
+                return {
+                    ...state,
+                    moreActivitiesLoaded: false,
+                    moreActivitiesisLoading: true,
+                }
+            } else {
+                return {
+                    ...initialState,
+                    loaded: false,
+                    isLoading: true,
+                }
             }
 
         case SAVE_SEARCHED_ACTIVITIES:
+            console.log('SAVE_SEARCHED_ACTIVITIES')
             return {
                 ...state,
                 count: action.data.count,
@@ -40,12 +60,17 @@ const search = (state = initialState, action = {}) => {
             }
 
         case SAVE_ALL_SEARCHED_ACTIVITIES:
+            console.log('SAVE_ALL_SEARCHED_ACTIVITIES')
+
+            console.log('state.activities', state.activities)
+            console.log('action.data.activities', action.data.activities)
+            
             return {
                 ...state,
                 count: action.data.count,
                 activities: [...state.activities, ...action.data.activities],
-                loaded: true,
-                isLoading: false,
+                moreActivitiesLoaded: true,
+                moreActivitiesisLoading: false,
             }
 
         case CLEAR_SEARCHED_ACTIVITIES:

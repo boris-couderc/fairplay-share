@@ -1,5 +1,24 @@
 // Margin
 
+.u-margin-none {
+    margin: 0 !important;
+}
+.u-margin-\.25 {
+    margin: .25rem !important;
+}
+.u-margin-\.5 {
+    margin: .5rem !important;
+}
+.u-margin-1 {
+    margin: 1rem !important;
+}
+.u-margin-2 {
+    margin: 2rem !important;
+}
+.u-margin-3 {
+    margin: 3rem !important;
+}
+
 .u-margin-top-none {
     margin-top: 0 !important;
 }
@@ -14,6 +33,9 @@
 }
 .u-margin-top-2 {
     margin-top: 2rem !important;
+}
+.u-margin-top-3 {
+    margin-top: 3rem !important;
 }
 
 .u-margin-bottom-none {
