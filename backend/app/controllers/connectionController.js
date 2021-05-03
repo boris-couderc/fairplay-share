@@ -76,13 +76,11 @@ const connectionController = {
                 },
                 */
             ],
-            /*
             where: {
                 date: {
                     [Op.gte]: Sequelize.literal("NOW() - INTERVAL '1d'"),
                 },
             },
-            */
             order: [
                 ['date', 'ASC'],
                 ['time', 'ASC']

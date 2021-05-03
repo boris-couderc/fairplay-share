@@ -53,7 +53,6 @@ const sportsController = {
                                 {
                                     activity_status_id: 3,
                                 },
-                                /*
                                 {
                                     date: {
                                         [Op.gte]: Sequelize.literal(
@@ -61,7 +60,6 @@ const sportsController = {
                                         ),
                                     },
                                 },
-                                */
                             ],
                         },
                     },

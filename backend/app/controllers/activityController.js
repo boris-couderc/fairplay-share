@@ -74,7 +74,6 @@ const activityController = {
                         {
                             activity_status_id: 3,
                         },
-                        /*
                         {
                             date: {
                                 [Op.gte]: Sequelize.literal(
@@ -82,7 +81,6 @@ const activityController = {
                                 ),
                             },
                         },
-                        */
                     ],
                 },
                 offset: (page - 1) * activityController.defaultNumCardInPage,
@@ -250,7 +248,6 @@ const activityController = {
                         {
                             activity_status_id: 3,
                         },
-                        /*
                         {
                             date: {
                                 [Op.gte]: Sequelize.literal(
@@ -258,7 +255,6 @@ const activityController = {
                                 ),
                             },
                         },
-                        */
                     ],
                 },
                 offset: (page - 1) * activityController.defaultNumCardInPage,
@@ -354,7 +350,6 @@ const activityController = {
                                 [Op.or]: sports,
                             },
                         },
-                        /*
                         {
                             date: {
                                 [Op.gte]: Sequelize.literal(
@@ -362,7 +357,6 @@ const activityController = {
                                 ),
                             },
                         },
-                        */
                     ],
                 },
                 offset: (page - 1) * activityController.defaultNumCardInPage,
@@ -457,13 +451,11 @@ const activityController = {
                     },
                     */
                 ],
-                /*
                 where: {
                     date: {
                         [Op.gte]: Sequelize.literal("NOW() - INTERVAL '1d'"),
                     },
                 },
-                */
                 order: [
                     ['date', 'ASC'],
                     ['time', 'ASC']

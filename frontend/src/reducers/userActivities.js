@@ -39,7 +39,6 @@ const userActivities = (state = initialState, action = {}) => {
                 }
                 idsParticipantRole.push(activity.id)
             })
-            
             return {
                 ...state,
                 activities: [...userActivities],

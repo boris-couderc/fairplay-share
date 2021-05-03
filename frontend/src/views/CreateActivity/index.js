@@ -191,7 +191,7 @@ const CreateActivity = ({
                                 name="pin-off"
                                 classProps="searchbar__error-icon"
                             />
-                            Erreur positionstackAPI, veuillez réessayer
+                            Erreur Mapbox API, veuillez réessayer
                         </div>
                     )}
 

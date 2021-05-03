@@ -7,24 +7,38 @@ import {
     activityCreated,
     errorApiVerifLocalisationCreateActivity,
 } from 'src/actions/createActivity'
+
+import {
+    fetchUserActivities,
+} from 'src/actions/activities'
  
 const createActivity = (store) => (next) => (action) => {
     switch (action.type) {
 
-        case SEND_CREATE_ACTIVITY:
+        case SEND_CREATE_ACTIVITY: 
             {
                 const { login } = store.getState()
                 const newActivity = action.data
                 axios
                     .get(
-                        `http://api.positionstack.com/v1/forward?access_key=${process.env.POSITIONSTACK_API_KEY}&country=FR&limit=1&query=${newActivity.address} ${newActivity.city} ${newActivity.zip}`,
+                        `https://api.mapbox.com/geocoding/v5/mapbox.places/${newActivity.address} ${newActivity.city} ${newActivity.zip}.json?access_token=${process.env.MAPBOX_API_KEY}&autocomplete=true&country=fr&types=address%2Cpoi%2Cpostcode%2Clocality%2Cplace&limit=1`
                     )
                     .then((response) => {
-                        const localisation = response.data.data[0]
-                        if (!localisation || !localisation.latitude) {
+                        const localisation = response.data.features[0]
+                        if (!localisation) {
                             store.dispatch(saveCreateActivityError('address'))
                             return
                         }
+
+                        const name = localisation.text ? localisation.text : ''
+
+                        const placeObj = localisation.context.find(item=>item.id.startsWith('place'))
+                        const regionObj = localisation.context.find(item=>item.id.startsWith('region'))
+                        const postcodeObj = localisation.context.find(item=>item.id.startsWith('postcode'))
+
+                        const place = placeObj ? placeObj.text : ''
+                        const region = regionObj ? regionObj.text : ''
+                        const postcode = postcodeObj ? postcodeObj.text : ''
 
                         axios
                             .post(
@@ -38,13 +52,12 @@ const createActivity = (store) => (next) => (action) => {
                                     min_participant: newActivity.min_participant,
                                     creator_id: login.user.id,
                                     place: {
-                                        city: localisation.locality,
-                                        number: localisation.number,
-                                        street: localisation.street,
-                                        zip_code: localisation.postal_code,
-                                        region: localisation.region,
-                                        latitude: localisation.latitude,
-                                        longitude: localisation.longitude,
+                                        city: place,
+                                        adress: name,
+                                        zip_code: postcode,
+                                        region: region,
+                                        longitude: localisation.geometry.coordinates[0],
+                                        latitude: localisation.geometry.coordinates[1],
                                     },
                                     activity_status_id: 3,
                                     sport_id: newActivity.sport,
@@ -52,13 +65,8 @@ const createActivity = (store) => (next) => (action) => {
                                 { withCredentials: true },
                             )
                             .then((response) => {
-
-                                console.log('activityCreated', response)
-
                                 store.dispatch(activityCreated())
-                                //store.dispatch(fetchUserActivities())
-
-
+                                store.dispatch(fetchUserActivities())
                             })
                             .catch((error) => {
                                 console.log(error)

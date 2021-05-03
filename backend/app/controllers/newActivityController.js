@@ -33,7 +33,7 @@ const newActivityController = {
                     participant_count: 1,
                     sport_id,
                     activity_place: {
-                        adress: `${dataPlace.number} ${dataPlace.street}`,
+                        adress: dataPlace.adress,
                         city: dataPlace.city,
                         zip_code: dataPlace.zip_code,
                         region: dataPlace.region,

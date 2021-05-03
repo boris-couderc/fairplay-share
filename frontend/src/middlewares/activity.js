@@ -11,6 +11,10 @@ import {
     saveCancelActivity,
 } from 'src/actions/activity'
 
+import {
+    fetchUserActivities,
+} from 'src/actions/activities'
+
 import { saveUserPoints, logOut } from 'src/actions/login'
 
 const activities = (store) => (next) => (action) => {
@@ -57,7 +61,8 @@ const activities = (store) => (next) => (action) => {
                 )
                 .then((response) => {
                     store.dispatch(saveJoinActivity(response.data.activity))
-                    store.dispatch(saveUserPoints(response.data.user))
+                    //store.dispatch(saveUserPoints(response.data.user))
+                    store.dispatch(fetchUserActivities())
                 })
                 .catch((error) => {
                     console.log(error)

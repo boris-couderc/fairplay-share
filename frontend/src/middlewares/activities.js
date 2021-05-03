@@ -4,7 +4,6 @@ import {
     FETCH_LAST_ACTIVITIES,
     saveAllActivities,
     FETCH_USER_ACTIVITIES,
-    //fetchUserActivities,
     saveActivities,
     saveUserActivities,
 } from 'src/actions/activities'
