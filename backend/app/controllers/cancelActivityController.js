@@ -11,9 +11,6 @@ const cancelActivityController = {
         const { activityId, userId } = req.body
 
         try {
-
-            console.log('////////////////// cancelActivityController')
-
             // check user and his activities
             const user = await User.findOne({
                 where: {

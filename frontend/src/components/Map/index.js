@@ -28,8 +28,6 @@ const Map = ({ lat, lng, place }) => {
         mapStyle: 'mapbox://styles/mapbox/streets-v11',
     })
 
-    console.log(place);
-
     return (
         <>
         <div className="map">

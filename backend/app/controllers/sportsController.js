@@ -9,7 +9,6 @@ const sportsController = {
     defaultLimitDistance: 100, // en km
 
     getSports: async (req, res) => {
-        console.log('----------> getSport')
         try {
             const sports = await Sport.findAll()
             if (!sports) {
@@ -24,8 +23,6 @@ const sportsController = {
     },
 
     getSportsByLocalisation: async (req, res) => {
-        console.log('----------> getSportsByLocalisation')
-
         let lat = parseFloat(req.query.lat)
         let lng = parseFloat(req.query.lng)
 

@@ -99,11 +99,6 @@ const searchBar = (store) => (next) => (action) => {
                             store.dispatch(
                                 saveValidLocalisation(formatedLocalisation),
                             )
-                        /*
-                        } else if(localisation && Array.isArray(localisation) ) {
-                            console.log('ERREUR POSITION STACK ----->>>')
-                            store.dispatch(errorApiInVerifLocalisation())
-                        */
                         } else {
                             store.dispatch(noResultInVerifLocalisation())
                         }

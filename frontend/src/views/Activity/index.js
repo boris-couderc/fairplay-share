@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, Suspense } from 'react'
 import PropTypes from 'prop-types'
 import { useParams, useHistory, Redirect } from 'react-router-dom'
 import classNames from 'classnames'
@@ -10,9 +10,10 @@ import Button from 'src/components/Button'
 import Heading from 'src/components/Heading'
 import Icon from 'src/components/Icon'
 import Loader from 'src/components/Loader'
-import Map from 'src/components/Map'
-import Messages from 'src/containers/Messages'
 import Modal from 'src/components/Modal'
+
+const Map = React.lazy(() => import('src/components/Map'));
+const Messages = React.lazy(() => import('src/containers/Messages'));
 
 import './style.scss'
 
@@ -101,8 +102,6 @@ const Activity = ({
         setUserRole(null)
         joinActivity()
     }
-
-    console.log('activity', activity)
 
     return (
         <View
@@ -249,14 +248,16 @@ const Activity = ({
                                         </div>
                                     </div>
                                 </div>
-                                <div className="activity__map-messages">
-                                    <Map
-                                        lat={activity.activity_place.lat}
-                                        lng={activity.activity_place.lng}
-                                        place={activity.activity_place}
-                                    />
-                                    <Messages activityId={activity.id} />
-                                </div>
+                                <Suspense fallback={<Loader classProps="u-margin-3" />}>
+                                    <div className="activity__map-messages">
+                                        <Map
+                                            lat={activity.activity_place.lat}
+                                            lng={activity.activity_place.lng}
+                                            place={activity.activity_place}
+                                        />
+                                        <Messages activityId={activity.id} />
+                                    </div>
+                                </Suspense>
                             </div>
                         ) : (
                             <Redirect to="/404" />

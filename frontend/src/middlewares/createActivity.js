@@ -30,8 +30,6 @@ const createActivity = (store) => (next) => (action) => {
                             return
                         }
 
-                        console.log('localisation', localisation)
-
                         let name = ''
                         if(localisation.matching_text) {
                             name = localisation.matching_text

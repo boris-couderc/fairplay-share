@@ -113,7 +113,7 @@ const Search = ({
                     fallback={<></>}
                 >
                     <Filter />
-                    {displayMap() && ( 
+                    {displayMap() && (  
                         <MapList 
                             lat={lat} 
                             lng={lng}

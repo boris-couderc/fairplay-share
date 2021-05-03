@@ -9,10 +9,8 @@ const { formatDate, formatTime } = require('../selectors/formatDate')
 
 const connectionController = {
 
-
     getUser: async (req, res) => {
         const data = req.body
-        console.log(data.email)
         const user = await User.findOne({
             where: {  
                 email: data.email,

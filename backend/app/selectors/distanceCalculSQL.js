@@ -17,7 +17,6 @@
        */
 
 const distanceCalculSQL = (lat, lng) => {
-    console.log('------------------------------LAT', lat);
     return (
         `(
         SELECT (

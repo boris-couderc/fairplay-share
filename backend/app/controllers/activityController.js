@@ -23,8 +23,6 @@ const activityController = {
     defaultLimitDistance: 100, // en km
 
     getLastActivities: async (req, res) => {
-        console.log('----------> getLastActivity')
-
         let page = parseInt(req.query.page)
 
         if (!page) {
@@ -106,8 +104,6 @@ const activityController = {
 
 
     getOneActivity: async (req, res) => {
-        console.log('----------> getOneActivity')
-
         let id = parseInt(req.params.id)
 
         try {
@@ -189,8 +185,6 @@ const activityController = {
 
 
     getActivitiesByUserLocalisation: async (req, res) => {
-        console.log('----------> getActivitiesByUserLocalisation2')
-
         let lat = parseFloat(req.query.lat)
         let lng = parseFloat(req.query.lng)
         let page = parseInt(req.query.page)
@@ -292,8 +286,6 @@ const activityController = {
     },
 
     getActivitesByUserLocalisationAndSports: async (req, res) => {
-        console.log('----------> getActivitesByUserLocalisationAndSports')
-
         let lat = parseFloat(req.query.lat)
         let lng = parseFloat(req.query.lng)
         let page = parseInt(req.query.page)
@@ -402,12 +394,8 @@ const activityController = {
 
 
     getActivitiesByUser: async (req, res) => {
-        console.log('----------> getActivitiesByUser')
-
         let page = parseInt(req.query.page)
         let userId = parseInt(req.params.id)
-
-        console.log('userId', userId)
 
         if (!page) {
             page = 1

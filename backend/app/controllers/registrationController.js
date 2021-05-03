@@ -12,7 +12,6 @@ const registrationController = {
     
     addUser: async (req, res) => {
         const data = req.body
-        console.log(data) 
         const emailChecker = await User.findOne({
             where: {
                 email: data.email,

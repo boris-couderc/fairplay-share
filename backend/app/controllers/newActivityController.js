@@ -6,7 +6,6 @@ const { Activity, User, UserGrade } = require('../models')
 
 const newActivityController = {
     createNewActivity: async (req, res) => {
-        console.log('controller')
         try {
             const sport_id = parseInt(req.body.sport_id)
             const min_participant = parseInt(req.body.min_participant)

@@ -53,9 +53,6 @@ const joinActivityController = {
         })
         */
        
-        // console.log()
-
-
         /*
 
         const verifResult = await sequelize.query(
