@@ -23,7 +23,6 @@ const activityController = {
     defaultNumCardInPage: 8,
     defaultLimitDistance: 100, // en km
 
-    
     getLastActivities: async (req, res) => {
         console.log('----------> getLastActivity')
 
@@ -259,7 +258,11 @@ const activityController = {
                 },
                 offset: (page - 1) * activityController.defaultNumCardInPage,
                 limit: activityController.defaultNumCardInPage,
-                order: [['date', 'ASC']],
+                order: [
+                    ['date', 'ASC'],
+                    ['time', 'ASC'],
+                    ['created_at', 'ASC'],
+                ],
             })
 
             if (!activities) {
@@ -361,7 +364,11 @@ const activityController = {
                 },
                 offset: (page - 1) * activityController.defaultNumCardInPage,
                 limit: activityController.defaultNumCardInPage,
-                order: [['date', 'ASC']],
+                order: [
+                    ['date', 'ASC'],
+                    ['time', 'ASC'],
+                    ['created_at', 'ASC'],
+                ],
             })
 
             if (!activities) {
@@ -458,7 +465,8 @@ const activityController = {
                 },
                 order: [
                     ['date', 'ASC'],
-                    ['time', 'ASC']
+                    ['time', 'ASC'],
+                    ['created_at', 'ASC'],
                 ],
             })
 

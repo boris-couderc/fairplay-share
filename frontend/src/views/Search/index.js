@@ -47,11 +47,6 @@ const Search = ({
     const lng = query.get('lng')
     const sports = query.get('sports')
 
-    /*
-    useEffect(() => {
-        paginationReset();
-    }, []);
-    */
 
     // control to avoid display jump when filter change
     const [firstMapDisplayForLocalisation, setfirstMapDisplayForLocalisation] = useState(true)
@@ -73,8 +68,10 @@ const Search = ({
         loadActivities(1)
     }, [lat, lng, queryString, sports])
 
+    const [currentPage, setCurrentPage] = useState(1)
+
     const loadActivities = (page) => {
-        console.log('loadActivities', page)
+        console.log('loadActivities', currentPage, ' / ', page)
 
         if (sports) {
             setfirstMapDisplayForLocalisation(false)
@@ -96,6 +93,7 @@ const Search = ({
                 page,
             })
         }
+        setCurrentPage(page)
     }
 
     const displayMap = () => {
@@ -167,7 +165,7 @@ const Search = ({
                                         )}
                                         <Button
                                             appearance="primary"
-                                            onClick={()=>{loadActivities(2)}}
+                                            onClick={()=>{loadActivities(currentPage + 1)}}
                                         >
                                             Voir plus d'activités
                                         </Button>

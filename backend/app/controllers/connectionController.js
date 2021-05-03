@@ -83,7 +83,8 @@ const connectionController = {
             },
             order: [
                 ['date', 'ASC'],
-                ['time', 'ASC']
+                ['time', 'ASC'],
+                ['created_at', 'ASC'],
             ],
         })
 

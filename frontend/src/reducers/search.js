@@ -8,7 +8,6 @@ import {
 
 const initialState = {
     activities: [],
-    // page: 1,
     count: 0,
     loaded: false,
     isLoading: false,
