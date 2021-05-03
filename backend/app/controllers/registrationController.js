@@ -9,6 +9,7 @@ const sequelize = require('../database.js')
 const { request } = require('express')
 
 const registrationController = {
+    
     addUser: async (req, res) => {
         const data = req.body
         console.log(data) 
@@ -40,8 +41,8 @@ const registrationController = {
                         user_place: {
                             city: data.place.city,
                             address: `${data.place.number} ${data.place.street}`,
-                            department: data.place.region,
-                            region: '',
+                            department: data.place.department,
+                            region: data.place.region,
                             google_place_key: '',
                             zip_code: data.place.postal_code,
                             lat: data.place.latitude,

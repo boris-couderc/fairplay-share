@@ -140,7 +140,7 @@ const activityController = {
                     {
                         association: 'activity_place',
                         attributes: {
-                            exclude: ['id', 'google_place_key', 'region'],
+                            exclude: ['id', 'google_place_key'],
                         },
                     },
                     {

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
-import { Redirect } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 
 import View from 'src/components/View'
@@ -19,8 +19,15 @@ const Login = ({
     onSubmitLoginForm,
     loginError,
 }) => {
+    const history = useHistory()
     const [isLoading, setIsLoading] = useState(false)
 
+    useEffect(() => {
+        if(isLogged) {
+            history.goBack()
+        }
+    }, [isLogged])
+    
     const {
         register,
         handleSubmit,
@@ -46,9 +53,7 @@ const Login = ({
         }
     }, [loginError])
 
-    return isLogged ? (
-        <Redirect to="/" />
-    ) : (
+    return (
         <View layoutClass="login">
             <ScrollToTop />
             <Wrapper>

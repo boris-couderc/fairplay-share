@@ -50,7 +50,7 @@ const Messages = ({
                                     }
                                 >
                                     <div className="message__content">
-                                        {message.comment} {userId}
+                                        {message.comment}
                                     </div>
                                     <div className="message__author">
                                         <span className="message__pseudo">

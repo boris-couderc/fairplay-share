@@ -30,7 +30,14 @@ const createActivity = (store) => (next) => (action) => {
                             return
                         }
 
-                        const name = localisation.text ? localisation.text : ''
+                        console.log('localisation', localisation)
+
+                        let name = ''
+                        if(localisation.matching_text) {
+                            name = localisation.matching_text
+                        } else if(localisation.text) {
+                            name = localisation.text
+                        }
 
                         const placeObj = localisation.context.find(item=>item.id.startsWith('place'))
                         const regionObj = localisation.context.find(item=>item.id.startsWith('region'))
@@ -53,7 +60,7 @@ const createActivity = (store) => (next) => (action) => {
                                     creator_id: login.user.id,
                                     place: {
                                         city: place,
-                                        adress: name,
+                                        address: name,
                                         zip_code: postcode,
                                         region: region,
                                         longitude: localisation.geometry.coordinates[0],

@@ -102,6 +102,8 @@ const Activity = ({
         joinActivity()
     }
 
+    console.log('activity', activity)
+
     return (
         <View
             layoutClass="activity"
@@ -251,6 +253,7 @@ const Activity = ({
                                     <Map
                                         lat={activity.activity_place.lat}
                                         lng={activity.activity_place.lng}
+                                        place={activity.activity_place}
                                     />
                                     <Messages activityId={activity.id} />
                                 </div>

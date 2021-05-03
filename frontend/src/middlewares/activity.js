@@ -91,7 +91,6 @@ const activities = (store) => (next) => (action) => {
                     { withCredentials: true },
                 )
                 .then((response) => {
-                    console.log(response.data)
                     store.dispatch(saveQuitActivity(response.data.activity))
                     store.dispatch(saveUserPoints(response.data.user))
                 })
@@ -122,7 +121,6 @@ const activities = (store) => (next) => (action) => {
                     { withCredentials: true },
                 )
                 .then((response) => {
-                    console.log(response.data)
                     store.dispatch(saveCancelActivity(response.data.activity))
                     store.dispatch(saveUserPoints(response.data.user))
                 })

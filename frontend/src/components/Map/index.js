@@ -3,10 +3,12 @@ import PropTypes from 'prop-types'
 
 import ReactMapGL, { NavigationControl, Marker } from 'react-map-gl'
 
+import Heading from 'src/components/Heading'
+
 import './style.scss'
 import '/src/assets/css/mapbox-gl.css'
 
-const Map = ({ lat, lng }) => {
+const Map = ({ lat, lng, place }) => {
     useEffect(() => {
         setViewport({
             latitude: parseFloat(lat),
@@ -26,8 +28,12 @@ const Map = ({ lat, lng }) => {
         mapStyle: 'mapbox://styles/mapbox/streets-v11',
     })
 
+    console.log(place);
+
     return (
+        <>
         <div className="map">
+            <div className="map__map">
             <ReactMapGL
                 {...viewport}
                 {...settings}
@@ -49,13 +55,30 @@ const Map = ({ lat, lng }) => {
                     <div className="marker"></div>
                 </Marker>
             </ReactMapGL>
+            </div>
+            <div className="map__address">
+                {place.address && (
+                    <>{place.address} </>
+                )}
+                {place.zip_code && (
+                    <>{place.zip_code} </>
+                )}
+                {place.city && (
+                    <>{place.city} </>
+                )}
+                {place.region && (
+                    <span className="u-color-txt-light u-margin-left-.25">{`(${place.region})`} </span>
+                )}
+            </div>
         </div>
+        </>
     )
 }
 
 Map.propTypes = {
     lat: PropTypes.number.isRequired,
     lng: PropTypes.number.isRequired,
+    place: PropTypes.object.isRequired,
 }
 
 export default Map
