@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, Suspense } from 'react'
 import PropTypes from 'prop-types'
 
 import View from 'src/components/View'
@@ -13,9 +13,11 @@ import Loader from 'src/components/Loader'
 
 import HeroLogged from './Hero/HeroLogged'
 import HeroNoLogged from './Hero/HeroNoLogged'
-import BackgroundLogged from './Background/BackgroundLogged'
-import BackgroundNoLogged from './Background/BackgroundNoLogged'
 
+//import BackgroundLogged from './Background/BackgroundLogged'
+//import BackgroundNoLogged from './Background/BackgroundNoLogged'
+const BackgroundLogged = React.lazy(() => import('./Background/BackgroundLogged'));
+const BackgroundNoLogged = React.lazy(() => import('./Background/BackgroundNoLogged'));
 
 import './style.scss'
 
@@ -25,16 +27,12 @@ const HomePage = ({
     isLogged,
     userId,
     isCheckedLoginLocalStorage,
-
     fetchLastActivities,
     lastActivities,
     lastActivitiesLoaded,
     lastActivitiesIsLoading,
-
-    //fetchUserActivities,
     userActivities,
     userActivitiesLoaded,
-    //userActivitiesIsLoading,
 }) => {
     const [layoutClass, setlayoutClass] = useState('homepage')
 
@@ -51,21 +49,23 @@ const HomePage = ({
 
     return (
         <View layoutClass={layoutClass}>
-
-            {isLogged && (
-                <BackgroundLogged />
-            )}
-            {!isLogged && isCheckedLoginLocalStorage && (
-                <BackgroundNoLogged />
-            )}
-
             <ScrollToTop />
             <Wrapper>
                 {isLogged && (
-                    <HeroLogged />
+                    <>
+                        <HeroLogged />
+                        <Suspense fallback={<></>}>
+                            <BackgroundLogged />
+                        </Suspense>
+                    </>
                 )}
                 {!isLogged && isCheckedLoginLocalStorage && (
-                    <HeroNoLogged />
+                    <>
+                        <HeroNoLogged />
+                        <Suspense fallback={<></>}>
+                            <BackgroundNoLogged />
+                        </Suspense>
+                    </>
                 )}
                 <SearchBar />
 
@@ -172,16 +172,12 @@ HomePage.propTypes = {
     isLogged: PropTypes.bool.isRequired,
     userId: PropTypes.number,
     isCheckedLoginLocalStorage: PropTypes.bool.isRequired,
-
     fetchLastActivities: PropTypes.func.isRequired,
     lastActivities: PropTypes.array.isRequired,
     lastActivitiesLoaded: PropTypes.bool.isRequired,
     lastActivitiesIsLoading: PropTypes.bool.isRequired,
-
-    //fetchUserActivities: PropTypes.func.isRequired,
     userActivities: PropTypes.array.isRequired,
     userActivitiesLoaded: PropTypes.bool.isRequired,
-    //userActivitiesIsLoading: PropTypes.bool.isRequired,
 }
 
 HomePage.defaultProps = {

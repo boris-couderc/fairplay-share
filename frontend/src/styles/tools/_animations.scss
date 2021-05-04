@@ -1,7 +1,7 @@
-@mixin animation-slide-up($duration: 200ms, $height: 10px, $delay: 0ms) {
-    animation: $duration ease-out $delay both slidein#{$height} ;
+@mixin animation-slide-up($duration: 200ms, $height: 10px, $delay: 0ms, $name: default) {
+    animation: $duration ease-out $delay both slidein-#{$name}#{$height} ;
 
-    @keyframes slidein#{$height} {
+    @keyframes slidein-#{$name}#{$height} {
         from {
             transform: translateY($height);
             opacity  : 0;
@@ -13,10 +13,10 @@
     }
 }
 
-@mixin animation-slide-down($duration: 200ms, $height: 10px, $delay: 0ms) {
-    animation: $duration ease-out $delay both slidedown#{$height};
+@mixin animation-slide-down($duration: 200ms, $height: 10px, $delay: 0ms, $name: default) {
+    animation: $duration ease-out $delay both slidedown-#{$name}#{$height};
 
-    @keyframes slidedown#{$height} {
+    @keyframes slidedown-#{$name}#{$height} {
         from {
             transform: translateY(-$height);
             opacity  : 0;

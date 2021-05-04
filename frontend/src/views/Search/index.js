@@ -198,14 +198,8 @@ const Search = ({
                                     />
                                 </div>
                             )}
-
-
-
                         </>
                     )}
-
-
-
                 </Suspense>
             </Wrapper>
         </View>
