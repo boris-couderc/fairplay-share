@@ -9,7 +9,7 @@ const Footer = () => (
   <footer className="footer">
     <Wrapper /* wide */>
       <div className="footer__content">
-        <span className="footer__copyright">FairPlay © 2021</span>
+        <span className="footer__copyright">Fairplay © 2021</span>
         <ul className="footer__links">
           <li><Link to="/design-system">Design system</Link></li>
           <li><Link to="/equipe">Equipe</Link></li>

@@ -10,14 +10,15 @@ import SearchBar from 'src/containers/SearchBar'
 import CardsGrid from 'src/components/CardsGrid'
 import Card from 'src/containers/Card'
 import Loader from 'src/components/Loader'
-
 import HeroLogged from './Hero/HeroLogged'
 import HeroNoLogged from './Hero/HeroNoLogged'
 
-//import BackgroundLogged from './Background/BackgroundLogged'
-//import BackgroundNoLogged from './Background/BackgroundNoLogged'
-const BackgroundLogged = React.lazy(() => import('./Background/BackgroundLogged'));
-const BackgroundNoLogged = React.lazy(() => import('./Background/BackgroundNoLogged'));
+const BackgroundLogged = React.lazy(() =>
+    import('./Background/BackgroundLogged'),
+)
+const BackgroundNoLogged = React.lazy(() =>
+    import('./Background/BackgroundNoLogged'),
+)
 
 import './style.scss'
 
@@ -25,7 +26,7 @@ import imgNoResult from 'src/assets/images/noActivities.svg'
 
 const HomePage = ({
     isLogged,
-    userId,
+    user,
     isCheckedLoginLocalStorage,
     fetchLastActivities,
     lastActivities,
@@ -37,12 +38,12 @@ const HomePage = ({
     const [layoutClass, setlayoutClass] = useState('homepage')
 
     useEffect(() => {
-        if(!isLogged && isCheckedLoginLocalStorage) {
-            if(!lastActivitiesLoaded && !lastActivitiesIsLoading) {
+        if (!isLogged && isCheckedLoginLocalStorage) {
+            if (!lastActivitiesLoaded && !lastActivitiesIsLoading) {
                 fetchLastActivities()
             }
             setlayoutClass('homepage-no-logged')
-        } else if(isLogged && isCheckedLoginLocalStorage) {
+        } else if (isLogged && isCheckedLoginLocalStorage) {
             setlayoutClass('homepage-logged')
         }
     }, [isLogged, isCheckedLoginLocalStorage])
@@ -53,51 +54,64 @@ const HomePage = ({
             <Wrapper>
                 {isLogged && (
                     <>
-                        <HeroLogged />
-                        <Suspense fallback={<></>}>
+                        <Suspense
+                            fallback={
+                                <div style={{ minHeight: '25rem' }}></div>
+                            }
+                        >
+                            <HeroLogged
+                                user={user}
+                                userActivities={userActivities}
+                                userActivitiesLoaded={userActivitiesLoaded}
+                            />
                             <BackgroundLogged />
+                            <SearchBar />
                         </Suspense>
                     </>
                 )}
                 {!isLogged && isCheckedLoginLocalStorage && (
                     <>
-                        <HeroNoLogged />
-                        <Suspense fallback={<></>}>
+                        <Suspense
+                            fallback={
+                                <div style={{ minHeight: '40rem' }}></div>
+                            }
+                        >
+                            <HeroNoLogged />
                             <BackgroundNoLogged />
+                            <SearchBar />
                         </Suspense>
                     </>
                 )}
-                <SearchBar />
-
                 {isLogged && (
                     <>
                         {!userActivitiesLoaded ? (
                             <Loader classProps="loader--p3" />
-                        ) : (  
+                        ) : (
                             <>
-                                {userActivities.length > 0 ? (
+                                {userActivities.activities.length > 0 ? (
                                     <>
                                         <Heading el="h2" like="h3">
                                             Mes prochaines activités :
                                         </Heading>
                                         <CardsGrid>
-                                        {
-                                            userActivities.map((activity) => {
-                                                return activity.creator_id == userId ? (
-                                                    <Card 
-                                                        key={`card-${activity.id}`} 
-                                                        activity={activity} 
-                                                        loggedUserRole="creator"
-                                                    />
-                                                ) : (
-                                                    <Card 
-                                                        key={`card-${activity.id}`} 
-                                                        activity={activity} 
-                                                        loggedUserRole="participant"
-                                                    />
-                                                )
-                                            })
-                                        }
+                                            {userActivities.activities.map(
+                                                (activity) => {
+                                                    return activity.creator_id ==
+                                                        user.id ? (
+                                                        <Card
+                                                            key={`card-${activity.id}`}
+                                                            activity={activity}
+                                                            loggedUserRole="creator"
+                                                        />
+                                                    ) : (
+                                                        <Card
+                                                            key={`card-${activity.id}`}
+                                                            activity={activity}
+                                                            loggedUserRole="participant"
+                                                        />
+                                                    )
+                                                },
+                                            )}
                                         </CardsGrid>
                                     </>
                                 ) : (
@@ -119,26 +133,29 @@ const HomePage = ({
                         )}
                     </>
                 )}
-                
                 {!isLogged && isCheckedLoginLocalStorage && (
                     <>
                         {!lastActivitiesLoaded ? (
                             <Loader classProps="loader--p3" />
-                        ) : (   
+                        ) : (
                             <>
                                 {lastActivities.length > 0 ? (
                                     <>
                                         <Heading el="h2" like="h3">
-                                            Explorez les dernières activités proposées :
+                                            Explorez les dernières activités
+                                            proposées :
                                         </Heading>
                                         <CardsGrid>
-                                        {
-                                            lastActivities.map((activity, index) => {
-                                                return (
-                                                    <Card key={`card-${activity.id}`} activity={activity}/>
-                                                )
-                                            })
-                                        }
+                                            {lastActivities.map(
+                                                (activity, index) => {
+                                                    return (
+                                                        <Card
+                                                            key={`card-${activity.id}`}
+                                                            activity={activity}
+                                                        />
+                                                    )
+                                                },
+                                            )}
                                         </CardsGrid>
                                     </>
                                 ) : (
@@ -147,7 +164,10 @@ const HomePage = ({
                                             Désolé aucune activité trouvée ...
                                         </Heading>
                                         <div className="u-margin-top-2">
-                                            <Button appearance="secondary" route="/creation">
+                                            <Button
+                                                appearance="secondary"
+                                                route="/creation"
+                                            >
                                                 Proposer une activité
                                             </Button>
                                         </div>
@@ -162,7 +182,6 @@ const HomePage = ({
                         )}
                     </>
                 )}
-                
             </Wrapper>
         </View>
     )
@@ -170,18 +189,18 @@ const HomePage = ({
 
 HomePage.propTypes = {
     isLogged: PropTypes.bool.isRequired,
-    userId: PropTypes.number,
+    user: PropTypes.object,
     isCheckedLoginLocalStorage: PropTypes.bool.isRequired,
     fetchLastActivities: PropTypes.func.isRequired,
     lastActivities: PropTypes.array.isRequired,
     lastActivitiesLoaded: PropTypes.bool.isRequired,
     lastActivitiesIsLoading: PropTypes.bool.isRequired,
-    userActivities: PropTypes.array.isRequired,
+    userActivities: PropTypes.object.isRequired,
     userActivitiesLoaded: PropTypes.bool.isRequired,
 }
 
 HomePage.defaultProps = {
-    userId: null,
+    user: null,
 }
 
 export default HomePage

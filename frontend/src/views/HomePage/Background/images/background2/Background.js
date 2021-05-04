@@ -4,9 +4,9 @@ const Background = () => {
     return (
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="1000"
+            width="1050"
             height="720"
-            viewBox="0 0 1000 720"
+            viewBox="0 0 1050 720"
             id="background"
         >
             <path

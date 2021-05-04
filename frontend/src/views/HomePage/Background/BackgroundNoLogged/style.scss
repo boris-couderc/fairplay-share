@@ -1,0 +1,84 @@
+@use 'src/styles/settings'as s;
+
+.homepage-background {
+    position    : relative;
+    z-index     : -1;
+    width       : 125vw;
+    height      : auto;
+    margin-right: -10vw;
+    padding-top : 55vw;
+    margin-left : -15vw;
+
+    svg {
+        position: absolute;
+        width   : 100%;
+        right   : 0;
+        top     : 0;
+        opacity : 0.9;
+    }
+
+    @include s.animation-slide-up(800ms, 3rem, 600ms, hp-bg);
+
+    @media (min-width: s.$from-tiny) {}
+
+    @media (min-width: s.$from-small) {
+        position    : absolute;
+        margin-left : auto;
+        margin-right: auto;
+        padding-top : 0;
+        top         : calc(17rem - 12vw);
+        right       : -12vw;
+        width       : 85vw;
+        max-width   : 700px;
+    }
+
+    @media (min-width: s.$from-medium) {
+        width    : 70vw;
+        max-width: 1000px;
+        top      : 6.5rem;
+        right    : -5vw;
+    }
+
+    @media (min-width: s.$from-large) {}
+
+    @media (min-width: s.$from-huge) {
+        top  : 6rem;
+        right: -1vw;
+    }
+}
+
+.homepage-background-2 {
+    position   : absolute;
+    z-index    : -2;
+    width      : 80vw;
+    left       : 0;
+    padding-top: 55vw;
+    margin-top : 20vw;
+
+    svg {
+        position: absolute;
+        width   : 100%;
+        left    : 0;
+        top     : 0;
+    }
+
+    @include s.animation-slide-up(1200ms, 2rem, 200ms, hp-bg-2);
+
+    @media (min-width: s.$from-small) {
+        position  : absolute;
+        top       : calc(35rem - 25vw);
+        margin-top: 0;
+        max-width : 60vw;
+        left      : 0;
+        right     : auto;
+    }
+
+    @media (min-width: s.$from-medium) {
+        top: calc(33rem - 25vw);
+    }
+
+    @media (min-width: s.$from-huge) {
+        max-width: 1000px;
+        top      : 9rem;
+    }
+}

@@ -1,8 +1,6 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 
 import './style.scss'
-import '../style.scss'
 
 import Background from '../images/background/Background'
 import Foreground from '../images/background/Foreground'
@@ -15,7 +13,7 @@ import Background2 from '../images/background2/Background'
 import Cloud from '../images/background2/Cloud'
 import City from '../images/background2/City'
 
-const BackgroundNoLogged = (props) => {
+const BackgroundNoLogged = () => {
     return (
         <>
             <div className="homepage-background-2">
@@ -34,7 +32,5 @@ const BackgroundNoLogged = (props) => {
         </>
     )
 }
-
-BackgroundNoLogged.propTypes = {}
 
 export default BackgroundNoLogged
