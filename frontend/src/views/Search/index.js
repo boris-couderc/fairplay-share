@@ -44,19 +44,19 @@ const Search = ({
     const distance = query.get('distance') ? query.get('distance') : 100
 
     // control to avoid display jump when filter change
-    const [firstMapDisplayForLocalisation, setfirstMapDisplayForLocalisation] = useState(true)
+    const [firstSearchDisplay, setFirstSearchDisplay] = useState(true)
 
     useEffect(() => {
-        setfirstMapDisplayForLocalisation(true)
+        setFirstSearchDisplay(true)
         return () => {
-            setfirstMapDisplayForLocalisation(true)
+            setFirstSearchDisplay(true)
             clearSearchedActivities()
             changeInputValueSearchBar('')
         }
     }, [])
 
     useEffect(() => {
-        setfirstMapDisplayForLocalisation(true)
+        setFirstSearchDisplay(true)
     }, [lat, lng, queryString])
 
     useEffect(() => {
@@ -67,7 +67,7 @@ const Search = ({
 
     const loadActivities = (page) => {
         if (sports) {
-            setfirstMapDisplayForLocalisation(false)
+            setFirstSearchDisplay(false)
             fetchActivitiesByLocalisationAndSports({
                 queryString,
                 lat,
@@ -78,7 +78,7 @@ const Search = ({
             })
         } else {
             if(page>1) {
-                setfirstMapDisplayForLocalisation(false)
+                setFirstSearchDisplay(false)
             }
             fetchActivitiesByLocalisation({ 
                 queryString, 
@@ -92,7 +92,11 @@ const Search = ({
     }
 
     const displayMap = () => {
-        if (!firstMapDisplayForLocalisation || activitiesLoaded && activities.length > 0) {
+        if (!firstSearchDisplay) {
+            return true
+        } else if(activitiesLoaded && activities.length > 0) {
+            return true
+        } else if(distance < 100) {
             return true
         } else {
             return false
@@ -102,15 +106,15 @@ const Search = ({
     return (
         <View layoutClass="search">
             <ScrollToTop />
-            <Wrapper>
+            <Wrapper> 
                 <SearchBar />
                 <Heading el="h1" like="h3">
                     Prochaines activités proche de : <span className="u-color-primary">{queryString}</span>
                 </Heading>
-
-                <Suspense 
-                    //fallback={<Loader classProps="u-margin-3" />}
-                    fallback={<></>}
+                <Suspense
+                    fallback={
+                        <Loader classProps="u-margin-3" />
+                    }
                 >
                     <Filter />
                     {displayMap() && (  
@@ -119,83 +123,90 @@ const Search = ({
                             lng={lng}
                         />
                     )}
-                </Suspense>
+                    {!activitiesLoaded && firstSearchDisplay ? (  
+                        <>
+                            <Loader classProps="u-margin-3" />
+                        </>
+                    ) : ( 
+                        <>
+                            {activities.length > 0 ? (
+                                <>
+                                    <CardsGrid>
+                                        {activities.map((activity) => {
+                                            if (
+                                                userActivitiesCreatorIds.includes(activity.id)
+                                            ) {
+                                                return (
+                                                    <Card
+                                                        key={`card-${activity.id}`}
+                                                        activity={activity}
+                                                        loggedUserRole="creator"
+                                                    />
+                                                )
+                                            } else if (
+                                                userActivitiesIds.includes(activity.id)
+                                            ) {
+                                                return (
+                                                    <Card
+                                                        key={`card-${activity.id}`}
+                                                        activity={activity}
+                                                        loggedUserRole="participant"
+                                                    />
+                                                )
+                                            } else {
+                                                return (
+                                                    <Card
+                                                        key={`card-${activity.id}`}
+                                                        activity={activity}
+                                                    />
+                                                )
+                                            }
+                                        })}
+                                    </CardsGrid>
 
-                {!activitiesLoaded ? (  
-                    <Loader classProps="u-margin-3" />
-                ) : ( 
-                    <>
-                        {activities.length > 0 ? (
-                            <>
-                                <CardsGrid>
-                                    {activities.map((activity) => {
-                                        if (
-                                            userActivitiesCreatorIds.includes(activity.id)
-                                        ) {
-                                            return (
-                                                <Card
-                                                    key={`card-${activity.id}`}
-                                                    activity={activity}
-                                                    loggedUserRole="creator"
-                                                />
-                                            )
-                                        } else if (
-                                            userActivitiesIds.includes(activity.id)
-                                        ) {
-                                            return (
-                                                <Card
-                                                    key={`card-${activity.id}`}
-                                                    activity={activity}
-                                                    loggedUserRole="participant"
-                                                />
-                                            )
-                                        } else {
-                                            return (
-                                                <Card
-                                                    key={`card-${activity.id}`}
-                                                    activity={activity}
-                                                />
-                                            )
-                                        }
-                                    })}
-                                </CardsGrid>
+                                    {activities.length < count ? (
+                                        <div className="u-text-center u-margin-top-3">
+                                            {moreActivitiesisLoading && (
+                                                <Loader classProps="u-margin-3" />
+                                            )}
+                                            <Button
+                                                appearance="primary"
+                                                onClick={()=>{loadActivities(currentPage + 1)}}
+                                            >
+                                                Voir plus d'activités
+                                            </Button>
+                                        </div>
+                                    ) : (
+                                        <></>
+                                    )}
 
-                                {activities.length < count ? (
-                                    <div className="u-text-center u-margin-top-3">
-                                        {moreActivitiesisLoading && (
-                                            <Loader classProps="u-margin-3" />
-                                        )}
-                                        <Button
-                                            appearance="primary"
-                                            onClick={()=>{loadActivities(currentPage + 1)}}
-                                        >
-                                            Voir plus d'activités
+                                </>
+                            ) : (
+                                <div className="search__no-result">
+                                    <Heading el="p" like="h6">
+                                        Désolé aucune activité trouvée ...
+                                    </Heading>
+                                    <div className="u-margin-top-2">
+                                        <Button appearance="secondary" route="/creation">
+                                            Proposer une activité
                                         </Button>
                                     </div>
-                                ) : (
-                                    <></>
-                                )}
-
-                            </>
-                        ) : (
-                            <div className="search__no-result">
-                                <Heading el="p" like="h6">
-                                    Désolé aucune activité trouvée ...
-                                </Heading>
-                                <div className="u-margin-top-2">
-                                    <Button appearance="secondary" route="/creation">
-                                        Proposer une activité
-                                    </Button>
+                                    <img
+                                        src={imgNoResult}
+                                        alt="pas d'activites"
+                                        className="search__no-result-img"
+                                    />
                                 </div>
-                                <img
-                                    src={imgNoResult}
-                                    alt="pas d'activites"
-                                    className="search__no-result-img"
-                                />
-                            </div>
-                        )}
-                    </>
-                )}
+                            )}
+
+
+
+                        </>
+                    )}
+
+
+
+                </Suspense>
             </Wrapper>
         </View>
     )

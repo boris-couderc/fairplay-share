@@ -22,9 +22,9 @@
         background-repeat  : no-repeat;
         background-position: center;
         pointer-events     : none;
-        transition         : transform ease-in-out 100ms;
+        transition         : transform ease-in-out 200ms;
 
-        @include s.animation-slide-down();
+        @include s.animation-slide-down(200ms, 10px, 200ms);
     }
 
     &__card {
@@ -164,7 +164,7 @@
         z-index: 1000;
 
         &::before {
-            transform: translateY(-.2rem);
+            transform: translateY(-.2rem) !important;
         }
 
         .marker__card {

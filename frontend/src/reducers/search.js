@@ -27,7 +27,8 @@ const search = (state = initialState, action = {}) => {
                 }
             } else {
                 return {
-                    ...initialState,
+                    //...initialState,
+                    ...state,
                     loaded: false,
                     isLoading: true,
                 }
@@ -42,7 +43,8 @@ const search = (state = initialState, action = {}) => {
                 }
             } else {
                 return {
-                    ...initialState,
+                    //...initialState,
+                    ...state,
                     loaded: false,
                     isLoading: true,
                 }
