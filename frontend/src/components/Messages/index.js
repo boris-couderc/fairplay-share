@@ -18,11 +18,13 @@ const Messages = ({
 
     const handleClickForm = (e) => {
         e.preventDefault()
-        sendMessage({
-            comment: inputValue,
-            activityId: parseInt(activityId),
-        })
-        setInputValue('')
+        if(inputValue.length > 1) {
+            sendMessage({
+                comment: inputValue,
+                activityId: parseInt(activityId),
+            })
+            setInputValue('')
+        }
     }
 
     const handleOnChange = (e) => {
