@@ -11,6 +11,12 @@ import CardsGrid from 'src/components/CardsGrid'
 import Card from 'src/containers/Card'
 import Loader from 'src/components/Loader'
 
+import HeroLogged from './Hero/HeroLogged'
+import HeroNoLogged from './Hero/HeroNoLogged'
+import BackgroundLogged from './Background/BackgroundLogged'
+import BackgroundNoLogged from './Background/BackgroundNoLogged'
+
+
 import './style.scss'
 
 import imgNoResult from 'src/assets/images/noActivities.svg'
@@ -30,37 +36,37 @@ const HomePage = ({
     userActivitiesLoaded,
     //userActivitiesIsLoading,
 }) => {
+    const [layoutClass, setlayoutClass] = useState('homepage')
 
     useEffect(() => {
-        //paginationReset()
-        
-        if (!isLogged && isCheckedLoginLocalStorage) {
+        if(!isLogged && isCheckedLoginLocalStorage) {
             if(!lastActivitiesLoaded && !lastActivitiesIsLoading) {
                 fetchLastActivities()
             }
+            setlayoutClass('homepage-no-logged')
+        } else if(isLogged && isCheckedLoginLocalStorage) {
+            setlayoutClass('homepage-logged')
         }
     }, [isLogged, isCheckedLoginLocalStorage])
 
     return (
-        <View layoutClass="homepage">
+        <View layoutClass={layoutClass}>
+
+            {isLogged && (
+                <BackgroundLogged />
+            )}
+            {!isLogged && isCheckedLoginLocalStorage && (
+                <BackgroundNoLogged />
+            )}
+
             <ScrollToTop />
             <Wrapper>
-
                 {isLogged && (
-                    <div>
-                        <Heading el="h1">
-                            Hello logged
-                        </Heading>
-                    </div>
+                    <HeroLogged />
                 )}
                 {!isLogged && isCheckedLoginLocalStorage && (
-                    <div>
-                        <Heading el="h1">
-                            Hello no logged
-                        </Heading>
-                    </div>
+                    <HeroNoLogged />
                 )}
-
                 <SearchBar />
 
                 {isLogged && (

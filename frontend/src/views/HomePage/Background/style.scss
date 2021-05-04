@@ -1,0 +1,23 @@
+@use 'src/styles/settings'as s;
+
+.homepage-background{
+    //background-color: lightgrey;
+
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+
+    @include s.animation-slide-up(700ms, 50px, 300ms);
+
+    svg {
+        position: absolute;
+        right: 0;
+        width: 55vw;
+        top: 6rem;
+        opacity: .9;
+
+    }
+
+}

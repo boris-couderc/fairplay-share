@@ -1,5 +1,5 @@
-@mixin animation-slide-up($duration: 200ms, $height: 10px) {
-    animation: $duration ease-out slidein#{$height};
+@mixin animation-slide-up($duration: 200ms, $height: 10px, $delay: 0ms) {
+    animation: $duration ease-out $delay both slidein#{$height} ;
 
     @keyframes slidein#{$height} {
         from {
@@ -13,8 +13,8 @@
     }
 }
 
-@mixin animation-slide-down($duration: 200ms, $height: 10px) {
-    animation: $duration ease-out slidedown#{$height};
+@mixin animation-slide-down($duration: 200ms, $height: 10px, $delay: 0ms) {
+    animation: $duration ease-out $delay both slidedown#{$height};
 
     @keyframes slidedown#{$height} {
         from {
