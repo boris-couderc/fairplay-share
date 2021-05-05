@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Woman = () => {
+const Woman = ({ refProps }) => {
     return (
         <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -8,6 +8,8 @@ const Woman = () => {
             height="1100"
             viewBox="0 0 1440 1100"
             id="woman"
+            className="svg-woman"
+            ref={refProps}
         >
             <path
                 fill="#446E5C"

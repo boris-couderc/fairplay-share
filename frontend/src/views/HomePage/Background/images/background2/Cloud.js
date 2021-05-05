@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Cloud = () => {
+const Cloud = ({ refProps }) => {
     return (
         <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -8,6 +8,7 @@ const Cloud = () => {
             height="720"
             viewBox="0 0 1050 720"
             id="cloud"
+            ref={refProps}
         >
             <path
                 fill="#f9f9f9"

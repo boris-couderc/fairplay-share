@@ -1,0 +1,15 @@
+// Inclusive writing
+
+.u-inclusive-writing {
+    &::before,
+    &::after {
+        font-weight: 200;
+        opacity: .75;
+    }
+    &::before {
+        content: '.';
+    }
+    &::after {
+        content: '.';
+    }
+}
