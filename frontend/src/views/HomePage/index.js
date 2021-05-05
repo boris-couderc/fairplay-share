@@ -13,11 +13,8 @@ import Loader from 'src/components/Loader'
 import HeroLogged from './Hero/HeroLogged'
 import HeroNoLogged from './Hero/HeroNoLogged'
 
-const BackgroundLogged = React.lazy(() =>
-    import('./Background/BackgroundLogged'),
-)
-const BackgroundNoLogged = React.lazy(() =>
-    import('./Background/BackgroundNoLogged'),
+const Background = React.lazy(() =>
+    import('./Background'),
 )
 
 import './style.scss'
@@ -64,7 +61,7 @@ const HomePage = ({
                                 userActivities={userActivities}
                                 userActivitiesLoaded={userActivitiesLoaded}
                             />
-                            <BackgroundLogged />
+                            <Background logged />
                             <SearchBar />
                         </Suspense>
                     </>
@@ -77,7 +74,7 @@ const HomePage = ({
                             }
                         >
                             <HeroNoLogged />
-                            <BackgroundNoLogged />
+                            <Background />
                             <SearchBar />
                         </Suspense>
                     </>
