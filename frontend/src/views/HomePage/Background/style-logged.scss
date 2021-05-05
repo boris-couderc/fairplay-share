@@ -8,16 +8,35 @@
     margin-right: -10vw;
     padding-top : 55vw;
     margin-left : -15vw;
+    opacity     : 0.9;
 
     svg {
         position: absolute;
         width   : 100%;
         right   : 0;
         top     : 0;
-        opacity : 0.9;
     }
 
-    @include s.animation-slide-up(800ms, 3rem, 600ms, hp-bg);
+    .svg {
+        &-background {
+            @include s.animation-slide-up(400ms, 2rem, 200ms, svg-background);
+        }
+        &-foreground {
+            @include s.animation-slide-up(2000ms, 2rem, 300ms, svg-foreground);
+        }
+        &-man {
+            @include s.animation-slide-up(600ms, 2rem, 400ms, svg-man);
+        }
+        &-woman {
+            @include s.animation-slide-up(500ms, 2rem, 500ms, svg-woman);
+        }
+        &-shadow-man {
+            @include s.animation-slide-up(500ms, 1rem, 500ms, svg-shadow-man);
+        }
+        &-shadow-woman {
+            @include s.animation-slide-up(500ms, 1rem, 500ms, svg-shadow-woman);
+        }
+    }
 
     @media (min-width: s.$from-tiny) {}
 
@@ -64,7 +83,17 @@
         top     : 0;
     }
 
-    @include s.animation-slide-up(1200ms, 2rem, 200ms, hp-bg-2);
+    .svg {
+        &-background2 {
+            @include s.animation-slide-up(800ms, 2rem, 200ms, svg-background-2);
+        }
+        &-city {
+            @include s.animation-slide-up(2000ms, 3rem, 300ms, svg-city);
+        }
+        &-cloud {
+            @include s.animation-slide-up(600ms, 1rem, 400ms, svg-cloud);
+        }
+    }
 
     @media (min-width: s.$from-small) {
         position  : absolute;

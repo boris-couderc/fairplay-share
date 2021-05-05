@@ -8,6 +8,7 @@ const Background = ({ refProps }) => {
             height="720"
             viewBox="0 0 1050 720"
             id="background"
+            className="svg-background2"
         >
             <g ref={refProps}>
                 <path

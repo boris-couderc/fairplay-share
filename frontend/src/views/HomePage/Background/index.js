@@ -51,14 +51,14 @@ const BackgroundHomepage = ({ logged }) => {
     const woman = useRef(null)
 
     const UpdateSvg = () => {
-        background2.current.style.transform = `translate3d(${deltaX.current/40}px,${deltaY.current/80}px,0)`
-        cloud.current.style.transform = `translate3d(${-deltaX.current/100}px,${deltaY.current/100}px,0)`
-        city.current.style.transform = `translate3d(${deltaX.current/25}px,${deltaY.current/40}px,0)`
+        background2.current.style.transform = `translate3d(${deltaX.current/70}px,${deltaY.current/80}px,0)`
+        cloud.current.style.transform = `translate3d(${-deltaX.current/50}px,${-deltaY.current/70}px,0)`
+        city.current.style.transform = `translate3d(${deltaX.current/40}px,${deltaY.current/70}px,0)`
         background.current.style.transform = `translate3d(${deltaX.current/30}px,${deltaY.current/80}px,0)`
         backgroundMask1.current.style.transform = `translate3d(${deltaX.current/30}px,${deltaY.current/80}px,0)`
         backgroundMask2.current.style.transform = `translate3d(${deltaX.current/30}px,${deltaY.current/80}px,0)`
         foreground.current.style.transform = `translate3d(${deltaX.current/8}px,${deltaY.current/20}px,0)`
-        man.current.style.transform = `translate3d(${deltaX.current/19}px,${deltaY.current/60}px,0)`
+        man.current.style.transform = `translate3d(${deltaX.current/19}px,${deltaY.current/80}px,0)`
         shadowMan.current.style.transform = `translate3d(${deltaX.current/22}px,${deltaY.current/50}px,0)`
         woman.current.style.transform = `translate3d(${deltaX.current/12}px,${-deltaY.current/80}px,0)`
         shadowWoman.current.style.transform = `translate3d(${deltaX.current/18}px,${deltaY.current/50}px,0)`

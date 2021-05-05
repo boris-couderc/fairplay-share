@@ -8,6 +8,7 @@ const Cloud = ({ refProps }) => {
             height="720"
             viewBox="0 0 1050 720"
             id="cloud"
+            className="svg-cloud"
         >
             <g ref={refProps}>
                 <path

@@ -8,6 +8,7 @@ const City = ({ refProps }) => {
             height="720"
             viewBox="0 0 1050 720"
             id="city"
+            className="svg-city"
             style={{transform:"translateX(-1rem)"}}
         >
             <g ref={refProps}>

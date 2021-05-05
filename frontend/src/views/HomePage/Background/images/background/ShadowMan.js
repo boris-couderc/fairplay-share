@@ -8,7 +8,7 @@ const ShadowMan = ({ refProps, refPropsBg }) => {
             height="1100"
             viewBox="0 0 1440 1100"
             id="shadow-man"
-            className="shadow-man"
+            className="svg-shadow-man"
         >
             <defs>
                 <clipPath id="mask-shadow-man"> 
