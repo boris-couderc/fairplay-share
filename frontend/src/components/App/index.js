@@ -44,9 +44,9 @@ const App = () => {
                     <CreateActivity />
                 </Route>
 
-                <Route path="/design-system" exact>
+                {/* <Route path="/design-system" exact>
                     <DesignSystem />
-                </Route>
+                </Route> */}
 
                 <Route path="/equipe" exact>
                     <Team />
