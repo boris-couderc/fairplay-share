@@ -2,9 +2,9 @@ import { connect } from 'react-redux';
 import Cards from 'src/components/Cards';
 
 const mapStateToProps = (state) => ({
-  activities: state.userActivities.list,
-  userActivitiesIds: state.userActivities.ids,
-  userActivitiesCreatorIds: state.userActivities.idsCreator,
+  activities: state.userActivities.activities,
+  userActivitiesIds: state.userActivities.idsParticipantRole,
+  userActivitiesCreatorIds: state.userActivities.idsCreatorRole,
 });
 
 const mapDispatchToProps = (dispatch) => ({});

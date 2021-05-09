@@ -1,19 +1,27 @@
-import { SAVE_FILTER_SPORT } from 'src/actions/filter';
+import {
+    SAVE_FILTER_SPORT,
+    CLEAR_FILTER
+} from 'src/actions/filter'
 
 const initialState = {
-  sports: [],
-};
+    sports: [],
+}
 
 const filter = (state = initialState, action = {}) => {
-  switch (action.type) {
-    case SAVE_FILTER_SPORT:
-      return {
-        ...state,
-        sports: [...action.data],
-      };
-    default:
-      return state;
-  }
-};
+    switch (action.type) {
 
-export default filter;
+        case SAVE_FILTER_SPORT:
+            return {
+                ...state,
+                sports: [...action.data],
+            }
+
+        case CLEAR_FILTER:
+            return initialState
+
+        default:
+            return state
+    }
+}
+
+export default filter

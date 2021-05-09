@@ -102,7 +102,7 @@ User.hasMany(Message, {
 
 Message.belongsTo(User, {
   foreignKey: "user_id",
-  as: "users",
+  as: "user",
 });
 
 User.hasMany(Activity, {

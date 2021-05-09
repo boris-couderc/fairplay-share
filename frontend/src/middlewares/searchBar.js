@@ -1,108 +1,121 @@
-import axios from "axios";
+import axios from 'axios'
 import {
-  FETCH_PLACES_AUTOCOMPLETION,
-  FETCH_ONE_PLACES_AUTOCOMPLETION,
-  saveAutocompletionList,
-  saveValidLocalisation,
-  clearListAutocompleteData,
-  noResultInVerifLocalisation,
-  confirmValidLocalisation,
-} from 'src/actions/searchBar';
-
-// verif à stocker ailleur :
-const apiKey = `82a0b22e81932aad65c97e8bcc2f192a`;
+    FETCH_PLACES_AUTOCOMPLETION,
+    FETCH_ONE_PLACES_AUTOCOMPLETION,
+    saveAutocompletionList,
+    saveValidLocalisation,
+    clearListAutocompleteData,
+    noResultInVerifLocalisation,
+    errorApiInVerifLocalisation,
+    confirmValidLocalisation,
+} from 'src/actions/searchBar'
 
 const searchBar = (store) => (next) => (action) => {
-  let inputValue = store.getState().searchBar.inputValue;
-  
-  switch (action.type) {
-      case FETCH_PLACES_AUTOCOMPLETION:
-        // ne pas relancer la recherche avec l'API si la liste autocompletion est déjà enregistré sur la même inputValue
-        let lastAutocompleteQuery = store.getState().searchBar.autocomplete.query;
-        if(inputValue.toLowerCase().trim() !== lastAutocompleteQuery.toLowerCase().trim()) {
-          axios
-          .get(
-            `http://api.positionstack.com/v1/forward?access_key=${apiKey}&country=FR&query=${inputValue}`,
-          )
-          .then((response) => {
-            const localisations = response.data.data;
-            //console.log('FETCH_PLACES_AUTOCOMPLETION response.data.data', response.data.data);
-            if(localisations.length > 0) {
-              const formatedData = [];
-              localisations.forEach((element) => {
-                // garde que les résultats avec un name et non de type "venue" (nom approximatif de lieu)
-                //if (element.type !== 'venue' && element.name) {
-                if (element.type !== 'neighbourhood' && element.name) {
-                //if (element.name) {
-                  formatedData.push({
-                    query: inputValue,
-                    name: element.name,
-                    city: element.locality,
-                    reg: element.region,
-                    lat: element.latitude,
-                    lng: element.longitude,
-                  });
-                }
-              });
+    let inputValue = store.getState().searchBar.inputValue
 
-              store.dispatch(saveAutocompletionList(formatedData));
-            } else {
-              store.dispatch(clearListAutocompleteData());
+    switch (action.type) {
+        case FETCH_PLACES_AUTOCOMPLETION:
+            // ne pas relancer la recherche avec l'API si la liste autocompletion est déjà enregistré sur la même inputValue
+            let lastAutocompleteQuery = store.getState().searchBar.autocomplete
+                .query
+            if (
+                inputValue.toLowerCase().trim() !==
+                lastAutocompleteQuery.toLowerCase().trim()
+            ) {
+                axios
+                    .get(
+                        `https://api.mapbox.com/geocoding/v5/mapbox.places/${inputValue}.json?access_token=${process.env.MAPBOX_API_KEY}&autocomplete=true&country=fr&types=address%2Cpoi%2Cpostcode%2Clocality%2Cplace&limit=5`
+                    )
+                    .then((response) => {
+                        const localisations = response.data.features
+                        if (localisations.length > 0) {
+                            const formatedLocalisations = []
+                            localisations.forEach((localisation) => {
+                                const name = localisation.text ? localisation.text : ''
+
+                                const placeObj = localisation.context.find(item=>item.id.startsWith('place'))
+                                const regionObj = localisation.context.find(item=>item.id.startsWith('region'))
+                                const postcodeObj = localisation.context.find(item=>item.id.startsWith('postcode'))
+
+                                const place = placeObj ? placeObj.text : ''
+                                const region = regionObj ? regionObj.text : ''
+                                const postcode = postcodeObj ? postcodeObj.text : ''
+
+                                formatedLocalisations.push({
+                                    query: inputValue,
+                                    name: name,
+                                    city: place, 
+                                    reg: region,
+                                    postcode: postcode,
+                                    lng: localisation.geometry.coordinates[0],
+                                    lat: localisation.geometry.coordinates[1],
+                                })
+                            })
+                            store.dispatch(saveAutocompletionList(formatedLocalisations))
+                        } else {
+                            store.dispatch(clearListAutocompleteData())
+                        }
+                    })
+                    .catch((error) => {
+                        console.log('error', error)
+                    })
             }
-          })
-          .catch((error) => {
-            console.log('error', error);
-          });
-        }
-      break;
+            next(action)
+            break
 
-      
-      case FETCH_ONE_PLACES_AUTOCOMPLETION:
-        // ne pas relancer la verif avec l'API si l'adresse à déjà été enregistré sur la même inputValue
-        let lastValidLocalisationQuery = store.getState().searchBar.validLocalisation.query;
-        if(inputValue.toLowerCase().trim() !== lastValidLocalisationQuery.toLowerCase().trim()) {
-          //console.log('FETCH_ONE_PLACES_AUTOCOMPLETION ', inputValue );
-          axios
-          .get(
-            `http://api.positionstack.com/v1/forward?access_key=${apiKey}&country=FR&limit=1&query=${inputValue}`,
-          )
-          .then((response) => {
+        case FETCH_ONE_PLACES_AUTOCOMPLETION:
+            // ne pas relancer la verif avec l'API si l'adresse à déjà été enregistré sur la même inputValue
+            let lastValidLocalisationQuery = store.getState().searchBar.validLocalisation.query
+            if (
+                inputValue.toLowerCase().trim() !==
+                lastValidLocalisationQuery.toLowerCase().trim()
+            ) {
+                axios
+                    .get(
+                        `https://api.mapbox.com/geocoding/v5/mapbox.places/${inputValue}.json?access_token=${process.env.MAPBOX_API_KEY}&autocomplete=true&country=fr&types=address%2Cpoi%2Cpostcode%2Clocality%2Cplace&limit=1`
+                    )
+                    .then((response) => {
+                        const localisation = response.data.features[0]
+                        if(localisation) {
+                            const name = localisation.text ? localisation.text : ''
 
-            console.log(response.data.data);
-            // pas de résultat : {data: Array(0)}
+                            const placeObj = localisation.context.find(item=>item.id.startsWith('place'))
+                            const regionObj = localisation.context.find(item=>item.id.startsWith('region'))
+                            const postcodeObj = localisation.context.find(item=>item.id.startsWith('postcode'))
 
+                            const place = placeObj ? placeObj.text : ''
+                            const region = regionObj ? regionObj.text : ''
+                            const postcode = postcodeObj ? postcodeObj.text : ''
 
-            const localisation = response.data.data[0];
-            if(localisation && localisation.name) {
-              //console.log('RESULTAT POUR RECHERCHE ----->>>', inputValue, localisation)
-              const validLocalisation = {
-                query: inputValue,
-                name: localisation.name,
-                city: localisation.locality,
-                reg: localisation.region,
-                lat: localisation.latitude,
-                lng: localisation.longitude,
-              };
-              store.dispatch(saveValidLocalisation(validLocalisation));
+                            const formatedLocalisation = {
+                                query: inputValue,
+                                name: name,
+                                city: place, 
+                                reg: region,
+                                postcode: postcode,
+                                lng: localisation.geometry.coordinates[0],
+                                lat: localisation.geometry.coordinates[1],
+                            }
+                            store.dispatch(
+                                saveValidLocalisation(formatedLocalisation),
+                            )
+                        } else {
+                            store.dispatch(noResultInVerifLocalisation())
+                        }
+                    })
+                    .catch((error) => {
+                        console.log('error', error)
+                        store.dispatch(errorApiInVerifLocalisation())
+                    })
             } else {
-              //console.log('PAS DE RESULTAT ----->>>')
-              store.dispatch(noResultInVerifLocalisation());
+                store.dispatch(confirmValidLocalisation())
             }
+            next(action)
+            break
 
+        default:
+            next(action)
+    }
+}
 
-          })
-          .catch((error) => {
-            console.log('error', error);
-          });
-        } else {
-          // console.log('RESULTAT POUR RECHERCHE  2 ----->>>', inputValue)
-          store.dispatch(confirmValidLocalisation());
-        }
-      break;
-
-  default:
-      next(action);
-  } 
-};
-
-export default searchBar;
+export default searchBar

@@ -1,0 +1,60 @@
+// Typography
+$font-family: 'Roboto',
+sans-serif;
+$font-size  : 16px;
+$line-height: 24px / $font-size;
+$color      : #222222;
+
+// Heading
+$font-family-heading: 'Poppins',
+sans-serif;
+$line-height-heading: $line-height;
+
+// Weights
+//$light:  300;
+$font-weight-normal: 300;
+$font-weight-medium: 400;
+$font-weight-bold  : 500;
+
+// Spacing
+$unit      : 3rem;
+$unit-small: 1.5rem;
+
+// Container
+//$container-width: 1240px;
+//$container-width: 1260px;
+$container-width: 75rem;
+
+$padding-small  : $unit-small;
+$padding        : $unit;
+
+// Breakpoints
+$from-tiny    : 500px;
+$to-tiny      : $from-tiny - 1;
+$from-small   : 700px;
+$to-small     : $from-small - 1;
+$from-medium  : 1000px;
+$to-medium    : $from-medium - 1;
+$from-large   : 1200px;
+$to-large     : $from-large - 1;
+$from-big     : 1400px;
+$to-big       : $from-big - 1;
+$from-huge    : 1600px;
+$to-huge      : $from-huge - 1;
+$from-enormous: 1800px;
+$to-enormous  : $from-enormous - 1;
+$from-gigantic: 2000px;
+$to-gigantic  : $from-gigantic - 1;
+$from-colossal: 2400px;
+$to-colossal  : $from-colossal - 1;
+
+// Decoration
+$border-radius       : 1.5rem;
+$border-radius-medium: 1rem;
+$border-radius-small : .75rem;
+$border-radius-tiny  : .5rem;
+
+$shadow       : 0 5px 10px rgba(0, 0, 0, .1);
+$shadow-small : 0 2px 5px rgba(0, 0, 0, .1);
+$shadow-tiny : 0 1px 3px rgba(0, 0, 0, .05);
+$shadowHover  : 0 4px 6px rgb(170, 170, 170);

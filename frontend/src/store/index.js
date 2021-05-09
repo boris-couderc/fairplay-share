@@ -1,18 +1,30 @@
-import { createStore, applyMiddleware } from 'redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
-import reducer from 'src/reducers';
+import { createStore, applyMiddleware } from 'redux'
+import { composeWithDevTools } from 'redux-devtools-extension'
+import reducer from 'src/reducers'
 
-import activities from 'src/middlewares/activities';
-import connexion from 'src/middlewares/connexion';
-import searchBar from 'src/middlewares/searchBar';
-import registration from '../middlewares/registration';
-import creationPage from 'src/middlewares/creationPage';
-import filter from 'src/middlewares/filter';
-import messages from 'src/middlewares/messages';
+import login from 'src/middlewares/login'
+import registration from '../middlewares/registration'
+import searchBar from 'src/middlewares/searchBar'
+import filter from 'src/middlewares/filter'
+import activities from 'src/middlewares/activities'
+import activity from 'src/middlewares/activity'
+import messages from 'src/middlewares/messages'
+import createActivity from 'src/middlewares/createActivity'
 
+const store = createStore(
+    reducer,
+    composeWithDevTools(
+        applyMiddleware(
+            login,
+            registration,
+            searchBar,
+            filter,
+            activities,
+            activity,
+            messages,
+            createActivity,
+        ),
+    ),
+)
 
-const store = createStore(reducer, composeWithDevTools(
-  applyMiddleware(activities, searchBar, connexion, registration, creationPage, filter, messages),
-));
-
-export default store;
+export default store

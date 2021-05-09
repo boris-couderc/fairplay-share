@@ -1,0 +1,123 @@
+@use 'src/styles/settings'as s;
+
+.homepage-background-logged {
+    position    : relative;
+    z-index     : -1;
+    width       : 125vw;
+    height      : auto;
+    margin-right: -10vw;
+    padding-top : 55vw;
+    margin-left : -15vw;
+    opacity     : 0.9;
+
+    svg {
+        position: absolute;
+        width   : 100%;
+        right   : 0;
+        top     : 0;
+    }
+
+    .svg {
+        &-background {
+            @include s.animation-slide-up(400ms, 2rem, 200ms, svg-background);
+        }
+        &-foreground {
+            @include s.animation-slide-up(2000ms, 2rem, 300ms, svg-foreground);
+        }
+        &-man {
+            @include s.animation-slide-up(600ms, 2rem, 400ms, svg-man);
+        }
+        &-woman {
+            @include s.animation-slide-up(500ms, 2rem, 500ms, svg-woman);
+        }
+        &-shadow-man {
+            @include s.animation-slide-up(500ms, 1rem, 500ms, svg-shadow-man);
+        }
+        &-shadow-woman {
+            @include s.animation-slide-up(500ms, 1rem, 500ms, svg-shadow-woman);
+        }
+    }
+
+    @media (min-width: s.$from-tiny) {}
+
+    @media (min-width: s.$from-small) {
+        position    : absolute;
+        margin-left : auto;
+        margin-right: auto;
+        padding-top : 0;
+        top         : 6.5rem;
+        right       : calc(-10rem + 10vw);
+        width       : 80vw;
+        max-width   : 650px;
+    }
+
+    @media (min-width: s.$from-medium) {
+        width    : 70vw;
+        max-width: 47rem;
+        top      : 6.5rem;
+        right    : -3vw;
+    }
+
+    @media (min-width: s.$from-large) {
+        right: 0;
+    }
+
+    @media (min-width: s.$from-huge) {
+        top      : 6rem;
+        max-width: 48rem;
+    }
+}
+
+.homepage-background-logged-2 {
+    position   : absolute;
+    z-index    : -2;
+    width      : 80vw;
+    left       : -4vw;
+    padding-top: 55vw;
+    margin-top : 20vw;
+
+    svg {
+        position: absolute;
+        width   : 100%;
+        left    : 0;
+        top     : 0;
+    }
+
+    .svg {
+        &-background2 {
+            @include s.animation-slide-up(800ms, 2rem, 200ms, svg-background-2);
+        }
+        &-city {
+            @include s.animation-slide-up(2000ms, 3rem, 300ms, svg-city);
+        }
+        &-cloud {
+            @include s.animation-slide-up(600ms, 1rem, 400ms, svg-cloud);
+        }
+    }
+
+    @media (min-width: s.$from-small) {
+        position  : absolute;
+        top       : calc(26rem - 25vw);
+        margin-top: 0;
+        max-width : 67vw;
+        left      : -4vw;
+        right     : auto;
+    }
+
+    @media (min-width: s.$from-medium) {
+        top      : calc(26rem - 25vw);
+        max-width: 68vw;
+        left     : -3vw;
+    }
+
+    @media (min-width: s.$from-large) {
+        top : calc(25rem - 25vw);
+        left: -2rem;
+    }
+
+    @media (min-width: s.$from-huge) {
+        top      : 3rem;
+        max-width: 60rem;
+        left     : 0;
+    }
+}

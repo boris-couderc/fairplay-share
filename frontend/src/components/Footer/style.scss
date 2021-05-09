@@ -1,0 +1,46 @@
+@use 'src/styles/settings'as s;
+
+.footer {
+    position  : relative;
+    margin-top: 4rem;
+    padding   : 2rem 0;
+    font-size : 0.9rem;
+    color     : s.$color-txt-light;
+    border-top: 2px solid rgba(0, 0, 0, 0.075);
+
+    &__content {
+        display       : flex;
+        flex-direction: column; 
+        align-items   : center;
+        row-gap       : 1rem;
+
+        //margin: 0 var(--horizontal-wrapper-content-margin);
+
+        @media (min-width: s.$from-tiny) {
+            flex-direction : row;
+            justify-content: space-between;
+            row-gap        : 1rem;
+        }
+    }
+
+    &__links {
+        display       : inline-flex;
+        flex-direction: row;
+        align-items   : center;
+        flex-wrap     : wrap;
+
+        li {
+            &:not(:first-child) {
+                margin-left: 2rem;
+            }
+        }
+
+        a {
+            position: relative;
+            padding : 0.25rem 0;
+            color   : s.$color-txt-light;
+
+            @include s.hover-link(s.$color-primary-light);
+        }
+    }
+}

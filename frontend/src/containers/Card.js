@@ -1,16 +1,16 @@
 import { connect } from 'react-redux';
 import Card from 'src/components/Card';
-import {showLoginModal} from 'src/actions/cards'
+import {showLoginModal} from 'src/actions/activities'
 
-const mapStateToProps = (state) => ({
-  isLogged: state.header.isLogged,
+const mapStateToProps = (state, ownProps) => ({
+  isLogged: state.login.isLogged,
+  ownProps,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   showLoginModal: () => {
-    console.log('showLoginModal');
     dispatch(showLoginModal());
   },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Card);
+export default connect(mapStateToProps, mapDispatchToProps)(Card); 

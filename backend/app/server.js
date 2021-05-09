@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require('express');
 const router = require('./router');
 const cookieParser = require('cookie-parser');
@@ -10,9 +12,10 @@ app.use(cookieParser());
 
 app.use(
   cors({
-    //origin: 'http://ec2-54-160-66-108.compute-1.amazonaws.com',
-    origin: process.env.FRONTEND_URL,
+    optionsSuccessStatus: 200,
+    allowedHeaders: ['Content-Type', 'authorization'],
     credentials: true,
+    origin: [process.env.FRONTEND_URL]
   }),
 );
 
@@ -21,10 +24,10 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(router);
 
-const start = () => {
+//const start = () => {
     app.listen(PORT, () => {
         console.log('Running on localhost :' + PORT );
     });
-};
+//};
 
-module.exports = { start };
+//module.exports = { start };

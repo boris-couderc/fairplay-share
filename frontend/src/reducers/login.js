@@ -1,55 +1,79 @@
 import {
-  SAVE_LOGIN,
-  SAVE_CONNEXION_STATUT,
-  DISCONNECT,
-  LOGIN_ERROR,
-  SAVE_USER_POINTS,
-} from 'src/actions/login';
+    SAVE_LOGIN_ERROR,
+    CLEAR_LOGIN_ERROR,
+    SAVE_LOGGED_USER,
+    LOG_OUT,
+    SAVE_USER_POINTS,
+    CHECK_LOCAL_STORAGE_USER,
+    SAVE_CHECK_LOCAL_STORAGE_USER,
+} from 'src/actions/login'
 
 const initialState = {
-  /*
-  email: 'clotildefauchille@gmail.com',
-  password: 'pass',
-  user: {},
-  error: false,
-  */
-  id: '',
-  email: '',
-  password: '',
-  user: {},
-  error: false,
-};
+    isLogged: false,
+    user: {},
+    isLoading: false,
+    error: false,
+    isCheckedLocalStorage: false,
+}
 
 const login = (state = initialState, action = {}) => {
-  switch (action.type) {
-    case SAVE_LOGIN:
-      return {
-        ...state,
-        [action.input]: action.value,
-      };
-    case SAVE_CONNEXION_STATUT:
-      return {
-        ...state,
-        error: false,
-        user: action.data,
-      };
-    case SAVE_USER_POINTS:
-      return {
-        ...state,
-        error: false,
-        user: action.data,
-      };
-    case DISCONNECT:
-      return initialState;
+    switch (action.type) {
+        
+        case SAVE_LOGIN_ERROR:
+            return {
+                ...state,
+                error: true,
+            }
 
-    case LOGIN_ERROR:
-      return {
-        ...state,
-        error: true,
-      };
-    default:
-      return state;
-  }
-};
+        case CLEAR_LOGIN_ERROR: 
+            return {
+                ...state,
+                error: false,
+            }
 
-export default login;
+        case SAVE_LOGGED_USER:
+            return {
+                ...state,
+                error: false,
+                isLogged: true,
+                isCheckedLocalStorage: true,
+                user: action.user,
+            }
+
+        case LOG_OUT:
+            return {
+                ...state,
+                error: false,
+                isLogged: false,
+                isCheckedLocalStorage: true,
+                user: {},
+            }
+
+        case SAVE_USER_POINTS:
+            return {
+                ...state,
+                user: {
+                    ...state.user,
+                    points: action.data.points, 
+                }
+            }
+
+        case CHECK_LOCAL_STORAGE_USER:
+            return {
+                ...state,
+                isLoading: true,
+            }
+
+        case SAVE_CHECK_LOCAL_STORAGE_USER:
+            return {
+                ...state,
+                isLoading: false,
+                isCheckedLocalStorage: true,
+            }
+
+        default:
+            return state
+    }
+}
+
+export default login

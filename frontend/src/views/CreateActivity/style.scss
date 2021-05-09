@@ -1,0 +1,12 @@
+.view--create-activity {
+    text-align: center;
+
+    &::before,
+    &::after {
+        content : '';
+    }
+
+    &::before {
+        background-image: url('src/assets/images/creationActivity.svg');
+    }
+}

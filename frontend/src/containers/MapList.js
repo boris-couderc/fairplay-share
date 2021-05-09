@@ -1,12 +1,18 @@
-import { connect } from 'react-redux';
-import MapList from 'src/components/MapList';
+import { connect } from 'react-redux'
+import MapList from 'src/components/MapList'
+import {showLoginModal} from 'src/actions/activities'
 
 const mapStateToProps = (state) => ({
-  activities: state.search.activities,
-  userActivitiesIds: state.userActivities.ids,
-  userActivitiesCreatorIds: state.userActivities.idsCreator,
-});
+    isLogged: state.login.isLogged,
+    activities: state.search.activities,
+    userActivitiesIds: state.userActivities.idsParticipantRole,
+    userActivitiesCreatorIds: state.userActivities.idsCreatorRole,
+})
 
-const mapDispatchToProps = (dispatch) => ({});
+const mapDispatchToProps = (dispatch) => ({
+    showLoginModal: () => {
+      dispatch(showLoginModal());
+    },
+  });
 
-export default connect(mapStateToProps, mapDispatchToProps)(MapList);
+export default connect(mapStateToProps, mapDispatchToProps)(MapList)

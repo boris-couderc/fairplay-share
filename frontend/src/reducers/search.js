@@ -1,38 +1,77 @@
 import {
-  SAVE_SEARCHED_ACTIVITIES,
-  SAVE_ALL_SEARCHED_ACTIVITIES,
-  FETCH_ACTIVITIES_BY_LOCALISATION,
-  FETCH_ACTIVITIES_BY_LOCALISATION_AND_SPORTS
-} from 'src/actions/search';
+    SAVE_SEARCHED_ACTIVITIES,
+    SAVE_ALL_SEARCHED_ACTIVITIES,
+    FETCH_ACTIVITIES_BY_LOCALISATION,
+    FETCH_ACTIVITIES_BY_LOCALISATION_AND_SPORTS,
+    CLEAR_SEARCHED_ACTIVITIES
+} from 'src/actions/search'
 
 const initialState = {
-  count: 0,
-  activities: [],
-  loaded: false,
-};
+    activities: [],
+    count: 0,
+    loaded: false,
+    isLoading: false,
+    moreActivitiesLoaded: false,
+    moreActivitiesisLoading: false,
+}
 
 const search = (state = initialState, action = {}) => {
-  switch (action.type) {
+    switch (action.type) {
 
-    case SAVE_SEARCHED_ACTIVITIES:
-      return {
-        ...state,
-        count: action.data.count,
-        activities: [...action.data.activities],
-        loaded: true,
-      };
+        case FETCH_ACTIVITIES_BY_LOCALISATION:
+            if(action.query.page > 1) {
+                return {
+                    ...state,
+                    moreActivitiesLoaded: false,
+                    moreActivitiesisLoading: true,
+                }
+            } else {
+                return {
+                    ...state,
+                    loaded: false,
+                    isLoading: true,
+                }
+            }
 
-    case SAVE_ALL_SEARCHED_ACTIVITIES: 
-      return {
-        ...state,
-        count: action.data.count,
-        activities: [...state.activities, ...action.data.activities],
-        loaded: true,
-      };
+        case FETCH_ACTIVITIES_BY_LOCALISATION_AND_SPORTS:
+            if(action.query.page > 1) {
+                return {
+                    ...state,
+                    moreActivitiesLoaded: false,
+                    moreActivitiesisLoading: true,
+                }
+            } else {
+                return {
+                    ...state,
+                    loaded: false,
+                    isLoading: true,
+                }
+            }
 
-    default:
-      return state;
-  }
-};
+        case SAVE_SEARCHED_ACTIVITIES:
+            return {
+                ...state,
+                count: action.data.count,
+                activities: [...action.data.activities],
+                loaded: true,
+                isLoading: false,
+            }
 
-export default search;
+        case SAVE_ALL_SEARCHED_ACTIVITIES:
+            return {
+                ...state,
+                count: action.data.count,
+                activities: [...state.activities, ...action.data.activities],
+                moreActivitiesLoaded: true,
+                moreActivitiesisLoading: false,
+            }
+
+        case CLEAR_SEARCHED_ACTIVITIES:
+            return initialState
+
+        default:
+            return state
+    }
+}
+
+export default search

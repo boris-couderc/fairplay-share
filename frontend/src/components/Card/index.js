@@ -1,98 +1,96 @@
-// == Import npm
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react'
+import PropTypes from 'prop-types'
+import classNames from 'classnames'
 
-// == Import
-import './style.scss';
+import Heading from 'src/components/Heading'
+import Icon from 'src/components/Icon'
+import ActivityLink from 'src/components/ActivityLink'
 
-// images sport
-import pin from 'src/assets/icons/pin.svg';
-import clock from 'src/assets/icons/clock.svg';
+import './style.scss'
+import sports from 'src/assets/sports/sports'
 
-import sports from './sports';
+import { useInView } from 'react-intersection-observer';
 
-// == Composant
+const Card = ({ activity, loggedUserRole, isLogged, showLoginModal }) => {
+    
+    const [classes, setClasses] = useState('card')
 
-const Card = ({ card, isLogged, showLoginModal, userCard }) => {
-  const extract = `${card.description.substr(0, 120)} [...]`;
-  let cardClassName = 'card';
-  if(userCard === 1) {
-    cardClassName = 'card card--user';
-  } else if(userCard === 2) {
-    cardClassName = 'card card--user card--creator';
-  }
-  
-  const urlPath = `/activity/${card.id}`;
-  switch (isLogged) {
-    case true:
-      return (
-        <article className={cardClassName}>
-          <Link to={urlPath} className="card__link">
-            <img src={sports[card.sport.name]} alt="" className="card__image" />
-            <h2 className="card__title">{card.title}</h2>
-            <div className="card__infos">
-              <div className="card__container">
-                <img src={clock} alt="" className="card__icon" />
-                <p className="card__text">
-                  {card.time} - {card.date}
-                </p>
-              </div>
-              <div className="card__container">
-                <img src={pin} alt="" className="card__icon" />
-                <p className="card__text">
-                  {card.activity_place.city}
-                </p>
-              </div>
-            </div>
-            <p className="card__description">{extract}</p>
-          </Link>
-          <Link to={urlPath} className="card__join" type="button">
-            Voir le détails
-          </Link>
-        </article>
-      );
-    default:
-      return (
-        <article className="card">
-          <button type="button" onClick={showLoginModal} className="card__link">
-            <img src={sports[card.sport.name]} alt="" className="card__image" />
-            <h2 className="card__title">{card.title}</h2>
-            <div className="card__infos">
-              <div className="card__container">
-                <img src={clock} alt="" className="card__icon" />
-                <p className="card__text">
-                  {card.time} - {card.date}
-                </p>
-              </div>
-              <div className="card__container">
-                <img src={pin} alt="" className="card__icon" />
-                <p className="card__text">
-                  {card.activity_place.city}
-                </p>
-              </div>
-            </div>
-            <p className="card__description">{extract}</p>
-          </button>
-          <button
-            onClick={showLoginModal}
-            className="card__join"
-            type="button"
-          >
-            Voir le détail
-          </button>
-        </article>
-      );
-  }
+    const { ref, inView, entry } = useInView({
+        threshold: 0,
+        triggerOnce: true,
+        delay: 200,
+    });
 
-};
+    useEffect(() => {
+        setClasses(classNames(
+            'card',
+            loggedUserRole === 'creator' && 'card--creator',
+            loggedUserRole === 'participant' && 'card--participant',
+            activity.activity_status_id == 2 && 'card--cancelled',
+            inView && 'card--inview'
+        ))
+    }, [inView])
+
+    return (
+        <li className={classes} ref={ref}>
+            {/* {activity.activity_status_id && activity.activity_status_id==2 && (
+                <div className="u-color-error">
+                    <Icon name="error" classProps="u-margin-bottom-.25"/>
+                    <Heading el="p" classProps="u-color-error">
+                        Activité annulée
+                    </Heading>
+                </div>
+            )} */}
+            <ActivityLink
+                isLogged={isLogged}
+                id={activity.id}
+                onClick={showLoginModal}
+                classProps="card__link"
+            >
+                <img
+                    src={sports[activity.sport.name]}
+                    alt=""
+                    className="card__img"
+                    width="300"
+                    height="300"
+                />
+                <Heading el="h2" like="h5">
+                    {activity.title}
+                </Heading>
+                <p className="card__desc">{activity.description}</p>
+                <ul className="card__infos">
+                    <li className="card__info">
+                        <Icon name="pin" classProps="card__info-pin" />
+                        {activity.activity_place.city}
+                        {activity.activity_place.distance && (
+                            <span className="card__info-sup">
+                                {` (${parseFloat(activity.activity_place.distance.toFixed(1))} km)`}
+                            </span>
+                        )}
+                    </li>
+                    <li className="card__info card__info--date">
+                        {/* <Icon name="clock" /> */}
+                        <Icon name="calendar" />
+                        {activity.date}
+                        <Icon name="clock" classProps="icon--clock" />
+                        {/* <Icon name="calendar" /> */}
+                        {activity.time}
+                    </li>
+                </ul>
+            </ActivityLink>
+        </li>
+    ) 
+}
 
 Card.propTypes = {
-  card: PropTypes.object.isRequired,
-  showLoginModal: PropTypes.func.isRequired,
-  isLogged: PropTypes.bool.isRequired,
-  userCard: PropTypes.number.isRequired,
-};
+    isLogged: PropTypes.bool.isRequired,
+    activity: PropTypes.object.isRequired,
+    showLoginModal: PropTypes.func.isRequired,
+    loggedUserRole: PropTypes.string,
+}
 
-// == Export
-export default Card;
+Card.defaultProps = {
+    loggedUserRole: null,
+}
+
+export default Card

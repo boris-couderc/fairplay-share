@@ -8,6 +8,7 @@ export const CHANGE_VALID_LOCALISATION = 'CHANGE_VALID_LOCALISATION';
 export const NO_RESULT_IN_VERIF_LOCALISATION = 'NO_RESULT_IN_VERIF_LOCALISATION';
 export const CONFIRM_VALID_LOCALISATION = 'CONFIRM_VALID_LOCALISATION';
 export const CHANGE_SEARCH_QUERY_IN_PROCESS_STATUT = 'CHANGE_SEARCH_QUERY_IN_PROCESS_STATUT';
+export const ERROR_API_IN_VERIFICATION_LOCALISATION = 'ERROR_API_IN_VERIFICATION_LOCALISATION';
 
 export const changeInputValueSearchBar = (value) => ({
   type: CHANGE_INPUT_VALUE_SEARCHBAR,
@@ -47,6 +48,10 @@ export const changeValidLocalisation = (index) => ({
 
 export const noResultInVerifLocalisation = () => ({
   type: NO_RESULT_IN_VERIF_LOCALISATION,  
+}); 
+
+export const errorApiInVerifLocalisation = () => ({
+    type: ERROR_API_IN_VERIFICATION_LOCALISATION,  
 }); 
 
 export const changeSearchQueryInProcessStatut = () => ({

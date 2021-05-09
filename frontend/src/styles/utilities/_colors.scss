@@ -1,0 +1,38 @@
+@use '../settings'as s;
+
+// Colors
+
+.u-color-primary {
+    color: s.$color-primary !important;
+}
+.u-color-secondary {
+    color: s.$color-secondary !important;
+}
+
+.u-color-dark {
+    color: s.$color-dark !important;
+}
+.u-color-dark-light {
+    color: s.$color-dark-light !important;
+}
+.u-color-dark-lighter {
+    color: s.$color-dark-lighter !important;
+}
+.u-color-dark-lightest {
+    color: s.$color-dark-lightest !important;
+}
+
+.u-color-txt-light {
+    color: s.$color-txt-lighter !important;
+}
+.u-color-txt-light {
+    color: s.$color-txt-lighter !important;
+}
+
+.u-color-success {
+    color: s.$color-success !important;
+}
+.u-color-error {
+    color: s.$color-error !important;
+}
+
