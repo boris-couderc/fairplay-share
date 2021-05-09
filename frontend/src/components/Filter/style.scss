@@ -1,59 +1,147 @@
-@use 'src/styles/_vars.scss' as v;
+@use 'src/styles/settings'as s;
 
 .filter {
-  margin: 1rem 0 2rem 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  max-width: v.$container-max-width;
-  flex-wrap: wrap;
+    margin-top: 2.25rem;
 
-  &__item {
-    //border: 1px solid grey;
-    margin: 10px 10px;
-    display: grid;
-    grid-template-columns: 1fr;
-    justify-items: center;
-  }
-
-  &__picture {
-    width: 80px;
-    height: 80px;
-    margin-bottom: 0.5rem;
-  }
-
-  &__item-txt {
-    text-align: center;
-    font-size: 0.9em;
-  }
-
-  &__label {
-    border: 2px solid rgba(0,0,0,.1);
-    border-radius: 20px;
-    padding: 10px;
-  }
-
-  &__checkbox {
-    position: absolute;
-    opacity: 0; 
-    &:checked ~ * {
-      border: 2px solid v.$primaryColor;
+    &__items {
+        display        : flex;
+        justify-content: center;
+        align-items    : center;
+        width          : 100%;
+        flex-wrap      : wrap;
     }
-  }
 
-  &__actions {
-    width: 100%;
-    text-align: center;
-  }
+    &__item {
+        margin               : .375rem;
+        display              : grid;
+        grid-template-columns: 1fr;
+        justify-items        : center;
+    }
 
-  &__button {
-    padding: 12px 35px;
-    margin: 10px v.$container-padding;
-    background: v.$primaryColor;
-    border: none;
-    color: #fff;
-    border-radius: 40px;
-    font-size: 1.05rem;
-  }
+    &__img {
+        width        : 5rem;
+        height       : 5rem;
+        margin-bottom: .5rem;
+        transition   : transform ease 200ms;
+    }
+
+    &__item-txt {
+        text-align : center;
+        font-size  : .85em;
+        font-family: s.$font-family-heading;
+    }
+
+    &__label {
+        position: relative;
+        padding: .5rem .625rem;
+        cursor : pointer;
+
+        &::before {
+            content      : '';
+            position     : absolute;
+            left         : 0;
+            top          : 0;
+            right        : 0;
+            bottom       : 0;
+            border-radius: s.$border-radius-small;
+            transform    : scale(1) translateY(0);
+            border       : 2px solid rgba(0, 0, 0, .1);
+            transition   : border ease 100ms, transform ease 100ms;
+        }
+
+        &:hover {
+            .filter__img {
+                transform: translateY(-2px);
+            }
+
+            &::before {
+                transform : scale(1.05) translateY(-2px);
+                //border  : 2px solid s.$color-primary-lighter;
+            }
+        }
+    }
+
+    &__checkbox {
+        position: absolute;
+        opacity : 0;
+
+        &:checked~* {
+            &::before {
+                transform : scale(1.05) translateY(-2px);
+                border    : 2px solid rgba($color: s.$color-primary-light, $alpha: .8);
+                box-shadow: 0 -10px 10px -10px rgba($color: #000, $alpha: .05) inset;
+            }
+        }
+    }
+
+    &__actions {
+        width     : 100%;
+        margin-top: 1.25rem;
+        text-align: center;
+        display: grid;
+        grid-template-rows: auto auto;
+        justify-content: center;
+    }
+
+    &__distance {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 1rem;
+
+        .input {
+            width: 120px;
+            margin-left: 1rem;
+        }
+    }
+
+    &__validation {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        &>*:not(:first-child) {
+            margin-top: .75rem;
+        }
+    }
+
+    &__loader {
+        width: 2rem;
+        padding-right: .5rem;
+        padding-bottom: 2px;
+    }
+
+    @media (min-width: s.$from-tiny) {
+        &__validation {
+            display: flex;
+            flex-direction: row;
+
+            .button--clear-filter {
+                margin-left: .5rem;
+                margin-right: 2rem;
+            }
+        }
+    }
+
+    @media (min-width: s.$from-small) {
+        &__actions {
+            display: grid;
+            grid-template-columns: auto auto;
+        }
+
+        &__distance {
+            margin-bottom: 0;
+            margin-right: 2rem;
+        }
+
+        &__validation {
+            &>*:not(:first-child) {
+                margin-top: 0;
+            }
+
+            .button--clear-filter {
+                margin-right: 0;
+            }
+        }
+    }
 }

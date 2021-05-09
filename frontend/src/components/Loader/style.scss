@@ -1,0 +1,42 @@
+@use 'src/styles/settings'as s;
+
+.loader {
+    text-align: center;
+    opacity   : .2;
+
+    .icon {
+        position : relative;
+        animation: 1000ms infinite linear rotate;
+    }
+
+    &--tiny {
+        .icon {
+            max-width : 1.25rem;
+            max-height: 1.25rem;
+        }
+    }
+
+    &--small {
+        .icon {
+            max-width : 1.5rem;
+            max-height: 1.5rem;
+        }
+    }
+
+    &--big {
+        .icon {
+            max-width : 2.5rem;
+            max-height: 2.5rem;
+        }
+    }
+
+    @keyframes rotate {
+        from {
+            transform: rotate(0deg);
+        }
+
+        to {
+            transform: rotate(360deg);
+        }
+    }
+}

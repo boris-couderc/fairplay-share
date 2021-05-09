@@ -1,0 +1,87 @@
+@use 'src/styles/settings'as s;
+
+.modal {
+    position       : fixed;
+    z-index        : 10000;
+    left           : 0;
+    top            : 0;
+    right          : 0;
+    bottom         : 0;
+    background     : rgba(0, 0, 0, .2);
+    display        : flex;
+    flex-direction : column;
+    justify-content: center;
+    align-items    : center;
+    backdrop-filter: blur(2px);
+
+    &__container {
+        position        : relative;
+        width           : calc(100% - 4rem);
+        max-width       : 500px;
+        padding         : 3rem;
+        margin          : auto 2rem;
+        background-color: white;
+        text-align      : center;
+        border-radius   : s.$border-radius-medium;
+        box-shadow      : s.$shadow;
+
+        @include s.animation-slide-up(200ms, 20px);
+    }
+
+    .heading {
+        margin-bottom: .5rem;
+    }
+
+    &__icon {
+        margin-bottom: .5rem;
+        max-width: 3rem;
+        max-height: 3rem;
+        color: s.$color-dark-lightest;
+    }
+
+    &__buttons {
+        display        : flex;
+        flex-direction : column;
+        align-items    : center;
+        justify-content: center;
+        margin-top     : 2rem;
+
+        &>*:not(:first-child) {
+            margin-top: 1rem;
+        }
+    }
+
+    &__button-close {
+        position  : absolute;
+        width     : 1.75rem;
+        height    : 1.75rem;
+        right     : 1rem;
+        top       : 1rem;
+        color     : s.$color-dark-light;
+        opacity   : .5;
+        transition: opacity ease 100ms;
+
+        &:hover {
+            opacity: 1;
+        }
+    }
+}
+
+
+@media (min-width: s.$from-tiny) {
+
+    .modal {
+        &__container {
+            padding: 3rem 4.5rem;
+        }
+
+        &__buttons {
+            flex-direction: row;
+
+            &>*:not(:first-child) {
+                margin-top : 0;
+                margin-left: 1rem;
+            }
+        }
+    }
+}

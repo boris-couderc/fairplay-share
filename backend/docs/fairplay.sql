@@ -149,8 +149,8 @@ INSERT INTO "user_place" ("address", "city", "zip_code", "department", "region",
 ('Promenade du Peyrou', 'Montpellier', '34000', 'Hérault', 'Occitanie', 'ChIJtW9UagevthIRqBfgUffh-TQ', 43.61125, 3.8707581);
 
 INSERT INTO "user" ("email", "pseudo", "password", "firstname", "lastname", "avatar", "reward_count", "admin", "user_grade_id", "user_place_id") VALUES
-('russobenjamin45@gmail.com', 'Benj', '$2a$10$3eH4dUp9vclyed0jjqj/3OqobYntWA1X6xPhqUm/NyykEJu03RpRC', 'Benjamin', 'Russo', 'https://cliniquecmi.com/wp-content/uploads/cmi-physiotherapie-sportive-opt.jpg', 10, false, 1, 1),
-('clotildefauchille@gmail.com', 'Clo', '$2a$10$3eH4dUp9vclyed0jjqj/3OqobYntWA1X6xPhqUm/NyykEJu03RpRC', 'Clotilde', 'Fauchille', 'https://cliniquecmi.com/wp-content/uploads/cmi-physiotherapie-sportive-opt.jpg', 20, true, 4, 2),
+('russobenjamin45@gmail.com', 'Benj', '$2a$10$3eH4dUp9vclyed0jjqj/3OqobYntWA1X6xPhqUm/NyykEJu03RpRC', 'Benjamin', 'Russo', '', 10, false, 1, 1),
+('clotildefauchille@gmail.com', 'Clo', '$2a$10$3eH4dUp9vclyed0jjqj/3OqobYntWA1X6xPhqUm/NyykEJu03RpRC', 'Clotilde', 'Fauchille', '', 20, true, 4, 2),
 ('mairey.jeremy@hotmail.fr', 'Jerem', '$2a$10$3eH4dUp9vclyed0jjqj/3OqobYntWA1X6xPhqUm/NyykEJu03RpRC', 'Jeremy', 'Mairey', '', 200, true, 2, 3),
 ('couderc.boris@gmail.com', 'bo', '$2a$10$3eH4dUp9vclyed0jjqj/3OqobYntWA1X6xPhqUm/NyykEJu03RpRC', 'Boris', 'Couderc', '', 0, false, 3, 3);
 
@@ -160,28 +160,28 @@ VALUES ('passed'), ('canceled'), ('ongoing');
 INSERT INTO "activity" ("title", "description", "illustration", "date", "time", "duration", "participant_count", "min_participant", "creator_id", "activity_place_id", "activity_status_id", "sport_id")
 VALUES 
 
-('escalade en salle', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat. Duis semper. Duis arcu massa, scelerisque vitae, consequat in, pretium a, enim.', '', '09/11/2021', '18:30', '2:00', 1, 3, 2, 3, 3, 7),
-('vélo à Vincennes', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat. Duis semper. Duis arcu massa, scelerisque vitae, consequat in, pretium a, enim.', '', '07/05/2021', '14:30', '1:00', 1, 2, 2, 2, 3, 5),
-('basketball', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat. Duis semper. Duis arcu massa, scelerisque vitae, consequat in, pretium a, enim.', '', '05/11/2021', '11:30', '1:00', 3, 3, 2, 3, 3, 8),
-('footing', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat. Duis semper. Duis arcu massa, scelerisque vitae, consequat in, pretium a, enim.', '', '09/11/2021', '07:30', '4:00', 1, 2, 2, 3, 3, 6),
-('Tennis à 2', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat. Duis semper. Duis arcu massa, scelerisque vitae, consequat in, pretium a, enim.', '', '07/05/2021', '14:30', '1:00', 1, 2, 2, 3, 1, 2),
+('escalade en salle', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat. Duis semper. Duis arcu massa, scelerisque vitae, consequat in, pretium a, enim.', '', '09/07/2021', '18:30', '2:00', 1, 3, 2, 3, 3, 7),
+('vélo à Vincennes', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat. Duis semper. Duis arcu massa, scelerisque vitae, consequat in, pretium a, enim.', '', '07/06/2021', '14:30', '1:00', 1, 2, 2, 2, 3, 5),
+('basketball', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat. Duis semper. Duis arcu massa, scelerisque vitae, consequat in, pretium a, enim.', '', '05/07/2021', '11:30', '1:00', 3, 3, 2, 3, 3, 8),
+('footing', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat. Duis semper. Duis arcu massa, scelerisque vitae, consequat in, pretium a, enim.', '', '09/07/2021', '07:30', '4:00', 1, 2, 2, 3, 3, 6),
+('Tennis à 2', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat. Duis semper. Duis arcu massa, scelerisque vitae, consequat in, pretium a, enim.', '', '07/06/2021', '14:30', '1:00', 1, 2, 2, 3, 1, 2),
 ('yoga', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat. Duis semper. Duis arcu massa, scelerisque vitae, consequat in, pretium a, enim.', '', '03/08/2021', '16:30', '1:00', 2, 4, 3, 2, 3, 4),
 ('randonnee en montagne', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat. Duis semper. Duis arcu massa, scelerisque vitae, consequat in, pretium a, enim.', '', '12/08/2021', '10:00', '4:30', 2, 2, 3, 3, 3, 3), 
-('foot énervé', 'partie de foot au stade des Guillants, mettez votre plus beau maillot', '', '01/05/2021', '18:00', '2:30', 2, 8, 3, 1, 1, 1), 
-('Double tennis 2', 'on est chaud du revers', '', '07/05/2021', '14:30', '1:00', 1, 4, 2, 2, 1, 2),
-('foot', 'partie de foot au stade Maurice, mettez votre plus beau maillot', '', '12/05/2021', '18:00', '2:30', 2, 8, 3, 1, 3, 1), 
-('tennis', 'tennis en terre battue', '', '10/05/2021', '18:30', '1:00', 3, 4, 2, 2, 3, 2),
-('foot', 'foot au stade', '', '01/05/2021', '18:00', '2:30', 2, 8, 3, 3, 3, 1), 
-('tennis', 'ca va smasher', '', '07/05/2021', '9:30', '1:00', 1, 2, 2, 3, 3, 2),
+('foot énervé', 'partie de foot au stade des Guillants, mettez votre plus beau maillot', '', '01/06/2021', '18:00', '2:30', 2, 8, 3, 1, 1, 1), 
+('Double tennis 2', 'on est chaud du revers', '', '07/06/2021', '14:30', '1:00', 1, 4, 2, 2, 1, 2),
+('foot', 'partie de foot au stade Maurice, mettez votre plus beau maillot', '', '12/06/2021', '18:00', '2:30', 2, 8, 3, 1, 3, 1), 
+('tennis', 'tennis en terre battue', '', '10/06/2021', '18:30', '1:00', 3, 4, 2, 2, 3, 2),
+('foot', 'foot au stade', '', '01/06/2021', '18:00', '2:30', 2, 8, 3, 3, 3, 1), 
+('tennis', 'ca va smasher', '', '07/06/2021', '9:30', '1:00', 1, 2, 2, 3, 3, 2),
 ('foot', 'foot afterwork', '', '09/12/2021', '19:00', '2:30', 2, 8, 3, 1, 3, 1), 
-('vélo', 'sortie en velo tout terrain', '', '07/05/2021', '14:30', '1:00', 1, 2, 2, 5, 3, 5),
+('vélo', 'sortie en velo tout terrain', '', '07/06/2021', '14:30', '1:00', 1, 2, 2, 5, 3, 5),
 ('randonnee', 'rando près du lac de Patty', '', '12/08/2021', '10:00', '4:30', 2, 2, 3, 1, 3, 3), 
-('yoga', 'initiation au yoga', '', '03/11/2021', '14:30', '1:00', 1, 4, 2, 2, 3, 4),
-('footing', 'footing au cannal saint-Martin', '', '04/11/2021', '17:30', '1:00', 1, 2, 2, 2, 3, 6),
-('escalade', 'escalade de Bloc en forêt ', '', '04/11/2021', '11:30', '1:00', 1, 3, 2, 2, 3, 7),
-('basketball', 'basketball improvisé ', '', '05/11/2021', '11:30', '1:00', 1, 3, 2, 2, 3, 8),
-('fitness', 'fitness en salle ', '', '04/11/2021', '7:30', '1:00', 1, 3, 2, 2, 3, 9),
-('fitness en salle', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat. Duis semper. Duis arcu massa, scelerisque vitae, consequat in, pretium a, enim.', '', '05/11/2021', '9:30', '00:30', 2, 2, 2, 3, 3, 9);
+('yoga', 'initiation au yoga', '', '03/07/2021', '14:30', '1:00', 1, 4, 2, 2, 3, 4),
+('footing', 'footing au cannal saint-Martin', '', '04/07/2021', '17:30', '1:00', 1, 2, 2, 2, 3, 6),
+('escalade', 'escalade de Bloc en forêt ', '', '04/07/2021', '11:30', '1:00', 1, 3, 2, 2, 3, 7),
+('basketball', 'basketball improvisé ', '', '05/07/2021', '11:30', '1:00', 1, 3, 2, 2, 3, 8),
+('fitness', 'fitness en salle ', '', '04/07/2021', '7:30', '1:00', 1, 3, 2, 2, 3, 9),
+('fitness en salle', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat. Duis semper. Duis arcu massa, scelerisque vitae, consequat in, pretium a, enim.', '', '05/07/2021', '9:30', '00:30', 2, 2, 2, 3, 3, 9);
 
 
 INSERT INTO "message" ("comment", "user_id", "activity_id")

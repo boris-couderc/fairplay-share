@@ -1,11 +1,12 @@
 import { connect } from 'react-redux';
 import Messages from 'src/components/Messages';
 
-import { sendMessage } from 'src/actions/details';
+import { sendMessage } from 'src/actions/activity';
 
 const mapStateToProps = (state, ownProps) => ({
-  messages: state.messages,
-  //userId: state.login.user.id,
+  messages: state.activity.activity.messages,
+  isMessageSending: state.activity.isMessageSending,
+  userId: state.login.user.id,
 });
 
 const mapDispatchToProps = (dispatch) => ({

@@ -1,0 +1,56 @@
+@use 'src/styles/settings'as s;
+
+.form {
+    margin: 2rem auto 3rem auto;
+    width : min(100%, 40rem);
+
+    &--small {
+        width: min(100%, 25rem);
+    }
+
+    &__row {
+        margin-bottom: 1.375rem;
+    }
+
+    &__cols {
+        gap: 0 2rem;
+
+        &--3-cols {
+            display              : grid;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        @media (min-width: s.$from-small) {
+            display              : grid;
+            grid-template-columns: 1fr 1fr;
+
+            &--3-cols {
+                grid-template-columns: 1fr 11rem 11rem;
+            }
+        }
+    }
+
+    &--separator {
+        position   : relative;
+        padding-top: 1.375rem;
+        margin-top : .5rem;
+
+        &::before {
+            content   : '';
+            position  : absolute;
+            left      : 1.5rem;
+            right     : 1.5rem;
+            top       : 0;
+            border-top: 2px solid rgba($color: #000000, $alpha: .075);
+        }
+    }
+
+    &__error {
+        margin-bottom: 1rem;
+        font-size    : .9rem;
+        color        : s.$color-error;
+        position     : relative;
+
+        @include s.animation-slide-up();
+    }
+}

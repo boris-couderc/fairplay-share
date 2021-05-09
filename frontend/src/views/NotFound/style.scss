@@ -1,0 +1,14 @@
+@use 'src/styles/settings'as s;
+
+.view--not-found {
+    text-align: center;
+
+    &::before,
+    &::after {
+        content : '';
+    }
+
+    &::before {
+        background-image   : url('src/assets/images/bg-error404.svg');
+    }
+}

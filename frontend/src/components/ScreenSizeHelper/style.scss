@@ -1,0 +1,48 @@
+@use 'src/styles/settings' as s;
+
+.sreen-size-helper {
+  position: absolute;
+  left: 0;
+  top: 0;
+
+  &::before {
+    display: block;
+    position: relative;
+    transform: rotate(-90deg);
+    transform-origin: top left;
+    top: 150px;
+    padding: 2px 6px;
+    background: rgba(0,0,0,.2);
+    font-size: 10px;
+    color: #ffffff;
+    content: '< tiny #{s.$from-tiny}';
+
+    @media (min-width: s.$from-tiny) {
+      content: '> tiny #{s.$from-tiny}';
+    }
+  
+    @media (min-width: s.$from-small) {
+      content: '> small #{s.$from-small}';
+    }
+  
+    @media (min-width: s.$from-medium) {
+      content: '> medium #{s.$from-medium}';
+    }
+  
+    @media (min-width: s.$from-large) {
+      content: '> large #{s.$from-large}';
+    }
+  
+    @media (min-width: s.$from-huge) {
+      content: '> huge #{s.$from-huge}';
+    }
+  
+    @media (min-width: s.$from-gigantic) {
+      content: '> gigantic #{s.$from-gigantic}';
+    }
+  
+    @media (min-width: s.$from-colossal) {
+      content: '> colossal #{s.$from-colossal}';
+    }
+  }
+}

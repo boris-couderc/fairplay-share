@@ -1,49 +1,51 @@
-export const SAVE_LOGIN = 'SAVE_LOGIN';
-export const FETCH_LOGIN = 'FETCH_LOGIN';
-export const SAVE_CONNEXION_STATUT = 'SAVE_CONNEXION_STATUT';
-export const DISCONNECT = 'DISCONNECT';
-export const LOG_OUT = 'LOG_OUT';
-export const LOGIN_ERROR = 'LOGIN_ERROR';
-export const CLOSE_MODAL = 'CLOSE_MODAL';
-export const GET_USER = 'GET_USER';
-export const SAVE_USER_POINTS = 'SAVE_USER_POINTS';
+export const FETCH_LOGIN = 'FETCH_LOGIN'
+export const SAVE_LOGIN_ERROR = 'SAVE_LOGIN_ERROR'
+export const CLEAR_LOGIN_ERROR = 'CLEAR_LOGIN_ERROR'
+export const SAVE_LOGGED_USER = 'SAVE_LOGGED_USER'
+export const LOG_OUT = 'LOG_OUT'
+export const CHECK_LOCAL_STORAGE_USER = 'CHECK_LOCAL_STORAGE_USER'
+export const SAVE_CHECK_LOCAL_STORAGE_USER = 'SAVE_CHECK_LOCAL_STORAGE_USER'
+export const SAVE_USER_POINTS = 'SAVE_USER_POINTS'
 
-export const saveLogin = (value, input) => ({
-  type: SAVE_LOGIN,
-  value,
-  input,
-});
+export const CLOSE_MODAL = 'CLOSE_MODAL'
 
-export const fetchLogin = () => ({
-  type: FETCH_LOGIN,
-});
+export const fetchLogin = (data) => ({
+    type: FETCH_LOGIN,
+    data,
+})
 
-export const saveConnexionStatut = (data) => ({
-  type: SAVE_CONNEXION_STATUT,
-  data,
-});
+export const saveLoginError = () => ({
+    type: SAVE_LOGIN_ERROR,
+})
 
-export const disconnect = () => ({
-  type: DISCONNECT,
-});
+export const clearLoginError = () => ({
+    type: CLEAR_LOGIN_ERROR,
+})
+
+export const saveLoggedUser = (user) => ({
+    type: SAVE_LOGGED_USER,
+    user,
+})
 
 export const logOut = () => ({
-  type: LOG_OUT,
-});
+    type: LOG_OUT,
+})
 
-export const loginError = () => ({
-  type: LOGIN_ERROR,
-});
+export const checkLocalStorageUser = () => ({
+    type: CHECK_LOCAL_STORAGE_USER,
+})
 
-export const closeModal = () => ({
-  type: CLOSE_MODAL,
-});
-
-export const getUser = () => ({
-  type: GET_USER,
-});
+export const saveCheckLocalStorageUser = () => ({
+    type: SAVE_CHECK_LOCAL_STORAGE_USER,
+})
 
 export const saveUserPoints = (data) => ({
-  type: SAVE_USER_POINTS,
-  data,
-});
+    type: SAVE_USER_POINTS,
+    data,
+})
+
+// a deplacer :
+
+export const closeModal = () => ({
+    type: CLOSE_MODAL,
+})

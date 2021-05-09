@@ -9,7 +9,7 @@ const messageController = {
     addMessageToActivity: async (req, res) => {
         let activityId = parseInt(req.params.id);
         const { userId, comment } = req.body;
-        // nettoie toutes les balises
+        // clean message content
         const cleanComment = sanitizeHtml(comment, {
             allowedTags: [],
             allowedAttributes: {}
@@ -30,7 +30,7 @@ const messageController = {
             const message = await Message.findOne({
                 include: [
                     {
-                        association: 'users',
+                        association: 'user',
                         attributes: ['id', 'pseudo'],
                     }
                 ],
@@ -47,7 +47,7 @@ const messageController = {
             res.status(201).json(formatedMessage);
             
         } catch (error) {
-        console.trace(error);
+        console.trace('error',error);
         res.status(500).json(error.toString());
       }
     },
