@@ -3,8 +3,6 @@ import PropTypes from 'prop-types'
 
 import ReactMapGL, { NavigationControl, Marker } from 'react-map-gl'
 
-import Heading from 'src/components/Heading'
-
 import './style.scss'
 import '/src/assets/css/mapbox-gl.css'
 
@@ -15,6 +13,9 @@ const Map = ({ lat, lng, place }) => {
             longitude: parseFloat(lng),
             zoom: 12,
         })
+
+        console.log('test', lat, lng);
+
     }, [lat, lng])
 
     const [viewport, setViewport] = useState({
