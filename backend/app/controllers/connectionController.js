@@ -118,13 +118,12 @@ const connectionController = {
         } else {
             res.cookie('token', token, { 
                 httpOnly: true, 
-                domain: process.env.FRONTEND_URL,
+                domain: process.env.DOMAIN,
                 sameSite: 'none',
                 secure: true,
             })
         }
         
-
         res.status(200).json({
             user: {
                 id: user.id,
