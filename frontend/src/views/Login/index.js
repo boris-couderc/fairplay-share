@@ -24,7 +24,8 @@ const Login = ({
 
     useEffect(() => {
         if(isLogged) {
-            history.goBack()
+            // history.goBack()
+            history.push(`/`)
         }
     }, [isLogged])
     

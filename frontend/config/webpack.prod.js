@@ -18,7 +18,7 @@ module.exports = merge(common, {
     new BundleStatsWebpackPlugin(),
     // API backend ONLINE
     new webpack.DefinePlugin({
-      "process.env.API_URL": JSON.stringify("http://ec2-54-160-66-108.compute-1.amazonaws.com:4000"),
+      "process.env.API_URL": JSON.stringify("https://fairplay.boriscouderc.fr"),
       "process.env.POSITIONSTACK_API_KEY": JSON.stringify("45f5b9f8087988986ded9ce0f437c8a1"),
       "process.env.MAPBOX_API_KEY": JSON.stringify("pk.eyJ1IjoiYm9yaXNjb3VkZXJjIiwiYSI6ImNrbzBxbXd0MzAxOGIydm8zZ2Fydnhla3IifQ.cocyKytOUzSpdyZi_UNqmQ"),
     }),

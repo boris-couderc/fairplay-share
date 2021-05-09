@@ -13,8 +13,6 @@ const quitActivityController = require("./controllers/quitActivityController");
 const cancelActivityController = require("./controllers/cancelActivityController");
 const authorizationMiddleware = require("./middleware/authorization");
 
-router.get('/', (req, res) => { res.send('hello') });
-
 router.post('/api/newactivity', authorizationMiddleware, newActivityController.createNewActivity);
 
 router.post('/api/registration', registrationController.addUser);

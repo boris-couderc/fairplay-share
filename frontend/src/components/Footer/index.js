@@ -11,7 +11,7 @@ const Footer = () => (
       <div className="footer__content">
         <span className="footer__copyright">Fairplay © 2021</span>
         <ul className="footer__links">
-          <li><Link to="/design-system">Design system</Link></li>
+          {/* <li><Link to="/design-system">Design system</Link></li> */}
           <li><Link to="/equipe">Equipe</Link></li>
           <li><a href="mailto:couderc.boris@gmail.com">Contact</a></li>
         </ul>

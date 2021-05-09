@@ -35,9 +35,9 @@ const SearchBar = ({
     const history = useHistory()
     const timer = useRef(null)
     const placeInput = useRef(null)
-
     const [geolocationAvailable, setGeolocationAvailable] = useState(false)
     const [geolocation, setGeolocation] = useState({})
+    const [searchPlaceholder, setsearchPlaceholder] = useState('Rehercher un lieu ...')
 
     useEffect(() => {
         if ('geolocation' in navigator) {
@@ -45,6 +45,11 @@ const SearchBar = ({
         } else {
             setGeolocationAvailable(false)
         }
+
+        if(window.innerWidth < 400) {
+            setsearchPlaceholder('Un lieu ...')
+        }
+
         return () => {
             changeValue('')
             clearListAutocompleteData()
@@ -167,7 +172,7 @@ const SearchBar = ({
                         <input
                             className="input searchbar__input"
                             type="text"
-                            placeholder="Rehercher un lieu ..."
+                            placeholder={searchPlaceholder}
                             value={inputValue}
                             onChange={handleOnChange}
                             ref={placeInput}

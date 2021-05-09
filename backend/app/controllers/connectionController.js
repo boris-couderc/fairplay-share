@@ -110,7 +110,20 @@ const connectionController = {
             jwtSecret,
             jwtOptions,
         )
-        res.cookie('token', token, { httpOnly: true })
+
+        if(process.env.DEPLOYED_APP && process.env.DEPLOYED_APP == false){
+            res.cookie('token', token, { 
+                httpOnly: true,
+            })
+        } else {
+            res.cookie('token', token, { 
+                httpOnly: true, 
+                domain: process.env.FRONTEND_URL,
+                sameSite: 'none',
+                secure: true,
+            })
+        }
+        
 
         res.status(200).json({
             user: {
@@ -120,6 +133,7 @@ const connectionController = {
                 pseudo: user.pseudo,
                 points: user.reward_count,
                 grade: user.user_grade.name,
+                test: 'test 1',
             },
             activities: formatedaUserActivities,
         })

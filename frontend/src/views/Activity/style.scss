@@ -26,7 +26,7 @@
         }
     }
 
-    &__header {
+    &__header { 
         display              : grid;
         grid-template-columns: 1fr;
         align-items          : center;
@@ -72,15 +72,6 @@
             }
 
             &:first-child {
-                &::after {
-                    content    : '';
-                    display    : inline-block;
-                    height     : 100%;
-                    right      : 0;
-                    width      : 1.5rem;
-                    border-right: 2px solid s.$color-primary-lighter;
-                    opacity    : .5;
-                }
                 .icon {
                     width       : 1.8rem;
                     height      : 1.8rem;
@@ -129,6 +120,18 @@
                     margin-top: inherit;
                 }
 
+                &:first-child {
+                    &::after {
+                        content    : '';
+                        display    : inline-block;
+                        height     : 100%;
+                        right      : 0;
+                        width      : 1.5rem;
+                        border-right: 2px solid s.$color-primary-lighter;
+                        opacity    : .5;
+                    }
+                }
+
                 &:nth-child(3) {
                     margin-left: 1.5rem;
 
@@ -148,7 +151,7 @@
         grid-template-columns: 1fr;
         justify-items        : start;
         margin-top           : 2rem;
-        padding              : var(--horizontal-wrapper-content-margin);
+        padding              : 2rem var(--horizontal-wrapper-content-margin);
         border-radius        : s.$border-radius-medium;
         box-shadow           : s.$shadow;
         background           : rgba($color: #000000, $alpha: 1.0);

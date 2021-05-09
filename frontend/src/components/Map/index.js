@@ -64,9 +64,9 @@ const Map = ({ lat, lng, place }) => {
                 {place.city && (
                     <>{place.city} </>
                 )}
-                {place.region && (
+                {/* {place.region && (
                     <span className="u-color-txt-light u-margin-left-.25">{`(${place.region})`} </span>
-                )}
+                )} */}
             </div>
         </div>
         </>
