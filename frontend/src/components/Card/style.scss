@@ -105,8 +105,7 @@
         width         : 100%;
         flex-direction: column;
         align-items   : center;
-        // padding       : 1.5rem 1.5rem 2.25rem 1.5rem;
-        padding       : 1.5rem 1rem 2.25rem 1rem;
+        padding       : 1.5rem 1.25rem 2.25rem 1.25rem;
         cursor        : pointer;
     }
 
@@ -149,9 +148,26 @@
             margin-top: .6rem;
         }
 
+        &-pin {
+            flex-shrink: 0;
+        }
+
+        &-city {
+            display           : -webkit-box;
+            margin-bottom     : 0;
+            overflow          : hidden;
+            text-overflow     : ellipsis;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+            word-break        : break-all;
+            flex-grow         : 0;
+        }
+
         &-sup {
             display: inline-block;
             margin-left: .375rem;
+            white-space: nowrap;
+            flex-shrink: 0;
         }
 
         .icon {
