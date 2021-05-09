@@ -17,7 +17,7 @@ const App = () => {
     return (
         <>
             <UserVerification />
-            <ScreenSizeHelper />
+            {/* <ScreenSizeHelper /> */}
             <Switch>
 
                 <Route path="/" exact>

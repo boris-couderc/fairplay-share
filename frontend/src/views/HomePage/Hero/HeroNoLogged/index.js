@@ -13,7 +13,7 @@ const HeroNoLogged = () => {
                 
                 <span className="u-color-primary">
                     <i>Rejoins</i> <i>les</i> <i>sportifs</i> <i>motivés</i> </span> 
-                    <i>de</i> <i>ton</i> <i>quartier&nbsp;!</i>
+                    <i>de</i> <i>ta</i> <i>région&nbsp;!</i>
 
                 {/* <span className="u-color-primary">
                     <i>Rejoins</i> <i>les</i> <i>sportif<span className="u-inclusive-writing">ive</span>s</i> 
