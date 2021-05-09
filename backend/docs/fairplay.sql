@@ -126,11 +126,30 @@ INSERT INTO "sport" ("name", "icon") VALUES
 
 
 INSERT INTO "activity_place" ("address", "city", "zip_code", "department", "region", "google_place_key", "lat", "lng", "private", "indoor") VALUES
-('38 Rue René Alazard', 'Bagnolet', '93170', 'Seine-Saint-Denis', 'Ile-de-France', 'ChIJX-N1XXNt5kcRZM_FklimsmQ', 48.87370931491529, 2.4195904982846748, true, true), 
-('10 Place de la Comédie', 'Montpellier', '34000', 'Hérault', 'Occitanie','ChIJmwSMR6evthIReIYsyxaF9qs', 43.609406065437526, 3.879749211605195, false, false),
-('Promenade du Peyrou', 'Montpellier', '34000', 'Hérault', 'Occitanie', 'ChIJtW9UagevthIRqBfgUffh-TQ', 43.61125, 3.8707581, true, true),
-('Antigone', 'Montpellier', '34000', 'Hérault', 'Occitanie','ChIJmwSMR6evthIReIYsyxaF9qs', 43.60656218226759, 3.897884664180845, false, false),
-('Jardin des Plantes de Montpellier', 'Montpellier', '34000', 'Hérault', 'Occitanie','ChIJmwSMR6evthIReIYsyxaF9qs', 43.614916733296106, 3.8717026293668932, false, false);
+('38 Rue René Alazard', 'Bagnolet', '93170', 'Seine-Saint-Denis', 'Ile-de-France', '', 48.87370931491529, 2.4195904982846748, true, true), 
+('10 Place de la Comédie', 'Montpellier', '34000', 'Hérault', 'Occitanie','', 43.609406065437526, 3.879749211605195, false, false),
+('Promenade du Peyrou', 'Montpellier', '34000', 'Hérault', 'Occitanie', '', 43.61125, 3.8707581, true, true),
+('Antigone', 'Montpellier', '34000', 'Hérault', 'Occitanie','', 43.60656218226759, 3.897884664180845, false, false),
+('Jardin des Plantes de Montpellier', 'Montpellier', '34000', 'Hérault', 'Occitanie','', 43.614916733296106, 3.8717026293668932, false, false),
+('Jardin des Plantes de Montpellier', 'Montpellier', '34000', 'Hérault', 'Occitanie','', 43.614916733296106, 3.8717026293668932, false, false),
+('Promenade du Peyrou', 'Montpellier', '34000', 'Hérault', 'Occitanie', '', 43.61125, 3.8707581, false, false),
+('ALTISSIMO Montpellier Odysseum', 'Montpellier', '34000', 'Hérault', 'Occitanie', '', 43.603459, 3.91822, false, false),
+('Montpellier Basket Mosson Avenue de Naples', 'Montpellier', '34000', 'Hérault', 'Occitanie', '', 43.614719, 3.864104, false, false),
+('Corum', 'Montpellier', '34000', 'Hérault', 'Occitanie', '', 40.491419, 34.611076, false, false),
+('Tennis municipal Pérols', 'Lattes', '34970', 'Hérault', 'Occitanie', '', 43.55998, 3.934869, false, false),
+('Tennis Club Grabels', 'Grabels', '34116', 'Hérault', 'Occitanie', '', 43.650149, 3.788602, false, false),
+('Decathlon Montpellier Saint Jean De Vedas', 'Montpellier', '34000', 'Hérault', 'Occitanie', '', 43.604932, 3.924178, false, false),
+('Montpellier Hérault Sport Club', 'Montpellier', '34000', 'Hérault', 'Occitanie', '', 43.616826, 3.92947, false, false),
+('Stade de la Mosson', 'Montpellier', '34000', 'Hérault', 'Occitanie', '', 43.62237, 3.811944, false, false),
+('Montpellier athletic sport', 'Montpellier', '34080', 'Hérault', 'Occitanie', '', 43.614719, 3.864104, false, false),
+('Aniane', 'Aniane', '34150', 'Hérault', 'Occitanie', '', 43.683914, 3.586115, false, false),
+('Camping Club Lac du Salagou', 'Clermont-l''Hérault', '34800', 'Hérault', 'Occitanie', '', 43.646626, 3.393238, false, false),
+('Parc du Levant', 'Palavas-les-Flots', '34250', 'Hérault', 'Occitanie', '', 43.52945, 3.928986, false, false),
+('Skatepark de Saint-Jean de Védas', 'Saint-Jean-de-Védas', '34430', 'Hérault', 'Occitanie', '', 43.577761, 3.825309, false, false),
+('Bloc Session Nîmes', 'Nîmes', '30900', 'Hérault', 'Occitanie', '', 43.817104, 4.350128, false, false),
+('Fitness Park Vendargues', 'Vendargues', '34740', 'Hérault', 'Occitanie', '', 43.652084, 3.959956, false, false),
+('Salle de sports Isadora Duncan', 'Montpellier', '34070', 'Hérault', 'Occitanie', '', 43.622339, 3.841971, false, false),
+('Figuerolles', 'Montpellier', '34000', 'Hérault', 'Occitanie', '', 43.606091, 3.861769, false, false);
 
 INSERT INTO "user_grade" ("name", "point") VALUES
 ('Novice', 0),
@@ -140,53 +159,47 @@ INSERT INTO "user_grade" ("name", "point") VALUES
 ('Leader', 5000);
 
 INSERT INTO "user_place" ("address", "city", "zip_code", "department", "region", "google_place_key", "lat", "lng") VALUES
-('25 Rue Gabriel Marie', 'Marseille', '13010','Provence-Alpes-Côte d''Azur', 'Bouches-du-Rhône', 'ChIJUWddC1G_yRIRrCeWrpgJsig', 43.28572709923827, 5.401447882759161),
-('2-38 Rue des Pervenches', 'Montpellier', '34000', 'Hérault', 'Occitanie', 'Ei8yIFJ1ZSBkZXMgUGVydmVuY2hlcywgMzQwMDAgTW9udHBlbGxpZXIsIEZyYW5jZSJQEk4KNAoyCafStBi9r7YSEUaddh24ThFxGh4LEO7B7qEBGhQKEgnvrrIOm6-2EhHQ4oxpJIgHHAwQAioUChIJp9K0GL2vthIREdCGsK2HxIY', 43.599436353996595, 3.8843637994919),
-('38 Rue René Alazard', 'Bagnolet', '93170', 'Seine-Saint-Denis', 'Ile-de-France', 'ChIJX-N1XXNt5kcRZM_FklimsmQ', 48.87370931491529, 2.4195904982846748), 
-('10 Place de la Comédie', 'Montpellier', '34000', 'Hérault', 'Occitanie','ChIJmwSMR6evthIReIYsyxaF9qs', 43.609406065437526, 3.879749211605195),
-('Antigone', 'Montpellier', '34000', 'Hérault', 'Occitanie','ChIJmwSMR6evthIReIYsyxaF9qs', 43.60656218226759, 3.897884664180845),
-('Jardin des Plantes de Montpellier', 'Montpellier', '34000', 'Hérault', 'Occitanie','ChIJmwSMR6evthIReIYsyxaF9qs', 43.614916733296106, 3.8717026293668932),
-('Promenade du Peyrou', 'Montpellier', '34000', 'Hérault', 'Occitanie', 'ChIJtW9UagevthIRqBfgUffh-TQ', 43.61125, 3.8707581);
+('25 Rue Gabriel Marie', 'Marseille', '13010','Provence-Alpes-Côte d''Azur', 'Bouches-du-Rhône', '', 43.28572709923827, 5.401447882759161),
+('2-38 Rue des Pervenches', 'Montpellier', '34000', 'Hérault', 'Occitanie', '', 43.599436353996595, 3.8843637994919),
+('38 Rue René Alazard', 'Bagnolet', '93170', 'Seine-Saint-Denis', 'Ile-de-France', '', 48.87370931491529, 2.4195904982846748), 
+('10 Place de la Comédie', 'Montpellier', '34000', 'Hérault', 'Occitanie','', 43.609406065437526, 3.879749211605195);
 
 INSERT INTO "user" ("email", "pseudo", "password", "firstname", "lastname", "avatar", "reward_count", "admin", "user_grade_id", "user_place_id") VALUES
-('russobenjamin45@gmail.com', 'Benj', '$2a$10$3eH4dUp9vclyed0jjqj/3OqobYntWA1X6xPhqUm/NyykEJu03RpRC', 'Benjamin', 'Russo', '', 10, false, 1, 1),
-('clotildefauchille@gmail.com', 'Clo', '$2a$10$3eH4dUp9vclyed0jjqj/3OqobYntWA1X6xPhqUm/NyykEJu03RpRC', 'Clotilde', 'Fauchille', '', 20, true, 4, 2),
-('mairey.jeremy@hotmail.fr', 'Jerem', '$2a$10$3eH4dUp9vclyed0jjqj/3OqobYntWA1X6xPhqUm/NyykEJu03RpRC', 'Jeremy', 'Mairey', '', 200, true, 2, 3),
-('couderc.boris@gmail.com', 'bo', '$2a$10$3eH4dUp9vclyed0jjqj/3OqobYntWA1X6xPhqUm/NyykEJu03RpRC', 'Boris', 'Couderc', '', 0, false, 3, 3);
+('benj@gmail.com', 'Benjamin', '$2a$10$3eH4dUp9vclyed0jjqj/3OqobYntWA1X6xPhqUm/NyykEJu03RpRC', 'Benjamin', 'Russo', '', 10, false, 1, 1),
+('clo@gmail.com', 'Clotilde', '$2a$10$3eH4dUp9vclyed0jjqj/3OqobYntWA1X6xPhqUm/NyykEJu03RpRC', 'Clotilde', 'Fauchille', '', 20, true, 4, 2),
+('jerem@hotmail.fr', 'Jeremy', '$2a$10$3eH4dUp9vclyed0jjqj/3OqobYntWA1X6xPhqUm/NyykEJu03RpRC', 'Jeremy', 'Mairey', '', 200, true, 2, 3),
+('couderc.boris@gmail.com', 'Boris', '$2a$10$3eH4dUp9vclyed0jjqj/3OqobYntWA1X6xPhqUm/NyykEJu03RpRC', 'Boris', 'Couderc', '', 0, false, 3, 3);
 
 INSERT INTO "activity_statut" ("name")
 VALUES ('passed'), ('canceled'), ('ongoing');
 
 INSERT INTO "activity" ("title", "description", "illustration", "date", "time", "duration", "participant_count", "min_participant", "creator_id", "activity_place_id", "activity_status_id", "sport_id")
-VALUES 
-
-('escalade en salle', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat. Duis semper. Duis arcu massa, scelerisque vitae, consequat in, pretium a, enim.', '', '09/07/2021', '18:30', '2:00', 1, 3, 2, 3, 3, 7),
-('vélo à Vincennes', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat. Duis semper. Duis arcu massa, scelerisque vitae, consequat in, pretium a, enim.', '', '07/06/2021', '14:30', '1:00', 1, 2, 2, 2, 3, 5),
-('basketball', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat. Duis semper. Duis arcu massa, scelerisque vitae, consequat in, pretium a, enim.', '', '05/07/2021', '11:30', '1:00', 3, 3, 2, 3, 3, 8),
-('footing', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat. Duis semper. Duis arcu massa, scelerisque vitae, consequat in, pretium a, enim.', '', '09/07/2021', '07:30', '4:00', 1, 2, 2, 3, 3, 6),
-('Tennis à 2', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat. Duis semper. Duis arcu massa, scelerisque vitae, consequat in, pretium a, enim.', '', '07/06/2021', '14:30', '1:00', 1, 2, 2, 3, 1, 2),
-('yoga', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat. Duis semper. Duis arcu massa, scelerisque vitae, consequat in, pretium a, enim.', '', '03/08/2021', '16:30', '1:00', 2, 4, 3, 2, 3, 4),
-('randonnee en montagne', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat. Duis semper. Duis arcu massa, scelerisque vitae, consequat in, pretium a, enim.', '', '12/08/2021', '10:00', '4:30', 2, 2, 3, 3, 3, 3), 
-('foot énervé', 'partie de foot au stade des Guillants, mettez votre plus beau maillot', '', '01/06/2021', '18:00', '2:30', 2, 8, 3, 1, 1, 1), 
-('Double tennis 2', 'on est chaud du revers', '', '07/06/2021', '14:30', '1:00', 1, 4, 2, 2, 1, 2),
-('foot', 'partie de foot au stade Maurice, mettez votre plus beau maillot', '', '12/06/2021', '18:00', '2:30', 2, 8, 3, 1, 3, 1), 
-('tennis', 'tennis en terre battue', '', '10/06/2021', '18:30', '1:00', 3, 4, 2, 2, 3, 2),
-('foot', 'foot au stade', '', '01/06/2021', '18:00', '2:30', 2, 8, 3, 3, 3, 1), 
-('tennis', 'ca va smasher', '', '07/06/2021', '9:30', '1:00', 1, 2, 2, 3, 3, 2),
-('foot', 'foot afterwork', '', '09/12/2021', '19:00', '2:30', 2, 8, 3, 1, 3, 1), 
-('vélo', 'sortie en velo tout terrain', '', '07/06/2021', '14:30', '1:00', 1, 2, 2, 5, 3, 5),
-('randonnee', 'rando près du lac de Patty', '', '12/08/2021', '10:00', '4:30', 2, 2, 3, 1, 3, 3), 
-('yoga', 'initiation au yoga', '', '03/07/2021', '14:30', '1:00', 1, 4, 2, 2, 3, 4),
-('footing', 'footing au cannal saint-Martin', '', '04/07/2021', '17:30', '1:00', 1, 2, 2, 2, 3, 6),
-('escalade', 'escalade de Bloc en forêt ', '', '04/07/2021', '11:30', '1:00', 1, 3, 2, 2, 3, 7),
-('basketball', 'basketball improvisé ', '', '05/07/2021', '11:30', '1:00', 1, 3, 2, 2, 3, 8),
-('fitness', 'fitness en salle ', '', '04/07/2021', '7:30', '1:00', 1, 3, 2, 2, 3, 9),
-('fitness en salle', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat. Duis semper. Duis arcu massa, scelerisque vitae, consequat in, pretium a, enim.', '', '05/07/2021', '9:30', '00:30', 2, 2, 2, 3, 3, 9);
+VALUES ('Escalade en salle', 'Qui est motivé pour une fin d''aprèm bloc ? Je peux prêter du matos !', '', '08/20/2021', '18:30', '2:00', 1, 3, 2, 8, 3, 7),
+('Basketball', 'Des motivés pour basketball ? ça peut être sympa à partir de 2 contre 2.', '', '05/29/2021', '11:30', '1:00', 3, 4, 2, 9, 3, 8),
+('Footing', 'Un petit footing de bon matin ? Avec un rythme un peu soutenu autour de 5:00, je m''entraine pour un semi :)', '', '08/16/2021', '07:30', '1:00', 1, 2, 2, 10, 3, 6),
+('Petit tennis', 'Des motivés pour un tennis ? niveau vraiment amateur !', '', '07/06/2021', '14:30', '1:00', 1, 2, 3, 12, 1, 2),
+('Initiation yoga', 'Un petit rendez-vous initiation yoga, ça vous dit ? même novices curieux bienvenues !', '', '06/23/2021', '16:30', '1:00', 2, 4, 3, 10, 3, 4),
+('Randonnee dans la Gardiole', 'Des motivés pour une demi journée rando ? Point de rendez-vous à Saint Jean De Vedas, à Decathlon.', '', '06/17/2021', '10:00', '4:30', 2, 2, 3, 13, 3, 3), 
+('Foot énervé', 'Partie de foot au stade des Guillants, mettez votre plus beau maillot', '', '06/10/2021', '18:00', '2:30', 2, 8, 3, 14, 1, 1), 
+('Double tennis', 'On est chaud du revers', '', '07/06/2021', '14:30', '1:00', 1, 4, 1, 12, 1, 2),
+('Petite partie de foot', 'Au stade Maurice, mettez votre plus beau maillot !', '', '07/02/2021', '18:00', '2:30', 2, 8, 1, 15, 3, 1), 
+('Un bon tennis', 'Tennis en terre battue', '', '07/01/2021', '18:30', '1:00', 3, 4, 1, 11, 3, 2),
+('Tennis', 'Ca va smasher', '', '07/06/2021', '9:30', '1:00', 1, 2, 1, 11, 3, 2),
+('foot', 'Foot afterwork, ça vous dit ?', '', '06/22/2021', '19:00', '2:30', 2, 8, 3, 16, 3, 1), 
+('Vélo', 'Sortie en velo tout terrain', '', '07/26/2021', '14:30', '1:00', 1, 2, 3, 17, 3, 5),
+('Tour du lac du Salagou', 'Rando près du lac du Salagou', '', '07/07/2021', '10:00', '4:30', 2, 2, 4, 18, 3, 3), 
+('Yoga', 'Initiation au yoga', '', '06/08/2021', '14:30', '1:00', 1, 4, 4, 19, 3, 4),
+('Footing tranquille', 'Footing au cannal saint-Martin', '', '07/07/2021', '17:30', '1:00', 1, 2, 4, 20, 3, 6),
+('Escalade bloc', 'Escalade de Bloc, rendez vous à Bloc Session Nîmes !', '', '07/30/2021', '11:30', '1:00', 1, 3, 4, 21, 3, 7),
+('Basketball', 'Un bon basketball improvisé ? des motivés !?', '', '05/20/2021', '11:30', '1:00', 1, 3, 4, 2, 3, 8),
+('Fitness', 'Fitness en salle à Fitness Park Vendargues, on se crée un programme à plusieurs ?', '', '06/15/2021', '7:30', '1:00', 1, 3, 4, 22, 3, 9),
+('Footing en fin d''aprèm ?', 'Un bon footing avec un rythme un peu soutenu autour de 5:00, je m''entraine pour un semi :)', '', '05/28/2021', '17:30', '1:00', 1, 2, 2, 5, 3, 6),
+('Fitness et cross-fit', 'Des motivés pour une session cross-fit vers ma La Croix d''Argent', '', '06/02/2021', '7:30', '1:00', 1, 3, 4, 23, 3, 9),
+('Footing dans l''aprèm ?', 'Un bon footing avec un rythme sympa ?', '', '06/28/2021', '14:30', '1:00', 1, 2, 2, 24, 3, 6);
 
 
 INSERT INTO "message" ("comment", "user_id", "activity_id")
-VALUES ('super cette partie, mais j''aurai pas dû manger un kebab juste avt', 1, 1),
-('attend de voir mon smash', 2, 2),
+VALUES ('Attend de voir mon jeu ^^', 2, 2),
 ('Vous voulez vous retrouver vers quelle heure ?', 2, 2);
 
 INSERT INTO "user_has_sport" ("user_id", "sport_id")

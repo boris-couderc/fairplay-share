@@ -3,8 +3,6 @@ import PropTypes from 'prop-types'
 
 import ReactMapGL, { NavigationControl, Marker } from 'react-map-gl'
 
-import Heading from 'src/components/Heading'
-
 import './style.scss'
 import '/src/assets/css/mapbox-gl.css'
 

@@ -1,8 +1,7 @@
-const Sequelize = require('sequelize')
-const sequelize = require('../database.js')
-const Op = Sequelize.Op
-
 const { Activity, User, UserGrade } = require('../models')
+
+const Sequelize = require('sequelize')
+const Op = Sequelize.Op
 
 const newActivityController = {
     createNewActivity: async (req, res) => {
@@ -45,12 +44,12 @@ const newActivityController = {
                 { include: ['activity_place'] },
             )
 
-            // on recupére et incremente les points du user
+            // Add motivation points to user
             const user = await User.findByPk(creator_id)
             const new_reward_count = user.dataValues.reward_count + 100
             user.reward_count = new_reward_count
 
-            // on verif à quel user_grade corresponde les points
+            // Check and update user grade
             const grades = await UserGrade.findAll({
                 where: {
                     point: {

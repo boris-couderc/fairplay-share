@@ -40,4 +40,31 @@
     &__address {
         padding: 1rem 1rem 1.125rem 1rem;
     }
+
+    .marker { 
+        position   : relative;
+        z-index    : 2;
+        width      : 2.25rem;
+        height     : 2.5rem;
+        margin-top : -2rem;
+        margin-left: -1rem;
+        cursor     : pointer;
+    
+        &::before {
+            content            : "";
+            position           : absolute;
+            left               : 0;
+            top                : .125rem;
+            width              : 2.75rem;
+            height             : 2.75rem;
+            background         : url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32'><path fill='%23ec7253' d='M12 11.484q1.031 0 1.758-0.727t0.727-1.758-0.727-1.758-1.758-0.727-1.758 0.727-0.727 1.758 0.727 1.758 1.758 0.727zM12 2.016q2.906 0 4.945 2.039t2.039 4.945q0 1.453-0.727 3.328t-1.758 3.516-2.039 3.070-1.711 2.273l-0.75 0.797q-0.281-0.328-0.75-0.867t-1.688-2.156-2.133-3.141-1.664-3.445-0.75-3.375q0-2.906 2.039-4.945t4.945-2.039z'></path></svg>");
+            background-size    : 110%;
+            background-repeat  : no-repeat;
+            background-position: center;
+            pointer-events     : none;
+            transition         : transform ease-in-out 200ms;
+    
+            @include s.animation-slide-down(200ms, 10px, 200ms);
+        }
+    }
 }

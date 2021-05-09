@@ -1,6 +1,5 @@
-const { Activity, Message, User } = require('../models');
+const { Message } = require('../models');
 
-const Sequelize = require("sequelize");
 const { formatDate } = require('../selectors/formatDate');
 const sanitizeHtml = require('sanitize-html');
 
@@ -9,7 +8,7 @@ const messageController = {
     addMessageToActivity: async (req, res) => {
         let activityId = parseInt(req.params.id);
         const { userId, comment } = req.body;
-        // clean message content
+        
         const cleanComment = sanitizeHtml(comment, {
             allowedTags: [],
             allowedAttributes: {}

@@ -1,9 +1,7 @@
-const Sequelize = require('sequelize')
-const { QueryTypes } = require('sequelize')
-const sequelize = require('../database.js')
-const Op = Sequelize.Op
-
 const { Activity, User, UserGrade } = require('../models')
+
+const Sequelize = require('sequelize')
+const Op = Sequelize.Op
 
 const cancelActivityController = {
 
@@ -11,7 +9,6 @@ const cancelActivityController = {
         const { activityId, userId } = req.body
 
         try {
-            // check user and his activities
             const user = await User.findOne({
                 where: {
                     id: userId,

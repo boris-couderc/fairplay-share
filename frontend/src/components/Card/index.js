@@ -61,7 +61,7 @@ const Card = ({ activity, loggedUserRole, isLogged, showLoginModal }) => {
                 <ul className="card__infos">
                     <li className="card__info">
                         <Icon name="pin" classProps="card__info-pin" />
-                        {activity.activity_place.city}
+                        <span className="card__info-city">{activity.activity_place.city}</span>
                         {activity.activity_place.distance && (
                             <span className="card__info-sup">
                                 {` (${parseFloat(activity.activity_place.distance.toFixed(1))} km)`}
