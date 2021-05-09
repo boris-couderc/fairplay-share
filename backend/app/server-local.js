@@ -1,5 +1,3 @@
-//require('dotenv').config();
-
 const express = require('express');
 const router = require('./router');
 const cookieParser = require('cookie-parser');
@@ -12,8 +10,6 @@ app.use(cookieParser());
 
 app.use(
   cors({
-    // optionsSuccessStatus: 200,
-    // allowedHeaders: ['Content-Type', 'authorization'],
     credentials: true,
     origin: [process.env.FRONTEND_URL]
   }),

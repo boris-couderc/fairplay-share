@@ -1,9 +1,9 @@
+const { User, Activity } = require('../models')
+
 const Sequelize = require("sequelize");
 const Op = Sequelize.Op;
 const bcrypt = require('bcrypt')
 const jsonwebtoken = require('jsonwebtoken')
-
-const { User, Activity } = require('../models')
 
 const { formatDate, formatTime } = require('../selectors/formatDate')
 
@@ -23,16 +23,13 @@ const connectionController = {
             ]
         })
 
-        // Test pour voir si l'email est valide
         if (user === null) {
             res.status(400).json({
                 error: "Votre adresse mail n'est pas valide",
             })
             return
         }
-        // Test pour voir si le mot de passe est correct
         
-        // on compare le mot de passe en clair et le mot de passe hachée de la BDD
         validPwd = bcrypt.compareSync(data.password, user.password)
         if (!validPwd) {
             res.status(400).json({
@@ -41,7 +38,6 @@ const connectionController = {
             return
         }
 
-        // chargement des activitées du user
         const userActivities = await Activity.findAll({
             include: [
                 {
@@ -55,24 +51,10 @@ const connectionController = {
                     association: 'sport',
                     attributes: ['name', 'icon'],
                 },
-                /*
-                {
-                    association: 'activity_statut',
-                    attributes: {
-                        exclude: ['id'],
-                    },
-                },
-                */
                 {
                     association: 'activity_place',
                     attributes: ['city'],
                 },
-                /*
-                {
-                    association: 'creator',
-                    attributes: ['pseudo'],
-                },
-                */
             ],
             where: {
                 date: {
@@ -98,7 +80,6 @@ const connectionController = {
             })
         }
 
-        // create auth token
         const jwtSecret = process.env.JWT_SECRET
         const jwtContent = { userId: user.id }
         const jwtOptions = {
@@ -111,7 +92,7 @@ const connectionController = {
             jwtOptions,
         )
 
-        if(process.env.DEPLOYED_APP && process.env.DEPLOYED_APP == false){
+        if(process.env.DEPLOYED_APP && process.env.DEPLOYED_APP == 'false'){
             res.cookie('token', token, { 
                 httpOnly: true,
             })

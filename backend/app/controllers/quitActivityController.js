@@ -1,9 +1,7 @@
-const Sequelize = require('sequelize')
-const { QueryTypes } = require('sequelize')
-const sequelize = require('../database.js')
-const Op = Sequelize.Op
-
 const { Activity, User, UserGrade } = require('../models')
+
+const Sequelize = require('sequelize')
+const Op = Sequelize.Op
 
 const quitActivityController = {
 

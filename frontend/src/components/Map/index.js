@@ -13,9 +13,6 @@ const Map = ({ lat, lng, place }) => {
             longitude: parseFloat(lng),
             zoom: 12,
         })
-
-        console.log('test', lat, lng);
-
     }, [lat, lng])
 
     const [viewport, setViewport] = useState({
