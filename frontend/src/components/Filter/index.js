@@ -180,7 +180,7 @@ const Filter = ({
                                 disabled={!filterActive}
                                 classProps="button--clear-filter"
                             >
-                                Annuler les filtres
+                                Annuler
                             </Button>
                         </div>
                     </div>

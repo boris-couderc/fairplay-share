@@ -1,12 +1,8 @@
+const { User, UserGrade } = require('../models')
+
 const bcrypt = require('bcrypt')
 const saltRounds = 10
 const jsonwebtoken = require('jsonwebtoken')
-
-const { User, UserGrade } = require('../models')
-
-const Sequelize = require('sequelize')
-const sequelize = require('../database.js')
-const { request } = require('express')
 
 const registrationController = {
     

@@ -1,11 +1,8 @@
-const {
-    Activity,
-    Sport,
-    ActivityStatut,
-    ActivityPlace,
-    User,
-    Message,
-} = require('../models')
+const { Activity, User } = require('../models')
+
+const Sequelize = require('sequelize')
+const sequelize = require('../database.js')
+const Op = Sequelize.Op
 
 const { distanceCalculSQL } = require('../selectors/distanceCalculSQL')
 const {
@@ -14,13 +11,9 @@ const {
 } = require('../selectors/formatActivities')
 const { formatDate, formatTime } = require('../selectors/formatDate')
 
-const Sequelize = require('sequelize')
-const sequelize = require('../database.js')
-const Op = Sequelize.Op
-
 const activityController = {
     defaultNumCardInPage: 8,
-    defaultLimitDistance: 100, // en km
+    defaultLimitDistance: 100, // km
 
     getLastActivities: async (req, res) => {
         let page = parseInt(req.query.page)
@@ -46,24 +39,10 @@ const activityController = {
                         association: 'sport',
                         attributes: ['name', 'icon'],
                     },
-                    /*
-                    {
-                        association: 'activity_statut',
-                        attributes: {
-                            exclude: ['id'],
-                        },
-                    },
-                    */
                     {
                         association: 'activity_place',
                         attributes: ['city'],
                     },
-                    /*
-                    {
-                        association: 'creator',
-                        attributes: ['pseudo'],
-                    },
-                    */
                 ],
                 where: {
                     [Op.and]: [
@@ -119,14 +98,6 @@ const activityController = {
                     ],
                 },
                 include: [
-                    /*
-                    {
-                        association: 'activity_statut',
-                        attributes: {
-                            exclude: ['id'],
-                        },
-                    },
-                    */
                     {
                         association: 'sport',
                         attributes: ['name', 'icon'],
@@ -267,13 +238,6 @@ const activityController = {
                 return
             }
 
-            //formatedaActivities = formatActivitiesFilterByDistance(activities, activityController.defaultLimitDistance);
-            /*
-            if(formatedaActivities.length < 1) {
-                res.status(204).json("Error : can't find Activity");
-                return;
-            }
-            */
             formatedaActivities = formatActivities(activities.rows)
             res.json({
                 activities: formatedaActivities,
@@ -372,15 +336,7 @@ const activityController = {
                 res.status(204).json("Error : can't find Activity")
                 return
             }
-            /*
-            formatedaActivities = formatActivitiesFilterByDistance(activities, activityController.defaultLimitDistance);
-            if(formatedaActivities.length < 1) {
-                res.status(204).json("Error : can't find Activity");
-                return;
-            }
-            */
-            //formatedaActivities = formatActivities(activities);
-            //res.json(formatedaActivities);
+
             formatedaActivities = formatActivities(activities.rows)
             res.json({
                 activities: formatedaActivities,
@@ -432,24 +388,10 @@ const activityController = {
                         association: 'sport',
                         attributes: ['name', 'icon'],
                     },
-                    /*
-                    {
-                        association: 'activity_statut',
-                        attributes: {
-                            exclude: ['id'],
-                        },
-                    },
-                    */
                     {
                         association: 'activity_place',
                         attributes: ['city'],
                     },
-                    /*
-                    {
-                        association: 'creator',
-                        attributes: ['pseudo'],
-                    },
-                    */
                 ],
                 where: {
                     date: {

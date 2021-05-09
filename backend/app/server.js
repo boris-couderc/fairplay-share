@@ -24,10 +24,6 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(router);
 
-//const start = () => {
-    app.listen(PORT, () => {
-        console.log('Running on localhost :' + PORT );
-    });
-//};
-
-//module.exports = { start };
+app.listen(PORT, () => {
+    console.log('Running on localhost :' + PORT );
+});

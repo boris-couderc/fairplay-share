@@ -1,12 +1,13 @@
+const { Sport } = require('../models')
+
 const { Sequelize } = require('sequelize')
 const sequelize = require('../database.js')
 const Op = Sequelize.Op
 
-const { Sport } = require('../models')
 const { distanceCalculSQL } = require('../selectors/distanceCalculSQL')
 
 const sportsController = {
-    defaultLimitDistance: 100, // en km
+    defaultLimitDistance: 100, // km
 
     getSports: async (req, res) => {
         try {

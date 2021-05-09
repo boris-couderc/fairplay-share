@@ -296,6 +296,7 @@
         &__infos-sup {
             grid-template-columns: 1fr 1fr;
             grid-template-rows   : auto auto;
+            padding              : 3rem var(--horizontal-wrapper-content-margin);
         }
 
         &__desc {
@@ -328,6 +329,10 @@
     }
 
     @media (min-width: s.$from-medium) {
+        &__infos-sup {
+            padding: var(--horizontal-wrapper-content-margin);
+        }
+
         &__organization {
             display              : grid;
             grid-template-columns: 1fr 1fr;
