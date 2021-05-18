@@ -35,7 +35,7 @@ const Team = () => {
                                 <Button
                                     appearance="outline"
                                     size="small"
-                                    href="#"
+                                    href={profil.github}
                                 >
                                     github
                                 </Button>

@@ -22,14 +22,14 @@ export default [
         img: Benjamin,
         name: 'Benjamin',
         linkedin: '',
-        github: '',
+        github: '', 
         role: 'Lead Front',
     },
     {
         img: Boris,
         name: 'Boris',
         linkedin: '',
-        github: '',
+        github: 'https://github.com/boris-couderc',
         role: 'Lead Back & Design',
     },
 ];
