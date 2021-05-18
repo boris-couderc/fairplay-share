@@ -13,6 +13,9 @@ const Messages = ({
     userId, 
     activityId,
     isMessageSending,
+    isLogged,
+    isCheckedLoginLocalStorage,
+    showLoginModal,
 }) => {
     const [inputValue, setInputValue] = useState('')
 
@@ -105,13 +108,23 @@ const Messages = ({
                         <Loader classProps="messages__loader" />
                     )}
                 </div>
-                <Button 
-                    appearance="primary" 
-                    classProps="" 
-                    type="submit"
-                >
-                    Envoyer
-                </Button>
+                    {isLogged ? (
+                        <Button 
+                            appearance="primary" 
+                            classProps="" 
+                            type="submit"
+                        >
+                            Envoyer
+                        </Button>
+                    ) : (
+                        <Button 
+                            appearance="primary" 
+                            classProps="" 
+                            onClick={showLoginModal}
+                        >
+                            Envoyer
+                        </Button>
+                    )}
             </form>
         </div>
     )
@@ -123,6 +136,9 @@ Messages.propTypes = {
     userId: PropTypes.number,
     activityId: PropTypes.number.isRequired,
     isMessageSending: PropTypes.bool.isRequired,
+    isLogged: PropTypes.bool.isRequired,
+    isCheckedLoginLocalStorage: PropTypes.bool.isRequired,
+    showLoginModal: PropTypes.func.isRequired,
 }
 
 Messages.defaultProps = {

@@ -5,15 +5,15 @@ import { Link } from 'react-router-dom'
 const ActivityLink = ({ children, isLogged, id, onClick, classProps }) => {
     return (
         <>
-            {isLogged ? (
+            {/* {isLogged ? ( */}
                 <Link to={`/activity/${id}`} className={classProps}>
                     {children}
                 </Link>
-            ) : (
+            {/* ) : (
                 <div onClick={onClick} className={classProps}>
                     {children}
                 </div>
-            )}
+            )} */}
         </>
     )
 }

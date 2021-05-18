@@ -20,7 +20,7 @@ ActivityPlace.hasMany(Activity, {
 Activity.belongsTo(Sport, {
   foreignKey: "sport_id",
   as: "sport",
-});
+}); 
 
 Sport.hasMany(Activity, {
   foreignKey: "sport_id",

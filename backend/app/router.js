@@ -19,7 +19,10 @@ router.get('/api/activities?', activityController.getLastActivities);
 router.post('/api/activity/join',authorizationMiddleware,joinActivityController.joinActivity);
 router.post('/api/activity/quit', authorizationMiddleware, quitActivityController.quitActivity);
 router.post('/api/activity/cancel', authorizationMiddleware, cancelActivityController.cancelActivity);
-router.get('/api/activity/:id', authorizationMiddleware, activityController.getOneActivity); 
+
+//router.get('/api/activity/:id', authorizationMiddleware, activityController.getOneActivity); 
+router.get('/api/activity/:id', activityController.getOneActivity); 
+
 router.get('/api/place?', activityController.getActivitiesByUserLocalisation);
 router.get('/api/activities/user/:id', authorizationMiddleware, activityController.getActivitiesByUser);
 router.get('/api/sports', sportsController.getSports);

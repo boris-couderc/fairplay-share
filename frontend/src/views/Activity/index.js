@@ -30,15 +30,18 @@ const Activity = ({
     quitActivity,
     cancelActivity,
     clearActivity,
+    showLoginModal,
 }) => {
     const history = useHistory()
     const { id } = useParams()
 
+    /*
     useEffect(() => {
         if (!isLogged && isCheckedLoginLocalStorage) {
             history.push('/')
         }
     }, [isLogged, isCheckedLoginLocalStorage])
+    */
 
     useEffect(() => {
         fetchActivity(id)
@@ -237,6 +240,16 @@ const Activity = ({
                                                     Activité annulée
                                                 </Heading>
                                             </div>
+
+                                        ) : !isLogged && isCheckedLoginLocalStorage ? (
+                                            <Button
+                                                appearance="primary"
+                                                size="big"
+                                                icon="user-add"
+                                                onClick={showLoginModal}
+                                            >
+                                                Je m'inscris
+                                            </Button>
                                         ) : (
                                             <Loader />
                                         )}
@@ -304,6 +317,7 @@ Activity.propTypes = {
     quitActivity: PropTypes.PropTypes.func.isRequired,
     cancelActivity: PropTypes.PropTypes.func.isRequired,
     clearActivity: PropTypes.PropTypes.func.isRequired,
+    showLoginModal: PropTypes.func.isRequired,
 }
 
 Activity.defaultProps = {

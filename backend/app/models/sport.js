@@ -10,7 +10,7 @@ Sport.init(
   },
   {
     sequelize,
-    tableName: "sport",
+    tableName: "sport", 
   }
 );
 
